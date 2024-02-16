@@ -1,8 +1,8 @@
 package profile
 
 import (
+	"ioprodz/common/ui"
 	"net/http"
-	"text/template"
 )
 
 type PageData struct {
@@ -14,16 +14,5 @@ func GetHandler(w http.ResponseWriter, r *http.Request) {
 	data := PageData{Name: "Smith"}
 
 	// Parse the template file
-	tmpl, err := template.ParseFiles("profile/template.html")
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
-	// Execute the template with the provided data
-	err = tmpl.Execute(w, data)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
+	ui.RenderPage(w, "profile/template", data)
 }

@@ -12,13 +12,14 @@ import (
 
 func main() {
 
-	// Mount module routers
-
 	router := mux.NewRouter()
-	router.HandleFunc("/profile", profile.GetHandler)
-	router.HandleFunc("/", home.GetHandler)
+	// configure module routers
+	home.ConfigureRouter(router)
+	profile.ConfigureRouter(router)
+
+	http.Handle("/", router)
 
 	// Start the HTTP server
 	fmt.Println("Server listening on port 8080...")
-	http.ListenAndServe(":8080", router)
+	http.ListenAndServe(":8080", nil)
 }

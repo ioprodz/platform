@@ -4,8 +4,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func Router() *mux.Router {
-	router := mux.NewRouter()
+func ConfigureRouter(router *mux.Router) *mux.Router {
 	router.HandleFunc("/", GetHandler).Methods("GET")
 	return router
 }
