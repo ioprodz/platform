@@ -1,4 +1,966 @@
 {{ define "content" }}
-<h2>Home</h2>
-<p>This is the home page content.</p>
+
+<section class="pt-32 sm:pt-40 md:pt-48">
+  <div class="mx-auto px-4 sm:px-12 xl:max-w-6xl xl:px-0">
+    <div class="relative">
+      <h2
+        class="text-center text-2xl font-bold text-blue-900 dark:text-white sm:text-6xl lg:text-left lg:text-7xl"
+      >
+        Design, Build,
+      </h2>
+
+      <div class="relative items-center gap-12 lg:flex">
+        <div
+          class="text-center sm:mx-auto sm:w-11/12 md:mt-12 md:w-4/5 lg:mt-0 lg:mr-auto lg:w-6/12 lg:text-left"
+        >
+          <p class="mt-12 text-lg text-gray-600 dark:text-gray-300 sm:text-xl">
+            Computers used to be magical. But much of that magic has been lost
+            over time, replaced by subpar tools and practices that slow teams
+            down and hold great work back.
+          </p>
+          <form action="" class="mt-12">
+            <div
+              class="relative flex items-center rounded-full border border-primary/20 bg-white p-1 px-2 shadow-md focus-within:ring-2 dark:border-white/10 dark:bg-dark dark:text-white md:p-2 lg:pr-3"
+            >
+              <div class="py-3 pl-4 lg:pl-5">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="m-auto h-6 w-6 fill-gray-500 dark:fill-gray-400"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+                  />
+                  <path
+                    d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
+                  />
+                </svg>
+              </div>
+              <input
+                aria-label="your email"
+                autocomplete="email"
+                placeholder="Your mail address"
+                class="w-full rounded-full bg-transparent p-4 placeholder-gray-600 outline-none dark:placeholder-white"
+                type="email"
+              />
+              <div class="md:pr-1.5 lg:pr-0">
+                <button
+                  type="submit"
+                  title="Start buying"
+                  class="relative ml-auto h-12 w-16 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 active:duration-75 active:before:scale-95 dark:before:bg-primaryLight sm:w-auto sm:px-6"
+                >
+                  <span
+                    class="relative hidden w-max font-semibold text-white dark:text-gray-900 md:block"
+                  >
+                    Get Started
+                  </span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="relative mx-auto h-6 w-6 text-white dark:text-gray-900 md:hidden"
+                  >
+                    <path
+                      d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </form>
+          <div class="mt-12 hidden lg:block">
+            <span class="text-gray-700 dark:text-white"
+              >From the most talented
+              <a
+                href="customers.html"
+                class="text-primary underline dark:text-primaryLight"
+                >Team</a
+              >
+              !</span
+            >
+            <div
+              class="mt-5 flex -space-x-1 children:h-10 children:w-10 children:rounded-full children:object-cover children:ring-4 children:ring-gray-100 dark:children:ring-gray-900"
+            >
+              <img
+                class="w-8 h-8 rounded-full"
+                src="https://xsgames.co/randomusers/assets/avatars/male/11.jpg"
+                alt="user avatar"
+                width="400"
+                height="400"
+              />
+              <img
+                class="w-8 h-8 rounded-full"
+                src="https://xsgames.co/randomusers/assets/avatars/male/12.jpg"
+                alt="user avatar"
+                width="200"
+                height="200"
+              />
+              <img
+                class="w-8 h-8 rounded-full"
+                src="https://xsgames.co/randomusers/assets/avatars/female/12.jpg"
+                alt="user avatar"
+                width="200"
+                height="200"
+              />
+              <img
+                class="w-8 h-8 rounded-full"
+                src="https://xsgames.co/randomusers/assets/avatars/male/15.jpg"
+                alt="user avatar"
+                width="200"
+                height="200"
+              />
+              <img
+                class="w-8 h-8 rounded-full"
+                src="https://xsgames.co/randomusers/assets/avatars/female/16.jpg"
+                alt="user avatar"
+                width="200"
+                height="200"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="mt-12 w-full overflow-hidden sm:mt-20 lg:-mt-8 lg:w-6/12">
+          <img
+            class="w-full"
+            src="./images/team.svg"
+            class="w-full"
+            alt="team illustration"
+            height="600"
+            width="800"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section
+  class="mt-12 border-y border-gray-100 py-8 text-center dark:border-gray-800 md:py-12 xl:mt-20"
+>
+  <div>
+    <a
+      href="customers.html"
+      class="text-sm font-semibold tracking-wider text-gray-800 dark:text-white"
+      >TRUSTED BY YOUR FAVORED TOP TECHS COMPANIES</a
+    >
+    <div
+      class="mt-8 flex flex-wrap justify-center gap-6 brightness-75 contrast-200 grayscale dark:brightness-200 dark:contrast-0 sm:justify-between lg:gap-24"
+    >
+      <img
+        class="h-8 w-auto lg:h-10 lg:w-auto"
+        src="images/clients/airbnb.svg"
+        loading="lazy"
+        alt="airbnb"
+        width=""
+        height=""
+      />
+      <img
+        class="h-8 w-auto lg:h-10 lg:w-auto"
+        src="images/clients/coty.svg"
+        loading="lazy"
+        alt="bissell"
+        width=""
+        height=""
+      />
+      <img
+        class="h-8 w-auto lg:h-10 lg:w-auto"
+        src="images/clients/ge.svg"
+        loading="lazy"
+        alt="ge"
+        width="100"
+        height="100"
+      />
+      <img
+        class="h-8 w-auto lg:h-10 lg:w-auto"
+        src="images/clients/lilly.png"
+        loading="lazy"
+        alt="lilly"
+        width=""
+        height=""
+      />
+      <img
+        class="h-8 w-auto lg:h-10 lg:w-auto"
+        src="images/clients/microsoft.svg"
+        loading="lazy"
+        alt="microsoft"
+        width=""
+        height=""
+      />
+    </div>
+  </div>
+</section>
+
+<section class="mt-32">
+  <div class="mx-auto px-4 sm:px-12 xl:max-w-6xl xl:px-0">
+    <div class="text-center">
+      <h2
+        class="text-3xl font-bold text-gray-800 dark:text-white md:text-4xl xl:text-5xl"
+      >
+        For growing teams and organizations
+      </h2>
+      <p
+        class="mx-auto mt-6 text-gray-700 dark:text-gray-300 md:w-3/4 lg:w-3/5"
+      >
+        A growing team doesn't need to mean growing pains. Privacy, and the
+        right tool for every step of your journey - Jira Software friction -
+        company size.
+      </p>
+
+      <div
+        role="tablist"
+        aria-label="tabs"
+        class="relative mx-auto mt-12 grid h-12 w-auto grid-cols-3 items-center gap-x-1 overflow-hidden rounded-full border border-gray-200 bg-gray-100 px-[3px] text-gray-600 dark:border-gray-700 dark:border-opacity-60 dark:bg-darker dark:text-gray-300 dark:shadow-none sm:w-max"
+      >
+        <div
+          class="tab-indicator absolute h-10 rounded-full bg-white shadow-md transition-[left] duration-500 dark:bg-gray-800"
+          style="left: 4px"
+        ></div>
+        <button
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-0"
+          tabindex="0"
+          title="tab item"
+          class="tab relative block rounded-full py-2.5 px-4 hover:text-primary dark:hover:text-primaryLight"
+        >
+          <span class="m-auto block w-max text-sm font-medium tracking-wider"
+            >First Tab</span
+          >
+        </button>
+        <button
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-1"
+          tabindex="-1"
+          title="tab item"
+          class="tab relative block rounded-full py-2.5 px-4 hover:text-primary dark:hover:text-primaryLight"
+        >
+          <span class="m-auto block w-max text-sm font-medium tracking-wider"
+            >Second Tab</span
+          >
+        </button>
+        <button
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-2"
+          tabindex="-1"
+          title="tab item"
+          class="tab relative block rounded-full py-2.5 px-4 hover:text-primary dark:hover:text-primaryLight"
+        >
+          <span class="m-auto block w-max text-sm font-medium tracking-wider"
+            >Third Tab</span
+          >
+        </button>
+      </div>
+    </div>
+    <div class="mt-20">
+      <div class="gap-6 space-y-12 md:flex md:space-y-0">
+        <div class="relative md:w-1/2">
+          <div
+            class="panel visible inset-0 flex scale-100 flex-col justify-center opacity-100 transition duration-500 md:absolute"
+            id="panel-0"
+          >
+            <div>
+              <h3
+                class="text-2xl font-bold text-gray-900 dark:text-white md:text-3xl"
+              >
+                Make work flow across teams while connecting back to company
+                goals
+              </h3>
+              <p class="mt-8 text-gray-600 dark:text-gray-300">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum
+                omnis voluptatem accusantium nemo perspiciatis delectus atque
+                autem! repellat expedita consequatur! Officiis id consequatur
+                atque doloremque!
+              </p>
+              <div class="mt-12 space-y-6">
+                <div class="flex items-center gap-6">
+                  <div
+                    class="flex h-20 w-20 rounded-3xl border border-gray-200 bg-white p-4 dark:border-gray-600/60 dark:bg-gray-900/40"
+                  >
+                    <img
+                      class="m-auto h-8 w-auto"
+                      src="https://cdn-icons-png.flaticon.com/512/4727/4727266.png"
+                      alt="icon illustration"
+                      loading="lazy"
+                      width="512"
+                      height="512"
+                    />
+                  </div>
+                  <div class="w-[calc(100%-7.5rem)]">
+                    <h4
+                      class="text-lg font-semibold text-gray-800 dark:text-white"
+                    >
+                      Together as one
+                    </h4>
+                    <p class="mt-1 text-gray-600 dark:text-gray-400">
+                      Accusantium nemo perspiciatis delectus atque autem!
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-6">
+                  <div
+                    class="flex h-20 w-20 rounded-3xl border border-gray-200 bg-white p-4 dark:border-gray-600/60 dark:bg-gray-900/40"
+                  >
+                    <img
+                      class="m-auto h-8 w-auto"
+                      src="https://cdn-icons-png.flaticon.com/512/584/584796.png"
+                      alt="icon illustration"
+                      loading="lazy"
+                      width="512"
+                      height="512"
+                    />
+                  </div>
+                  <div class="w-[calc(100%-7.5rem)]">
+                    <h4
+                      class="text-lg font-semibold text-gray-800 dark:text-white"
+                    >
+                      New ideas
+                    </h4>
+                    <p class="mt-1 text-gray-600 dark:text-gray-400">
+                      Accusalectus atque autem accusantium nemo perspiciatis
+                      delectus atque autem!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="panel invisible absolute inset-0 flex scale-90 flex-col justify-center opacity-0 transition duration-500"
+            id="panel-1"
+          >
+            <div>
+              <h3
+                class="text-2xl font-bold text-gray-900 dark:text-white md:text-3xl"
+              >
+                Make work flow across teams while connecting back to company
+                goals
+              </h3>
+              <p class="mt-8 text-gray-600 dark:text-gray-300">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum
+                omnis voluptatem accusantium nemo perspiciatis delectus atque
+                autem! repellat expedita consequatur! Officiis id consequatur
+                atque doloremque!
+              </p>
+              <div class="mt-12 space-y-6">
+                <div class="flex items-center gap-6">
+                  <div
+                    class="flex h-20 w-20 rounded-3xl border border-gray-200 bg-white p-4 dark:border-gray-600/60 dark:bg-gray-900/40"
+                  >
+                    <img
+                      class="m-auto h-8 w-auto"
+                      src="https://cdn-icons-png.flaticon.com/512/6106/6106288.png"
+                      alt="icon illustration"
+                      loading="lazy"
+                      width="512"
+                      height="512"
+                    />
+                  </div>
+                  <div class="w-[calc(100%-7.5rem)]">
+                    <h4
+                      class="text-lg font-semibold text-gray-800 dark:text-white"
+                    >
+                      Together as one
+                    </h4>
+                    <p class="mt-1 text-gray-600 dark:text-gray-400">
+                      Accusantium nemo perspiciatis delectus atque autem!
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-6">
+                  <div
+                    class="flex h-20 w-20 rounded-3xl border border-gray-200 bg-white p-4 dark:border-gray-600/60 dark:bg-gray-900/40"
+                  >
+                    <img
+                      class="m-auto h-8 w-auto"
+                      src="https://cdn-icons-png.flaticon.com/512/2313/2313906.png"
+                      alt="icon illustration"
+                      loading="lazy"
+                      width="512"
+                      height="512"
+                    />
+                  </div>
+                  <div class="w-[calc(100%-7.5rem)]">
+                    <h4
+                      class="text-lg font-semibold text-gray-800 dark:text-white"
+                    >
+                      New ideas
+                    </h4>
+                    <p class="mt-1 text-gray-600 dark:text-gray-400">
+                      Accusalectus atque autem accusantium nemo perspiciatis
+                      delectus atque autem!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="panel invisible absolute inset-0 flex scale-90 flex-col justify-center opacity-0 transition duration-500"
+            id="panel-2"
+          >
+            <div>
+              <h3
+                class="text-2xl font-bold text-gray-900 dark:text-white md:text-3xl"
+              >
+                Make work flow across teams while connecting back to company
+                goals
+              </h3>
+              <p class="mt-8 text-gray-600 dark:text-gray-300">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum
+                omnis voluptatem accusantium nemo perspiciatis delectus atque
+                autem! repellat expedita consequatur! Officiis id consequatur
+                atque doloremque!
+              </p>
+              <div class="mt-12 space-y-6">
+                <div class="flex items-center gap-6">
+                  <div
+                    class="flex h-20 w-20 rounded-3xl border border-gray-200 bg-white p-4 dark:border-gray-600/60 dark:bg-gray-900/40"
+                  >
+                    <img
+                      class="m-auto h-8 w-auto"
+                      src="https://cdn-icons-png.flaticon.com/512/3340/3340200.png"
+                      alt="icon illustration"
+                      loading="lazy"
+                      width="512"
+                      height="512"
+                    />
+                  </div>
+                  <div class="w-[calc(100%-7.5rem)]">
+                    <h4
+                      class="text-lg font-semibold text-gray-800 dark:text-white"
+                    >
+                      Together as one
+                    </h4>
+                    <p class="mt-1 text-gray-600 dark:text-gray-400">
+                      Accusantium nemo perspiciatis delectus atque autem!
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-6">
+                  <div
+                    class="flex h-20 w-20 rounded-3xl border border-gray-200 bg-white p-4 dark:border-gray-600/60 dark:bg-gray-900/40"
+                  >
+                    <img
+                      class="m-auto h-8 w-auto"
+                      src="https://cdn-icons-png.flaticon.com/512/5405/5405929.png"
+                      alt="icon illustration"
+                      loading="lazy"
+                      width="512"
+                      height="512"
+                    />
+                  </div>
+                  <div class="w-[calc(100%-7.5rem)]">
+                    <h4
+                      class="text-lg font-semibold text-gray-800 dark:text-white"
+                    >
+                      Growth
+                    </h4>
+                    <p class="mt-1 text-gray-600 dark:text-gray-400">
+                      Accusalectus atque autem accusantium nemo perspiciatis
+                      delectus atque autem!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="-m-4 overflow-hidden p-4 sm:-mx-12 sm:px-12 md:mx-0 md:w-1/2 md:overflow-visible md:px-0"
+        >
+          <div
+            class="relative bg-gray-100 before:absolute before:inset-0 before:scale-x-110 before:border-y before:border-gray-200 after:absolute after:inset-0 after:scale-y-110 after:border-x after:border-gray-200 dark:bg-gray-800 dark:before:border-gray-700 dark:after:border-gray-700"
+          >
+            <div class="relative h-96 overflow-clip py-10 sm:h-[32rem] lg:p-20">
+              <div
+                data-target="panel-0"
+                class="panel-preview absolute inset-0 z-10 flex translate-y-0 scale-100 items-end overflow-hidden px-6 opacity-100 transition duration-500 sm:px-10"
+              >
+                <img
+                  src="./images/screenshots/ioprodz-home.webp"
+                  class="mx-auto h-80 w-96 rounded-t-3xl border object-cover object-top shadow-2xl dark:border-transparent sm:h-[28rem]"
+                  alt="ioprodz screenshot"
+                  loading="lazy"
+                  width="850"
+                  height="1780"
+                />
+              </div>
+              <div
+                data-target="panel-1"
+                class="panel-preview absolute inset-0 z-0 flex translate-y-[100%] scale-100 items-end overflow-hidden px-6 opacity-50 transition duration-500 sm:px-10"
+              >
+                <img
+                  src="./images/screenshots/ioprodz-home-dark.webp"
+                  class="mx-auto h-80 w-96 rounded-t-3xl border object-cover object-top shadow-2xl dark:border-transparent sm:h-[28rem]"
+                  alt="ioprodz screenshot dark-mode"
+                  loading="lazy"
+                  width="850"
+                  height="1780"
+                />
+              </div>
+              <div
+                data-target="panel-2"
+                class="panel-preview absolute inset-0 z-0 flex translate-y-[100%] scale-100 items-end overflow-hidden px-6 opacity-50 transition duration-500 sm:px-10"
+              >
+                <img
+                  src="./images/screenshots/ioprodz-contact.webp"
+                  class="mx-auto h-80 w-96 rounded-t-3xl border object-cover object-top shadow-2xl dark:border-transparent sm:h-[28rem]"
+                  alt="ioprodz contact screenshot"
+                  loading="lazy"
+                  width="850"
+                  height="1780"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mt-32">
+  <div class="mx-auto px-4 sm:px-12 xl:max-w-6xl xl:px-0">
+    <div class="space-y-6 md:flex lg:items-center lg:gap-6 lg:space-y-0">
+      <div class="md:5/12 lg:w-6/12">
+        <img
+          class="md:-ml-8"
+          src="./images/stats-login.webp"
+          alt="ioprodz stats and login components"
+          loading="lazy"
+          width="1779"
+          height="1592"
+        />
+      </div>
+      <div class="md:7/12 lg:w-6/12">
+        <h2
+          class="text-3xl font-bold text-gray-800 dark:text-white md:text-4xl xl:text-5xl"
+        >
+          Development is carried out by passionate developers
+        </h2>
+        <p class="mt-8 text-gray-600 dark:text-gray-300">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum omnis
+          voluptatem accusantium nemo perspiciatis delectus atque autem!
+          repellat expedita consequatur! Officiis id consequatur atque
+          doloremque!
+        </p>
+        <p class="mb-12 mt-4 text-gray-600 dark:text-gray-300">
+          Nobis minus voluptatibus pariatur dignissimos libero quaerat iure
+          expedita at? Asperiores nemo possimus nesciunt dicta veniam aspernatur
+          quam mollitia.
+        </p>
+        <a
+          class="relative flex h-11 w-max items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition-transform before:duration-300 active:duration-75 active:before:scale-95 dark:before:bg-primaryLight"
+          href="/pages/contact"
+        >
+          <span
+            class="relative text-base font-semibold text-white dark:text-gray-900"
+            >Get started</span
+          >
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="relative py-32">
+  <div
+    aria-hidden="true"
+    class="absolute inset-0 top-60 grid grid-cols-2 -space-x-52 opacity-50 dark:opacity-30"
+  >
+    <div
+      class="h-60 bg-gradient-to-br from-primary to-purple-400 blur-[106px] dark:from-blue-700"
+    ></div>
+    <div
+      class="h-40 bg-gradient-to-r from-cyan-400 to-sky-300 blur-[106px] dark:to-indigo-600"
+    ></div>
+  </div>
+  <div class="relative mx-auto px-4 sm:px-12 xl:max-w-6xl xl:px-0">
+    <div class="text-center">
+      <h2
+        class="text-3xl font-bold text-gray-800 dark:text-white md:text-4xl xl:text-5xl"
+      >
+        A technology-first approach
+      </h2>
+      <p
+        class="mx-auto mt-6 text-gray-700 dark:text-gray-300 md:w-3/4 lg:w-3/5"
+      >
+        A growing team doesn't need to mean growing pains. Privacy, and the
+        right tool for every step of your journey - Jira Software friction -
+        company size.
+      </p>
+    </div>
+    <div
+      class="mt-16 grid gap-8 sm:mx-auto sm:w-2/3 md:w-full md:grid-cols-2 lg:grid-cols-3"
+    >
+      <div
+        class="rounded-3xl border border-gray-100 bg-white p-8 py-12 shadow-2xl shadow-gray-600/10 dark:border-gray-700 dark:bg-gray-800 dark:shadow-none sm:p-12"
+      >
+        <div class="space-y-12 text-center">
+          <img
+            src="https://xsgames.co/randomusers/assets/avatars/male/11.jpg"
+            class="mx-auto h-48 w-auto rounded-full"
+            width="512"
+            height="512"
+            alt="burger illustration"
+          />
+          <div class="space-y-6">
+            <h3
+              class="text-2xl font-semibold text-gray-800 transition dark:text-white"
+            >
+              First feature
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe
+              nesciunt neque culpa hic illum ab qui error repellendus asperiores
+              unde ut ipsam perferendis nemo fuga cum, eum consectetur, magnam
+              doloremque!
+            </p>
+            <a
+              aria-label="read more"
+              href="#"
+              class="group relative mx-auto flex h-12 w-12 items-center justify-center before:absolute before:inset-0 before:rounded-full before:border before:border-gray-200 before:bg-gray-50 before:bg-gradient-to-b before:transition-transform before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 dark:before:bg-gray-800"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="relative h-5 w-5 text-gray-600 transition duration-300 group-hover:translate-x-1 dark:text-white"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M16.28 11.47a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 01-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 011.06-1.06l7.5 7.5z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="rounded-3xl border border-gray-100 bg-white p-8 py-12 shadow-2xl shadow-gray-600/10 dark:border-gray-700 dark:bg-gray-800 dark:shadow-none sm:p-12"
+      >
+        <div class="space-y-12 text-center">
+          <img
+            src="https://xsgames.co/randomusers/assets/avatars/male/12.jpg"
+            class="mx-auto h-48 w-auto rounded-full"
+            width="512"
+            height="512"
+            alt="burger illustration"
+          />
+          <div class="space-y-6">
+            <h3
+              class="text-2xl font-semibold text-gray-800 transition dark:text-white"
+            >
+              Second feature
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe
+              nesciunt neque culpa hic illum ab qui error repellendus asperiores
+              unde ut ipsam perferendis nemo fuga cum, eum consectetur, magnam
+              doloremque!
+            </p>
+            <a
+              aria-label="read more"
+              href="#"
+              class="group relative mx-auto flex h-12 w-12 items-center justify-center before:absolute before:inset-0 before:rounded-full before:border before:border-gray-200 before:bg-gray-50 before:bg-gradient-to-b before:transition-transform before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 dark:before:bg-gray-800"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="relative h-5 w-5 text-gray-600 transition duration-300 group-hover:translate-x-1 dark:text-white"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M16.28 11.47a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 01-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 011.06-1.06l7.5 7.5z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="rounded-3xl border border-gray-100 bg-white p-8 py-12 shadow-2xl shadow-gray-600/10 dark:border-gray-700 dark:bg-gray-800 dark:shadow-none sm:p-12"
+      >
+        <div class="space-y-12 text-center">
+          <img
+            src="https://xsgames.co/randomusers/assets/avatars/female/12.jpg"
+            class="mx-auto h-48 w-auto rounded-full"
+            width="512"
+            height="512"
+            alt="burger illustration"
+          />
+          <div class="space-y-6">
+            <h3
+              class="text-2xl font-semibold text-gray-800 transition dark:text-white"
+            >
+              Third feature
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe
+              nesciunt neque culpa hic illum ab qui error repellendus asperiores
+              unde ut ipsam perferendis nemo fuga cum, eum consectetur, magnam
+              doloremque!
+            </p>
+            <a
+              aria-label="read more"
+              href="#"
+              class="group relative mx-auto flex h-12 w-12 items-center justify-center before:absolute before:inset-0 before:rounded-full before:border before:border-gray-200 before:bg-gray-50 before:bg-gradient-to-b before:transition-transform before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 dark:before:bg-gray-800"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="relative h-5 w-5 text-gray-600 transition duration-300 group-hover:translate-x-1 dark:text-white"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M16.28 11.47a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 01-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 011.06-1.06l7.5 7.5z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mb-32">
+  <div class="mx-auto px-4 sm:px-12 xl:max-w-6xl xl:px-0">
+    <div class="text-center">
+      <h2
+        class="text-3xl font-bold text-gray-800 dark:text-white md:text-4xl xl:text-5xl"
+      >
+        Trusted by leaders
+      </h2>
+      <p
+        class="mx-auto mt-6 text-gray-700 dark:text-gray-300 md:w-3/4 lg:w-3/5"
+      >
+        A growing team doesn't need to mean growing pains. Privacy, and the
+        right tool for every step of your journey - Jira Software friction -
+        company size.
+      </p>
+    </div>
+    <div class="mt-12 grid gap-8 md:grid-cols-2">
+      <div
+        class="rounded-3xl border border-gray-100 bg-white p-8 shadow-2xl shadow-gray-600/10 dark:border-gray-700 dark:bg-gray-800 dark:shadow-none sm:col-span-2 sm:px-12 lg:col-span-1 lg:row-span-2"
+      >
+        <div class="flex h-full flex-col justify-center space-y-6 md:space-y-8">
+          <img
+            class="mr-auto h-12 w-auto"
+            src="images/clients/microsoft.svg"
+            loading="lazy"
+            alt="microsoft"
+          />
+          <p class="text-gray-600 dark:text-gray-300 md:text-lg lg:text-xl">
+            <span class="font-serif">"</span> Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Quaerat repellat perspiciatis
+            excepturi est. Non ipsum iusto aliquam consequatur repellat
+            provident, omnis ut, sapiente voluptates veritatis cum deleniti
+            repudiandae ad doloribus. <br />
+            <br />
+            Esse, sint sit aut ducimus ea ipsam velit saepe earum dolorem,
+            dignissimos minima voluptate quo accusamus corporis, quaerat beatae
+            aliquid. Impedit, accusamus. <span class="font-serif">"</span>
+          </p>
+          <div class="flex items-center gap-3">
+            <img
+              class="h-12 w-12 rounded-full"
+              src="./images/avatars/avatar-2.webp"
+              loading="lazy"
+              alt="user avatar"
+              width="200"
+              height="200"
+            />
+            <div>
+              <h3
+                class="text-lg font-semibold leading-none text-gray-600 dark:text-gray-200"
+              >
+                Andy Doe
+              </h3>
+              <span class="text-sm text-gray-500 dark:text-gray-400"
+                >Product Designer</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="space-y-6 rounded-3xl border border-gray-100 bg-white p-8 shadow-2xl shadow-gray-600/10 dark:border-gray-700 dark:bg-gray-800 dark:shadow-none"
+      >
+        <img
+          class="h-12 w-auto"
+          src="images/clients/airbnb.svg"
+          loading="lazy"
+          alt="airbnb"
+          width=""
+          height=""
+        />
+        <p class="text-gray-600 dark:text-gray-300">
+          <span class="font-serif">"</span>Sit amet consectetur adipisicing
+          elit. Quaerat repellat perspiciatis excepturi est. Provident, omnis
+          ut, sapiente veritatis cum deleniti repudiandae ad doloribus.
+          <span class="font-serif">"</span>
+        </p>
+        <div class="flex items-center gap-3 text-left">
+          <img
+            class="h-12 w-12 rounded-full"
+            src="./images/avatars/avatar-3.webp"
+            alt="user avatar"
+            width="200"
+            height="200"
+            loading="lazy"
+          />
+          <div>
+            <h3
+              class="text-lg font-semibold leading-none text-gray-600 dark:text-gray-200"
+            >
+              Janet Doe
+            </h3>
+            <span class="text-sm text-gray-500 dark:text-gray-400"
+              >UX Designer</span
+            >
+          </div>
+        </div>
+      </div>
+      <div
+        class="space-y-6 rounded-3xl border border-gray-100 bg-white p-8 shadow-2xl shadow-gray-600/10 dark:border-gray-700 dark:bg-gray-800 dark:shadow-none"
+      >
+        <img
+          class="h-12 w-auto"
+          src="images/clients/ge.svg"
+          loading="lazy"
+          alt="ge"
+        />
+        <p class="text-gray-600 dark:text-gray-300">
+          <span class="font-serif">"</span>Sit amet consectetur adipisicing
+          elit. Quaerat repellat perspiciatis excepturi est. Provident, omnis
+          ut, sapiente veritatis cum deleniti repudiandae ad doloribus.
+          <span class="font-serif">"</span>
+        </p>
+        <div class="flex items-center gap-3 text-left">
+          <img
+            class="h-12 w-12 rounded-full"
+            src="./images/avatars/avatar-4.webp"
+            alt="user avatar"
+            width="200"
+            height="200"
+            loading="lazy"
+          />
+          <div>
+            <h3
+              class="text-lg font-semibold leading-none text-gray-600 dark:text-gray-200"
+            >
+              John Doe
+            </h3>
+            <span class="text-sm text-gray-500 dark:text-gray-400"
+              >Product Designer</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section
+  class="relative before:absolute before:inset-0 before:h-px before:w-96 before:bg-gradient-to-r before:from-yellow-300 before:via-pink-400 before:to-transparent after:absolute after:inset-0 after:ml-auto after:mt-auto after:h-px after:w-96 after:bg-gradient-to-l after:from-yellow-300 after:via-pink-400 after:to-transparent"
+>
+  <div
+    class="border-y border-gray-200 bg-gray-100 dark:border-gray-700 dark:bg-darker"
+  >
+    <div
+      class="relative mx-auto px-6 md:max-w-full md:px-12 lg:max-w-6xl xl:px-0"
+    >
+      <div class="items-end justify-between md:flex">
+        <div class="h-max py-16 md:w-6/12 xl:w-5/12">
+          <div class="text-center md:text-left">
+            <h2
+              class="text-3xl font-bold text-gray-800 dark:text-white md:w-max md:text-4xl xl:text-5xl"
+            >
+              One step to improve <br />
+              your workflow
+            </h2>
+            <p class="mb-8 mt-6 text-gray-600 dark:text-gray-300">
+              Praesentium, atque exercitationem dolorum, iste libero eaque animi
+              illum magnam velit iusto quidem omnis quas! Ad expedita quaerat.
+            </p>
+            <form action="" class="mt-12">
+              <div
+                class="relative flex items-center rounded-full border border-primary/20 bg-white p-1 px-2 shadow-md dark:border-white/10 dark:bg-dark md:p-2 lg:pr-3"
+              >
+                <div class="py-3 pl-4 lg:pl-5">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="m-auto h-6 w-6 fill-gray-500 dark:fill-gray-400"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+                    />
+                    <path
+                      d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
+                    />
+                  </svg>
+                </div>
+                <input
+                  autocomplete="email"
+                  aria-label="your email"
+                  placeholder="Your mail address"
+                  class="w-full rounded-full bg-transparent p-4 placeholder-gray-600 dark:placeholder-white"
+                  type="email"
+                />
+                <div class="md:pr-1.5 lg:pr-0">
+                  <button
+                    type="button"
+                    title="Start buying"
+                    class="relative ml-auto h-12 w-16 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 active:duration-75 active:before:scale-95 dark:before:bg-primaryLight sm:w-auto sm:px-6"
+                  >
+                    <span
+                      class="relative hidden w-max font-semibold text-white dark:text-gray-900 md:block"
+                    >
+                      Get Started
+                    </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      class="relative mx-auto h-6 w-6 text-white dark:text-gray-900 md:hidden"
+                    >
+                      <path
+                        d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="md:w-[42%] lg:w-1/2">
+          <img
+            src="./../images/cta-cards.webp"
+            alt="ioprodz stat cards components"
+            loading="lazy"
+            width="1299"
+            height="678"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 {{ end }}

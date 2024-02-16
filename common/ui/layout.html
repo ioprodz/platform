@@ -1,21 +1,25 @@
 {{ define "layout" }}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class>
   <head>
     <meta charset="UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Test page</title>
+    <meta name="description" content="ioprodz platform" />
+    <title>ioprodz</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <header>
-      <!-- Header content here -->
-      <h1>My Website</h1>
-      <nav>
-        <a href="/">Home</a>
-        <a href="/profile">Profile</a>
-      </nav>
-    </header>
-    {{ template "content" . }}
+  <body
+    class="min-h-screen bg-white selection:bg-primary/10 selection:text-primary dark:bg-gray-900"
+  >
+    {{ template "header" . }} {{ template "content" . }} {{ template "footer" .
+    }}
   </body>
 </html>
 {{ end }}

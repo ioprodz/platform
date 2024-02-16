@@ -6,7 +6,7 @@ import (
 )
 
 func RenderPage(w http.ResponseWriter, tmpl string, data interface{}) {
-	tpl, err := template.ParseFiles("common/ui/layout.html", tmpl+".html")
+	tpl, err := template.ParseFiles("common/ui/layout.html", "common/ui/header.html", "common/ui/footer.html", tmpl+".html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
