@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"ioprodz/common/middlewares"
 	"ioprodz/home"
 	"ioprodz/profile"
 
@@ -17,6 +18,7 @@ func main() {
 	home.ConfigureRouter(router)
 	profile.ConfigureRouter(router)
 
+	router.Use(middlewares.RequestLogger)
 	http.Handle("/", router)
 
 	// Start the HTTP server
