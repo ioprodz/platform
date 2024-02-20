@@ -15,7 +15,7 @@ import (
 
 func main() {
 
-	config.Load()
+	configuration := config.Load()
 	//openaiClient.Prompt("you are going to ask me 5 questions about 'CI/CD' to assess my knowledge", "{questions:string[]}")
 
 	router := mux.NewRouter()
@@ -29,5 +29,5 @@ func main() {
 
 	// Start the HTTP server
 	fmt.Println("Server listening on port 8080...")
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":"+configuration.PORT, nil)
 }

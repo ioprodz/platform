@@ -8,7 +8,9 @@ import (
 )
 
 type configStore struct {
-	open_ai_api_key string
+	OPEN_AI_API_KEY string
+	ENVIRONMENT     string
+	PORT            string
 }
 
 var config configStore
@@ -27,7 +29,9 @@ func Load() configStore {
 	}
 
 	config := configStore{
-		open_ai_api_key: os.Getenv("OPENAI_API_KEY"),
+		ENVIRONMENT:     os.Getenv("APP_ENV"),
+		PORT:            os.Getenv("PORT"),
+		OPEN_AI_API_KEY: os.Getenv("OPENAI_API_KEY"),
 	}
 	loaded = true
 	return config
