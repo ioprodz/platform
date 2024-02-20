@@ -1,0 +1,29 @@
+{{ define "content" }}
+<section class="pt-32 text-white">
+  <div
+    class="m-auto space-y-8 px-4 text-gray-600 xl:px-0
+  >
+    <a href="/admin/qna">Back to list</a>
+    <a href="/admin/qna/{{ .Id }}">Edit</a>
+    <h1 class="text-2xl>Answer: {{ .Name }}</h1>
+    <h1 class="text-xl>
+      Score: {{ .Score }} / {{ .MaxScore }}
+    </h1>
+
+    <ul>
+      {{ range $questionIndex, $question := .List }}
+      <li
+        class="border rounded {{ if $question.IsCorrect }} border-green-500 {{else}} border-red-500 {{end}} mb-2 p-2"
+      >
+        <h3 class="text-lg>{{$question.Value}}</h3>
+        <div class="grid grid-cols-3 gap-4">
+          {{ range $choiceIndex, $choice := .Choices}}
+          <div class="border rounded p-2">{{ $choice.Value }}</div>
+          {{end}}
+        </div>
+      </li>
+      {{end}}
+    </ul>
+  </div>
+</section>
+{{ end }}

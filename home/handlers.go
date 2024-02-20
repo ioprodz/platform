@@ -5,14 +5,8 @@ import (
 	"net/http"
 )
 
-type PageData struct {
-	Name string
-}
-
 func GetHandler(w http.ResponseWriter, r *http.Request) {
 
-	data := PageData{Name: "John"}
-
-	ui.RenderPage(w, "home/template", data)
+	ui.RenderPage(w, "home/template", nil)
 
 }

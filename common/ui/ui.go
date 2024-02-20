@@ -17,3 +17,7 @@ func RenderPage(w http.ResponseWriter, tmpl string, data interface{}) {
 		return
 	}
 }
+
+func Render404(w http.ResponseWriter) {
+	RenderPage(w, "common/ui/not-found", nil)
+}

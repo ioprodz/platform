@@ -2,9 +2,11 @@ package main
 
 import (
 	"fmt"
+	"ioprodz/common/config"
 	"ioprodz/common/middlewares"
 	"ioprodz/home"
 	"ioprodz/profile"
+	"ioprodz/qna"
 
 	"net/http"
 
@@ -13,10 +15,14 @@ import (
 
 func main() {
 
+	config.Load()
+	//openaiClient.Prompt("you are going to ask me 5 questions about 'CI/CD' to assess my knowledge", "{questions:string[]}")
+
 	router := mux.NewRouter()
 	// configure module routers
-	home.ConfigureRouter(router)
-	profile.ConfigureRouter(router)
+	home.ConfigureModule(router)
+	profile.ConfigureModule(router)
+	qna.ConfigureModule(router)
 
 	router.Use(middlewares.RequestLogger)
 	http.Handle("/", router)

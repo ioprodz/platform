@@ -1,0 +1,22 @@
+{{ define "content" }}
+<section class="pt-32 text-white">
+  <div
+    class="m-auto space-y-8 px-4 text-gray-600 dark:text-gray-400 sm:px-12 xl:max-w-6xl xl:px-0"
+  >
+    <h1 class="dark:text-white font-bold text-2xl">QNA List</h1>
+    <a href="/admin/qna/create-new">Create new</a>
+    <ul>
+      {{range .list}}
+      <li>
+        <a href="/admin/qna/{{ .Id }}">
+          <div class="border border-gray rounded mb-2 p-2">
+            <span class="text-white text-lg">{{.Name}}</span>
+            <span>{{ len .Questions}} questions</span>
+          </div>
+        </a>
+      </li>
+      {{end}}
+    </ul>
+  </div>
+</section>
+{{ end }}
