@@ -6,7 +6,7 @@ type qnaRepository struct {
 	list []qna_models.QNA
 }
 
-func (repo *qnaRepository) Insert(qna qna_models.QNA) {
+func (repo *qnaRepository) Create(qna qna_models.QNA) {
 	repo.list = append(repo.list, qna)
 }
 

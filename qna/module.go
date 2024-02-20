@@ -1,6 +1,7 @@
 package qna
 
 import (
+	qna_infra "ioprodz/qna/_infra"
 	qna_admin "ioprodz/qna/admin"
 	qna_solver "ioprodz/qna/solver"
 
@@ -9,16 +10,19 @@ import (
 
 func ConfigureModule(router *mux.Router) {
 
-	// pages
-	router.HandleFunc("/admin/qna", qna_admin.ListHandler).Methods("GET")
-	router.HandleFunc("/admin/qna/create-new", qna_admin.CreatePageHandler).Methods("GET")
-	router.HandleFunc("/admin/qna/{id}", qna_admin.GetOneHandler).Methods("GET")
+	qnaRepo := qna_infra.CreateQNARepo()
+	answersRepo := qna_infra.CreateAnswerRepo()
 
-	router.HandleFunc("/qna/{id}/answers", qna_solver.CreateAnswerHandler).Methods("POST")
-	router.HandleFunc("/qna/{id}", qna_solver.GetOneHandler).Methods("GET")
-	router.HandleFunc("/qna-answers/{id}", qna_solver.GetOneAnswerHandler).Methods("GET")
+	// pages
+	router.HandleFunc("/admin/qna", qna_admin.CreateListHandler(qnaRepo)).Methods("GET")
+	router.HandleFunc("/admin/qna/create-new", qna_admin.CreateCreatePageHandler()).Methods("GET")
+	router.HandleFunc("/admin/qna/{id}", qna_admin.CreateGetOneHandler(qnaRepo)).Methods("GET")
+
+	router.HandleFunc("/qna/{id}/answers", qna_solver.CreateCreateAnswerHandler(qnaRepo, answersRepo)).Methods("POST")
+	router.HandleFunc("/qna/{id}", qna_solver.CreateGetOneHandler(qnaRepo)).Methods("GET")
+	router.HandleFunc("/qna-answers/{id}", qna_solver.CreateGetOneAnswerHandler(answersRepo)).Methods("GET")
 
 	// api
-	router.HandleFunc("/api/admin/qna", qna_admin.CreateQNAHandler).Methods("POST")
+	router.HandleFunc("/api/admin/qna", qna_admin.CreateCreateQNAHandler(qnaRepo)).Methods("POST")
 
 }

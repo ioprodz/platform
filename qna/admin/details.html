@@ -1,16 +1,16 @@
 {{ define "content" }}
 <section class="pt-32 text-white">
   <div
-    class="m-auto space-y-8 px-4 text-gray-600 xl:px-0
+    class="m-auto space-y-8 px-4 text-gray-600 sm:px-12 xl:max-w-6xl xl:px-0"
   >
     <a href="/admin/qna">Back to list</a>
     <a href="/qna/{{ .Id }}">Answer Questions</a>
-    <h1 class="text-2xl>QNA Details: {{ .Name }}</h1>
+    <h1 class="text-2xl">QNA Details: {{ .Name }}</h1>
 
     <ul>
       {{range .Questions}}
       <li class="border border-gray rounded mb-2 p-2">
-        <h3 class="text-lg>{{.Value}}</h3>
+        <h3 class="text-lg">{{.Value}}</h3>
         <div class="grid grid-cols-3 gap-4">
           {{range .Choices}}
           <div

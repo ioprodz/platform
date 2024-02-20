@@ -15,7 +15,7 @@ type answerRepository struct {
 	list []qna_models.Answers
 }
 
-func (repo *answerRepository) Insert(qna qna_models.Answers) {
+func (repo *answerRepository) Create(qna qna_models.Answers) {
 	repo.list = append(repo.list, qna)
 }
 

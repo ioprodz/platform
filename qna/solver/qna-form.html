@@ -5,7 +5,7 @@
   >
     <a href="/admin/qna">Back to list</a>
     <a href="/admin/qna/{{ .Id }}">Edit</a>
-    <h1 class="dark:text-white font-bold text-2xl">Answer: {{ .Name }}</h1>
+    <h1 class="font-bold text-2xl">Answer: {{ .Name }}</h1>
     <form
       id="myForm"
       hx-post="/qna/{{ .Id }}/answers"
@@ -15,7 +15,7 @@
       <ul>
         {{range $questionIndex, $question := .Questions}}
         <li class="border border-gray rounded mb-2 p-2">
-          <h3 class="dark:text-white font-bold text-lg">{{$question.Value}}</h3>
+          <h3 class="font-bold text-lg">{{$question.Value}}</h3>
           <div class="grid grid-cols-3 gap-4">
             {{range $choiceIndex, $choice := .Choices}}
             <div class="border rounded p-2">
