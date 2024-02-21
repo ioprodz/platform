@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"ioprodz/auth"
 	"ioprodz/common/config"
 	"ioprodz/common/middlewares"
 	"ioprodz/home"
@@ -20,6 +21,7 @@ func main() {
 
 	router := mux.NewRouter()
 	// configure module routers
+	auth.ConfigureModule(router)
 	home.ConfigureModule(router)
 	profile.ConfigureModule(router)
 	qna.ConfigureModule(router)
