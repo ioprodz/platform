@@ -1,33 +1,31 @@
 package auth
 
-import "github.com/gorilla/sessions"
+import (
+	"ioprodz/common/config"
 
-const IsProd = false
+	"github.com/gorilla/sessions"
+)
 
-func NewAuthCookieStore() *sessions.CookieStore {
-	const (
-		key    = "secret"
-		MaxAge = 86400 * 7
-	)
-	store := sessions.NewCookieStore([]byte(key))
+func NewOAuthCookieStore() *sessions.CookieStore {
+	var conf = config.Load()
+	store := sessions.NewCookieStore([]byte(conf.AUTH_OAUTH_COOKIE_SECRET))
 	store.Options.Path = "/"
-	store.Options.Domain = "localhost"
+	store.Options.Domain = conf.APP_DOMAIN
 	store.Options.HttpOnly = true
-	store.Options.Secure = IsProd
+	store.Options.Secure = conf.IS_PRODUCTION
+	store.Options.MaxAge = 86400 * 7
 
 	return store
 }
 
 func NewAppCookieStore() *sessions.CookieStore {
-	const (
-		key    = "secret2"
-		MaxAge = 86400 * 1
-	)
-	store := sessions.NewCookieStore([]byte(key))
+	var conf = config.Load()
+	store := sessions.NewCookieStore([]byte(conf.AUTH_APP_COOKIE_SECRET))
 	store.Options.Path = "/"
-	store.Options.Domain = "localhost"
+	store.Options.Domain = conf.APP_DOMAIN
 	store.Options.HttpOnly = true
-	store.Options.Secure = IsProd
+	store.Options.Secure = conf.IS_PRODUCTION
+	store.Options.MaxAge = 86400
 
 	return store
 }

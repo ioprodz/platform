@@ -1,7 +1,6 @@
 package auth
 
 import (
-	"fmt"
 	"net/http"
 )
 
@@ -31,17 +30,15 @@ func (paths *Paths) matchPath(path string) bool {
 
 func AuthorizeRequest(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		fmt.Println("MIDDLEWARE ==== ", r.URL.Path)
+
 		if authCallback.matchPath(r.URL.Path) {
 			next.ServeHTTP(w, r)
 			return
 		}
 
 		isPublic := public.matchPath(r.URL.Path)
-		sessionId, err := GetUserSession(w, r)
+		_, err := GetUserSession(w, r)
 		autnenticated := err == nil
-
-		fmt.Println("AUTHORIZATION ==== '" + sessionId + "'")
 		if !autnenticated {
 
 			if isPublic {

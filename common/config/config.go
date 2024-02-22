@@ -8,9 +8,18 @@ import (
 )
 
 type configStore struct {
+	// General
+	ENVIRONMENT   string
+	APP_DOMAIN    string
+	PORT          string
+	IS_PRODUCTION bool
+
+	// Auth
+	AUTH_OAUTH_COOKIE_SECRET string
+	AUTH_APP_COOKIE_SECRET   string
+
+	// Services
 	OPEN_AI_API_KEY string
-	ENVIRONMENT     string
-	PORT            string
 }
 
 var config configStore
@@ -28,11 +37,17 @@ func Load() configStore {
 		}
 	}
 
-	config := configStore{
-		ENVIRONMENT:     os.Getenv("APP_ENV"),
-		PORT:            os.Getenv("PORT"),
-		OPEN_AI_API_KEY: os.Getenv("OPENAI_API_KEY"),
+	config = configStore{
+
+		ENVIRONMENT:              os.Getenv("APP_ENV"),
+		IS_PRODUCTION:            os.Getenv("APP_ENV") == "production",
+		PORT:                     os.Getenv("PORT"),
+		APP_DOMAIN:               os.Getenv("APP_DOMAIN"),
+		AUTH_OAUTH_COOKIE_SECRET: os.Getenv("AUTH_OAUTH_COOKIE_SECRET"),
+		AUTH_APP_COOKIE_SECRET:   os.Getenv("AUTH_APP_COOKIE_SECRET"),
+		OPEN_AI_API_KEY:          os.Getenv("OPENAI_API_KEY"),
 	}
+
 	loaded = true
 	return config
 
