@@ -1,0 +1,21 @@
+{{ define "content" }}
+<section class="pt-32 text-white">
+  <div
+    class="m-auto space-y-8 px-4 text-gray-600 sm:px-12 xl:max-w-6xl xl:px-0"
+  >
+    <h1 class="text-2xl font-bold">{{ .Title }}</h1>
+    <div class="whitespace-pre-line">{{ .Body }}</div>
+
+    <div>
+      <h1 class="text-xl font-bold">Related posts:</h1>
+      <ul>
+        {{ range .RelatedPosts }}
+        <li>
+          <a href="/blog/{{ .Id }}">{{ .Title }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+  </div>
+</section>
+{{ end }}

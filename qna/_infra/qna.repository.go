@@ -1,35 +1,38 @@
 package qna_infra
 
-import qna_models "ioprodz/qna/_models"
+import (
+	"ioprodz/common/policies"
+	qna_models "ioprodz/qna/_models"
+)
 
-type qnaRepository struct {
+type QNAMemoryRepository struct {
 	list []qna_models.QNA
 }
 
-func (repo *qnaRepository) Create(qna qna_models.QNA) {
+func (repo *QNAMemoryRepository) Create(qna qna_models.QNA) {
 	repo.list = append(repo.list, qna)
 }
 
-func (repo *qnaRepository) List() []qna_models.QNA {
+func (repo *QNAMemoryRepository) List() []qna_models.QNA {
 	return repo.list
 }
 
-func (repo *qnaRepository) Get(id string) (qna_models.QNA, error) {
+func (repo *QNAMemoryRepository) Get(id string) (qna_models.QNA, error) {
 	for _, obj := range repo.list {
 		if obj.Id == id {
 			return obj, nil
 		}
 	}
-	return qna_models.QNA{}, &RepositoryError{Message: "Element not found by id: " + id}
+	return qna_models.QNA{}, &policies.StorageError{Message: "Element not found by id: " + id}
 }
 
-func CreateQNARepo() *qnaRepository {
-	repo := &qnaRepository{list: make([]qna_models.QNA, 0)}
+func CreateQNARepo() *QNAMemoryRepository {
+	repo := &QNAMemoryRepository{list: make([]qna_models.QNA, 0)}
 	repo.seed()
 	return repo
 }
 
-func (repo *qnaRepository) seed() {
+func (repo *QNAMemoryRepository) seed() {
 	repo.list = []qna_models.QNA{qna_models.QNAFromJSON([]byte(`
 {
 	"id": "e0e15972-4e49-46da-bc48-927a9a11fb8d",

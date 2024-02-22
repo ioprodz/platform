@@ -1,15 +1,9 @@
 package qna_infra
 
-import qna_models "ioprodz/qna/_models"
-
-type RepositoryError struct {
-	Message string
-}
-
-// Error returns the error message
-func (e *RepositoryError) Error() string {
-	return e.Message
-}
+import (
+	"ioprodz/common/policies"
+	qna_models "ioprodz/qna/_models"
+)
 
 type answerRepository struct {
 	list []qna_models.Answers
@@ -29,7 +23,7 @@ func (repo *answerRepository) Get(id string) (qna_models.Answers, error) {
 			return obj, nil
 		}
 	}
-	return qna_models.Answers{}, &RepositoryError{Message: "Element not found by id: " + id}
+	return qna_models.Answers{}, &policies.StorageError{Message: "Element not found by id: " + id}
 }
 
 func CreateAnswerRepo() *answerRepository {

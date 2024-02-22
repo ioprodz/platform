@@ -1,0 +1,38 @@
+{{ define "content" }}
+<section class="pt-32 text-white">
+  <div
+    class="m-auto space-y-8 px-4 text-gray-600 sm:px-12 xl:max-w-6xl xl:px-0"
+  >
+    <div class="border rounded-lg border-2 shadow p-2">
+      <h1 class="text-2xl font-bold">
+        Blog Editor <a href="/blog/{{.Id}}">👁️</a>
+      </h1>
+      <form class="flex flex-col" action="">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          class="border text-2xl flex w-full rounded-md border border-input bg-transparent px-3 py-1 shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+          value="{{ .Title }}"
+        />
+        <label for="title">Article content</label>
+        <textarea
+          class="border text-lg flex w-full rounded-md border border-input bg-transparent px-3 py-1 shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 whitespace-pre-line h-96"
+        >
+{{ .Body }}</textarea
+        >
+      </form>
+    </div>
+
+    <div>
+      <h1 class="text-xl font-bold">Related posts:</h1>
+      <ul>
+        {{ range .RelatedPosts }}
+        <li>
+          <a href="/admin/blog/{{ .Id }}">{{ .Title }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+  </div>
+</section>
+{{ end }}

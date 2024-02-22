@@ -1,0 +1,59 @@
+{{ define "content" }}
+<section class="pt-32 text-white">
+  <div
+    class="m-auto space-y-8 px-4 text-gray-600 sm:px-12 xl:max-w-6xl xl:px-0"
+  >
+    <a href="/admin/blog/create">Back to list</a>
+    <h1 class="text-2xl">Create Blog</h1>
+    <form
+      id="myForm"
+      hx-post="/api/admin/blog"
+      hx-target="#result"
+      hx-trigger="submit"
+    >
+      <label
+        class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        for="title"
+        >Title</label
+      >
+      <input
+        type="text"
+        name="title"
+        id="title"
+        class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+        required
+      />
+      <p
+        id=":r1d:-form-item-description"
+        class="text-[0.8rem] text-muted-foreground"
+      >
+        This is the blog title
+      </p>
+
+      <button
+        id="submit_button"
+        class="inline-flex bg-black text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow h-9 px-4 py-2"
+        hx-indicator="#spinner"
+      >
+        Create
+      </button>
+    </form>
+    <!-- Display area for the result -->
+    <div id="result" hx-swap="outerHTML"></div>
+    <!-- JavaScript to handle the response and navigate -->
+    <script>
+      const form = document.getElementById("myForm");
+      form.addEventListener("htmx:afterRequest", function (event) {
+        var id = event.detail.xhr.response;
+        // Navigate to the URL with the returned ID
+        window.location.href = "/blog/" + id;
+      });
+      form.addEventListener("htmx:beforeRequest", function (event) {
+        let button = document.getElementById("submit_button");
+        button.innerHTML = "Generating Blog...";
+        button.setAttribute("disabled", "disabled");
+      });
+    </script>
+  </div>
+</section>
+{{ end }}

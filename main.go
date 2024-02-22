@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"ioprodz/auth"
+	"ioprodz/blog"
 	"ioprodz/common/config"
 	"ioprodz/common/middlewares"
 	"ioprodz/home"
@@ -17,20 +18,23 @@ import (
 func main() {
 
 	configuration := config.Load()
-	//openaiClient.Prompt("you are going to ask me 5 questions about 'CI/CD' to assess my knowledge", "{questions:string[]}")
-
 	router := mux.NewRouter()
-	// configure module routers
+
+	// Configure module routers
 	auth.ConfigureModule(router)
 	home.ConfigureModule(router)
 	profile.ConfigureModule(router)
 	qna.ConfigureModule(router)
+	blog.ConfigureModule(router)
 
+	// Hook global middlewares
 	router.Use(middlewares.RequestLogger)
 	router.Use(auth.AuthorizeRequest)
+
+	// Mount routes to the HTTP server
 	http.Handle("/", router)
 
 	// Start the HTTP server
-	fmt.Println("Server listening on port 8080...")
+	fmt.Println("Server listening on port " + configuration.PORT)
 	http.ListenAndServe(":"+configuration.PORT, nil)
 }

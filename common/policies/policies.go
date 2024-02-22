@@ -10,3 +10,11 @@ type Repository[T Entity] interface {
 	// Update(entity T)
 	// Delete(entity T)
 }
+
+type StorageError struct {
+	Message string
+}
+
+func (e *StorageError) Error() string {
+	return e.Message
+}
