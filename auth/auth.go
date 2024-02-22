@@ -2,7 +2,6 @@ package auth
 
 import (
 	"fmt"
-	"html/template"
 	"ioprodz/common/config"
 	"net/http"
 	"os"
@@ -43,28 +42,15 @@ func ConfigureModule(router *mux.Router) {
 		w.WriteHeader(http.StatusTemporaryRedirect)
 	}).Methods("GET")
 
-	router.HandleFunc("/auth/{provider}", func(res http.ResponseWriter, req *http.Request) {
+	router.HandleFunc("/auth/{provider}", func(w http.ResponseWriter, r *http.Request) {
 		// try to get the user without re-authenticating
-		if gothUser, err := gothic.CompleteUserAuth(res, req); err == nil {
-			t, _ := template.New("foo").Parse(userTemplate)
-			t.Execute(res, gothUser)
+		if user, err := gothic.CompleteUserAuth(w, r); err == nil {
+			SetUserSession(w, r, user.Email)
+			w.Header().Set("Location", "/")
+			w.WriteHeader(http.StatusTemporaryRedirect)
 		} else {
-			gothic.BeginAuthHandler(res, req)
+			gothic.BeginAuthHandler(w, r)
 		}
 	}).Methods("GET")
 
 }
-
-var userTemplate = `
-<p><a href="/logout/{{.Provider}}">logout</a></p>
-<p>Name: {{.Name}} [{{.LastName}}, {{.FirstName}}]</p>
-<p>Email: {{.Email}}</p>
-<p>NickName: {{.NickName}}</p>
-<p>Location: {{.Location}}</p>
-<p>AvatarURL: {{.AvatarURL}} <img src="{{.AvatarURL}}"></p>
-<p>Description: {{.Description}}</p>
-<p>UserID: {{.UserID}}</p>
-<p>AccessToken: {{.AccessToken}}</p>
-<p>ExpiresAt: {{.ExpiresAt}}</p>
-<p>RefreshToken: {{.RefreshToken}}</p>
-`
