@@ -5,7 +5,6 @@ import (
 	"html/template"
 	"net/http"
 	"os"
-	"sort"
 
 	"github.com/gorilla/mux"
 	"github.com/markbates/goth"
@@ -21,33 +20,26 @@ func ConfigureModule(router *mux.Router) {
 		github.New(os.Getenv("GITHUB_KEY"), os.Getenv("GITHUB_SECRET"), "http://localhost:8080/auth/github/callback"),
 	)
 
-	m := map[string]string{
-		"github": "Github",
-		"google": "Google",
-	}
-	var keys []string
-	for k := range m {
-		keys = append(keys, k)
-	}
-	sort.Strings(keys)
+	gothic.Store = NewAuthCookieStore()
 
 	router.HandleFunc("/auth/{provider}/callback", func(w http.ResponseWriter, r *http.Request) {
-
 		user, err := gothic.CompleteUserAuth(w, r)
 		if err != nil {
-			fmt.Fprintln(w, err)
+			fmt.Println("Unauthorized: " + err.Error())
 			return
 		}
-		gothic.StoreInSession("test", "test-ok", r, w)
-		t, _ := template.New("foo").Parse(userTemplate)
-		t.Execute(w, user)
-	})
 
-	router.HandleFunc("/logout/{provider}", func(res http.ResponseWriter, req *http.Request) {
-		gothic.Logout(res, req)
-		res.Header().Set("Location", "/")
-		res.WriteHeader(http.StatusTemporaryRedirect)
-	})
+		SetUserSession(w, r, user.Email)
+		w.Header().Set("Location", "/")
+		w.WriteHeader(http.StatusTemporaryRedirect)
+	}).Methods("GET")
+
+	router.HandleFunc("/logout", func(w http.ResponseWriter, r *http.Request) {
+		gothic.Logout(w, r)
+		ClearSessionHandler(w, r)
+		w.Header().Set("Location", "/")
+		w.WriteHeader(http.StatusTemporaryRedirect)
+	}).Methods("GET")
 
 	router.HandleFunc("/auth/{provider}", func(res http.ResponseWriter, req *http.Request) {
 		// try to get the user without re-authenticating
@@ -57,20 +49,8 @@ func ConfigureModule(router *mux.Router) {
 		} else {
 			gothic.BeginAuthHandler(res, req)
 		}
-	})
+	}).Methods("GET")
 
-	router.HandleFunc("/test/test", func(w http.ResponseWriter, r *http.Request) {
-
-		value, _ := gothic.GetFromSession("test", r)
-
-		w.Write([]byte("Hello world: " + value))
-	})
-
-}
-
-type ProviderIndex struct {
-	Providers    []string
-	ProvidersMap map[string]string
 }
 
 var userTemplate = `

@@ -27,6 +27,7 @@ func main() {
 	qna.ConfigureModule(router)
 
 	router.Use(middlewares.RequestLogger)
+	router.Use(auth.AuthorizeRequest)
 	http.Handle("/", router)
 
 	// Start the HTTP server
