@@ -3,6 +3,7 @@ package auth
 import (
 	"fmt"
 	"html/template"
+	"ioprodz/common/config"
 	"net/http"
 	"os"
 
@@ -15,9 +16,10 @@ import (
 )
 
 func ConfigureModule(router *mux.Router) {
+	baseUrl := config.Load().BASE_URL
 	goth.UseProviders(
-		google.New(os.Getenv("GOOGLE_KEY"), os.Getenv("GOOGLE_SECRET"), "http://localhost:8080/auth/google/callback"),
-		github.New(os.Getenv("GITHUB_KEY"), os.Getenv("GITHUB_SECRET"), "http://localhost:8080/auth/github/callback"),
+		google.New(os.Getenv("GOOGLE_KEY"), os.Getenv("GOOGLE_SECRET"), baseUrl+"/auth/google/callback"),
+		github.New(os.Getenv("GITHUB_KEY"), os.Getenv("GITHUB_SECRET"), baseUrl+"/auth/github/callback"),
 	)
 
 	gothic.Store = NewOAuthCookieStore()
