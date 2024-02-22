@@ -7,6 +7,6 @@ import (
 
 func GetHandler(w http.ResponseWriter, r *http.Request) {
 
-	ui.RenderPage(w, "home/template", nil)
+	ui.RenderPage(w, r, "home/template", nil)
 
 }

@@ -14,5 +14,5 @@ func GetHandler(w http.ResponseWriter, r *http.Request) {
 	data := PageData{Name: "Smith"}
 
 	// Parse the template file
-	ui.RenderPage(w, "profile/template", data)
+	ui.RenderPage(w, r, "profile/template", data)
 }

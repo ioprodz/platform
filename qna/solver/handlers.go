@@ -20,7 +20,7 @@ func CreateCreateAnswerHandler(qnaRepo qna_models.QNARepository, answersRepo qna
 
 		qna, err := qnaRepo.Get(qnaId)
 		if err != nil {
-			ui.Render404(w)
+			ui.Render404(w, r)
 			return
 		}
 
@@ -62,10 +62,10 @@ func CreateGetOneAnswerHandler(answersRepo qna_models.AnswersRepository) func(w 
 		answer, err := answersRepo.Get(answerId)
 
 		if err != nil {
-			ui.Render404(w)
+			ui.Render404(w, r)
 			return
 		}
-		ui.RenderPage(w, "qna/solver/qna-answer", answer)
+		ui.RenderPage(w, r, "qna/solver/qna-answer", answer)
 	}
 }
 
@@ -75,9 +75,9 @@ func CreateGetOneHandler(qnaRepo qna_models.QNARepository) func(w http.ResponseW
 		qnaId := vars["id"]
 		qna, err := qnaRepo.Get(qnaId)
 		if err != nil {
-			ui.Render404(w)
+			ui.Render404(w, r)
 			return
 		}
-		ui.RenderPage(w, "qna/solver/qna-form", qna)
+		ui.RenderPage(w, r, "qna/solver/qna-form", qna)
 	}
 }
