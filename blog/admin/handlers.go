@@ -36,20 +36,47 @@ func CreateEditPageHandler(repo blog_models.BlogRepository) func(w http.Response
 	}
 }
 
-func CreateCreatePageHandler() func(w http.ResponseWriter, r *http.Request) {
+func CreateCreatePageHandler(repo blog_models.BlogRepository) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		ui.RenderAdminPage(w, r, "blog/admin/create", nil)
+		existingPostId := r.URL.Query().Get("postId")
+
+		if existingPostId != "" {
+			existingBlog, err := repo.Get(existingPostId)
+			if err != nil {
+				http.Error(w, "this post does not exist", http.StatusBadRequest)
+			}
+			ui.RenderAdminPage(w, r, "blog/admin/create", existingBlog)
+		} else {
+			ui.RenderAdminPage(w, r, "blog/admin/create", nil)
+		}
 	}
 }
 
 func CreateCreateBlogHandler(repo blog_models.BlogRepository) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
+
+		// ensure a blog post in db
 		err := r.ParseForm()
 		if err != nil {
 			http.Error(w, "Failed to parse form data", http.StatusBadRequest)
 			return
 		}
 		title := r.Form.Get("title")
+		existingPostId := r.Form.Get("postId")
+		var blog blog_models.Blog
+		if existingPostId != "" {
+			existingBlog, err := repo.Get(existingPostId)
+			if err != nil {
+				http.Error(w, "this post does not exist", http.StatusBadRequest)
+			}
+			existingBlog.Title = title
+			blog = existingBlog
+
+		} else {
+			blog = *blog_models.NewBlog(title, "", []blog_models.RelatedPosts{})
+		}
+
+		// directives
 		paragraphCount := r.Form.Get("paragraphCount")
 
 		guidelines := paragraphCount + " short paragraphs"
@@ -77,15 +104,22 @@ func CreateCreateBlogHandler(repo blog_models.BlogRepository) func(w http.Respon
 
 		related := make([]blog_models.RelatedPosts, len(aiBlog.RelatedBlogPosts))
 		for index, relatedTitle := range aiBlog.RelatedBlogPosts {
+			relatedBlogPost := blog_models.NewBlog(relatedTitle, "", []blog_models.RelatedPosts{})
+			repo.Create(*relatedBlogPost)
 			related[index] = blog_models.RelatedPosts{
-				Id: "", Title: relatedTitle}
+				Id: relatedBlogPost.Id, Title: relatedBlogPost.Title}
 		}
 
-		blog := blog_models.NewBlog(title, aiBlog.Content, related)
+		blog.SetContent(aiBlog.Content, related)
+
 		blgStr, _ := json.Marshal(blog)
 		fmt.Println("BLOOG", string(blgStr))
 
-		repo.Create(*blog)
+		if existingPostId != "" {
+			repo.Update(blog)
+		} else {
+			repo.Create(blog)
+		}
 		w.Write([]byte(blog.Id))
 	}
 }

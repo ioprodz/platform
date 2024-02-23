@@ -10,6 +10,16 @@
       hx-target="#result"
       hx-trigger="submit"
     >
+      {{if . }}
+      <input
+        type="hidden"
+        name="postId"
+        id="title"
+        value="{{.Id}}"
+        class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+        required
+      />
+      {{end}}
       <label
         class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
         for="title"
@@ -19,6 +29,8 @@
         type="text"
         name="title"
         id="title"
+        value="{{if . }}{{
+      .Title}}{{end}}"
         class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
         required
       />
@@ -150,7 +162,7 @@
       form.addEventListener("htmx:afterRequest", function (event) {
         var id = event.detail.xhr.response;
         // Navigate to the URL with the returned ID
-        window.location.href = "/blog/" + id;
+        window.location.href = "/admin/blog/" + id;
       });
       form.addEventListener("htmx:beforeRequest", function (event) {
         let button = document.getElementById("submit_button");

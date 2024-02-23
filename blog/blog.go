@@ -14,7 +14,7 @@ func ConfigureModule(router *mux.Router) {
 
 	// admin
 	router.HandleFunc("/admin/blog", blog_admin.CreateListPageHandler(blogRepo)).Methods("GET")
-	router.HandleFunc("/admin/blog/create", blog_admin.CreateCreatePageHandler()).Methods("GET")
+	router.HandleFunc("/admin/blog/create", blog_admin.CreateCreatePageHandler(blogRepo)).Methods("GET")
 	router.HandleFunc("/admin/blog/{id}", blog_admin.CreateEditPageHandler(blogRepo)).Methods("GET")
 
 	// reader

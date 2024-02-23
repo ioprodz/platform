@@ -2,6 +2,7 @@ package blog_models
 
 import (
 	"encoding/json"
+	"time"
 
 	"github.com/google/uuid"
 )
@@ -15,7 +16,16 @@ type Blog struct {
 	Id           string
 	Title        string
 	Body         string
+	CreatedAt    string
+	PublishedAt  string
+	Reviewed     bool
 	RelatedPosts []RelatedPosts
+}
+
+func (b *Blog) SetContent(body string, related []RelatedPosts) {
+	b.Reviewed = false
+	b.Body = body
+	b.RelatedPosts = related
 }
 
 func BlogFromJSON(jsonData []byte) Blog {
@@ -33,5 +43,7 @@ func NewBlog(title string, body string, related []RelatedPosts) *Blog {
 		Title:        title,
 		Body:         body,
 		RelatedPosts: related,
+		CreatedAt:    time.Now().Format("2006-01-02T15:04:05Z"),
+		PublishedAt:  "",
 	}
 }

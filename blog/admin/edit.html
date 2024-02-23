@@ -11,31 +11,59 @@
         >View in reader</a
       >
     </div>
-    <form class="flex flex-col" action="">
-      <label for="title">Title</label>
-      <input
-        type="text"
-        class="border text-2xl flex w-full rounded-md border border-input bg-transparent px-3 py-1 shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-        value="{{ .Title }}"
-      />
-      <label for="title">Article content</label>
-      <textarea
-        class="border text-lg flex w-full rounded-md border border-input bg-transparent px-3 py-1 shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 whitespace-pre-line h-96"
-      >
-{{ .Body }}</textarea
-      >
-    </form>
-
-    <div>
-      <h1 class="text-xl font-bold">Related posts:</h1>
-      <ul>
-        {{ range .RelatedPosts }}
-        <li>
-          <a href="/admin/blog/{{ .Id }}">{{ .Title }}</a>
-        </li>
-        {{ end }}
-      </ul>
+    {{ if eq .Body "" }}
+    <div id="noContentDialog" class="flex items-center justify-center p-10">
+      <div class="max-w-96 text-center">
+        It looks like <b>{{.Title}}</b> does not have any content yet would you
+        like to generate a starter content based on the title ?
+        <br />
+        <button
+          class="inline-flex bg-gray-600 text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow h-9 px-4 py-2"
+          onclick="(function(){
+            document.getElementById('noContentDialog').style.display = 'none'
+            document.getElementById('editionSection').style.display = 'block'
+          })()"
+          
+        >
+          No thanks
+        </button>
+        <a
+          class="inline-flex bg-black text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow h-9 px-4 py-2"
+          href="/admin/blog/create?postId={{.Id}}"
+          >Yes please</a
+        >
+      </div>
     </div>
+    {{end}}
+    <div id="editionSection" {{ if eq .Body "" }} style="display:none;" {{ end }}>
+      <form class="flex flex-col" action="" >
+        <label for="title">Title</label>
+        <input
+          type="text"
+          class="border text-2xl flex w-full rounded-md border border-input bg-transparent px-3 py-1 shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+          value="{{ .Title }}"
+        />
+  
+        <label for="title">Article content</label>
+        <textarea
+          class="border text-lg flex w-full rounded-md border border-input bg-transparent px-3 py-1 shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 whitespace-pre-line h-96"
+        >
+  {{ .Body }}</textarea
+        >
+      </form>
+  
+      <div>
+        <h1 class="text-xl font-bold">Related posts:</h1>
+        <ul>
+          {{ range .RelatedPosts }}
+          <li>
+            <a href="/admin/blog/{{ .Id }}">{{ .Title }}</a>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+   
   </div>
 </section>
 {{ end }}
