@@ -1,9 +1,8 @@
 {{ define "content" }}
-<section class="pt-32 text-white">
+<section>
   <div
     class="m-auto space-y-8 px-4 text-gray-600 sm:px-12 xl:max-w-6xl xl:px-0"
   >
-    <a href="/admin/qna">Back to list</a>
     <h1 class="text-2xl">Create QNA</h1>
     <form
       id="myForm"
@@ -27,16 +26,25 @@
         id=":r1d:-form-item-description"
         class="text-[0.8rem] text-muted-foreground"
       >
-        This is your public display name.
+        The subject that you want the questions about, examples:
+        <b>"highschool second degree equations"</b>, <b>"robotics"</b>,
+        <b>"cooking pasta..."</b>
       </p>
 
-      <button
-        id="submit_button"
-        class="inline-flex bg-black text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow h-9 px-4 py-2"
-        hx-indicator="#spinner"
-      >
-        Create
-      </button>
+      <div class="mt-5">
+        <a
+          class="inline-flex border items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow h-9 px-4 py-2"
+          href="/admin/qna"
+          >Back to list</a
+        >
+        <button
+          id="submit_button"
+          class="inline-flex bg-black text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow h-9 px-4 py-2"
+          hx-indicator="#spinner"
+        >
+          Create
+        </button>
+      </div>
     </form>
     <!-- Display area for the result -->
     <div id="result" hx-swap="outerHTML"></div>

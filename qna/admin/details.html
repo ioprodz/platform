@@ -1,11 +1,19 @@
 {{ define "content" }}
-<section class="pt-32 text-white">
+<section>
   <div
     class="m-auto space-y-8 px-4 text-gray-600 sm:px-12 xl:max-w-6xl xl:px-0"
   >
-    <a href="/admin/qna">Back to list</a>
-    <a href="/qna/{{ .Id }}">Answer Questions</a>
-    <h1 class="text-2xl">QNA Details: {{ .Name }}</h1>
+    <div class="flex">
+      <h1 class="text-2xl flex-1">
+        <a class="text-gray-400" href="/admin/qna">QNAs</a> / {{ .Name }}
+      </h1>
+
+      <a
+        class="inline-flex border items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow h-9 px-4 py-2"
+        href="/qna/{{ .Id }}"
+        >Answer QNA</a
+      >
+    </div>
 
     <ul>
       {{range .Questions}}

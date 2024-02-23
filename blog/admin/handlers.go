@@ -19,7 +19,7 @@ type AIBlogPost struct {
 func CreateListPageHandler(repo blog_models.BlogRepository) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 
-		ui.RenderPage(w, r, "blog/admin/list", repo.List())
+		ui.RenderAdminPage(w, r, "blog/admin/list", repo.List())
 	}
 }
 
@@ -32,13 +32,13 @@ func CreateEditPageHandler(repo blog_models.BlogRepository) func(w http.Response
 			ui.Render404(w, r)
 			return
 		}
-		ui.RenderPage(w, r, "blog/admin/edit", blog)
+		ui.RenderAdminPage(w, r, "blog/admin/edit", blog)
 	}
 }
 
 func CreateCreatePageHandler() func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		ui.RenderPage(w, r, "blog/admin/create", nil)
+		ui.RenderAdminPage(w, r, "blog/admin/create", nil)
 	}
 }
 
@@ -50,9 +50,22 @@ func CreateCreateBlogHandler(repo blog_models.BlogRepository) func(w http.Respon
 			return
 		}
 		title := r.Form.Get("title")
+		paragraphCount := r.Form.Get("paragraphCount")
 
-		prompt := "you are going to write the content (more or less 3 short paragraphs) of a blog post that has the title '" + title + "' as well as 3 post titles that are related to subject"
+		guidelines := paragraphCount + " short paragraphs"
+		if r.Form.Get("useEmojis") == "active" {
+			guidelines += ", use emojis"
+		}
+		if r.Form.Get("useMarkdown") == "active" {
+			guidelines += ", use markdown"
+		}
+		if r.Form.Get("useMermaid") == "active" {
+			guidelines += ", use mermaid"
+		}
+
+		prompt := "you are going to write the content (" + guidelines + ") of a blog post that has the title '" + title + "' as well as 3 post titles that are related to subject"
 		outputFormat := "{content: string,relatedBlogPosts: string[]}"
+
 		aiResponse, err := openaiClient.JsonPrompt(prompt, outputFormat)
 		if err != nil {
 			fmt.Println("Error getting prompt from ai response", err)

@@ -15,13 +15,13 @@ import (
 
 func CreateListHandler(repo qna_models.QNARepository) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		ui.RenderPage(w, r, "qna/admin/list", map[string]interface{}{"list": repo.List()})
+		ui.RenderAdminPage(w, r, "qna/admin/list", map[string]interface{}{"list": repo.List()})
 	}
 }
 
 func CreateCreatePageHandler() func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		ui.RenderPage(w, r, "qna/admin/create", nil)
+		ui.RenderAdminPage(w, r, "qna/admin/create", nil)
 	}
 }
 
@@ -62,6 +62,6 @@ func CreateGetOneHandler(repo qna_models.QNARepository) func(w http.ResponseWrit
 			ui.Render404(w, r)
 			return
 		}
-		ui.RenderPage(w, r, "qna/admin/details", qna)
+		ui.RenderAdminPage(w, r, "qna/admin/details", qna)
 	}
 }

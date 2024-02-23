@@ -23,8 +23,9 @@
   <body
     class="min-h-screen bg-white selection:bg-primary/10 selection:text-primary"
   >
-    {{ template "header" . }} {{ template "content" .contentData }} {{ template
-    "footer" . }}
+    {{ template "header" . }} {{ if eq .layout "admin" }} {{ template
+    "admin-layout" .contentData }} {{ else }} {{ template "content"
+    .contentData}} {{ end }} {{ template "footer" . }}
   </body>
 </html>
 {{ end }}

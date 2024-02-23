@@ -1,0 +1,29 @@
+{{ define "admin-layout" }}
+<div
+  class="pt-24 m-auto space-y-8 px-4 text-gray-600 sm:px-12 xl:max-w-6xl xl:px-0"
+>
+  <div class="flex flex-col">
+    <nav id="admin-navigation" class="flex w-48">
+      <ul class="flex flex-1 p-2">
+        <li class="mr-2">
+          <a
+            href="/admin/qna"
+            class="w-full hover:bg-blue-900 block border rounded-full px-3"
+            >QNAs
+          </a>
+        </li>
+        <li class="mr-2">
+          <a
+            href="/admin/blog"
+            class="w-full hover:bg-blue-900 block border rounded-full px-3"
+            >Blog
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="flex-1 border rounded-lg bg-white mx-2 mb-10 p-2">
+      {{ template "content" . }}
+    </div>
+  </div>
+</div>
+{{ end }}

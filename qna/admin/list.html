@@ -1,18 +1,54 @@
 {{ define "content" }}
-<section class="pt-32 text-white">
-  <div
-    class="m-auto space-y-8 px-4 text-gray-600 sm:px-12 xl:max-w-6xl xl:px-0"
-  >
-    <h1 class="dark:text-white font-bold text-2xl">QNA List</h1>
-    <a href="/admin/qna/create-new">Create new</a>
-    <ul>
+<section>
+  <div class="">
+    <div class="flex">
+      <h1 class="font-bold flex-1 text-2xl">All QNAs</h1>
+      <a
+        class="inline-flex bg-black text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow h-9 px-4 py-2"
+        href="/admin/qna/create-new"
+        >Create new</a
+      >
+    </div>
+    <ul class="grid grid-cols-3 gap-3">
       {{range .list}}
       <li>
-        <a href="/admin/qna/{{ .Id }}">
-          <div class="border border-gray rounded mb-2 p-2">
-            <span class="text-lg font-bold">{{.Name}}</span>
-            <span>{{ len .Questions}} questions</span>
+        <a
+          href="/admin/qna/{{ .Id }}"
+          class="flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent bg-muted"
+        >
+          <div class="flex w-full flex-col gap-1">
+            <div class="flex items-center">
+              <div class="flex items-center gap-2">
+                <div class="font-semibold uppercase">{{.Name}}</div>
+                <span class="flex h-2 w-2 rounded-full bg-green-600"></span>
+              </div>
+              <div class="ml-auto text-xs text-foreground">
+                about 1 year ago
+              </div>
+            </div>
+            <div class="text-xs font-medium">{{ len .Questions}} questions</div>
           </div>
+          <div class="line-clamp-2 text-xs text-muted-foreground">
+            {{ range .Questions }} {{ .Value}} <br />
+            {{ end }}
+          </div>
+          <!-- <div class="flex items-center gap-2">
+            <div
+              class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80"
+            >
+              meeting
+            </div>
+            <div
+              class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80"
+            >
+              work
+            </div>
+            <div
+              class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80"
+            >
+              important
+            </div>
+          </div> -->
         </a>
       </li>
       {{end}}

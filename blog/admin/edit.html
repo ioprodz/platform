@@ -1,27 +1,30 @@
 {{ define "content" }}
-<section class="pt-32 text-white">
+<section>
   <div
     class="m-auto space-y-8 px-4 text-gray-600 sm:px-12 xl:max-w-6xl xl:px-0"
   >
-    <div class="border rounded-lg border-2 shadow p-2">
-      <h1 class="text-2xl font-bold">
-        Blog Editor <a href="/blog/{{.Id}}">👁️</a>
-      </h1>
-      <form class="flex flex-col" action="">
-        <label for="title">Title</label>
-        <input
-          type="text"
-          class="border text-2xl flex w-full rounded-md border border-input bg-transparent px-3 py-1 shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-          value="{{ .Title }}"
-        />
-        <label for="title">Article content</label>
-        <textarea
-          class="border text-lg flex w-full rounded-md border border-input bg-transparent px-3 py-1 shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 whitespace-pre-line h-96"
-        >
-{{ .Body }}</textarea
-        >
-      </form>
+    <div class="flex">
+      <h1 class="font-bold flex-1 text-2xl">Blog Post Editor</h1>
+      <a
+        class="inline-flex bg-black text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow h-9 px-4 py-2"
+        href="/blog/{{.Id}}"
+        >View in reader</a
+      >
     </div>
+    <form class="flex flex-col" action="">
+      <label for="title">Title</label>
+      <input
+        type="text"
+        class="border text-2xl flex w-full rounded-md border border-input bg-transparent px-3 py-1 shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+        value="{{ .Title }}"
+      />
+      <label for="title">Article content</label>
+      <textarea
+        class="border text-lg flex w-full rounded-md border border-input bg-transparent px-3 py-1 shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 whitespace-pre-line h-96"
+      >
+{{ .Body }}</textarea
+      >
+    </form>
 
     <div>
       <h1 class="text-xl font-bold">Related posts:</h1>

@@ -1,10 +1,30 @@
 {{ define "content" }}
 <section class="pt-32 text-white">
+  <style>
+    #blogPostContent h1 {
+      font-weight: bold;
+      font-size: x-large;
+    }
+    #blogPostContent h2 {
+      font-weight: bold;
+      font-size: larger;
+    }
+    #blogPostContent h3 {
+      font-weight: bold;
+      font-size: large;
+    }
+
+    #blogPostContent pre {
+      background-color: darkgray;
+      border-radius: 5px;
+      padding: 4px;
+    }
+  </style>
   <div
     class="m-auto space-y-8 px-4 text-gray-600 sm:px-12 xl:max-w-6xl xl:px-0"
   >
     <h1 class="text-2xl font-bold">{{ .Title }}</h1>
-    <div class="whitespace-pre-line">{{ .Body }}</div>
+    <div id="blogPostContent" class="whitespace-pre-line">{{ .Body }}</div>
 
     <div>
       <h1 class="text-xl font-bold">Related posts:</h1>
@@ -18,4 +38,9 @@
     </div>
   </div>
 </section>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+  const el = document.getElementById("blogPostContent");
+  el.innerHTML = marked.parse(el.innerHTML);
+</script>
 {{ end }}
