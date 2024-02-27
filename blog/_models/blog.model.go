@@ -22,6 +22,10 @@ type Blog struct {
 	RelatedPosts []RelatedPosts
 }
 
+func (b Blog) GetId() string {
+	return b.Id
+}
+
 func (b *Blog) SetContent(body string, related []RelatedPosts) {
 	b.Reviewed = false
 	b.Body = body

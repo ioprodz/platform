@@ -18,8 +18,8 @@ type AIBlogPost struct {
 
 func CreateListPageHandler(repo blog_models.BlogRepository) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-
-		ui.RenderAdminPage(w, r, "blog/admin/list", repo.List())
+		list, _ := repo.List()
+		ui.RenderAdminPage(w, r, "blog/admin/list", list)
 	}
 }
 

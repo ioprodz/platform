@@ -15,7 +15,8 @@ import (
 
 func CreateListHandler(repo qna_models.QNARepository) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		ui.RenderAdminPage(w, r, "qna/admin/list", map[string]interface{}{"list": repo.List()})
+		list, _ := repo.List()
+		ui.RenderAdminPage(w, r, "qna/admin/list", map[string]interface{}{"list": list})
 	}
 }
 

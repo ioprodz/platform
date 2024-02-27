@@ -1,14 +1,15 @@
 package policies
 
 type Entity interface {
+	GetId() string
 }
 
-type Repository[T Entity] interface {
-	List() []T
+type BaseRepository[T Entity] interface {
+	List() ([]T, error)
 	Get(id string) (T, error)
-	Create(entity T)
-	// Update(entity T)
-	// Delete(entity T)
+	Delete(id string) error
+	Create(entity T) error
+	Update(entity T) error
 }
 
 type StorageError struct {

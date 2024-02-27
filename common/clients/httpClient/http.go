@@ -53,8 +53,6 @@ func Post(url string, body map[string]interface{}) ([]byte, error) {
 	}
 	bearerAuthKey := "Bearer " + (authKey)
 
-	fmt.Println("auth key", bearerAuthKey)
-
 	// Set headers
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Authorization", bearerAuthKey)

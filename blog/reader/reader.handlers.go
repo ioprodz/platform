@@ -10,8 +10,8 @@ import (
 
 func CreateListBlogs(repo blog_models.BlogRepository) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-
-		ui.RenderPage(w, r, "blog/reader/list", repo.List())
+		list, _ := repo.List()
+		ui.RenderPage(w, r, "blog/reader/list", list)
 	}
 }
 

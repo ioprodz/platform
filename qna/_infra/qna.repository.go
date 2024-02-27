@@ -1,39 +1,43 @@
 package qna_infra
 
 import (
+	"ioprodz/common/db"
 	"ioprodz/common/policies"
 	qna_models "ioprodz/qna/_models"
 )
 
 type QNAMemoryRepository struct {
-	list []qna_models.QNA
+	base policies.BaseRepository[qna_models.QNA]
 }
 
-func (repo *QNAMemoryRepository) Create(qna qna_models.QNA) {
-	repo.list = append(repo.list, qna)
+func (repo *QNAMemoryRepository) Create(qna qna_models.QNA) error {
+	return repo.base.Create(qna)
 }
 
-func (repo *QNAMemoryRepository) List() []qna_models.QNA {
-	return repo.list
+func (repo *QNAMemoryRepository) List() ([]qna_models.QNA, error) {
+	return repo.base.List()
 }
 
 func (repo *QNAMemoryRepository) Get(id string) (qna_models.QNA, error) {
-	for _, obj := range repo.list {
-		if obj.Id == id {
-			return obj, nil
-		}
-	}
-	return qna_models.QNA{}, &policies.StorageError{Message: "Element not found by id: " + id}
+	return repo.base.Get(id)
+}
+
+func (repo *QNAMemoryRepository) Update(entity qna_models.QNA) error {
+	return repo.base.Update(entity)
+}
+
+func (repo *QNAMemoryRepository) Delete(id string) error {
+	return repo.base.Delete(id)
 }
 
 func CreateQNARepo() *QNAMemoryRepository {
-	repo := &QNAMemoryRepository{list: make([]qna_models.QNA, 0)}
+	repo := &QNAMemoryRepository{base: db.CreateMemoryRepo[qna_models.QNA]()}
 	repo.seed()
 	return repo
 }
 
 func (repo *QNAMemoryRepository) seed() {
-	repo.list = []qna_models.QNA{qna_models.QNAFromJSON([]byte(`
+	entities := []qna_models.QNA{qna_models.QNAFromJSON([]byte(`
 {
 	"id": "e0e15972-4e49-46da-bc48-927a9a11fb8d",
 	"name":"agile methodologies",
@@ -106,4 +110,8 @@ func (repo *QNAMemoryRepository) seed() {
 	"questions":[{"value":"What is the main characteristic of an event-driven architecture?","choices":[{"value":"Synchronous communication between services","isCorrect":false},{"value":"Use of events to trigger and communicate between decoupled services","isCorrect":true},{"value":"Heavy reliance on point-to-point integration","isCorrect":false},{"value":"Centralized data management","isCorrect":false}]},{"value":"Which of the following best describes an 'event' in an event-driven architecture?","choices":[{"value":"A static piece of data stored in a database","isCorrect":false},{"value":"A significant change in state or an update in the system","isCorrect":true},{"value":"A request for data or a service from another component","isCorrect":false},{"value":"A scheduled task that runs at a specific time","isCorrect":false}]},{"value":"What component in an event-driven architecture is responsible for receiving and processing events?","choices":[{"value":"Event listener","isCorrect":true},{"value":"Event trigger","isCorrect":false},{"value":"Event queue","isCorrect":false},{"value":"Event broker","isCorrect":false}]},{"value":"Which pattern is commonly used in event-driven architectures to ensure data consistency across microservices?","choices":[{"value":"API Gateway pattern","isCorrect":false},{"value":"Event sourcing pattern","isCorrect":true},{"value":"Database per service pattern","isCorrect":false},{"value":"Serverless pattern","isCorrect":false}]},{"value":"How do event-driven architectures typically handle failure modes compared to traditional synchronous systems?","choices":[{"value":"By retrying the failed operation immediately","isCorrect":false},{"value":"By decoupling producers and consumers, allowing for more resilient failure handling","isCorrect":true},{"value":"By stopping all operations until the failure is manually resolved","isCorrect":false},{"value":"By using a central orchestrator to manage retries and error handling","isCorrect":false}]}]
 }
 `))}
+
+	for _, entity := range entities {
+		repo.Create(entity)
+	}
 }

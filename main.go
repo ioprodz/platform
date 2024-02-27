@@ -5,6 +5,7 @@ import (
 	"ioprodz/auth"
 	"ioprodz/blog"
 	"ioprodz/common/config"
+	"ioprodz/common/db"
 	"ioprodz/common/middlewares"
 	"ioprodz/home"
 	"ioprodz/profile"
@@ -19,6 +20,7 @@ func main() {
 
 	configuration := config.Load()
 	router := mux.NewRouter()
+	db.NewMongoConnection()
 
 	// Configure module routers
 	auth.ConfigureModule(router)

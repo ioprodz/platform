@@ -22,6 +22,10 @@ type QNA struct {
 	Questions []Question `json:"questions"`
 }
 
+func (entity QNA) GetId() string {
+	return entity.Id
+}
+
 func (qna *QNA) SetQuestions(questions []Question) {
 	qna.Questions = questions
 }

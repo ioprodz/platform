@@ -28,6 +28,10 @@ type Answers struct {
 	List []AnsweredQuestion `json:"list"`
 }
 
+func (entity Answers) GetId() string {
+	return entity.Id
+}
+
 func (ans Answers) MaxScore() int {
 	return len(ans.List)
 }
