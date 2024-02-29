@@ -7,6 +7,7 @@ import (
 	"ioprodz/common/config"
 	"ioprodz/common/db"
 	"ioprodz/common/middlewares"
+	"ioprodz/cv"
 	"ioprodz/home"
 	"ioprodz/profile"
 	"ioprodz/qna"
@@ -28,6 +29,7 @@ func main() {
 	profile.ConfigureModule(router)
 	qna.ConfigureModule(router)
 	blog.ConfigureModule(router)
+	cv.ConfigureModule(router)
 
 	// Hook global middlewares
 	router.Use(middlewares.RequestLogger)
