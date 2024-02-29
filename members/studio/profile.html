@@ -1,0 +1,174 @@
+{{ define "content" }}
+<div class="px-4 sm:px-12 xl:max-w-6xl xl:px-0 m-auto pt-24">
+  <div class="hidden space-y-6 p-10 pb-16 md:block">
+    <div class="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
+      <aside class="-mx-4 lg:w-1/5">
+        <nav class="flex space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1">
+          <a
+            class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 px-4 py-2 bg-muted hover:bg-muted justify-start"
+            href="/examples/forms"
+            >Profile</a
+          ><a
+            class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 px-4 py-2 hover:bg-transparent hover:underline justify-start"
+            href="/examples/forms/account"
+            >Account</a
+          ><a
+            class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 px-4 py-2 hover:bg-transparent hover:underline justify-start"
+            href="/examples/forms/appearance"
+            >Appearance</a
+          ><a
+            class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 px-4 py-2 hover:bg-transparent hover:underline justify-start"
+            href="/examples/forms/notifications"
+            >Notifications</a
+          ><a
+            class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 px-4 py-2 hover:bg-transparent hover:underline justify-start"
+            href="/examples/forms/display"
+            >Display</a
+          >
+        </nav>
+      </aside>
+      <div class="flex-1 lg:max-w-2xl">
+        <div class="space-y-6">
+          <div class="flex">
+            <div class="flex-1 pr-2">
+              <h3 class="text-lg font-medium">Profile</h3>
+              <p class="text-sm text-muted-foreground">
+                This is how others will see you on the site.
+              </p>
+              <br />
+              <div class="space-y-2">
+                <label
+                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  for=":rdf:-form-item"
+                  >Email</label
+                ><input
+                  class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                  value="{{ .Email }}"
+                  disabled
+                />
+                <p
+                  id=":rdf:-form-item-description"
+                  class="text-[0.8rem] text-muted-foreground"
+                >
+                  This is your email acting as you account identifier
+                  (read-only)
+                </p>
+              </div>
+            </div>
+            <div>
+              <img
+                class="w-48 rounded-md"
+                src="{{ .AvatarUrl }}"
+                alt="{{ .Email }}' avatar"
+              />
+            </div>
+          </div>
+          <div
+            data-orientation="horizontal"
+            role="none"
+            class="shrink-0 bg-border h-[1px] w-full"
+          ></div>
+          <form class="space-y-8">
+            <div class="space-y-2">
+              <label
+                class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                for=":rdf:-form-item"
+                >Name</label
+              ><input
+                class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                value="{{ .Name }}"
+                disabled
+              />
+              <p
+                id=":rdf:-form-item-description"
+                class="text-[0.8rem] text-muted-foreground"
+              >
+                This is the name that will be displayed for others
+              </p>
+            </div>
+            <div class="space-y-2">
+              <label
+                class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                for=":rdi:-form-item"
+                >Bio</label
+              ><textarea
+                class="flex min-h-[60px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 resize-none"
+                placeholder="Tell us a little bit about yourself"
+                name="bio"
+                id=":rdi:-form-item"
+                aria-describedby=":rdi:-form-item-description"
+                aria-invalid="false"
+              >
+I own a computer.</textarea
+              >
+              <p
+                id=":rdi:-form-item-description"
+                class="text-[0.8rem] text-muted-foreground"
+              >
+                You can <span>@mention</span> other users and organizations to
+                link to them.
+              </p>
+            </div>
+            <div>
+              <div class="space-y-2">
+                <label
+                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  for=":rdj:-form-item"
+                  >URLs</label
+                >
+                <p
+                  id=":rdj:-form-item-description"
+                  class="text-[0.8rem] text-muted-foreground"
+                >
+                  Add links to your website, blog, or social media profiles.
+                </p>
+                <input
+                  class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                  id=":rdj:-form-item"
+                  aria-describedby=":rdj:-form-item-description"
+                  aria-invalid="false"
+                  value="https://shadcn.com"
+                  name="urls.0.value"
+                />
+              </div>
+              <div class="space-y-2">
+                <label
+                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 sr-only"
+                  for=":rdk:-form-item"
+                  >URLs</label
+                >
+                <p
+                  id=":rdk:-form-item-description"
+                  class="text-[0.8rem] text-muted-foreground sr-only"
+                >
+                  Add links to your website, blog, or social media profiles.
+                </p>
+                <input
+                  class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                  id=":rdk:-form-item"
+                  aria-describedby=":rdk:-form-item-description"
+                  aria-invalid="false"
+                  value="http://twitter.com/shadcn"
+                  name="urls.1.value"
+                />
+              </div>
+              <button
+                class="inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-8 rounded-md px-3 text-xs mt-2"
+                type="button"
+              >
+                Add URL
+              </button>
+            </div>
+            <button
+              class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
+              type="submit"
+            >
+              Update profile
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}

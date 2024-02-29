@@ -48,7 +48,7 @@ func AuthorizeRequest(next http.Handler) http.Handler {
 			http.Redirect(w, r, "/", http.StatusTemporaryRedirect)
 		} else {
 			if isPublic {
-				http.Redirect(w, r, "/admin/qna", http.StatusTemporaryRedirect)
+				http.Redirect(w, r, "/profile", http.StatusTemporaryRedirect)
 				return
 			}
 			next.ServeHTTP(w, r)
