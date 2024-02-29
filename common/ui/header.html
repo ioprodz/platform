@@ -44,7 +44,7 @@
         >
           <div class="text-gray-600 lg:pr-4">
             <ul
-              class="space-y-6 text-base font-medium tracking-wide lg:flex lg:space-y-0 lg:text-sm"
+              class="flex items-center space-y-6 text-base font-medium tracking-wide lg:flex lg:space-y-0 lg:text-sm"
             >
               <li>
                 {{ if .isAuthenticated }}
@@ -62,6 +62,15 @@
                   href="/logout"
                 >
                   <span>Logout</span>
+                </a>
+              </li>
+              <li>
+                <a href="/profile">
+                  <img
+                    class="w-9 rounded-full"
+                    src="{{ .user.AvatarUrl }}"
+                    alt=""
+                  />
                 </a>
               </li>
               {{ else }}

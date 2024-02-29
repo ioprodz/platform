@@ -8,14 +8,14 @@ import (
 
 func RenderPage(w http.ResponseWriter, r *http.Request, tmpl string, data interface{}) {
 
-	_, err := auth.GetUserSession(w, r)
+	user, err := auth.GetUserSession(w, r)
 	isAuthenticated := err == nil
 	tpl, err := template.ParseFiles("common/ui/layout.html", "common/ui/header.html", "common/ui/footer.html", tmpl+".html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	err = tpl.ExecuteTemplate(w, "layout", map[string]interface{}{"contentData": data, "isAuthenticated": isAuthenticated})
+	err = tpl.ExecuteTemplate(w, "layout", map[string]interface{}{"contentData": data, "isAuthenticated": isAuthenticated, "user": user})
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -24,7 +24,7 @@ func RenderPage(w http.ResponseWriter, r *http.Request, tmpl string, data interf
 
 func RenderAdminPage(w http.ResponseWriter, r *http.Request, tmpl string, data interface{}) {
 
-	_, err := auth.GetUserSession(w, r)
+	user, err := auth.GetUserSession(w, r)
 	isAuthenticated := err == nil
 	tpl, err := template.ParseFiles("common/ui/layout.html", "common/ui/header.html", "common/ui/footer.html", "common/ui/admin-layout.html", tmpl+".html")
 	if err != nil {
@@ -32,7 +32,7 @@ func RenderAdminPage(w http.ResponseWriter, r *http.Request, tmpl string, data i
 		return
 	}
 
-	err = tpl.ExecuteTemplate(w, "layout", map[string]interface{}{"contentData": data, "isAuthenticated": isAuthenticated, "layout": "admin"})
+	err = tpl.ExecuteTemplate(w, "layout", map[string]interface{}{"contentData": data, "isAuthenticated": isAuthenticated, "layout": "admin", "user": user})
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return

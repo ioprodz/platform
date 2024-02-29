@@ -12,28 +12,45 @@ type SessionError struct {
 	msg string
 }
 
+type SessionData struct {
+	Id        string
+	Email     string
+	AvatarUrl string
+}
+
 func (e *SessionError) Error() string { return e.msg }
 
-func SetUserSession(w http.ResponseWriter, r *http.Request, userId string) error {
+func SetUserSession(w http.ResponseWriter, r *http.Request, sessionData SessionData) error {
 	session, err := store.Get(r, sessionName)
-	session.Values["userId"] = userId
+	session.Values["id"] = sessionData.Id
+	session.Values["email"] = sessionData.Email
+	session.Values["avatarUrl"] = sessionData.AvatarUrl
 	session.Save(r, w)
 	return err
 }
 
-func GetUserSession(w http.ResponseWriter, r *http.Request) (string, error) {
+func GetUserSession(w http.ResponseWriter, r *http.Request) (SessionData, error) {
 	session, err := store.Get(r, sessionName)
-
 	if err != nil {
-		return "", &SessionError{msg: "could not load session"}
+		return SessionData{}, &SessionError{msg: "could not load session"}
 	}
-	userId, ok := session.Values["userId"].(string)
-
+	id, ok := session.Values["id"].(string)
 	if !ok {
-		return "", &SessionError{msg: "could not find userId on session"}
+		return SessionData{}, &SessionError{msg: "could not find userId on session"}
 	}
-
-	return userId, nil
+	email, ok := session.Values["email"].(string)
+	if !ok {
+		return SessionData{}, &SessionError{msg: "could not find userId on session"}
+	}
+	avatarUrl, ok := session.Values["avatarUrl"].(string)
+	if !ok {
+		return SessionData{}, &SessionError{msg: "could not find userId on session"}
+	}
+	return SessionData{
+		Id:        id,
+		Email:     email,
+		AvatarUrl: avatarUrl,
+	}, nil
 }
 
 func ClearSessionHandler(w http.ResponseWriter, r *http.Request) {

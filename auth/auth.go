@@ -30,7 +30,7 @@ func ConfigureModule(router *mux.Router) {
 			return
 		}
 
-		SetUserSession(w, r, user.Email)
+		SetUserSession(w, r, SessionData{Id: user.UserID, Email: user.Email, AvatarUrl: user.AvatarURL})
 		w.Header().Set("Location", "/")
 		w.WriteHeader(http.StatusTemporaryRedirect)
 	}).Methods("GET")
@@ -45,7 +45,7 @@ func ConfigureModule(router *mux.Router) {
 	router.HandleFunc("/auth/{provider}", func(w http.ResponseWriter, r *http.Request) {
 		// try to get the user without re-authenticating
 		if user, err := gothic.CompleteUserAuth(w, r); err == nil {
-			SetUserSession(w, r, user.Email)
+			SetUserSession(w, r, SessionData{Id: user.UserID, Email: user.Email, AvatarUrl: user.AvatarURL})
 			w.Header().Set("Location", "/")
 			w.WriteHeader(http.StatusTemporaryRedirect)
 		} else {
