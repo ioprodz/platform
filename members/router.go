@@ -1,4 +1,4 @@
-package profile
+package members
 
 import (
 	"github.com/gorilla/mux"

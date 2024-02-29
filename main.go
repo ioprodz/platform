@@ -9,7 +9,7 @@ import (
 	"ioprodz/common/middlewares"
 	"ioprodz/cv"
 	"ioprodz/home"
-	"ioprodz/profile"
+	"ioprodz/members"
 	"ioprodz/qna"
 
 	"net/http"
@@ -26,7 +26,7 @@ func main() {
 	// Configure module routers
 	auth.ConfigureModule(router)
 	home.ConfigureModule(router)
-	profile.ConfigureModule(router)
+	members.ConfigureModule(router)
 	qna.ConfigureModule(router)
 	blog.ConfigureModule(router)
 	cv.ConfigureModule(router)

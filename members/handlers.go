@@ -1,4 +1,4 @@
-package profile
+package members
 
 import (
 	"ioprodz/common/ui"
