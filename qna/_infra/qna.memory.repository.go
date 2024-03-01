@@ -30,7 +30,7 @@ func (repo *QNAMemoryRepository) Delete(id string) error {
 	return repo.base.Delete(id)
 }
 
-func CreateQNARepo() *QNAMemoryRepository {
+func CreateMemoryQNARepo() *QNAMemoryRepository {
 	repo := &QNAMemoryRepository{base: db.CreateMemoryRepo[qna_models.QNA]()}
 	repo.seed()
 	return repo

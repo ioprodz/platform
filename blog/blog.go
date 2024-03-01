@@ -10,7 +10,7 @@ import (
 
 func ConfigureModule(router *mux.Router) {
 
-	blogRepo := blog_infra.CreateMongoBlogRepo()
+	blogRepo := blog_infra.CreateMemoryBlogRepo()
 
 	// admin
 	router.HandleFunc("/admin/blog", blog_admin.CreateListPageHandler(blogRepo)).Methods("GET")

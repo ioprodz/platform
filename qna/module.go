@@ -10,8 +10,8 @@ import (
 
 func ConfigureModule(router *mux.Router) {
 
-	qnaRepo := qna_infra.CreateMongoQNARepo()
-	answersRepo := qna_infra.CreateMongoAnswerRepo()
+	qnaRepo := qna_infra.CreateMemoryQNARepo()
+	answersRepo := qna_infra.CreateMemoryAnswerRepo()
 
 	// pages
 	router.HandleFunc("/admin/qna", qna_admin.CreateListHandler(qnaRepo)).Methods("GET")
