@@ -46,8 +46,8 @@
             <ul
               class="flex items-center space-y-6 text-base font-medium tracking-wide lg:flex lg:space-y-0 lg:text-sm"
             >
+              {{ if .isAuthenticated }}
               <li>
-                {{ if .isAuthenticated }}
                 <a
                   class="block transition hover:text-primary md:px-4"
                   href="/admin/qna"
@@ -56,23 +56,6 @@
                 </a>
               </li>
 
-              <li>
-                <a
-                  class="block transition hover:text-primary md:px-4"
-                  href="/logout"
-                >
-                  <span>Logout</span>
-                </a>
-              </li>
-              <li>
-                <a href="/profile">
-                  <img
-                    class="w-9 rounded-full"
-                    src="{{ .user.AvatarUrl }}"
-                    alt=""
-                  />
-                </a>
-              </li>
               {{ else }}
               <li>
                 <a class="block transition hover:text-primary md:px-4" href="/">
@@ -89,6 +72,17 @@
                   <span>Blog</span>
                 </a>
               </li>
+              {{ if .isAuthenticated }}
+              <li>
+                <a href="/profile">
+                  <img
+                    class="w-9 rounded-full"
+                    src="{{ .user.AvatarUrl }}"
+                    alt=""
+                  />
+                </a>
+              </li>
+              {{ end }}
             </ul>
           </div>
         </div>
