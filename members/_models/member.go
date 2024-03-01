@@ -7,6 +7,11 @@ type Account struct {
 	Id       string
 }
 
+type Link struct {
+	Name string
+	Url  string
+}
+
 type Member struct {
 	Id        string
 	Email     string
@@ -14,6 +19,7 @@ type Member struct {
 	Bio       string
 	AvatarUrl string
 	Accounts  []Account
+	Links     []Link
 }
 
 func (m Member) GetId() string {

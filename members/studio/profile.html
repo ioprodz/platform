@@ -71,7 +71,13 @@
             role="none"
             class="shrink-0 bg-border h-[1px] w-full"
           ></div>
-          <form class="space-y-8">
+          <form
+            id="myForm"
+            hx-post="/profile"
+            hx-trigger="submit"
+            hx-target="#loadingSpinner"
+            class="space-y-8"
+          >
             <div class="space-y-2">
               <label
                 class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -80,7 +86,7 @@
               ><input
                 class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                 value="{{ .Name }}"
-                disabled
+                name="name"
               />
               <p
                 id=":rdf:-form-item-description"
@@ -102,14 +108,14 @@
                 aria-describedby=":rdi:-form-item-description"
                 aria-invalid="false"
               >
-I own a computer.</textarea
+{{ .Bio }}</textarea
               >
               <p
                 id=":rdi:-form-item-description"
                 class="text-[0.8rem] text-muted-foreground"
               >
-                You can <span>@mention</span> other users and organizations to
-                link to them.
+                A brief description about your self and what you do in the
+                software field.
               </p>
             </div>
             <div>
@@ -125,16 +131,8 @@ I own a computer.</textarea
                 >
                   Add links to your website, blog, or social media profiles.
                 </p>
-                <input
-                  class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-                  id=":rdj:-form-item"
-                  aria-describedby=":rdj:-form-item-description"
-                  aria-invalid="false"
-                  value="https://shadcn.com"
-                  name="urls.0.value"
-                />
               </div>
-              <div class="space-y-2">
+              <div id="links_list" class="space-y-2">
                 <label
                   class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 sr-only"
                   for=":rdk:-form-item"
@@ -146,32 +144,121 @@ I own a computer.</textarea
                 >
                   Add links to your website, blog, or social media profiles.
                 </p>
-                <input
-                  class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-                  id=":rdk:-form-item"
-                  aria-describedby=":rdk:-form-item-description"
-                  aria-invalid="false"
-                  value="http://twitter.com/shadcn"
-                  name="urls.1.value"
-                />
+                {{ range .Links }}
+                <div class="flex items-center">
+                  <input
+                    class="flex h-9 w-20 mr-1 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                    id=":rdk:-form-item"
+                    aria-describedby=":rdk:-form-item-description"
+                    aria-invalid="false"
+                    value="{{ .Name }}"
+                    name="links_names[]"
+                    placeholder="title"
+                    required
+                  />
+                  <input
+                    class="flex h-9 w-full mr-1 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                    id=":rdk:-form-item"
+                    aria-describedby=":rdk:-form-item-description"
+                    aria-invalid="false"
+                    value="{{ .Url }}"
+                    name="links_urls[]"
+                    placeholder="url"
+                    required
+                  />
+                  <button
+                    class="inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 text-xs mt-2"
+                    type="button"
+                    onclick="removeLink(this)"
+                  >
+                    x
+                  </button>
+                </div>
+                {{ end }}
               </div>
               <button
                 class="inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-8 rounded-md px-3 text-xs mt-2"
                 type="button"
+                onclick="addLink()"
               >
                 Add URL
               </button>
             </div>
-            <button
-              class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
-              type="submit"
-            >
-              Update profile
-            </button>
+            <div>
+              <button
+                class="inline-flex bg-black text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
+                type="submit"
+                id="submit_button"
+                hx-indicator="#loadingSpinner"
+              >
+                Save profile
+              </button>
+              <span id="loadingSpinner" style="display: none">Saving...</span>
+            </div>
           </form>
         </div>
       </div>
     </div>
   </div>
 </div>
+<script>
+  const form = document.getElementById("myForm");
+  form.addEventListener("htmx:afterRequest", function (event) {
+    let button = document.getElementById("submit_button");
+    button.innerText = "Saved";
+    setTimeout(() => {
+      button.innerText = "Save profile";
+      button.disabled = false;
+    }, 1000);
+  });
+  form.addEventListener("htmx:beforeRequest", function (event) {
+    let button = document.getElementById("submit_button");
+    button.innerHTML = "Saving...";
+    button.disabled = true;
+  });
+
+  function addLink() {
+    const elm = `
+    <div id="newLink" class="flex">
+                  <input
+                    class="flex h-9 w-20 mr-1 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                    id=":rdk:-form-item"
+                    aria-describedby=":rdk:-form-item-description"
+                    aria-invalid="false"
+                    value=""
+                    name="links_names[]"
+                    placeholder="title"
+                    required
+                  />
+                  <input
+                    class="flex h-9 w-full mr-1 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                    id=":rdk:-form-item"
+                    aria-describedby=":rdk:-form-item-description"
+                    aria-invalid="false"
+                    value=""
+                    name="links_urls[]"
+                    placeholder="url"
+                    required
+                  />
+                  <button
+                    class="inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 text-xs mt-2"
+                    type="button"
+                    onclick="removeLink(this)"
+                  >
+                    x
+                  </button>
+                </div>
+    `;
+    var originalDiv = document.getElementById("links_list");
+    var parser = new DOMParser();
+    var xmlDoc = parser.parseFromString(elm, "text/html");
+
+    var rootElement = xmlDoc.documentElement;
+    originalDiv.appendChild(rootElement);
+  }
+
+  function removeLink(el) {
+    el.parentNode.parentNode.removeChild(el.parentNode);
+  }
+</script>
 {{ end }}

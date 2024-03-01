@@ -42,7 +42,12 @@ func (repo *MemberMemoryRepository) seed() {
 		"id":"member-id",
 		"email":"osminosm@gmail.com",
 		"name":"Osmane Kalache",
+		"bio":"I love computers",
 		"avatarUrl":"https://avatars.githubusercontent.com/u/7093627?v=4",
-		"accounts":[]
+		"accounts":[],
+		"links":[
+			{ "name":"github", "url":"https://github.com/osminosm" },
+			{ "name":"linkedin", "url":"https://linkedin.com/osminosm" }
+		]
 	}`)))
 }
