@@ -2,6 +2,7 @@ package members
 
 import (
 	member_infra "ioprodz/members/_infra"
+	members_explore "ioprodz/members/explore"
 	members_studio "ioprodz/members/studio"
 
 	"github.com/gorilla/mux"
@@ -13,5 +14,7 @@ func ConfigureModule(router *mux.Router) *mux.Router {
 
 	router.HandleFunc("/profile", members_studio.CreateSaveProfileHandler(repo)).Methods("POST")
 	router.HandleFunc("/profile", members_studio.CreateGetHandler(repo)).Methods("GET")
+
+	router.HandleFunc("/explore", members_explore.CreateGetHandler())
 	return router
 }
