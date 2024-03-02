@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"ioprodz/auth"
+	auth_authorization "ioprodz/auth/authorization"
 	"ioprodz/blog"
 	"ioprodz/common/config"
 	"ioprodz/common/middlewares"
@@ -31,7 +32,7 @@ func main() {
 
 	// Hook global middlewares
 	router.Use(middlewares.RequestLogger)
-	router.Use(auth.AuthorizeRequest)
+	router.Use(auth_authorization.AuthorizeRequest)
 
 	// Mount routes to the HTTP server
 	http.Handle("/", router)

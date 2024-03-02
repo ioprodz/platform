@@ -1,6 +1,7 @@
-package auth
+package auth_authorization
 
 import (
+	auth_infra "ioprodz/auth/_infra"
 	"net/http"
 )
 
@@ -37,7 +38,7 @@ func AuthorizeRequest(next http.Handler) http.Handler {
 		}
 
 		isPublic := public.matchPath(r.URL.Path)
-		_, err := GetUserSession(w, r)
+		_, err := auth_infra.GetUserSession(w, r)
 		autnenticated := err == nil
 		if !autnenticated {
 

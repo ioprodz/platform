@@ -1,12 +1,12 @@
 package auth
 
 import (
-	"fmt"
+	auth_authentication "ioprodz/auth/authentication"
 	"ioprodz/common/config"
-	"net/http"
 	"os"
 
 	"github.com/gorilla/mux"
+	"github.com/gorilla/sessions"
 	"github.com/markbates/goth"
 
 	"github.com/markbates/goth/gothic"
@@ -14,43 +14,28 @@ import (
 	"github.com/markbates/goth/providers/google"
 )
 
+func NewOAuthCookieStore() *sessions.CookieStore {
+	var conf = config.Load()
+	store := sessions.NewCookieStore([]byte(conf.AUTH_OAUTH_COOKIE_SECRET))
+	store.Options.Path = "/"
+	store.Options.Domain = conf.APP_DOMAIN
+	store.Options.HttpOnly = true
+	store.Options.Secure = conf.IS_PRODUCTION
+	store.Options.MaxAge = 86400 * 7
+
+	return store
+}
+
 func ConfigureModule(router *mux.Router) {
 	baseUrl := config.Load().BASE_URL
+
 	goth.UseProviders(
 		google.New(os.Getenv("GOOGLE_KEY"), os.Getenv("GOOGLE_SECRET"), baseUrl+"/auth/google/callback"),
 		github.New(os.Getenv("GITHUB_KEY"), os.Getenv("GITHUB_SECRET"), baseUrl+"/auth/github/callback"),
 	)
-
 	gothic.Store = NewOAuthCookieStore()
 
-	router.HandleFunc("/auth/{provider}/callback", func(w http.ResponseWriter, r *http.Request) {
-		user, err := gothic.CompleteUserAuth(w, r)
-		if err != nil {
-			fmt.Println("Unauthorized: " + err.Error())
-			return
-		}
-
-		SetUserSession(w, r, SessionData{Id: user.UserID, Email: user.Email, AvatarUrl: user.AvatarURL})
-		w.Header().Set("Location", "/")
-		w.WriteHeader(http.StatusTemporaryRedirect)
-	}).Methods("GET")
-
-	router.HandleFunc("/logout", func(w http.ResponseWriter, r *http.Request) {
-		gothic.Logout(w, r)
-		ClearSessionHandler(w, r)
-		w.Header().Set("Location", "/")
-		w.WriteHeader(http.StatusTemporaryRedirect)
-	}).Methods("GET")
-
-	router.HandleFunc("/auth/{provider}", func(w http.ResponseWriter, r *http.Request) {
-		// try to get the user without re-authenticating
-		if user, err := gothic.CompleteUserAuth(w, r); err == nil {
-			SetUserSession(w, r, SessionData{Id: user.UserID, Email: user.Email, AvatarUrl: user.AvatarURL})
-			w.Header().Set("Location", "/")
-			w.WriteHeader(http.StatusTemporaryRedirect)
-		} else {
-			gothic.BeginAuthHandler(w, r)
-		}
-	}).Methods("GET")
-
+	router.HandleFunc("/auth/{provider}/callback", auth_authentication.CreateOAuthCallbackHandler()).Methods("GET")
+	router.HandleFunc("/auth/{provider}", auth_authentication.CreateOAuthLoginHandler()).Methods("GET")
+	router.HandleFunc("/logout", auth_authentication.CreateLogoutHandler()).Methods("GET")
 }
