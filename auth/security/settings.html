@@ -33,19 +33,26 @@
               </p>
               <br />
               {{ range . }}
-              <div class="space-y-2">
-                <label
-                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  for=":rdf:-form-item"
-                  >{{ .Title }}</label
-                >
-                <p
-                  id=":rdf:-form-item-description"
-                  class="text-[0.8rem] text-muted-foreground"
-                >
-                  First connection: {{ .CreatedOn }} Last connection: {{
-                  .LastUsed }}
-                </p>
+              <div class="flex space-y-2 border rounded p-1 md-2">
+                <div class="flex flex-col flex-1">
+                  <label
+                    class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    for=":rdf:-form-item"
+                    >{{ .Title }}</label
+                  >
+                  <p
+                    id=":rdf:-form-item-description"
+                    class="text-[0.8rem] text-muted-foreground"
+                  >
+                    Connected {{ .CreatedOn }} <br />
+                    Last used {{ .LastUsed }}
+                  </p>
+                </div>
+                <div>
+                  <button hx-delete="/security/sessions/{{ .Id }}">
+                    Disconnect
+                  </button>
+                </div>
               </div>
               {{ end }}
             </div>

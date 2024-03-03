@@ -1,7 +1,6 @@
 package auth_authentication
 
 import (
-	"encoding/json"
 	"fmt"
 	"hash/fnv"
 	auth_infra "ioprodz/auth/_infra"
@@ -23,18 +22,15 @@ func CreateOAuthCallbackHandler(accountRepo auth_models.AccountRepository, sessi
 			fmt.Println("Unauthorized: " + err.Error())
 			return
 		}
-		jso, _ := json.Marshal(user)
-		fmt.Println(string(jso))
 
 		account, isNewAccount := getAccount(accountRepo, user)
 		session := getSession(account, ua, sessionRepo)
-
-		auth_infra.SetUserSession(w, r, auth_infra.SessionData{Id: session.Id, Email: account.Email, AvatarUrl: user.AvatarURL})
+		auth_infra.SetAuthCookie(w, r, auth_infra.CookieData{Id: session.Id, Email: account.Email, AvatarUrl: user.AvatarURL})
 
 		if isNewAccount {
 			w.Header().Set("Location", "/profile")
 		} else {
-			w.Header().Set("Location", "/")
+			w.Header().Set("Location", "/explore")
 		}
 		w.WriteHeader(http.StatusTemporaryRedirect)
 
@@ -47,6 +43,7 @@ func getSession(account auth_models.Account, ua useragent.UserAgent, sessionRepo
 	var session auth_models.Session
 	if err != nil {
 		session = auth_models.NewSession(account.Id, ua.String, sessionHash)
+		fmt.Println("CREATED SESSION", session)
 		sessionRepo.Create(session)
 	} else {
 		session = existingSession
@@ -81,8 +78,8 @@ func CreateOAuthLoginHandler() func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		// try to get the user without re-authenticating
 		if user, err := gothic.CompleteUserAuth(w, r); err == nil {
-			auth_infra.SetUserSession(w, r, auth_infra.SessionData{Id: user.UserID, Email: user.Email, AvatarUrl: user.AvatarURL})
-			w.Header().Set("Location", "/")
+			auth_infra.SetAuthCookie(w, r, auth_infra.CookieData{Id: user.UserID, Email: user.Email, AvatarUrl: user.AvatarURL})
+			w.Header().Set("Location", "/explore")
 			w.WriteHeader(http.StatusTemporaryRedirect)
 		} else {
 			gothic.BeginAuthHandler(w, r)
@@ -94,7 +91,7 @@ func CreateOAuthLoginHandler() func(w http.ResponseWriter, r *http.Request) {
 func CreateLogoutHandler() func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		gothic.Logout(w, r)
-		auth_infra.ClearSessionHandler(w, r)
+		auth_infra.ClearAuthCookie(w, r)
 		w.Header().Set("Location", "/")
 		w.WriteHeader(http.StatusTemporaryRedirect)
 	}

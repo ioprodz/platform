@@ -34,7 +34,7 @@ func NewMongoConnection() *mongo.Database {
 	db := client.Database("ioprodz")
 	// Send a ping to confirm a successful connection
 	var result bson.M
-	if err := db.RunCommand(context.TODO(), bson.D{{"ping", 1}}).Decode(&result); err != nil {
+	if err := db.RunCommand(context.TODO(), bson.D{{Key: "ping", Value: 1}}).Decode(&result); err != nil {
 		panic(err)
 	}
 

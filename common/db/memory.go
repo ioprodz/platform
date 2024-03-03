@@ -18,12 +18,12 @@ func (repo *BaseMemoryRepository[T]) Create(entity T) error {
 }
 
 func (repo *BaseMemoryRepository[T]) Get(id string) (T, error) {
-	var result T
 	for _, obj := range repo.list {
 		if obj.GetId() == id {
-			result = obj
+			return obj, nil
 		}
 	}
+	var result T
 	return result, &policies.StorageError{Message: "Element not found by id: " + id}
 }
 
@@ -38,7 +38,12 @@ func (repo *BaseMemoryRepository[T]) Update(entity T) error {
 }
 
 func (repo *BaseMemoryRepository[T]) Delete(id string) error {
-
+	for i, item := range repo.list {
+		if item.GetId() == id {
+			repo.list = append(repo.list[:i], repo.list[i+1:]...)
+			return nil
+		}
+	}
 	return &policies.StorageError{Message: "Element not found by id: "}
 }
 

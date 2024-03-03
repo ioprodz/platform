@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"ioprodz/auth"
-	auth_authorization "ioprodz/auth/authorization"
 	"ioprodz/blog"
 	"ioprodz/common/config"
 	"ioprodz/common/middlewares"
@@ -22,6 +21,8 @@ func main() {
 	router := mux.NewRouter()
 	//db.NewMongoConnection()
 
+	// Hook global middlewares
+	router.Use(middlewares.RequestLogger)
 	// Configure module routers
 	auth.ConfigureModule(router)
 	home.ConfigureModule(router)
@@ -29,10 +30,6 @@ func main() {
 	qna.ConfigureModule(router)
 	blog.ConfigureModule(router)
 	cv.ConfigureModule(router)
-
-	// Hook global middlewares
-	router.Use(middlewares.RequestLogger)
-	router.Use(auth_authorization.AuthorizeRequest)
 
 	// Mount routes to the HTTP server
 	http.Handle("/", router)

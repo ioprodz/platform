@@ -2,7 +2,9 @@ package auth_authorization
 
 import (
 	auth_infra "ioprodz/auth/_infra"
+	auth_models "ioprodz/auth/_models"
 	"net/http"
+	"strings"
 )
 
 type Paths []string
@@ -11,6 +13,7 @@ var public Paths = Paths{
 	"/",
 	"/auth/github",
 	"/auth/google",
+	"/blog",
 }
 
 var authCallback Paths = Paths{
@@ -21,7 +24,7 @@ var authCallback Paths = Paths{
 func (paths *Paths) matchPath(path string) bool {
 	found := false
 	for _, s := range *paths {
-		if s == path {
+		if strings.HasPrefix(path, s) {
 			found = true
 			break
 		}
@@ -29,30 +32,28 @@ func (paths *Paths) matchPath(path string) bool {
 	return found
 }
 
-func AuthorizeRequest(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+func CreateRequestAuthorization(sessionRepo auth_models.SessionRepository) func(next http.Handler) http.Handler {
 
-		if authCallback.matchPath(r.URL.Path) {
-			next.ServeHTTP(w, r)
-			return
-		}
+	return func(next http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
-		isPublic := public.matchPath(r.URL.Path)
-		_, err := auth_infra.GetUserSession(w, r)
-		autnenticated := err == nil
-		if !autnenticated {
-
-			if isPublic {
+			if authCallback.matchPath(r.URL.Path) {
 				next.ServeHTTP(w, r)
 				return
 			}
-			http.Redirect(w, r, "/", http.StatusTemporaryRedirect)
-		} else {
-			if isPublic {
-				http.Redirect(w, r, "/profile", http.StatusTemporaryRedirect)
+
+			cookie, _ := auth_infra.GetAuthCookie(w, r)
+			_, sessionError := sessionRepo.Get(cookie.Id)
+
+			autnenticated := sessionError == nil
+			isPublic := public.matchPath(r.URL.Path)
+			if !autnenticated && !isPublic {
+				http.Redirect(w, r, "/", http.StatusTemporaryRedirect)
 				return
 			}
+
 			next.ServeHTTP(w, r)
-		}
-	})
+		})
+	}
+
 }

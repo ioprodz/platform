@@ -3,6 +3,7 @@ package auth
 import (
 	auth_infra "ioprodz/auth/_infra"
 	auth_authentication "ioprodz/auth/authentication"
+	auth_authorization "ioprodz/auth/authorization"
 	auth_security "ioprodz/auth/security"
 	"ioprodz/common/config"
 	"os"
@@ -49,5 +50,8 @@ func ConfigureModule(router *mux.Router) {
 	router.HandleFunc("/logout", auth_authentication.CreateLogoutHandler()).Methods("GET")
 
 	router.HandleFunc("/security", auth_security.CreateSecurityPageHandler(sessionRepo)).Methods("GET")
+	router.HandleFunc("/security/sessions/{id}", auth_security.CreateRevokeSessionHandler(sessionRepo)).Methods("DELETE")
+
+	router.Use(auth_authorization.CreateRequestAuthorization(sessionRepo))
 
 }
