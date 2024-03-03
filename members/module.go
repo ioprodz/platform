@@ -1,7 +1,7 @@
 package members
 
 import (
-	member_infra "ioprodz/members/_infra"
+	members_infra "ioprodz/members/_infra"
 	members_explore "ioprodz/members/explore"
 	members_studio "ioprodz/members/studio"
 
@@ -10,7 +10,7 @@ import (
 
 func ConfigureModule(router *mux.Router) *mux.Router {
 
-	repo := member_infra.CreateMemoryMemberRepo()
+	repo := members_infra.CreateMembersRepository()
 
 	router.HandleFunc("/profile", members_studio.CreateSaveProfileHandler(repo)).Methods("POST")
 	router.HandleFunc("/profile", members_studio.CreateGetHandler(repo)).Methods("GET")

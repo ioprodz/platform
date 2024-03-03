@@ -1,4 +1,4 @@
-package member_infra
+package members_infra
 
 import (
 	"ioprodz/common/db"

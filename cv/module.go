@@ -9,7 +9,7 @@ import (
 
 func ConfigureModule(router *mux.Router) {
 
-	cvRepo := cv_infra.CreateMemoryCVRepo()
+	cvRepo := cv_infra.CreateCVRepository()
 
 	router.HandleFunc("/cv/{id}", cv_viewer.CreateGetCvHandler(cvRepo)).Methods("GET")
 }

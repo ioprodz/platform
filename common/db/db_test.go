@@ -19,7 +19,7 @@ func (b TestEntity) GetId() string {
 
 func TestBaseRepository(t *testing.T) {
 
-	db.NewMongoConnection()
+	db.GetInstance()
 
 	repos := []policies.BaseRepository[TestEntity]{db.CreateMongoRepo[TestEntity]("test_collection"), db.CreateMemoryRepo[TestEntity]()}
 

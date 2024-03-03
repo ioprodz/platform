@@ -13,7 +13,7 @@ import (
 var dbInstance *mongo.Database
 var dbInit = false
 
-func NewMongoConnection() *mongo.Database {
+func GetInstance() *mongo.Database {
 
 	if dbInit {
 		return dbInstance
@@ -49,40 +49,45 @@ type BaseMongoRepository[T policies.Entity] struct {
 }
 
 func (repo *BaseMongoRepository[T]) List() ([]T, error) {
-	var blog []T
+	var list []T
 
 	cur, err := repo.collection.Find(context.TODO(), bson.M{})
 	if err != nil {
-		return blog, err
+		return list, err
 	}
 
 	for cur.Next(context.TODO()) {
 		var b T
 		err := cur.Decode(&b)
 		if err != nil {
-			return blog, err
+			return list, err
 		}
 
-		blog = append(blog, b)
+		list = append(list, b)
 	}
 
-	return blog, nil
+	return list, nil
 }
 
 func (repo *BaseMongoRepository[T]) Get(id string) (T, error) {
 
-	var post *T
-	err := repo.collection.FindOne(context.TODO(), bson.M{"id": id}).Decode(&post)
+	var data *T
+	err := repo.collection.FindOne(context.TODO(), bson.M{"id": id}).Decode(&data)
 	if err != nil {
-		return *post, &policies.StorageError{Message: "Element not found by id: " + id}
+		var empty T
+		return empty, &policies.StorageError{Message: "Element not found by id: " + id + "(" + err.Error() + ")"}
 	}
-
-	return *post, nil
+	return *data, nil
 
 }
 
 func (repo *BaseMongoRepository[T]) Delete(id string) error {
-	panic("not implmented")
+	_, err := repo.collection.DeleteOne(context.TODO(), bson.M{"id": id})
+	if err != nil {
+		return &policies.StorageError{Message: "Element could not be deleted by id: " + id}
+	} else {
+		return nil
+	}
 }
 
 func (repo *BaseMongoRepository[T]) Create(entity T) error {
@@ -100,6 +105,6 @@ func (repo *BaseMongoRepository[T]) Update(entity T) error {
 }
 
 func CreateMongoRepo[T policies.Entity](collectionName string) *BaseMongoRepository[T] {
-	repo := &BaseMongoRepository[T]{collection: dbInstance.Collection(collectionName)}
+	repo := &BaseMongoRepository[T]{collection: GetInstance().Collection(collectionName)}
 	return repo
 }
