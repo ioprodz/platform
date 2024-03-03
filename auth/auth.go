@@ -1,7 +1,9 @@
 package auth
 
 import (
+	auth_infra "ioprodz/auth/_infra"
 	auth_authentication "ioprodz/auth/authentication"
+	auth_security "ioprodz/auth/security"
 	"ioprodz/common/config"
 	"os"
 
@@ -27,6 +29,8 @@ func NewOAuthCookieStore() *sessions.CookieStore {
 }
 
 func ConfigureModule(router *mux.Router) {
+
+	// Configure Goth/Gothic lib
 	baseUrl := config.Load().BASE_URL
 
 	goth.UseProviders(
@@ -35,7 +39,15 @@ func ConfigureModule(router *mux.Router) {
 	)
 	gothic.Store = NewOAuthCookieStore()
 
-	router.HandleFunc("/auth/{provider}/callback", auth_authentication.CreateOAuthCallbackHandler()).Methods("GET")
+	// Configure routes
+
+	accountRepo := auth_infra.CreateMemoryAccountRepo()
+	sessionRepo := auth_infra.CreateMemorySessionRepo()
+
+	router.HandleFunc("/auth/{provider}/callback", auth_authentication.CreateOAuthCallbackHandler(accountRepo, sessionRepo)).Methods("GET")
 	router.HandleFunc("/auth/{provider}", auth_authentication.CreateOAuthLoginHandler()).Methods("GET")
 	router.HandleFunc("/logout", auth_authentication.CreateLogoutHandler()).Methods("GET")
+
+	router.HandleFunc("/security", auth_security.CreateSecurityPageHandler(sessionRepo)).Methods("GET")
+
 }

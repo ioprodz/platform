@@ -3,6 +3,7 @@ package auth_infra
 import (
 	auth_models "ioprodz/auth/_models"
 	"ioprodz/common/db"
+	"ioprodz/common/policies"
 )
 
 type AccountMemoryRepository struct {
@@ -27,6 +28,18 @@ func (b *AccountMemoryRepository) Update(entity auth_models.Account) error {
 
 func (b *AccountMemoryRepository) Delete(id string) error {
 	return b.base.Delete(id)
+}
+
+func (b *AccountMemoryRepository) GetByProviderId(provider string, providerUserId string) (auth_models.Account, error) {
+
+	list, _ := b.List()
+	for _, acc := range list {
+		if acc.Provider == provider && acc.ProviderUserId == providerUserId {
+			return acc, nil
+		}
+	}
+
+	return auth_models.Account{}, &policies.StorageError{Message: "Account '" + providerUserId + "' not found by for provider '" + provider + "'"}
 }
 
 func CreateMemoryAccountRepo() *AccountMemoryRepository {

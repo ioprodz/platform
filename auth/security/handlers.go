@@ -1,0 +1,41 @@
+package auth_security
+
+import (
+	auth_models "ioprodz/auth/_models"
+	"ioprodz/common/ui"
+	"net/http"
+	"time"
+
+	"github.com/mileusna/useragent"
+	"github.com/xeonx/timeago"
+)
+
+type SessionView struct {
+	Title     string
+	IsCurrent bool
+	CreatedOn string
+	LastUsed  string
+}
+
+func CreateSecurityPageHandler(sessionRepo auth_models.SessionRepository) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+
+		sessions, _ := sessionRepo.List()
+
+		sessionViewList := []SessionView{}
+		for _, session := range sessions {
+			ua := useragent.Parse(session.UaString)
+
+			createdOn, _ := time.Parse(time.RFC3339, session.FirstCreatedAt)
+			lastUsed, _ := time.Parse(time.RFC3339, session.LastUsedAt)
+
+			sessionViewList = append(sessionViewList, SessionView{
+				Title:     ua.Name + " on " + ua.Device + " " + ua.OS + "",
+				CreatedOn: timeago.English.Format(createdOn),
+				LastUsed:  timeago.English.Format(lastUsed),
+			})
+		}
+
+		ui.RenderPage(w, r, "auth/security/settings", sessionViewList)
+	}
+}

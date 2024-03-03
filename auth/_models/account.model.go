@@ -1,6 +1,10 @@
 package auth_models
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/google/uuid"
+)
 
 type Account struct {
 	Id             string
@@ -19,4 +23,13 @@ func AccountFromJSON(jsonData []byte) Account {
 		panic("unable to parse account json")
 	}
 	return account
+}
+
+func NewAccount(email string, provider string, providerUserId string) Account {
+	return Account{
+		Id:             uuid.NewString(),
+		Email:          email,
+		Provider:       provider,
+		ProviderUserId: providerUserId,
+	}
 }

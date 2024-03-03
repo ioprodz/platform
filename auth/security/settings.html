@@ -1,0 +1,118 @@
+{{ define "content" }}
+<div class="px-4 sm:px-12 xl:max-w-6xl xl:px-0 m-auto pt-24">
+  <div class="hidden space-y-6 p-10 pb-16 md:block">
+    <div class="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
+      <aside class="-mx-4 lg:w-1/5">
+        <nav class="flex space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1">
+          <a
+            class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 px-4 py-2 hover:bg-transparent hover:underline justify-start"
+            href="/profile"
+            >Profile</a
+          ><a
+            class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 px-4 py-2 hover:bg-transparent hover:underline justify-start"
+            href="/cvs"
+            >Curriculums</a
+          ><a
+            class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 px-4 py-2 hover:bg-transparent hover:underline justify-start"
+            href="/projects"
+            >Projects</a
+          ><a
+            class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 px-4 py-2 bg-gray-300 hover:bg-muted justify-start"
+            href="/security"
+            >Security</a
+          >
+        </nav>
+      </aside>
+      <div class="flex-1 lg:max-w-2xl">
+        <div class="space-y-6">
+          <div class="flex">
+            <div class="flex-1 pr-2">
+              <h3 class="text-lg font-medium">Sessions</h3>
+              <p class="text-sm text-muted-foreground">
+                All the devices where you are/were connected
+              </p>
+              <br />
+              {{ range . }}
+              <div class="space-y-2">
+                <label
+                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  for=":rdf:-form-item"
+                  >{{ .Title }}</label
+                >
+                <p
+                  id=":rdf:-form-item-description"
+                  class="text-[0.8rem] text-muted-foreground"
+                >
+                  First connection: {{ .CreatedOn }} Last connection: {{
+                  .LastUsed }}
+                </p>
+              </div>
+              {{ end }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const form = document.getElementById("myForm");
+    form.addEventListener("htmx:afterRequest", function (event) {
+      let button = document.getElementById("submit_button");
+      button.innerText = "Saved";
+      setTimeout(() => {
+        button.innerText = "Save profile";
+        button.disabled = false;
+      }, 1000);
+    });
+    form.addEventListener("htmx:beforeRequest", function (event) {
+      let button = document.getElementById("submit_button");
+      button.innerHTML = "Saving...";
+      button.disabled = true;
+    });
+
+    function addLink() {
+      const elm = `
+    <div id="newLink" class="flex">
+                  <input
+                    class="flex h-9 w-20 mr-1 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                    id=":rdk:-form-item"
+                    aria-describedby=":rdk:-form-item-description"
+                    aria-invalid="false"
+                    value=""
+                    name="links_names[]"
+                    placeholder="title"
+                    required
+                  />
+                  <input
+                    class="flex h-9 w-full mr-1 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                    id=":rdk:-form-item"
+                    aria-describedby=":rdk:-form-item-description"
+                    aria-invalid="false"
+                    value=""
+                    name="links_urls[]"
+                    placeholder="url"
+                    required
+                  />
+                  <button
+                    class="inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 text-xs mt-2"
+                    type="button"
+                    onclick="removeLink(this)"
+                  >
+                    x
+                  </button>
+                </div>
+    `;
+      var originalDiv = document.getElementById("links_list");
+      var parser = new DOMParser();
+      var xmlDoc = parser.parseFromString(elm, "text/html");
+
+      var rootElement = xmlDoc.documentElement;
+      originalDiv.appendChild(rootElement);
+    }
+
+    function removeLink(el) {
+      el.parentNode.parentNode.removeChild(el.parentNode);
+    }
+  </script>
+  {{ end }}
+</div>

@@ -1,27 +1,80 @@
 package auth_authentication
 
 import (
+	"encoding/json"
 	"fmt"
+	"hash/fnv"
 	auth_infra "ioprodz/auth/_infra"
+	auth_models "ioprodz/auth/_models"
 	"net/http"
 
+	"github.com/markbates/goth"
 	"github.com/markbates/goth/gothic"
+	"github.com/mileusna/useragent"
 )
 
-func CreateOAuthCallbackHandler() func(w http.ResponseWriter, r *http.Request) {
+func CreateOAuthCallbackHandler(accountRepo auth_models.AccountRepository, sessionRepo auth_models.SessionRepository) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
+
+		ua := useragent.Parse(r.UserAgent())
 
 		user, err := gothic.CompleteUserAuth(w, r)
 		if err != nil {
 			fmt.Println("Unauthorized: " + err.Error())
 			return
 		}
+		jso, _ := json.Marshal(user)
+		fmt.Println(string(jso))
 
-		auth_infra.SetUserSession(w, r, auth_infra.SessionData{Id: user.UserID, Email: user.Email, AvatarUrl: user.AvatarURL})
-		w.Header().Set("Location", "/")
+		account, isNewAccount := getAccount(accountRepo, user)
+		session := getSession(account, ua, sessionRepo)
+
+		auth_infra.SetUserSession(w, r, auth_infra.SessionData{Id: session.Id, Email: account.Email, AvatarUrl: user.AvatarURL})
+
+		if isNewAccount {
+			w.Header().Set("Location", "/profile")
+		} else {
+			w.Header().Set("Location", "/")
+		}
 		w.WriteHeader(http.StatusTemporaryRedirect)
 
 	}
+}
+
+func getSession(account auth_models.Account, ua useragent.UserAgent, sessionRepo auth_models.SessionRepository) auth_models.Session {
+	sessionHash := getHash(account, ua)
+	existingSession, err := sessionRepo.GetByHash(sessionHash)
+	var session auth_models.Session
+	if err != nil {
+		session = auth_models.NewSession(account.Id, ua.String, sessionHash)
+		sessionRepo.Create(session)
+	} else {
+		session = existingSession
+		session.SetLastUsedNow()
+		sessionRepo.Update(session)
+	}
+	return session
+}
+
+func getHash(account auth_models.Account, ua useragent.UserAgent) string {
+	b := []byte(account.Id + ua.String)
+	hash := fnv.New64a()
+	hash.Write(b)
+	return fmt.Sprint(hash.Sum64())
+}
+
+func getAccount(accountRepo auth_models.AccountRepository, user goth.User) (auth_models.Account, bool) {
+	existingAccount, err := accountRepo.GetByProviderId(user.Provider, user.UserID)
+	newAccount := err != nil
+
+	var account auth_models.Account
+	if newAccount {
+		account = auth_models.NewAccount(user.Email, user.Provider, user.UserID)
+		accountRepo.Create(account)
+	} else {
+		account = existingAccount
+	}
+	return account, newAccount
 }
 
 func CreateOAuthLoginHandler() func(w http.ResponseWriter, r *http.Request) {
@@ -39,7 +92,6 @@ func CreateOAuthLoginHandler() func(w http.ResponseWriter, r *http.Request) {
 }
 
 func CreateLogoutHandler() func(w http.ResponseWriter, r *http.Request) {
-
 	return func(w http.ResponseWriter, r *http.Request) {
 		gothic.Logout(w, r)
 		auth_infra.ClearSessionHandler(w, r)
