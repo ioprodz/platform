@@ -75,7 +75,7 @@ func (repo *BaseMongoRepository[T]) Get(id string) (T, error) {
 	err := repo.collection.FindOne(context.TODO(), bson.M{"id": id}).Decode(&data)
 	if err != nil {
 		var empty T
-		return empty, &policies.StorageError{Message: "Element not found by id: " + id + "(" + err.Error() + ")"}
+		return empty, &policies.StorageError{Message: "Element not found by id: " + id + " (" + err.Error() + ")"}
 	}
 	return *data, nil
 

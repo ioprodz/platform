@@ -22,14 +22,18 @@ var authCallback Paths = Paths{
 }
 
 func (paths *Paths) matchPath(path string) bool {
-	found := false
 	for _, s := range *paths {
-		if strings.HasPrefix(path, s) {
-			found = true
-			break
+		if s == "/" {
+			if s == path {
+				return true
+			}
+		} else {
+			if strings.HasPrefix(path, s) {
+				return true
+			}
 		}
 	}
-	return found
+	return false
 }
 
 func CreateRequestAuthorization(sessionRepo auth_models.SessionRepository) func(next http.Handler) http.Handler {
@@ -47,7 +51,9 @@ func CreateRequestAuthorization(sessionRepo auth_models.SessionRepository) func(
 
 			autnenticated := sessionError == nil
 			isPublic := public.matchPath(r.URL.Path)
+
 			if !autnenticated && !isPublic {
+				auth_infra.ClearAuthCookie(w, r)
 				http.Redirect(w, r, "/", http.StatusTemporaryRedirect)
 				return
 			}
