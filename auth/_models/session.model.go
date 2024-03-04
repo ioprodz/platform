@@ -10,6 +10,7 @@ import (
 type Session struct {
 	Id             string
 	AccountId      string
+	Email          string
 	AvatarUrl      string
 	Name           string
 	UaString       string
@@ -34,7 +35,7 @@ func SessionFromJSON(jsonData []byte) Session {
 	return session
 }
 
-func NewSession(accountId string, uaString string, hash string, avatarUrl string, name string) Session {
+func NewSession(accountId string, uaString string, hash string, avatarUrl string, name string, email string) Session {
 	return Session{
 		Id:             uuid.NewString(),
 		AccountId:      accountId,
@@ -42,6 +43,7 @@ func NewSession(accountId string, uaString string, hash string, avatarUrl string
 		Hash:           hash,
 		AvatarUrl:      avatarUrl,
 		Name:           name,
+		Email:          email,
 		LastUsedAt:     time.Now().Format(time.RFC3339),
 		FirstCreatedAt: time.Now().Format(time.RFC3339)}
 }

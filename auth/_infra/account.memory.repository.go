@@ -43,18 +43,6 @@ func (b *AccountMemoryRepository) GetByProviderId(provider string, providerUserI
 }
 
 func CreateMemoryAccountRepo() *AccountMemoryRepository {
-
 	repo := &AccountMemoryRepository{base: *db.CreateMemoryRepo[auth_models.Account]()}
-	repo.seed()
 	return repo
-}
-
-func (r *AccountMemoryRepository) seed() {
-
-	r.Create(auth_models.AccountFromJSON([]byte(`{
-		"id":"account-001",
-		"email":"test@email.com",
-		"provider":"github",
-		"providerId":"123456"
-	}`)))
 }

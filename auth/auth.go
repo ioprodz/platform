@@ -46,7 +46,7 @@ func ConfigureModule(router *mux.Router) {
 	sessionRepo := auth_infra.CreateSessionRepository()
 
 	router.HandleFunc("/auth/{provider}/callback", auth_authentication.CreateOAuthCallbackHandler(accountRepo, sessionRepo)).Methods("GET")
-	router.HandleFunc("/auth/{provider}", auth_authentication.CreateOAuthLoginHandler()).Methods("GET")
+	router.HandleFunc("/auth/{provider}", auth_authentication.CreateOAuthLoginHandler(accountRepo, sessionRepo)).Methods("GET")
 	router.HandleFunc("/logout", auth_authentication.CreateLogoutHandler()).Methods("GET")
 
 	router.HandleFunc("/security", auth_security.CreateSecurityPageHandler(sessionRepo)).Methods("GET")

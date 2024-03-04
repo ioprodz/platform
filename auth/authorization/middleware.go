@@ -54,6 +54,7 @@ func CreateRequestAuthorization(sessionRepo auth_models.SessionRepository) func(
 				Id:        session.AccountId,
 				Name:      session.Name,
 				AvatarUrl: session.AvatarUrl,
+				Email:     session.Email,
 			})
 			autnenticated := sessionError == nil
 			isPublic := public.matchPath(r.URL.Path)

@@ -55,17 +55,6 @@ func (b *SessionMemoryRepository) GetByAccountId(accountId string) []auth_models
 }
 
 func CreateMemorySessionRepo() *SessionMemoryRepository {
-
 	repo := &SessionMemoryRepository{base: *db.CreateMemoryRepo[auth_models.Session]()}
-	repo.seed()
 	return repo
-}
-
-func (r *SessionMemoryRepository) seed() {
-
-	r.Create(auth_models.SessionFromJSON([]byte(`{
-		"id":"session-001",
-		"hash":"hash",
-		"lastUsed":"2024-02-29T23:19:52.345"
-	}`)))
 }

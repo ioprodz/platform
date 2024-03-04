@@ -15,23 +15,20 @@ import (
 func CreateOAuthCallbackHandler(accountRepo auth_models.AccountRepository, sessionRepo auth_models.SessionRepository) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 
-		ua := useragent.Parse(r.UserAgent())
-
 		user, err := gothic.CompleteUserAuth(w, r)
 		if err != nil {
 			fmt.Println("Unauthorized: " + err.Error())
 			return
 		}
 
-		account, isNewAccount := getAccount(accountRepo, user)
+		ua := useragent.Parse(r.UserAgent())
+		account := getAccount(accountRepo, user)
 		session := getSession(account, user, ua, sessionRepo)
+
+		fmt.Println("SESSSION", session)
 		auth_infra.SetAuthCookie(w, r, auth_infra.CookieData{Id: session.Id})
 
-		if isNewAccount {
-			w.Header().Set("Location", "/profile")
-		} else {
-			w.Header().Set("Location", "/explore")
-		}
+		w.Header().Set("Location", "/feed")
 		w.WriteHeader(http.StatusTemporaryRedirect)
 
 	}
@@ -39,17 +36,13 @@ func CreateOAuthCallbackHandler(accountRepo auth_models.AccountRepository, sessi
 
 func getSession(account auth_models.Account, user goth.User, ua useragent.UserAgent, sessionRepo auth_models.SessionRepository) auth_models.Session {
 	sessionHash := getHash(account, ua)
-	existingSession, err := sessionRepo.GetByHash(sessionHash)
-	var session auth_models.Session
-	if err != nil {
-		session = auth_models.NewSession(account.Id, ua.String, sessionHash, user.AvatarURL, user.Name)
-		fmt.Println("CREATED SESSION", session)
+	session, sessionNotFound := sessionRepo.GetByHash(sessionHash)
+
+	if sessionNotFound != nil {
+		session = auth_models.NewSession(account.Id, ua.String, sessionHash, user.AvatarURL, user.Name, user.Email)
 		sessionRepo.Create(session)
 	} else {
-		session = existingSession
 		session.SetLastUsedNow()
-		session.AvatarUrl = user.AvatarURL
-		session.Name = user.Name
 		sessionRepo.Update(session)
 	}
 	return session
@@ -62,26 +55,25 @@ func getHash(account auth_models.Account, ua useragent.UserAgent) string {
 	return fmt.Sprint(hash.Sum64())
 }
 
-func getAccount(accountRepo auth_models.AccountRepository, user goth.User) (auth_models.Account, bool) {
-	existingAccount, err := accountRepo.GetByProviderId(user.Provider, user.UserID)
-	newAccount := err != nil
+func getAccount(accountRepo auth_models.AccountRepository, user goth.User) auth_models.Account {
+	account, accountNotFound := accountRepo.GetByProviderId(user.Provider, user.UserID)
 
-	var account auth_models.Account
-	if newAccount {
+	if accountNotFound != nil {
 		account = auth_models.NewAccount(user.Email, user.Provider, user.UserID)
 		accountRepo.Create(account)
-	} else {
-		account = existingAccount
 	}
-	return account, newAccount
+	return account
 }
 
-func CreateOAuthLoginHandler() func(w http.ResponseWriter, r *http.Request) {
+func CreateOAuthLoginHandler(accountRepo auth_models.AccountRepository, sessionRepo auth_models.SessionRepository) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		// try to get the user without re-authenticating
 		if user, err := gothic.CompleteUserAuth(w, r); err == nil {
-			auth_infra.SetAuthCookie(w, r, auth_infra.CookieData{Id: user.UserID})
-			w.Header().Set("Location", "/explore")
+			ua := useragent.Parse(r.UserAgent())
+			account := getAccount(accountRepo, user)
+			session := getSession(account, user, ua, sessionRepo)
+			auth_infra.SetAuthCookie(w, r, auth_infra.CookieData{Id: session.Id})
+			w.Header().Set("Location", "/feed")
 			w.WriteHeader(http.StatusTemporaryRedirect)
 		} else {
 			gothic.BeginAuthHandler(w, r)

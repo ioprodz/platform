@@ -1,6 +1,7 @@
 package members_studio
 
 import (
+	"ioprodz/common/policies"
 	"ioprodz/common/ui"
 	members_models "ioprodz/members/_models"
 	"net/http"
@@ -13,7 +14,17 @@ type PageData struct {
 func CreateGetHandler(repo members_models.MembersRepository) func(w http.ResponseWriter, r *http.Request) {
 
 	return func(w http.ResponseWriter, r *http.Request) {
-		member, _ := repo.Get("member-id")
+		user := r.Context().Value(policies.CurrentUserCtxKey).(policies.CurrentUser)
+		member, memberNotFound := repo.Get(user.Id)
+		if memberNotFound != nil {
+			member = members_models.Member{
+				Id:        user.Id,
+				Name:      user.Name,
+				Email:     user.Email,
+				AvatarUrl: user.AvatarUrl,
+			}
+			repo.Create(member)
+		}
 		ui.RenderPage(w, r, "members/studio/profile", member)
 	}
 }
@@ -21,8 +32,11 @@ func CreateGetHandler(repo members_models.MembersRepository) func(w http.Respons
 func CreateSaveProfileHandler(repo members_models.MembersRepository) func(w http.ResponseWriter, r *http.Request) {
 
 	return func(w http.ResponseWriter, r *http.Request) {
-
-		member, _ := repo.Get("member-id")
+		user := r.Context().Value(policies.CurrentUserCtxKey).(policies.CurrentUser)
+		member, memberNotFound := repo.Get(user.Id)
+		if memberNotFound != nil {
+			w.Write([]byte("nok"))
+		}
 
 		err := r.ParseForm()
 		if err != nil {

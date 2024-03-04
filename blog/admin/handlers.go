@@ -43,7 +43,11 @@ func CreateReviewHandler(repo blog_models.BlogRepository) func(w http.ResponseWr
 		}
 
 		user := r.Context().Value(policies.CurrentUserCtxKey).(policies.CurrentUser)
-		blog.AddEditor(blog_models.Editor(user))
+		blog.AddEditor(blog_models.Editor{
+			Id:        user.Id,
+			Name:      user.Name,
+			AvatarUrl: user.AvatarUrl,
+		})
 		blog.SetAsReviewed()
 		repo.Update(blog)
 		w.Write([]byte("ok"))
@@ -61,7 +65,11 @@ func CreatePublishHandler(repo blog_models.BlogRepository) func(w http.ResponseW
 		}
 
 		user := r.Context().Value(policies.CurrentUserCtxKey).(policies.CurrentUser)
-		blog.AddEditor(blog_models.Editor(user))
+		blog.AddEditor(blog_models.Editor{
+			Id:        user.Id,
+			Name:      user.Name,
+			AvatarUrl: user.AvatarUrl,
+		})
 
 		blog.SetAsPublished()
 
