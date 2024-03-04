@@ -29,6 +29,17 @@ func (repo *BlogMemoryRepository) Delete(id string) error {
 	return repo.base.Delete(id)
 }
 
+func (repo *BlogMemoryRepository) ListPublished() ([]blog_models.Blog, error) {
+	list := []blog_models.Blog{}
+	allPosts, _ := repo.List()
+	for _, post := range allPosts {
+		if post.IsPublished() {
+			list = append(list, post)
+		}
+	}
+	return list, nil
+}
+
 func CreateMemoryBlogRepo() *BlogMemoryRepository {
 	repo := &BlogMemoryRepository{base: *db.CreateMemoryRepo[blog_models.Blog]()}
 	repo.seed()

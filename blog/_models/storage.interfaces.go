@@ -4,4 +4,5 @@ import "ioprodz/common/policies"
 
 type BlogRepository interface {
 	policies.BaseRepository[Blog]
+	ListPublished() ([]Blog, error)
 }

@@ -36,6 +36,36 @@ func CreateEditPageHandler(repo blog_models.BlogRepository) func(w http.Response
 	}
 }
 
+func CreateReviewHandler(repo blog_models.BlogRepository) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		vars := mux.Vars(r)
+		blogId := vars["id"]
+		blog, err := repo.Get(blogId)
+		if err != nil {
+			ui.Render404(w, r)
+			return
+		}
+		blog.SetAsReviewed()
+		repo.Update(blog)
+		w.Write([]byte("ok"))
+	}
+}
+
+func CreatePublishHandler(repo blog_models.BlogRepository) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		vars := mux.Vars(r)
+		blogId := vars["id"]
+		blog, err := repo.Get(blogId)
+		if err != nil {
+			ui.Render404(w, r)
+			return
+		}
+		blog.SetAsPublished()
+		repo.Update(blog)
+		w.Write([]byte("ok"))
+	}
+}
+
 func CreateCreatePageHandler(repo blog_models.BlogRepository) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		existingPostId := r.URL.Query().Get("postId")

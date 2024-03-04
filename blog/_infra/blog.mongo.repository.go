@@ -29,6 +29,17 @@ func (b *BlogMongoRepository) Delete(id string) error {
 	return b.base.Delete(id)
 }
 
+func (repo *BlogMongoRepository) ListPublished() ([]blog_models.Blog, error) {
+	list := []blog_models.Blog{}
+	allPosts, _ := repo.List()
+	for _, post := range allPosts {
+		if post.IsPublished() {
+			list = append(list, post)
+		}
+	}
+	return list, nil
+}
+
 func CreateMongoBlogRepo() *BlogMongoRepository {
 
 	repo := &BlogMongoRepository{base: *db.CreateMongoRepo[blog_models.Blog]("blogposts")}

@@ -23,7 +23,28 @@
             <div class="flex items-center">
               <div class="flex items-center gap-2">
                 <div class="font-semibold uppercase">{{ .Title }}</div>
-                <span class="flex h-2 w-2 rounded-full bg-green-600"></span>
+                <span class="flex items-center text-xs">
+                  {{ if .IsReviewed }}
+                  <span
+                    class="flex h-2 w-2 rounded-full bg-green-600 mr-1"
+                  ></span>
+                  Reviewed {{ else }}
+                  <span
+                    class="flex h-2 w-2 rounded-full bg-gray-600 mr-1"
+                  ></span>
+                  Not Reviewed {{ end }}
+                </span>
+                <span class="flex items-center text-xs">
+                  {{ if .IsPublished }}
+                  <span
+                    class="flex h-2 w-2 rounded-full bg-green-600 mr-1"
+                  ></span>
+                  Published {{ else }}
+                  <span
+                    class="flex h-2 w-2 rounded-full bg-gray-600 mr-1"
+                  ></span>
+                  Not Published {{ end }}
+                </span>
               </div>
               <div class="ml-auto text-xs text-foreground">
                 about 1 year ago

@@ -32,6 +32,22 @@ func (b *Blog) SetContent(body string, related []RelatedPosts) {
 	b.RelatedPosts = related
 }
 
+func (b *Blog) SetAsReviewed() {
+	b.Reviewed = true
+}
+
+func (b *Blog) IsReviewed() bool {
+	return b.Reviewed
+}
+
+func (b *Blog) SetAsPublished() {
+	b.PublishedAt = time.Now().Format(time.RFC3339)
+}
+
+func (b *Blog) IsPublished() bool {
+	return b.PublishedAt != ""
+}
+
 func BlogFromJSON(jsonData []byte) Blog {
 	var blog Blog
 	if err := json.Unmarshal(jsonData, &blog); err != nil {
