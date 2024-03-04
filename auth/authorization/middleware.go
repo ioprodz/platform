@@ -52,9 +52,10 @@ func CreateRequestAuthorization(sessionRepo auth_models.SessionRepository) func(
 			session, sessionError := sessionRepo.Get(cookie.Id)
 			ctx := context.WithValue(r.Context(), policies.CurrentUserCtxKey, policies.CurrentUser{
 				Id:        session.AccountId,
+				SessionId: session.Id,
 				Name:      session.Name,
-				AvatarUrl: session.AvatarUrl,
 				Email:     session.Email,
+				AvatarUrl: session.AvatarUrl,
 			})
 			autnenticated := sessionError == nil
 			isPublic := public.matchPath(r.URL.Path)

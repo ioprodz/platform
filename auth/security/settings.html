@@ -38,7 +38,7 @@
                   <label
                     class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                     for=":rdf:-form-item"
-                    >{{ .Title }}</label
+                    >{{ .Title }} {{ if .IsCurrent }} (Current) {{end}}</label
                   >
                   <p
                     id=":rdf:-form-item-description"
@@ -49,12 +49,21 @@
                   </p>
                 </div>
                 <div>
-                  <button
+                  {{ if .IsCurrent }}
+                  <a
                     class="inline-flex mr-2 items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow h-9 px-4 py-2"
+                    href="/logout"
+                  >
+                    Logout
+                  </a>
+                  {{ else }}
+                  <button
+                    class="inline-flex mr-2 bg-black text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow h-9 px-4 py-2"
                     hx-delete="/security/sessions/{{ .Id }}"
                   >
                     Disconnect
                   </button>
+                  {{ end }}
                 </div>
               </div>
               {{ end }}

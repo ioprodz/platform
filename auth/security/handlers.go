@@ -2,6 +2,7 @@ package auth_security
 
 import (
 	auth_models "ioprodz/auth/_models"
+	"ioprodz/common/policies"
 	"ioprodz/common/ui"
 	"net/http"
 	"time"
@@ -22,7 +23,8 @@ type SessionView struct {
 func CreateSecurityPageHandler(sessionRepo auth_models.SessionRepository) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 
-		sessions, _ := sessionRepo.List()
+		user := r.Context().Value(policies.CurrentUserCtxKey).(policies.CurrentUser)
+		sessions := sessionRepo.GetByAccountId(user.Id)
 
 		sessionViewList := []SessionView{}
 		for _, session := range sessions {
@@ -36,6 +38,7 @@ func CreateSecurityPageHandler(sessionRepo auth_models.SessionRepository) func(w
 				Title:     ua.Name + " on " + ua.Device + " " + ua.OS + "",
 				CreatedOn: timeago.English.Format(createdOn),
 				LastUsed:  timeago.English.Format(lastUsed),
+				IsCurrent: session.Id == user.SessionId,
 			})
 		}
 
