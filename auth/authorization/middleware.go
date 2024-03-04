@@ -1,8 +1,10 @@
 package auth_authorization
 
 import (
+	"context"
 	auth_infra "ioprodz/auth/_infra"
 	auth_models "ioprodz/auth/_models"
+	"ioprodz/common/policies"
 	"net/http"
 	"strings"
 )
@@ -47,8 +49,12 @@ func CreateRequestAuthorization(sessionRepo auth_models.SessionRepository) func(
 			}
 
 			cookie, _ := auth_infra.GetAuthCookie(w, r)
-			_, sessionError := sessionRepo.Get(cookie.Id)
-
+			session, sessionError := sessionRepo.Get(cookie.Id)
+			ctx := context.WithValue(r.Context(), policies.CurrentUserCtxKey, policies.CurrentUser{
+				Id:        session.AccountId,
+				Name:      session.Name,
+				AvatarUrl: session.AvatarUrl,
+			})
 			autnenticated := sessionError == nil
 			isPublic := public.matchPath(r.URL.Path)
 
@@ -58,7 +64,7 @@ func CreateRequestAuthorization(sessionRepo auth_models.SessionRepository) func(
 				return
 			}
 
-			next.ServeHTTP(w, r)
+			next.ServeHTTP(w, r.WithContext(ctx))
 		})
 	}
 

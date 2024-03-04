@@ -27,9 +27,7 @@ type AuthCookieError struct {
 	msg string
 }
 type CookieData struct {
-	Id        string
-	Email     string
-	AvatarUrl string
+	Id string
 }
 
 func (e *AuthCookieError) Error() string { return e.msg }
@@ -37,8 +35,6 @@ func (e *AuthCookieError) Error() string { return e.msg }
 func SetAuthCookie(w http.ResponseWriter, r *http.Request, data CookieData) error {
 	cookie, err := cookieStore.Get(r, cookieName)
 	cookie.Values["id"] = data.Id
-	cookie.Values["email"] = data.Email
-	cookie.Values["avatarUrl"] = data.AvatarUrl
 	cookie.Save(r, w)
 	return err
 }
@@ -52,19 +48,8 @@ func GetAuthCookie(w http.ResponseWriter, r *http.Request) (CookieData, error) {
 	if !ok {
 		return CookieData{}, &AuthCookieError{msg: "could not find userId on session"}
 	}
-	email, ok := cookie.Values["email"].(string)
-	if !ok {
-		return CookieData{}, &AuthCookieError{msg: "could not find userId on session"}
-	}
-	avatarUrl, ok := cookie.Values["avatarUrl"].(string)
-	if !ok {
-		return CookieData{}, &AuthCookieError{msg: "could not find userId on session"}
-	}
-
 	return CookieData{
-		Id:        id,
-		Email:     email,
-		AvatarUrl: avatarUrl,
+		Id: id,
 	}, nil
 }
 

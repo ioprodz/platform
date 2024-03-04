@@ -1,21 +1,21 @@
 package ui
 
 import (
-	auth_infra "ioprodz/auth/_infra"
+	"ioprodz/common/policies"
 	"net/http"
 	"text/template"
 )
 
 func RenderPage(w http.ResponseWriter, r *http.Request, tmpl string, data interface{}) {
 
-	user, err := auth_infra.GetAuthCookie(w, r)
-	isAuthenticated := err == nil
+	user := r.Context().Value(policies.CurrentUserCtxKey).(policies.CurrentUser)
+
 	tpl, err := template.ParseFiles("common/ui/layout.html", "common/ui/header.html", "common/ui/footer.html", tmpl+".html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	err = tpl.ExecuteTemplate(w, "layout", map[string]interface{}{"contentData": data, "isAuthenticated": isAuthenticated, "user": user})
+	err = tpl.ExecuteTemplate(w, "layout", map[string]interface{}{"contentData": data, "isAuthenticated": user.IsAuthenticated(), "user": user})
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -24,15 +24,15 @@ func RenderPage(w http.ResponseWriter, r *http.Request, tmpl string, data interf
 
 func RenderAdminPage(w http.ResponseWriter, r *http.Request, tmpl string, data interface{}) {
 
-	user, err := auth_infra.GetAuthCookie(w, r)
-	isAuthenticated := err == nil
+	user := r.Context().Value(policies.CurrentUserCtxKey).(policies.CurrentUser)
+
 	tpl, err := template.ParseFiles("common/ui/layout.html", "common/ui/header.html", "common/ui/footer.html", "common/ui/admin-layout.html", tmpl+".html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	err = tpl.ExecuteTemplate(w, "layout", map[string]interface{}{"contentData": data, "isAuthenticated": isAuthenticated, "layout": "admin", "user": user})
+	err = tpl.ExecuteTemplate(w, "layout", map[string]interface{}{"contentData": data, "isAuthenticated": user.IsAuthenticated(), "layout": "admin", "user": user})
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return

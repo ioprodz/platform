@@ -24,8 +24,8 @@ func CreateOAuthCallbackHandler(accountRepo auth_models.AccountRepository, sessi
 		}
 
 		account, isNewAccount := getAccount(accountRepo, user)
-		session := getSession(account, ua, sessionRepo)
-		auth_infra.SetAuthCookie(w, r, auth_infra.CookieData{Id: session.Id, Email: account.Email, AvatarUrl: user.AvatarURL})
+		session := getSession(account, user, ua, sessionRepo)
+		auth_infra.SetAuthCookie(w, r, auth_infra.CookieData{Id: session.Id})
 
 		if isNewAccount {
 			w.Header().Set("Location", "/profile")
@@ -37,17 +37,19 @@ func CreateOAuthCallbackHandler(accountRepo auth_models.AccountRepository, sessi
 	}
 }
 
-func getSession(account auth_models.Account, ua useragent.UserAgent, sessionRepo auth_models.SessionRepository) auth_models.Session {
+func getSession(account auth_models.Account, user goth.User, ua useragent.UserAgent, sessionRepo auth_models.SessionRepository) auth_models.Session {
 	sessionHash := getHash(account, ua)
 	existingSession, err := sessionRepo.GetByHash(sessionHash)
 	var session auth_models.Session
 	if err != nil {
-		session = auth_models.NewSession(account.Id, ua.String, sessionHash)
+		session = auth_models.NewSession(account.Id, ua.String, sessionHash, user.AvatarURL, user.Name)
 		fmt.Println("CREATED SESSION", session)
 		sessionRepo.Create(session)
 	} else {
 		session = existingSession
 		session.SetLastUsedNow()
+		session.AvatarUrl = user.AvatarURL
+		session.Name = user.Name
 		sessionRepo.Update(session)
 	}
 	return session
@@ -78,7 +80,7 @@ func CreateOAuthLoginHandler() func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		// try to get the user without re-authenticating
 		if user, err := gothic.CompleteUserAuth(w, r); err == nil {
-			auth_infra.SetAuthCookie(w, r, auth_infra.CookieData{Id: user.UserID, Email: user.Email, AvatarUrl: user.AvatarURL})
+			auth_infra.SetAuthCookie(w, r, auth_infra.CookieData{Id: user.UserID})
 			w.Header().Set("Location", "/explore")
 			w.WriteHeader(http.StatusTemporaryRedirect)
 		} else {
