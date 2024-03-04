@@ -1,14 +1,53 @@
 {{ define "content" }}
 <section class="pt-32 text-white">
   <div
-    class="m-auto space-y-8 px-4 text-gray-600 sm:px-12 xl:max-w-6xl xl:px-0"
+    class="m-auto space-y-8 px-4 text-gray-600 sm:px-12 xl:max-w-6xl xl:px-0 h-min-300 pb-96"
   >
     <h1 class="text-2xl font-bold">Blog</h1>
 
     <ul>
       {{ range . }}
-      <li>
-        <a href="/blog/{{ .Id }}"> {{ .Title }} </a>
+      <li class="mb-2">
+        <a
+          href="/blog/{{ .Id }}"
+          class="flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent bg-muted"
+        >
+          <div class="flex w-full flex-col gap-1">
+            <div class="flex items-center">
+              <div class="flex items-center gap-2">
+                <div class="font-semibold uppercase">{{ .Title }}</div>
+              </div>
+            </div>
+            <div class="flex items-center text-xs font-medium">
+              Edited by {{ range .Editors }}
+              <span class="flex items-center p-1 rounded mx-1">
+                <img
+                  class="w-5 rounded-full mr-1"
+                  src="{{ .AvatarUrl }}"
+                  alt=""
+                />
+                <span>{{ .Name }}</span>
+              </span>
+              {{ end }}
+              <span class="flex items-center p-1 font-serif"
+                >{{ .PublishedAtHumanReadable }} ({{ .ReadingTime }} minutes
+                read)
+              </span>
+            </div>
+          </div>
+          <div class="line-clamp-2 text-xs text-muted-foreground">
+            {{ .Abstract }}
+          </div>
+          <div class="flex items-center gap-2">
+            {{ range .Keywords }}
+            <div
+              class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80"
+            >
+              #{{.}}
+            </div>
+            {{ end }}
+          </div>
+        </a>
       </li>
       {{ end }}
     </ul>

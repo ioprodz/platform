@@ -5,16 +5,12 @@ import (
 	"fmt"
 	blog_models "ioprodz/blog/_models"
 	"ioprodz/common/clients/openaiClient"
+	"ioprodz/common/policies"
 	"ioprodz/common/ui"
 	"net/http"
 
 	"github.com/gorilla/mux"
 )
-
-type AIBlogPost struct {
-	Content          string
-	RelatedBlogPosts []string
-}
 
 func CreateListPageHandler(repo blog_models.BlogRepository) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -45,6 +41,9 @@ func CreateReviewHandler(repo blog_models.BlogRepository) func(w http.ResponseWr
 			ui.Render404(w, r)
 			return
 		}
+
+		user := r.Context().Value(policies.CurrentUserCtxKey).(policies.CurrentUser)
+		blog.AddEditor(blog_models.Editor(user))
 		blog.SetAsReviewed()
 		repo.Update(blog)
 		w.Write([]byte("ok"))
@@ -60,7 +59,12 @@ func CreatePublishHandler(repo blog_models.BlogRepository) func(w http.ResponseW
 			ui.Render404(w, r)
 			return
 		}
+
+		user := r.Context().Value(policies.CurrentUserCtxKey).(policies.CurrentUser)
+		blog.AddEditor(blog_models.Editor(user))
+
 		blog.SetAsPublished()
+
 		repo.Update(blog)
 		w.Write([]byte("ok"))
 	}
@@ -82,10 +86,16 @@ func CreateCreatePageHandler(repo blog_models.BlogRepository) func(w http.Respon
 	}
 }
 
+type AIBlogPost struct {
+	Content          string
+	Abstract         string
+	RelatedBlogPosts []string
+	Keywords         []string
+	ReadingTime      int8
+}
+
 func CreateCreateBlogHandler(repo blog_models.BlogRepository) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-
-		// ensure a blog post in db
 		err := r.ParseForm()
 		if err != nil {
 			http.Error(w, "Failed to parse form data", http.StatusBadRequest)
@@ -103,25 +113,34 @@ func CreateCreateBlogHandler(repo blog_models.BlogRepository) func(w http.Respon
 			blog = existingBlog
 
 		} else {
-			blog = *blog_models.NewBlog(title, "", []blog_models.RelatedPosts{})
+			blog = *blog_models.NewBlog(title, "", []blog_models.RelatedPost{})
 		}
 
 		// directives
 		paragraphCount := r.Form.Get("paragraphCount")
-
-		guidelines := paragraphCount + " short paragraphs"
+		guidelines := "# Guidelines\n"
+		guidelines += "- be practical and cite concrete examples\n"
+		guidelines += "- don't repeat the title in the content\n"
+		guidelines += "- " + paragraphCount + " short paragraphs\n"
 		if r.Form.Get("useEmojis") == "active" {
-			guidelines += ", use emojis"
+			guidelines += "- use emojis\n"
 		}
 		if r.Form.Get("useMarkdown") == "active" {
-			guidelines += ", use markdown"
+			guidelines += "- use markdown\n"
 		}
 		if r.Form.Get("useMermaid") == "active" {
-			guidelines += ", use mermaid"
+			guidelines += "- use mermaid\n"
 		}
 
-		prompt := "you are going to write the content (" + guidelines + ") of a blog post that has the title '" + title + "' as well as 3 post titles that are related to subject"
-		outputFormat := "{content: string,relatedBlogPosts: string[]}"
+		guidelines += ", use mermaid"
+		command := "Command: \n"
+		command += "- write the content of a blog post that has the title '" + title + "'\n"
+		command += "- an abstract that is apealing to open the post \n"
+		command += "- 3 related post titles \n"
+		command += "- 5 keywords\n"
+		command += "- approximative time to read it (minutes)\n"
+		prompt := command + "(" + guidelines + ")"
+		outputFormat := "{content: string, abstract:string, relatedBlogPosts: string[], keywords:string[], readingTime:number}"
 
 		aiResponse, err := openaiClient.JsonPrompt(prompt, outputFormat)
 		if err != nil {
@@ -132,18 +151,18 @@ func CreateCreateBlogHandler(repo blog_models.BlogRepository) func(w http.Respon
 			fmt.Println("Error parsing json from ai response", err)
 		}
 
-		related := make([]blog_models.RelatedPosts, len(aiBlog.RelatedBlogPosts))
+		related := make([]blog_models.RelatedPost, len(aiBlog.RelatedBlogPosts))
 		for index, relatedTitle := range aiBlog.RelatedBlogPosts {
-			relatedBlogPost := blog_models.NewBlog(relatedTitle, "", []blog_models.RelatedPosts{})
+			relatedBlogPost := blog_models.NewBlog(relatedTitle, "", []blog_models.RelatedPost{})
 			repo.Create(*relatedBlogPost)
-			related[index] = blog_models.RelatedPosts{
+			related[index] = blog_models.RelatedPost{
 				Id: relatedBlogPost.Id, Title: relatedBlogPost.Title}
 		}
 
 		blog.SetContent(aiBlog.Content, related)
-
-		blgStr, _ := json.Marshal(blog)
-		fmt.Println("BLOOG", string(blgStr))
+		blog.Keywords = aiBlog.Keywords
+		blog.ReadingTime = aiBlog.ReadingTime
+		blog.Abstract = aiBlog.Abstract
 
 		if existingPostId != "" {
 			repo.Update(blog)
