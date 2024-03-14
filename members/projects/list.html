@@ -1,0 +1,106 @@
+{{ define "content" }}
+<div class="px-4 sm:px-12 xl:max-w-6xl xl:px-0 m-auto pt-24">
+  <div class="hidden space-y-6 p-10 pb-16 md:block">
+    <div class="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
+      <aside class="-mx-4 lg:w-1/5">
+        <nav class="flex space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1">
+          <a
+            class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 px-4 py-2 hover:bg-transparent hover:underline justify-start"
+            href="/profile"
+            >Profile</a
+          ><a
+            class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 px-4 py-2 hover:bg-transparent hover:underline justify-start"
+            href="/cvs"
+            >Curriculums</a
+          ><a
+            class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 px-4 py-2 bg-gray-300 hover:bg-muted justify-start"
+            href="/projects"
+            >Projects</a
+          ><a
+            class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 px-4 py-2 hover:bg-transparent hover:underline justify-start"
+            href="/security"
+            >Security</a
+          >
+        </nav>
+      </aside>
+      <div class="flex-1 lg:max-w-2xl">
+        <div class="space-y-6">
+          <div class="flex flex-col">
+            <div class="flex-1 pr-2">
+              <h3 class="text-lg font-medium">Projects</h3>
+              <p class="text-sm text-muted-foreground">
+                List of the projects that you are working on and want to apear
+                on your profile.
+              </p>
+            </div>
+            <div>
+              <form
+                id="myForm"
+                hx-post="/projects"
+                hx-trigger="submit"
+                hx-target="#insertPoint"
+              >
+                <label for="title">Title</label>
+                <input
+                  class="flex h-9 w-full mr-1 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                  type="text"
+                  name="title"
+                />
+                <label for="description">Description</label>
+                <input
+                  class="flex h-9 w-full mr-1 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                  type="text"
+                  name="description"
+                />
+                <label for="description">Link</label>
+                <input
+                  class="flex h-9 w-full mr-1 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                  type="text"
+                  name="description"
+                />
+                <button
+                  class="inline-flex bg-black text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
+                >
+                  Add
+                </button>
+              </form>
+              <ul>
+                <div id="insertPoint"></div>
+                {{ range . }}
+                <li class="border rounded p-1">
+                  Project Name: {{ .Title }} <br />
+                  Description: {{ .Description }}
+
+                  <button
+                    class="inline-flex mr-2 bg-black text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow h-9 px-4 py-2"
+                    hx-delete="/projects/{{ .Id }}"
+                  >
+                    Delete
+                  </button>
+                </li>
+                {{ end }}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  const form = document.getElementById("myForm");
+  form.addEventListener("htmx:afterRequest", function (event) {
+    let button = document.getElementById("submit_button");
+    button.innerText = "Added";
+    setTimeout(() => {
+      button.innerText = "Add";
+      button.disabled = false;
+    }, 1000);
+  });
+  form.addEventListener("htmx:beforeRequest", function (event) {
+    let button = document.getElementById("submit_button");
+    button.innerHTML = "Saving...";
+    button.disabled = true;
+  });
+</script>
+{{ end }}

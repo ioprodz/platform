@@ -14,3 +14,13 @@ func CreateMembersRepository() members_models.MembersRepository {
 		return CreateMongoMemberRepo()
 	}
 }
+
+func CreateUserProjectRepository() members_models.UserProjectRepository {
+	isTest := config.Load().ENVIRONMENT == "test"
+
+	if isTest {
+		return CreateMemoryUserProjectRepo()
+	} else {
+		return CreateMongoUserProjectRepo()
+	}
+}

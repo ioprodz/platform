@@ -32,22 +32,22 @@ func (b *MemberMemoryRepository) Delete(id string) error {
 func CreateMemoryMemberRepo() *MemberMemoryRepository {
 
 	repo := &MemberMemoryRepository{base: *db.CreateMemoryRepo[members_models.Member]()}
-	repo.seed()
+	//repo.seed()
 	return repo
 }
 
-func (repo *MemberMemoryRepository) seed() {
+// func (repo *MemberMemoryRepository) seed() {
 
-	repo.Create(members_models.MemberFromJSON([]byte(`{
-		"id":"member-id",
-		"email":"osminosm@gmail.com",
-		"name":"Osmane Kalache",
-		"bio":"I love computers",
-		"avatarUrl":"https://avatars.githubusercontent.com/u/7093627?v=4",
-		"accounts":[],
-		"links":[
-			{ "name":"github", "url":"https://github.com/osminosm" },
-			{ "name":"linkedin", "url":"https://linkedin.com/osminosm" }
-		]
-	}`)))
-}
+// 	repo.Create(members_models.MemberFromJSON([]byte(`{
+// 		"id":"member-id",
+// 		"email":"osminosm@gmail.com",
+// 		"name":"Osmane Kalache",
+// 		"bio":"I love computers",
+// 		"avatarUrl":"https://avatars.githubusercontent.com/u/7093627?v=4",
+// 		"accounts":[],
+// 		"links":[
+// 			{ "name":"github", "url":"https://github.com/osminosm" },
+// 			{ "name":"linkedin", "url":"https://linkedin.com/osminosm" }
+// 		]
+// 	}`)))
+// }

@@ -25,7 +25,6 @@ func CreateOAuthCallbackHandler(accountRepo auth_models.AccountRepository, sessi
 		account := getAccount(accountRepo, user)
 		session := getSession(account, user, ua, sessionRepo)
 
-		fmt.Println("SESSSION", session)
 		auth_infra.SetAuthCookie(w, r, auth_infra.CookieData{Id: session.Id})
 
 		w.Header().Set("Location", "/feed")
