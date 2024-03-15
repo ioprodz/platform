@@ -1,5 +1,11 @@
 {{ define "content" }}
 <section class="pt-32 text-white">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"
+  />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.min.js"></script>
   <style>
     #blogPostContent h1 {
       font-weight: bold;
@@ -50,5 +56,13 @@
 <script>
   const el = document.getElementById("blogPostContent");
   el.innerHTML = marked.parse(el.innerHTML);
+  hljs.highlightAll();
+  document.readyState;
+  const test = document.querySelector("code.language-mermaid");
+  test.innerHTML = test.innerHTML.toString().replaceAll("&amp;gt;", ">");
+  mermaid.initialize({ startOnLoad: false });
+  mermaid.run({
+    querySelector: "code.language-mermaid",
+  });
 </script>
 {{ end }}
