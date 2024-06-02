@@ -1,5 +1,7 @@
 # IOProdz
 
+requirements: [Golang](https://go.dev/dl/)
+
 ### 🦺 install dev tools
 
 ```

@@ -1,1 +1,1 @@
-go install github.com/pilu/fresh          
+go install github.com/zzwx/fresh@latest      
