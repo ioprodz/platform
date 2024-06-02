@@ -1,6 +1,6 @@
 # IOProdz
 
-requirements: [Golang](https://go.dev/dl/)
+requirements: [Golang](https://go.dev/dl/), [Make](https://www.gnu.org/software/make/)
 
 ### 🦺 install dev tools
 
@@ -18,12 +18,14 @@ cp .env.example .env
 ### 👷🏽 run for dev
 
 ```
-fresh
+make dev
+// or run tests
+make test
 ```
 
 ### 🏗️ build and 🚜 run for prod
 
 ```
-go build && ./ioprodz
+make build && ./ioprodz
 
 ```
