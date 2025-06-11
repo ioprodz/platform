@@ -3,7 +3,7 @@ package openaiClient
 import (
 	"encoding/json"
 	"fmt"
-	"ioprodz/common/clients/httpClient"
+	"ioprodz/common/clients/httpClients"
 )
 
 type JsonPromptChoiceMessage struct {
@@ -18,8 +18,8 @@ type JsonPromptResponse struct {
 }
 
 func JsonPrompt(input string, jsonReponseFormat string) (string, error) {
-	response, err := httpClient.Post("https://api.openai.com/v1/chat/completions", map[string]interface{}{
-		"model":           "gpt-4-turbo-preview",
+	response, err := httpClients.Post("https://api.openai.com/v1/chat/completions", map[string]interface{}{
+		"model":           "gpt-4o",
 		"response_format": map[string]string{"type": "json_object"},
 		"messages":        []map[string]string{{"role": "user", "content": input + " in json format: " + jsonReponseFormat}},
 		"temperature":     0.7,
