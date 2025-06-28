@@ -23,6 +23,11 @@ func main() {
 
 	// Hook global middlewares
 	router.Use(middlewares.RequestLogger)
+	
+	// Serve favicon static files
+	router.PathPrefix("/favicon/").Handler(http.StripPrefix("/favicon/", 
+		http.FileServer(http.Dir("common/ui/favicon/"))))
+	
 	// Configure module routers
 	auth.ConfigureModule(router)
 	home.ConfigureModule(router)
