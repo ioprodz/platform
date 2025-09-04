@@ -16,6 +16,7 @@ var public Paths = Paths{
 	"/auth/github",
 	"/auth/google",
 	"/blog",
+	"/static",
 }
 
 var authCallback Paths = Paths{

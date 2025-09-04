@@ -21,20 +21,23 @@ func main() {
 	router := mux.NewRouter()
 	//db.NewMongoConnection()
 
+	// Create static subrouter with strict matching
+	staticRouter := router.PathPrefix("/static").Subrouter()
+	staticRouter.PathPrefix("/favicon/").Handler(http.StripPrefix("/static/favicon/", http.FileServer(http.Dir("common/ui/favicon/"))))
+	staticRouter.PathPrefix("/cv-osmane-kalache/").Handler(http.StripPrefix("/static/cv-osmane-kalache/", http.FileServer(http.Dir("cv_osm/"))))
+
 	// Hook global middlewares
 	router.Use(middlewares.RequestLogger)
-	
-	// Serve favicon static files
-	router.PathPrefix("/favicon/").Handler(http.StripPrefix("/favicon/", 
-		http.FileServer(http.Dir("common/ui/favicon/"))))
-	
-	// Configure module routers
+
+	// Configure module routers (specific routes first)
 	auth.ConfigureModule(router)
-	home.ConfigureModule(router)
 	members.ConfigureModule(router)
 	qna.ConfigureModule(router)
 	blog.ConfigureModule(router)
 	cv.ConfigureModule(router)
+
+	// Configure home module last (has catch-all "/" route)
+	home.ConfigureModule(router)
 
 	// Mount routes to the HTTP server
 	http.Handle("/", router)

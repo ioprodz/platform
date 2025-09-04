@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osmane Kalache - CV</title>
+    <style>
+        @media print {
+            body { margin: 0; }
+            /* .page-break { page-break-before: always; } */
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.4;
+            color: #333;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #4a90e2;
+        }
+        
+        .header-left h1 {
+            font-size: 32px;
+            color: #4a90e2;
+            margin: 0 0 5px 0;
+            font-weight: 700;
+        }
+        
+        .header-left .title {
+            font-size: 18px;
+            color: #666;
+            margin: 0 0 10px 0;
+            font-weight: 500;
+        }
+        
+        .header-left .experience {
+            font-size: 16px;
+            color: #4a90e2;
+            font-weight: 600;
+            margin: 5px 0;
+        }
+        
+        .contact-info {
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .contact-info div {
+            margin: 3px 0;
+        }
+        
+        .header-right {
+            width: 120px;
+            height: 210px;
+            
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 12px;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            background: #4a90e2;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0 0 15px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .education-item, .job {
+            margin-bottom: 20px;
+        }
+        
+        .education-date {
+            color: #4a90e2;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .education-degree {
+            font-weight: 600;
+            font-size: 15px;
+            margin: 2px 0;
+        }
+        
+        .education-school {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 15px;
+            align-items: start;
+        }
+        
+        .skill-category {
+            font-weight: 600;
+            color: #4a90e2;
+            font-size: 14px;
+        }
+        
+        .skill-list {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .functional-skills {
+            column-count: 1;
+        }
+        
+        .functional-skills li {
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+        
+        .job-header {
+            background: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #4a90e2;
+            margin-bottom: 10px;
+        }
+        
+        .job-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin: 0;
+        }
+        
+        .company-duration {
+            font-size: 13px;
+            color: #666;
+            margin: 3px 0;
+        }
+        
+        .team-info {
+            font-size: 13px;
+            color: #555;
+            margin: 3px 0;
+        }
+        
+        .project-info {
+            font-size: 13px;
+            color: #4a90e2;
+            margin: 3px 0;
+        }
+        
+        .job-objective {
+            margin: 15px 0;
+        }
+        
+        .job-objective h4 {
+            color: #4a90e2;
+            font-size: 14px;
+            margin: 0 0 8px 0;
+        }
+        
+        .job-actions {
+            margin: 15px 0;
+        }
+        
+        .job-actions h4 {
+            color: #4a90e2;
+            font-size: 14px;
+            margin: 0 0 8px 0;
+        }
+        
+        .job-actions ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+        
+        .job-actions li {
+            margin-bottom: 5px;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        
+        .tech-env {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        
+        .tech-env h4 {
+            color: #4a90e2;
+            font-size: 14px;
+            margin: 0 0 8px 0;
+        }
+        
+        .tech-env p {
+            margin: 5px 0;
+            font-size: 13px;
+        }
+        
+        .tech-env strong {
+            color: #333;
+        }
+        
+        .freelance-project {
+            background: #f9f9f9;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 3px solid #4a90e2;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .project-title {
+            font-weight: 600;
+            color: #333;
+            margin: 0 0 5px 0;
+        }
+        
+        .client-duration {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1 -->
+    <div class="header">
+        <div class="header-left">
+            <h1>Osmane Kalache</h1>
+            <div class="title">Ingénieur logiciel / Leadership Technique</div>
+            <div class="experience">15 ans d'expérience</div>
+            <div class="contact-info">
+                <div>+33 6 66 52 88 84</div>
+                <div>osminosm@gmail.com</div>
+                <div>161 rue de Javel 75015, Paris</div>
+            </div>
+        </div>
+        <div class="header-right">
+            <img src="IMG_5310sm.png" width="170">
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Formations et Diplômes</h2>
+        
+        <div class="education-item">
+            <div class="education-date">Sept. 2015</div>
+            <div class="education-degree">Diplôme de master en Systèmes Intelligents et Communicants</div>
+            <div class="education-school">Université de Médéa</div>
+        </div>
+
+        <div class="education-item">
+            <div class="education-date">Juil. 2010</div>
+            <div class="education-degree">Diplôme de licence en Systèmes d'information et Intelligence Artificielle</div>
+            <div class="education-school">Université de Médéa</div>
+        </div>
+
+        <div class="education-item">
+            <div class="education-date">Juin 2007</div>
+            <div class="education-degree">Baccalauréat Sciences Naturelles</div>
+            <div class="education-school">Lycée Ahmed Ouroua Médéa</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Compétences Techniques</h2>
+        
+        <div class="skills-grid">
+            <div class="skill-category">Langages de programmation</div>
+            <div class="skill-list">Javascript/TypeScript, PHP, SQL, C#, Go, JAVA</div>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-category">Bases de données</div>
+            <div class="skill-list">MySQL, PostgreSQL, MongoDB, MSSql</div>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-category">Méthodologies, Outils et techniques</div>
+            <div class="skill-list">Agile, Scrum<br>
+            Gitlab, Git, VSTS, Jenkins, Linux, SSH, REST, OAuth, JWT, NodeJS, Express, JWT, Joi, Mongoose, Sequelize, TDD, Jest / Mocha / Chai, babel, Webpack, npm/yarn, NginX, Traefik</div>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-category">Cloud</div>
+            <div class="skill-list">Azure, AWS, GCP, Heroku, Vercel, Railway, Coolify</div>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-category">Outils DevOps, CI-CD</div>
+            <div class="skill-list">Gitlab-ci, Jenkins, Docker, K8S, Terraform</div>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-category">Front-end</div>
+            <div class="skill-list">React, NextJS, Tailwind</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Compétences Fonctionnelles</h2>
+        <ul class="functional-skills">
+            <li>Analyse fonctionnelle et technique des besoins des clients</li>
+            <li>Rédaction des documents de spécifications techniques</li>
+            <li>Étude d'architectures et conception des solutions (DDD, Event Storming, Context Maps...)</li>
+            <li>Analyse et revue de code (Audit, Static Analysis)</li>
+            <li>Maîtrise pratique des méthodologies du développement Agile, Lean, XP, Shape UP</li>
+            <li>Feedback-driven, Apprentissage continue (PDCA, Kaisen, DORA)</li>
+            <li>Coordination d'une équipe de développement, Transfert de connaissances (Coaching)</li>
+            <li>Compétences en communication / résolution de conflits</li>
+            <li>Anglais courant</li>
+        </ul>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- Page 2 -->
+    <div class="section">
+        <h2 class="section-title">Expérience Professionnelle</h2>
+
+        <div class="job">
+            <div class="job-header">
+                <div class="job-title">Senior Lead Backend Engineer</div>
+                <div class="company-duration">INFINIT.com | 17 juin 2024 - 09 sept. 2025 - Durée : 1 an 3 mois</div>
+                <div class="team-info">Taille de l'équipe (20+) : 2 squads (Engineering Manager + PM + Designer + 3-4 fullstack devs)</div>
+                <div class="project-info">Projet : Automotive SaaS (App web/mobile + backoffice interne)</div>
+                <div class="project-info">Méthodologie : Agile, DDD</div>
+            </div>
+
+            <div class="job-objective">
+                <h4>Objectif</h4>
+                <p>Développement d'un système permettant aux marchands de véhicules d'occasion de sourcer du stock qualifié à partir des plateformes B2B, et d'obtenir du financement (crédit-line) tout en maîtrisant les risques de défaut de paiement, véhicules à haut risque...</p>
+            </div>
+
+            <div class="job-actions">
+                <h4>Actions réalisées</h4>
+                <ul>
+                    <li>Transition du processus de développement vers une approche AI-first (expérimentation, choix d'outils, prompt engineering)</li>
+                    <li>Interface avec les parties prenantes non techniques et assurer l'équilibre entre la livraison de valeur et la maintenance du code</li>
+                    <li>Concevoir et développer de nouvelles fonctionnalités dans de petites itérations publiables (spécifications fonctionnelles → spécifications techniques → codage → révision du code → tests → déploiement → monitoring)</li>
+                    <li>Augmenter la performance de l'équipe en s'appuyant sur des retours d'expérience et des expérimentations pragmatiques (DORA, mentoring, workflows, automatisation...)</li>
+                    <li>Maintenir une feuille de route technique (gérer la dette technologique, améliorer l'architecture / DX...)</li>
+                </ul>
+            </div>
+
+            <div class="tech-env">
+                <h4>Environnement technique</h4>
+                <p><strong>Plateforme :</strong> Fournisseurs Cloud : Azure</p>
+                <p><strong>Stack :</strong> NestJS, PostgreSQL, REST, EventBus, docker, React</p>
+                <p><strong>Tests :</strong> Jest, PlayWright, BDD (Gherkin)</p>
+                <p><strong>Outils :</strong> Github, Notion, Grafana</p>
+            </div>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <div class="job-title">Lead Software Engineer</div>
+                <div class="company-duration">MASTEOS.com | 17 janv. 2022 - 12 avr. 2024 - Durée : 2 ans 3 mois</div>
+                <div class="team-info">Taille de l'équipe (30+) : 4 team managers, 8 Product Managers, 12 développeurs Full-stack, ingénieurs UiUx</div>
+                <div class="project-info">Projet : Masteos (customers app), Helios (internal business tool)</div>
+                <div class="project-info">Méthodologie : Agile, DDD</div>
+            </div>
+
+            <div class="job-objective">
+                <h4>Objectif</h4>
+                <p>Piloter les activités d'ingénierie web, pour proposer des produits d'investissement immobilier haute fidélité (chasse immobilière, qualification, estimation des travaux de rénovation, suivi de transaction et gestion locative)</p>
+            </div>
+
+            <div class="job-actions">
+                <h4>Actions réalisées</h4>
+                <ul>
+                    <li>Conception d'un modèle financier pour le calcul détaillé de rentabilité et de valorisation des biens en fonction du type d'investissement (Pays, Statut juridique, Tension locative, évolution du marché...)</li>
+                    <li>Interface avec les parties prenantes non techniques et assurer l'équilibre entre la livraison de valeur et la maintenance du code</li>
+                    <li>Concevoir et développer de nouvelles fonctionnalités dans de petites itérations publiables (spécifications fonctionnelles → spécifications techniques → codage → révision du code → tests → déploiement → monitoring)</li>
+                    <li>Augmenter la performance de l'équipe en s'appuyant sur des retours d'expérience et des expérimentations pragmatiques (DORA, mentoring, workflows, automatisation...)</li>
+                    <li>Maintenir une feuille de route technique (gérer la dette technologique, améliorer l'architecture / DX...)</li>
+                </ul>
+            </div>
+
+            <div class="tech-env">
+                <h4>Environnement technique</h4>
+                <p><strong>Plateforme :</strong> Fournisseurs Cloud : AWS / GCP</p>
+                <p><strong>Stack :</strong> NestJS, Mongo(Atlas), GraphQL, docker, React Native Web, Storybook</p>
+                <p><strong>Tests :</strong> Jest, Supertest, PlayWright, BDD (Gherkin)</p>
+                <p><strong>Outils :</strong> Github, Notion, sonarcloud, DataDog, Sentry</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- Page 3 -->
+    <div class="section">
+        <div class="job">
+            <div class="job-header">
+                <div class="job-title">Team Lead Web UI</div>
+                <div class="company-duration">STREAMWIDE | 23 déc. 2020 – 7 janv. 2022 - Durée : 7 mois</div>
+                <div class="project-info">Projet : SmartMS</div>
+                <div class="project-info">Méthodologie : Agile (Scrum)</div>
+                <div class="team-info">Taille de l'équipe (15) : 1 Chef de Projet, 12 développeurs full-stack, 2 ingénieurs QA</div>
+            </div>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <div class="job-title">Ingénieur de développement en informatique</div>
+                <div class="company-duration">OSITEL FRANCE | 23 sept. 2019 – 15 déc. 2020 - Durée : 1 an et 3 mois</div>
+                <div class="project-info">Projet : SmartMS (mission chez le client STREAMWIDE)</div>
+                <div class="project-info">Méthodologie : Agile (Scrum)</div>
+                <div class="team-info">Taille de l'équipe (15) : 1 Chef de Projet, 12 développeurs full-stack, 2 ingénieurs QA</div>
+            </div>
+
+            <div class="job-objective">
+                <h4>Objectif</h4>
+                <p>Développer des applications web/mobile qui reposent sur le moteur de télécommunications propriétaire « mission-critique » de Streamwide, telles que les fonctionnalités Téléphonie/PTT/Geofencing... utilisées par une variété de clients (Défense, Forces de l'ordre, Pompiers, Sécurité aérienne...)</p>
+            </div>
+
+            <div class="job-actions">
+                <h4>Actions réalisées</h4>
+                <ul>
+                    <li>Gestion de l'équipe UI France</li>
+                    <li>Analyse et établissement des spécifications techniques à partir des spécifications fonctionnelles</li>
+                    <li>Développer de nouvelles fonctionnalités innovantes, tout en assurant un bon niveau de qualité de code</li>
+                    <li>Proactivité sur notre projet de refactoring et migration vers React.js</li>
+                    <li>Maintenir et documenter le code des produits Streamwide</li>
+                    <li>Participer au processus qualité de l'équipe : relecture de code, tests...</li>
+                    <li>Développer des projets en R&D</li>
+                </ul>
+            </div>
+
+            <div class="tech-env">
+                <h4>Environnement technique</h4>
+                <p><strong>Plateforme :</strong> Redhat Linux 8 / Oracle Virtualbox (Self hosted solution)</p>
+                <p><strong>Interfaces web :</strong> React, HTML, CSS, Sass, Javascript, Jquery, PHP, Zend / Symphony</p>
+                <p><strong>Tests :</strong> Mocha, Chai</p>
+                <p><strong>Outils :</strong> Git / Gitlab, Jira, Jenkins, NPM</p>
+            </div>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <div class="job-title">Développeur full-stack senior</div>
+                <div class="company-duration">CEVITAL SPA | 04 juin 2017 – 30 juin 2019 - Durée : 2 ans</div>
+                <div class="project-info">Projet : Four connecté De Dietrich (IoT)</div>
+                <div class="project-info">Méthodologie : Agile (Scrum)</div>
+                <div class="team-info">Taille de l'équipe (15) : 1 Chef de Projet, 1 Architecte Cloud, 1 développeur backend, 1 ingénieur DevOps, 2 développeurs Mobile, 4 développeurs systèmes embarqués, 2 ingénieurs QA, 1 ingénieur BI</div>
+            </div>
+
+            <div class="job-objective">
+                <h4>Objectif</h4>
+                <p>Lancé comme projet pilote dans le domaine de connectivité des appareils électroménagers, ce projet consiste à introduire une solution IoT afin de pouvoir connecter/contrôler les appareillages via internet. Le four De Dietrich est muni d'un module de connectivité (WIFI) qui échange des messages (commande et télémétrie) venant de l'application mobile passant par une plateforme cloud.</p>
+            </div>
+
+            <div class="job-actions">
+                <h4>Actions réalisées</h4>
+                <ul>
+                    <li>Participation aux décisions conceptuelles et choix technologiques de l'application mobile</li>
+                    <li>Rédaction et révision de la documentation</li>
+                    <li>Développement de l'application mobile</li>
+                    <li>Écriture des tests (TDD) et revue de code des collaborateurs</li>
+                </ul>
+            </div>
+
+            <div class="tech-env">
+                <h4>Environnement technique</h4>
+                <p><strong>Plateforme Cloud :</strong> Microsoft Azure (.net C#) (IotHub, NotificationHub, EventHub, StreamAnalytics, CosmosDB, Azure Functions, B2C Oauth)</p>
+                <p><strong>Module de connectivité embarqué :</strong> ESP32 (C/C++), MQTT</p>
+                <p><strong>Application mobile :</strong> React-Native (NodeJS/Javascript), redux, event-bus, Push notifications, Android/iOS, Oauth</p>
+                <p><strong>Outils :</strong> Git, TFS, Reactotron, NPM</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- Page 4 -->
+    <div class="section">
+        <div class="job">
+            <div class="job-header">
+                <div class="job-title">Projet : Likoul – Plateforme éducative pour les smart TV Brandt</div>
+                <div class="project-info">Méthodologie : Agile</div>
+                <div class="team-info">Taille de l'équipe (6) : 1 Chef de Projet, 1 développeur backend, 1 ingénieur DevOps, 2 développeurs Android, 1 développeur Front-End</div>
+            </div>
+
+            <div class="job-objective">
+                <h4>Objectif</h4>
+                <p>Likoul est une plateforme éducative qui permet aux utilisateurs des smart TVs de Brandt d'accéder à un ensemble de cours (conforme au programme d'éducation national algérien) via une application sur le TV, donc nous étions amenés à fournir une solution de streaming afin de gérer le contenu, assurer la récolte de données liées à l'utilisation.</p>
+            </div>
+
+            <div class="job-actions">
+                <h4>Actions réalisées</h4>
+                <ul>
+                    <li>Participation aux décisions conceptuelles et choix technologiques de la solution</li>
+                    <li>Rédaction et révision de la documentation</li>
+                    <li>Développement du backend, Portail d'administration (Web)</li>
+                    <li>Écriture des tests (TDD) et revue de code des collaborateurs</li>
+                    <li>Instauration de règles de sécurité OWASP / Token Based Auth (jwt)</li>
+                    <li>Établissement d'un processus d'intégration continue</li>
+                </ul>
+            </div>
+
+            <div class="tech-env">
+                <h4>Environnement technique</h4>
+                <p><strong>Infrastructure :</strong> serveurs dédiés (OVH), NginX, Déploiement et Intégration Continue : Jenkins</p>
+                <p><strong>Serveur de streaming :</strong> Nimble</p>
+                <p><strong>Backend :</strong> Application express.js, jwt, Joi, Mocha/Chai/Mockgoose, BDD : MongoDB</p>
+                <p><strong>Portail d'administration :</strong> Application Web ReactJs</p>
+                <p><strong>Outils :</strong> Git, TFS, Jenkins, NPM</p>
+            </div>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <div class="job-title">Projet : Brandt Time - Solution pour gérer un bouquet d'applications sur les smart TVs</div>
+                <div class="project-info">Méthodologie : Agile</div>
+                <div class="team-info">Taille de l'équipe (7) : 1 Chef de Projet, 2 développeurs Full-Stack, 1 ingénieur DevOps, 3 développeurs Android</div>
+            </div>
+
+            <div class="job-objective">
+                <h4>Objectif</h4>
+                <p>Solution globale et compréhensive pour gérer l'ensemble des TVs et Téléphones Brandt en Algérie, qui comprend la gestion de garantie, mise à jour des firmwares et applications, et collecte de données d'utilisation...</p>
+            </div>
+
+            <div class="job-actions">
+                <h4>Actions réalisées</h4>
+                <ul>
+                    <li>Participation aux décisions conceptuelles et choix technologiques de la solution</li>
+                    <li>Rédaction et révision de la documentation</li>
+                    <li>Développement du backend, Portail d'administration (Web)</li>
+                    <li>Écriture des tests (TDD) et revue de code des collaborateurs</li>
+                    <li>Instauration de règles de sécurité OWASP / Token Based Auth (jwt)</li>
+                    <li>Établissement d'un processus d'intégration continue</li>
+                </ul>
+            </div>
+
+            <div class="tech-env">
+                <h4>Environnement technique</h4>
+                <p><strong>Infrastructure :</strong> serveurs dédiés (OVH), FireBase (Cloud)</p>
+                <p><strong>Backend :</strong> ExpressJs, jwt, Joi, Mocha/Chai/Mockgoose, BDD : MongoDB</p>
+                <p><strong>Portail d'administration :</strong> Application Web ReactJs</p>
+                <p><strong>Outils :</strong> Git, TFS, Jenkins, NPM</p>
+            </div>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <div class="job-title">Développeur Full-Stack en freelance</div>
+                <div class="company-duration">En auto-entrepreneuriat | Janvier 2012 – Mai 2017 - Durée : 5 ans 5 mois</div>
+            </div>
+
+            <div class="job-objective">
+                <h4>Objectif</h4>
+                <p>Offrir des services de développement et de consulting IT, principalement sur la plateforme de freelance Freelancer.com</p>
+            </div>
+
+            <div class="job-actions">
+                <h4>Actions réalisées</h4>
+                <ul>
+                    <li>Analyse fonctionnelle et technique des besoins des clients</li>
+                    <li>Développement des sites web et services (APIs)</li>
+                    <li>Intégration des services (Payment Online, Réseaux Sociaux, Mailing Auto, Maps...)</li>
+                    <li>Déploiement et migration des solutions web</li>
+                    <li>Tâches d'automatisation (Web scraping)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- Page 5 -->
+    <div class="section">
+        <h3 style="color: #4a90e2; margin-bottom: 15px;">Exemples de prestations réalisées :</h3>
+
+        <div class="freelance-project">
+            <div class="project-title">Visualisation de l'engagement spectateur sur les revues des œuvres cinématiques</div>
+            <div class="client-duration">Client : Slash Comment (États-Unis) - Durée : 1 mois</div>
+            <p><strong>Objectif :</strong> Le site "/comment" fournit des revues des nouvelles œuvres cinématiques, et comme valeur ajoutée, l'auteur du site Rich Heimlich, propose une nouvelle façon d'exprimer l'engagement (Appeal) du spectateur sans spoiler les scènes au lecteur. Je suis intervenu pour intégrer un outil de visualisation de données, qui sera introduit à partir d'une interface administrateur, afin d'afficher des graphes sur les différents articles publiés sur ce site.</p>
+            <p><strong>Environnement technique :</strong> PHP, MySQL, Chart JS, Javascript (jQuery), CSS, Social Media Sharing (Pinterest)</p>
+        </div>
+
+        <div class="freelance-project">
+            <div class="project-title">Application Mobile : Inventaire d'équipement appareils d'aviation civile</div>
+            <div class="client-duration">Client : NVS Technology Solutions (Dubai) - Durée : 8 mois</div>
+            <p><strong>Objectif :</strong> La filiale de Novus Aviation Capital, Novus Technologies, propose des solutions innovantes dans le domaine de l'aviation civile. NVSscan est une solution d'inventaire de l'équipement sécuritaire des avions. J'ai travaillé en collaboration avec leur équipe pour réaliser une application mobile qui communique avec un dispositif de lecture NFC et renvoie les identifiants des équipements scannés lors du balayage afin de signaler l'absence ou toute anomalie d'un matériel donné.</p>
+            <p><strong>Environnement technique :</strong> React-Native (Javascript), Native Modules (JAVA), Bluetooth, NFC, Gitlab</p>
+        </div>
+
+        <div class="freelance-project">
+            <div class="project-title">Signature et génération de contrats de formation en ligne</div>
+            <div class="client-duration">Client : PSYHYPNOSEPNL (France) - Durée : 2 mois</div>
+            <p><strong>Objectif :</strong> Afin de simplifier la procédure, qui s'effectue en plusieurs échanges d'emails et un contrat qui doit être rempli en dur et scanné pour être transmis à l'établissement de formation, on m'a sollicité pour programmer un outil qui permet aux utilisateurs de la plateforme de visualiser leur contrat, et de pouvoir introduire leur signature en utilisant la souris ou une tablette graphique. Une copie en format PDF est ensuite remise au signataire par email.</p>
+            <p><strong>Environnement technique :</strong> PHP, TCPDF, MySQL, SVG, Javascript (jQuery), CSS</p>
+        </div>
+
+        <div class="freelance-project">
+            <div class="project-title">Site E-commerce : Yatas Bedding</div>
+            <div class="client-duration">Client : Yatas bedding (Turquie) - Durée : 6 mois</div>
+            <p><strong>Objectif :</strong> Créer un site e-commerce pour un grand fournisseur d'articles de literie, articles de maison et décoration, en intégrant le plus important portail de paiement en Turquie PayU.</p>
+            <p><strong>Environnement technique :</strong> PHP (Codeigniter/OpenCart), MySql, HTML, CSS, jQuery, PayU API, Git</p>
+        </div>
+
+        <div class="freelance-project">
+            <div class="project-title">Logiciel de calcul-rappel de salaire pour les agents de la garde communale</div>
+            <div class="client-duration">Client : Délégation de la garde communale de Médéa (Algérie) - Durée : 4 mois</div>
+            <p><strong>Objectif :</strong> Établir un logiciel qui se sert de la base de données existante des salariés (5000+ enregistrements) de la garde communale de la Wilaya de Médéa, pour calculer un rappel de salaire en se basant sur les années d'expérience de ces derniers. Le logiciel avait pour but d'imprimer sur plusieurs formats, les documents et bordereaux, qui se transmettent à la trésorerie et aux archives.</p>
+            <p><strong>Environnement technique :</strong> Windows Forms Applications (C# .net), Crystal Reports, MSACCESS</p>
+        </div>
+
+        <div class="tech-env">
+            <h4>Environnement technique global</h4>
+            <p><strong>Infrastructure :</strong> Hébergement mutualisé, Serveurs dédiés, MS Azure, Amazon Web Services, DNS, FTP</p>
+            <p><strong>Développement Web :</strong> HTML5, CSS3, Javascript, jQuery, PHP, CodeIgniter, WordPress</p>
+            <p><strong>Bases de données :</strong> MySQL, PostgreSQL, MSSQL</p>
+            <p><strong>Outils :</strong> Git, GitLab, GitHub, Composer</p>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- Page 6 -->
+    <div class="section">
+        <div class="job">
+            <div class="job-header">
+                <div class="job-title">Développeur Junior</div>
+                <div class="company-duration">Smart Solutions Médéa | Juillet 2010 – Décembre 2011 - Durée : 1 an 4 mois</div>
+            </div>
+
+            <div class="job-objective">
+                <h4>Objectif</h4>
+                <p>Participer au développement des produits maintenus par la microentreprise.</p>
+            </div>
+
+            <div class="job-actions">
+                <h4>Actions réalisées</h4>
+                <ul>
+                    <li>Assurer des tâches de développement des applications desktop</li>
+                    <li>Support technique des clients</li>
+                    <li>Développement des sites web simples (vitrine)</li>
+                </ul>
+            </div>
+
+            <div class="tech-env">
+                <h4>Environnement technique</h4>
+                <p>Windows Forms Applications (C# .net), Crystal Reports, MSSQL, PHP, HTML, CSS, MYSQL</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
