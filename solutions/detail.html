@@ -1,0 +1,425 @@
+{{ define "content" }}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<style>
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-animate {
+    animation: fadeInUp 0.7s ease-out forwards;
+  }
+
+  .hero-animate-delay {
+    opacity: 0;
+    animation: fadeInUp 0.7s ease-out 0.15s forwards;
+  }
+
+  .scroll-fade {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+
+  .scroll-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    z-index: 50;
+    transition: width 0.1s ease;
+  }
+
+  /* Table of Contents */
+  .toc-link {
+    transition: all 0.2s ease;
+    border-left: 2px solid transparent;
+  }
+
+  .toc-link:hover {
+    color: #3b82f6;
+    border-left-color: #3b82f6;
+    background: #eff6ff;
+  }
+
+  .toc-link.active {
+    color: #2563eb;
+    border-left-color: #2563eb;
+    background: #eff6ff;
+    font-weight: 600;
+  }
+
+  /* Markdown content styles */
+  #solutionContent {
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  #solutionContent h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 2.5rem 0 1rem 0;
+    color: #1f2937;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+  }
+
+  #solutionContent h2 {
+    font-size: 1.625rem;
+    font-weight: 700;
+    margin: 2rem 0 0.75rem 0;
+    color: #1f2937;
+    scroll-margin-top: 100px;
+  }
+
+  #solutionContent h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.5rem 0;
+    color: #374151;
+    scroll-margin-top: 100px;
+  }
+
+  #solutionContent h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 1.25rem 0 0.5rem 0;
+    color: #374151;
+  }
+
+  #solutionContent p {
+    margin: 0.75rem 0;
+  }
+
+  #solutionContent ul, #solutionContent ol {
+    margin: 0.75rem 0;
+    padding-left: 1.5rem;
+  }
+
+  #solutionContent ul {
+    list-style-type: disc;
+  }
+
+  #solutionContent ol {
+    list-style-type: decimal;
+  }
+
+  #solutionContent li {
+    margin: 0.4rem 0;
+  }
+
+  #solutionContent blockquote {
+    border-left: 4px solid #3b82f6;
+    background: #f8fafc;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    border-radius: 0 0.5rem 0.5rem 0;
+  }
+
+  #solutionContent pre {
+    background: #0f172a;
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    border: 1px solid #1e293b;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  #solutionContent code {
+    background: #f1f5f9;
+    padding: 0.15rem 0.4rem;
+    border-radius: 0.25rem;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.85em;
+    color: #be185d;
+  }
+
+  #solutionContent pre code {
+    background: transparent;
+    padding: 0;
+    color: #e2e8f0;
+    font-size: inherit;
+  }
+
+  #solutionContent a {
+    color: #3b82f6;
+    text-decoration: underline;
+    font-weight: 500;
+  }
+
+  #solutionContent a:hover {
+    color: #1d4ed8;
+  }
+
+  #solutionContent table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    font-size: 0.9rem;
+  }
+
+  #solutionContent th, #solutionContent td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  #solutionContent th {
+    background: #f8fafc;
+    font-weight: 600;
+    color: #374151;
+    white-space: nowrap;
+  }
+
+  #solutionContent tr:last-child td {
+    border-bottom: none;
+  }
+
+  #solutionContent tr:hover td {
+    background: #f8fafc;
+  }
+
+  #solutionContent hr {
+    border: none;
+    height: 1px;
+    background: #e5e7eb;
+    margin: 2.5rem 0;
+  }
+
+  #solutionContent strong {
+    color: #111827;
+    font-weight: 600;
+  }
+
+  /* Solution navigation cards at bottom */
+  .solution-nav-card {
+    transition: all 0.2s ease;
+  }
+
+  .solution-nav-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+</style>
+
+<div class="reading-progress" id="reading-progress"></div>
+
+<!-- Hero Banner -->
+<section class="relative pt-28 pb-16 overflow-hidden bg-gradient-to-r {{ .GradientFrom }} {{ .GradientTo }}">
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute top-10 left-10 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 right-10 w-80 h-80 bg-black/5 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="relative mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+    <!-- Breadcrumb -->
+    <div class="hero-animate mb-6">
+      <a href="/solutions" class="inline-flex items-center text-white/70 hover:text-white text-sm font-medium transition-colors duration-200">
+        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+        Back to Solutions
+      </a>
+    </div>
+
+    <h1 class="hero-animate text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 max-w-4xl">
+      {{ .Title }}
+    </h1>
+    <p class="hero-animate-delay text-lg md:text-xl text-white/80 max-w-3xl">
+      {{ .Subtitle }}
+    </p>
+  </div>
+</section>
+
+<!-- Content Area -->
+<section class="py-12 bg-white">
+  <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+    <div class="lg:grid lg:grid-cols-4 lg:gap-12">
+
+      <!-- Table of Contents Sidebar (desktop) -->
+      <aside class="hidden lg:block lg:col-span-1">
+        <div class="sticky top-20">
+          <h4 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">On this page</h4>
+          <nav id="toc" class="space-y-1 max-h-[calc(100vh-120px)] overflow-y-auto">
+            <!-- Generated by JS -->
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="lg:col-span-3">
+        <div class="bg-white rounded-2xl">
+          <div id="solutionContent" class="max-w-none">
+            {{ .Content }}
+          </div>
+        </div>
+
+        <!-- Solution Navigation -->
+        <div class="mt-16 pt-8 border-t border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-6">Explore Other Solutions</h3>
+          <div class="grid sm:grid-cols-2 gap-4">
+
+            {{ if ne .Slug "ai-engine" }}
+            <a href="/solutions/ai-engine" class="solution-nav-card flex items-center gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100">
+              <div class="w-10 h-10 bg-gradient-to-r from-violet-600 to-indigo-700 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+              </div>
+              <div>
+                <div class="font-semibold text-gray-900 text-sm">AI Engine</div>
+                <div class="text-xs text-gray-500">AI orchestration layer</div>
+              </div>
+            </a>
+            {{ end }}
+
+            {{ if ne .Slug "chat-collaboration" }}
+            <a href="/solutions/chat-collaboration" class="solution-nav-card flex items-center gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100">
+              <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+              </div>
+              <div>
+                <div class="font-semibold text-gray-900 text-sm">Multi Modal Chat</div>
+                <div class="text-xs text-gray-500">AI-native messaging</div>
+              </div>
+            </a>
+            {{ end }}
+
+            {{ if ne .Slug "collaborative-editing" }}
+            <a href="/solutions/collaborative-editing" class="solution-nav-card flex items-center gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100">
+              <div class="w-10 h-10 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+              </div>
+              <div>
+                <div class="font-semibold text-gray-900 text-sm">Collaborative Editing</div>
+                <div class="text-xs text-gray-500">Real-time document editing</div>
+              </div>
+            </a>
+            {{ end }}
+
+            {{ if ne .Slug "search-rag" }}
+            <a href="/solutions/search-rag" class="solution-nav-card flex items-center gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100">
+              <div class="w-10 h-10 bg-gradient-to-r from-amber-500 to-orange-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+              </div>
+              <div>
+                <div class="font-semibold text-gray-900 text-sm">Search & RAG</div>
+                <div class="text-xs text-gray-500">Semantic search & retrieval</div>
+              </div>
+            </a>
+            {{ end }}
+
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-center">
+          <h3 class="text-2xl font-bold text-white mb-3">Want to see this in action?</h3>
+          <p class="text-blue-100 mb-6 max-w-xl mx-auto">
+            Schedule a demo to see how these components can be embedded into your product.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="https://calendly.com/osminosm/30min" target="_blank"
+              class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-blue-700 bg-white hover:bg-gray-50 rounded-xl transition-all duration-200 hover:-translate-y-0.5">
+              Schedule a Demo
+            </a>
+            <a href="/solutions"
+              class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl transition-all duration-200 hover:-translate-y-0.5">
+              View All Solutions
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+  // Parse markdown content
+  const contentEl = document.getElementById('solutionContent');
+  contentEl.innerHTML = marked.parse(contentEl.innerHTML.trim());
+
+  // Highlight code blocks
+  hljs.highlightAll();
+
+  // Generate Table of Contents
+  const toc = document.getElementById('toc');
+  const headings = contentEl.querySelectorAll('h2, h3');
+  const tocLinks = [];
+
+  headings.forEach((heading, index) => {
+    const id = 'section-' + index;
+    heading.id = id;
+
+    const link = document.createElement('a');
+    link.href = '#' + id;
+    link.textContent = heading.textContent;
+    link.className = 'toc-link block py-1.5 px-3 text-sm rounded-r-md ' +
+      (heading.tagName === 'H3' ? 'pl-6 text-gray-400 hover:text-gray-600' : 'text-gray-600');
+
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    toc.appendChild(link);
+    tocLinks.push({ link, heading });
+  });
+
+  // Active ToC tracking
+  function updateActiveToC() {
+    let current = null;
+    tocLinks.forEach(({ link, heading }) => {
+      const rect = heading.getBoundingClientRect();
+      if (rect.top <= 120) {
+        current = link;
+      }
+      link.classList.remove('active');
+    });
+    if (current) {
+      current.classList.add('active');
+    }
+  }
+
+  // Reading progress
+  function updateReadingProgress() {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById('reading-progress').style.width = scrolled + '%';
+  }
+
+  window.addEventListener('scroll', function() {
+    updateReadingProgress();
+    updateActiveToC();
+  });
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.scroll-fade').forEach(el => observer.observe(el));
+</script>
+
+{{ end }}

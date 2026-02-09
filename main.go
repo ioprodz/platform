@@ -2,14 +2,17 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"ioprodz/auth"
 	"ioprodz/blog"
 	"ioprodz/common/config"
 	"ioprodz/common/middlewares"
+	"ioprodz/consulting"
 	"ioprodz/cv"
 	"ioprodz/home"
 	"ioprodz/members"
 	"ioprodz/qna"
+	"ioprodz/solutions"
 
 	"net/http"
 
@@ -36,6 +39,12 @@ func main() {
 	blog.ConfigureModule(router)
 	cv.ConfigureModule(router)
 
+	// Configure consulting module
+	consulting.ConfigureModule(router)
+
+	// Configure solutions module
+	solutions.ConfigureModule(router)
+
 	// Configure home module last (has catch-all "/" route)
 	home.ConfigureModule(router)
 
@@ -44,5 +53,5 @@ func main() {
 
 	// Start the HTTP server
 	fmt.Println("Server listening on port " + configuration.PORT)
-	http.ListenAndServe(":"+configuration.PORT, nil)
+	log.Fatal(http.ListenAndServe(":"+configuration.PORT, nil))
 }

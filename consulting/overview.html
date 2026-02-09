@@ -1,0 +1,203 @@
+{{ define "content" }}
+
+<style>
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-animate {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .hero-animate-delay-1 {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.15s forwards;
+  }
+
+  .hero-animate-delay-2 {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.3s forwards;
+  }
+
+  .scroll-fade {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .scroll-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .service-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  }
+</style>
+
+<!-- Hero -->
+<section class="relative pt-32 pb-24 overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 right-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="relative mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+    <div class="text-center">
+      <div class="hero-animate inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-blue-200 text-sm font-medium mb-8">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+        </svg>
+        Engineering Consulting
+      </div>
+
+      <h1 class="hero-animate-delay-1 text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 max-w-4xl mx-auto leading-tight">
+        Strategic Technology
+        <span class="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+          Leadership
+        </span>
+      </h1>
+
+      <p class="hero-animate-delay-2 text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+        Whether you need a technology roadmap, an interim CTO, or hands-on coaching to level up your team -- we bring 15+ years of engineering leadership to help you deliver faster with higher quality.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Two Service Cards -->
+<section class="py-24 bg-white">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 scroll-fade">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">How We Help</h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Two ways to work with us, tailored to where you are and what you need.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+
+      <!-- IT Strategy Card -->
+      <a href="/consulting/it-strategy" class="service-card scroll-fade group block bg-white rounded-2xl border border-gray-200 overflow-hidden">
+        <div class="bg-gradient-to-r from-blue-700 to-indigo-800 p-8">
+          <div class="flex items-center justify-between mb-6">
+            <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+            </div>
+            <svg class="w-5 h-5 text-white/60 group-hover:text-white group-hover:translate-x-1 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-white">IT Strategy</h3>
+          <p class="text-blue-100 mt-2">Roadmap, architecture & leadership</p>
+        </div>
+        <div class="p-8">
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            From technology roadmaps to acting CTO engagements. We align your engineering to business outcomes with clear goals, modern architecture, and data-driven decisions.
+          </p>
+          <ul class="space-y-3 text-sm text-gray-600">
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-blue-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              Interim CTO / Engineering Lead
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-blue-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              Technical roadmap & architecture
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-blue-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              AI & platform integration
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-blue-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              Digital transformation
+            </li>
+          </ul>
+        </div>
+      </a>
+
+      <!-- Coaching Card -->
+      <a href="/consulting/coaching" class="service-card scroll-fade group block bg-white rounded-2xl border border-gray-200 overflow-hidden" style="transition-delay: 100ms">
+        <div class="bg-gradient-to-r from-emerald-600 to-teal-700 p-8">
+          <div class="flex items-center justify-between mb-6">
+            <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+            <svg class="w-5 h-5 text-white/60 group-hover:text-white group-hover:translate-x-1 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-white">Team & Individual Coaching</h3>
+          <p class="text-emerald-100 mt-2">Practices, culture & growth</p>
+        </div>
+        <div class="p-8">
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Build a learning culture rooted in Extreme Programming and Lean principles. We coach teams and individuals on the practices that create high-performing engineering organizations.
+          </p>
+          <ul class="space-y-3 text-sm text-gray-600">
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-emerald-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              Pair programming & code reviews
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-emerald-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              TDD, CI/CD & fast feedback loops
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-emerald-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              Lean & XP methodology
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-emerald-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              Individual developer mentoring
+            </li>
+          </ul>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-20 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center scroll-fade">
+    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Let's Talk About Your Challenges</h2>
+    <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+      Book a free 30-minute strategy session. We'll discuss your situation, share quick wins, and lay out a path forward.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="https://calendly.com/osminosm/30min" target="_blank"
+        class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-blue-700 bg-white hover:bg-gray-50 rounded-xl transition-all duration-200 shadow-lg hover:-translate-y-0.5">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+        Schedule Free Session
+      </a>
+      <a href="mailto:osmane@ioprodz.com"
+        class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-xl transition-all duration-200 hover:-translate-y-0.5">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.09a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-1.997 1.884z"></path></svg>
+        Email Us
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.scroll-fade').forEach(el => observer.observe(el));
+</script>
+
+{{ end }}

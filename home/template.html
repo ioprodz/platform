@@ -1,610 +1,261 @@
 {{ define "content" }}
 
+<style>
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .hero-animate { animation: fadeInUp 0.8s ease-out forwards; }
+  .hero-animate-delay-1 { opacity: 0; animation: fadeInUp 0.8s ease-out 0.15s forwards; }
+  .hero-animate-delay-2 { opacity: 0; animation: fadeInUp 0.8s ease-out 0.3s forwards; }
+  .hero-animate-delay-3 { opacity: 0; animation: fadeInUp 0.8s ease-out 0.45s forwards; }
+
+  .scroll-fade {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .scroll-fade.visible { opacity: 1; transform: translateY(0); }
+
+  .pillar-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .pillar-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  }
+
+  .gradient-bg {
+    background: linear-gradient(-45deg, #0f172a, #1e293b, #1e1b4b, #172554);
+    background-size: 400% 400%;
+    animation: gradientShift 12s ease infinite;
+  }
+
+  .floating-shape { animation: float 6s ease-in-out infinite; }
+  .floating-shape-delay { animation: float 6s ease-in-out 2s infinite; }
+</style>
+
 <!-- Hero Section -->
-<section class="relative pt-32 pb-20 overflow-hidden">
-  <!-- Background gradient -->
-  <div
-    class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-gray-50"
-  ></div>
+<section class="relative pt-32 pb-24 overflow-hidden gradient-bg">
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="floating-shape absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
+    <div class="floating-shape-delay absolute bottom-10 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+    <div class="floating-shape absolute top-40 right-1/4 w-48 h-48 bg-cyan-500/10 rounded-full blur-2xl"></div>
+  </div>
 
   <div class="relative mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
     <div class="text-center">
-      <!-- Main Headline -->
-      <h1
-        class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-8 max-w-4xl mx-auto leading-tight"
-      >
-        We help software teams meet business goals with high‑end engineering
-        practices
+      <h1 class="hero-animate text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 max-w-5xl mx-auto leading-tight">
+        Engineering Leadership &
+        <span class="bg-gradient-to-r from-blue-400 via-cyan-300 to-purple-400 bg-clip-text text-transparent">
+          AI-Powered Software
+        </span>
       </h1>
 
-      <!-- Subheadline -->
-      <p
-        class="text-lg md:text-xl text-gray-600 mb-12 max-w-5xl mx-auto leading-relaxed"
-      >
-        Whether you need a strategic technology partner or an interim
-        CTO/Engineering lead, we accelerate your digital transformation. We
-        modernize development processes, optimize existing systems, and boost
-        delivery speed and quality.
+      <p class="hero-animate-delay-1 text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+        We help software teams meet business goals through strategic consulting, hands-on coaching, and production-grade AI platform components.
       </p>
 
-      <!-- CTA Buttons -->
-      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-        <a
-          href="https://calendly.com/osminosm/30min"
-          class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors duration-200 shadow-lg"
-        >
+      <div class="hero-animate-delay-2 flex flex-col sm:flex-row gap-4 justify-center mb-16">
+        <a href="https://calendly.com/osminosm/30min" target="_blank"
+          class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-xl transition-all duration-200 shadow-lg shadow-blue-600/30 hover:shadow-blue-500/40 hover:-translate-y-0.5">
           Schedule Free Strategy Session
+          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
         </a>
         {{ if not .IsAuthenticated }}
-        <a
-          href="/auth/github"
-          class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-blue-600 bg-white border-2 border-blue-600 hover:bg-blue-50 rounded-lg transition-colors duration-200"
-        >
+        <a href="/auth/github"
+          class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-xl transition-all duration-200 hover:-translate-y-0.5">
           <svg viewBox="0 0 438.549 438.549" class="mr-2 h-5 w-5">
-            <path
-              fill="currentColor"
-              d="M409.132 114.573c-19.608-33.596-46.205-60.194-79.798-79.8-33.598-19.607-70.277-29.408-110.063-29.408-39.781 0-76.472 9.804-110.063 29.408-33.596 19.605-60.192 46.204-79.8 79.8C9.803 148.168 0 184.854 0 224.63c0 47.78 13.94 90.745 41.827 128.906 27.884 38.164 63.906 64.572 108.063 79.227 5.14.954 8.945.283 11.419-1.996 2.475-2.282 3.711-5.14 3.711-8.562 0-.571-.049-5.708-.144-15.417a2549.81 2549.81 0 01-.144-25.406l-6.567 1.136c-4.187.767-9.469 1.092-15.846 1-6.374-.089-12.991-.757-19.842-1.999-6.854-1.231-13.229-4.086-19.13-8.559-5.898-4.473-10.085-10.328-12.56-17.556l-2.855-6.57c-1.903-4.374-4.899-9.233-8.992-14.559-4.093-5.331-8.232-8.945-12.419-10.848l-1.999-1.431c-1.332-.951-2.568-2.098-3.711-3.429-1.142-1.331-1.997-2.663-2.568-3.997-.572-1.335-.098-2.43 1.427-3.289 1.525-.859 4.281-1.276 8.28-1.276l5.708.853c3.807.763 8.516 3.042 14.133 6.851 5.614 3.806 10.229 8.754 13.846 14.842 4.38 7.806 9.657 13.754 15.846 17.847 6.184 4.093 12.419 6.136 18.699 6.136 6.28 0 11.704-.476 16.274-1.423 4.565-.952 8.848-2.383 12.847-4.285 1.713-12.758 6.377-22.559 13.988-29.41-10.848-1.14-20.601-2.857-29.264-5.14-8.658-2.286-17.605-5.996-26.835-11.14-9.235-5.137-16.896-11.516-22.985-19.126-6.09-7.614-11.088-17.61-14.987-29.979-3.901-12.374-5.852-26.648-5.852-42.826 0-23.035 7.52-42.637 22.557-58.817-7.044-17.318-6.379-36.732 1.997-58.24 5.52-1.715 13.706-.428 24.554 3.853 10.85 4.283 18.794 7.952 23.84 10.994 5.046 3.041 9.089 5.618 12.135 7.708 17.705-4.947 35.976-7.421 54.818-7.421s37.117 2.474 54.823 7.421l10.849-6.849c7.419-4.57 16.18-8.758 26.262-12.565 10.088-3.805 17.802-4.853 23.134-3.138 8.562 21.509 9.325 40.922 2.279 58.24 15.036 16.18 22.559 35.787 22.559 58.817 0 16.178-1.958 30.497-5.853 42.966-3.9 12.471-8.941 22.457-15.125 29.979-6.191 7.521-13.901 13.85-23.131 18.986-9.232 5.14-18.182 8.85-26.84 11.136-8.662 2.286-18.415 4.004-29.263 5.146 9.894 8.562 14.842 22.077 14.842 40.539v60.237c0 3.422 1.19 6.279 3.572 8.562 2.379 2.279 6.136 2.95 11.276 1.995 44.163-14.653 80.185-41.062 108.068-79.226 27.88-38.161 41.825-81.126 41.825-128.906-.01-39.771-9.818-76.454-29.414-110.049z"
-            ></path>
+            <path fill="currentColor" d="M409.132 114.573c-19.608-33.596-46.205-60.194-79.798-79.8-33.598-19.607-70.277-29.408-110.063-29.408-39.781 0-76.472 9.804-110.063 29.408-33.596 19.605-60.192 46.204-79.8 79.8C9.803 148.168 0 184.854 0 224.63c0 47.78 13.94 90.745 41.827 128.906 27.884 38.164 63.906 64.572 108.063 79.227 5.14.954 8.945.283 11.419-1.996 2.475-2.282 3.711-5.14 3.711-8.562 0-.571-.049-5.708-.144-15.417a2549.81 2549.81 0 01-.144-25.406l-6.567 1.136c-4.187.767-9.469 1.092-15.846 1-6.374-.089-12.991-.757-19.842-1.999-6.854-1.231-13.229-4.086-19.13-8.559-5.898-4.473-10.085-10.328-12.56-17.556l-2.855-6.57c-1.903-4.374-4.899-9.233-8.992-14.559-4.093-5.331-8.232-8.945-12.419-10.848l-1.999-1.431c-1.332-.951-2.568-2.098-3.711-3.429-1.142-1.331-1.997-2.663-2.568-3.997-.572-1.335-.098-2.43 1.427-3.289 1.525-.859 4.281-1.276 8.28-1.276l5.708.853c3.807.763 8.516 3.042 14.133 6.851 5.614 3.806 10.229 8.754 13.846 14.842 4.38 7.806 9.657 13.754 15.846 17.847 6.184 4.093 12.419 6.136 18.699 6.136 6.28 0 11.704-.476 16.274-1.423 4.565-.952 8.848-2.383 12.847-4.285 1.713-12.758 6.377-22.559 13.988-29.41-10.848-1.14-20.601-2.857-29.264-5.14-8.658-2.286-17.605-5.996-26.835-11.14-9.235-5.137-16.896-11.516-22.985-19.126-6.09-7.614-11.088-17.61-14.987-29.979-3.901-12.374-5.852-26.648-5.852-42.826 0-23.035 7.52-42.637 22.557-58.817-7.044-17.318-6.379-36.732 1.997-58.24 5.52-1.715 13.706-.428 24.554 3.853 10.85 4.283 18.794 7.952 23.84 10.994 5.046 3.041 9.089 5.618 12.135 7.708 17.705-4.947 35.976-7.421 54.818-7.421s37.117 2.474 54.823 7.421l10.849-6.849c7.419-4.57 16.18-8.758 26.262-12.565 10.088-3.805 17.802-4.853 23.134-3.138 8.562 21.509 9.325 40.922 2.279 58.24 15.036 16.18 22.559 35.787 22.559 58.817 0 16.178-1.958 30.497-5.853 42.966-3.9 12.471-8.941 22.457-15.125 29.979-6.191 7.521-13.901 13.85-23.131 18.986-9.232 5.14-18.182 8.85-26.84 11.136-8.662 2.286-18.415 4.004-29.263 5.146 9.894 8.562 14.842 22.077 14.842 40.539v60.237c0 3.422 1.19 6.279 3.572 8.562 2.379 2.279 6.136 2.95 11.276 1.995 44.163-14.653 80.185-41.062 108.068-79.226 27.88-38.161 41.825-81.126 41.825-128.906-.01-39.771-9.818-76.454-29.414-110.049z"></path>
           </svg>
           Sign in with GitHub
         </a>
         {{ else }}
-        <a
-          href="/feed"
-          class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-blue-600 bg-white border-2 border-blue-600 hover:bg-blue-50 rounded-lg transition-colors duration-200"
-        >
+        <a href="/feed"
+          class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-xl transition-all duration-200 hover:-translate-y-0.5">
           Access Platform
         </a>
         {{ end }}
       </div>
 
-      <!-- Quote -->
-      <blockquote class="text-xl italic text-gray-700 max-w-4xl mx-auto">
-        "Start where you are and incrementally make it better – transform your
-        development process with proven engineering practices."
+      <blockquote class="hero-animate-delay-3 text-lg italic text-gray-400 max-w-3xl mx-auto">
+        "Start where you are and incrementally make it better."
       </blockquote>
     </div>
   </div>
 </section>
 
-<!-- Services Section -->
-<section class="py-20 bg-white">
+<!-- Two Pillars: Consulting + Solutions -->
+<section class="py-24 bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-        Why Choose ioprodz
-      </h2>
+    <div class="text-center mb-16 scroll-fade">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">What We Do</h2>
       <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-        Strategic consulting and hands-on leadership that aligns engineering to
-        business outcomes
+        Two sides of the same mission: helping software teams deliver faster, better, and smarter.
       </p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8">
-      <!-- Flexible Engagement -->
-      <div
-        class="bg-gradient-to-br from-blue-50 to-white p-8 rounded-xl border border-blue-100 hover:shadow-lg transition-shadow duration-300"
-      >
-        <div
-          class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-6"
-        >
-          <svg
-            class="w-6 h-6 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-            ></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-semibold text-gray-900 mb-4">
-          Flexible Engagement
-        </h3>
-        <p class="text-gray-600 leading-relaxed">
-          Strategic consulting and/or hands‑on leadership. We can draw your
-          technical roadmap and jump in as acting CTO or engineering manager to
-          implement it.
-        </p>
-      </div>
+    <div class="grid lg:grid-cols-2 gap-8">
 
-      <!-- Outcome Focus -->
-      <div
-        class="bg-gradient-to-br from-green-50 to-white p-8 rounded-xl border border-green-100 hover:shadow-lg transition-shadow duration-300"
-      >
-        <div
-          class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mb-6"
-        >
-          <svg
-            class="w-6 h-6 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-            ></path>
-          </svg>
+      <!-- Consulting Pillar -->
+      <a href="/consulting" class="pillar-card scroll-fade group block bg-white rounded-2xl border border-gray-200 overflow-hidden">
+        <div class="bg-gradient-to-r from-slate-800 to-blue-900 p-8">
+          <div class="flex items-center justify-between mb-4">
+            <div class="inline-flex items-center px-3 py-1 rounded-full bg-white/10 text-blue-200 text-xs font-medium">
+              Services
+            </div>
+            <svg class="w-5 h-5 text-white/60 group-hover:text-white group-hover:translate-x-1 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </div>
+          <h3 class="text-3xl font-bold text-white mb-2">Consulting</h3>
+          <p class="text-blue-200">Strategic technology leadership & hands-on coaching</p>
         </div>
-        <h3 class="text-xl font-semibold text-gray-900 mb-4">Outcome Focus</h3>
-        <p class="text-gray-600 leading-relaxed">
-          We align engineering to business outcomes. Every project starts with
-          clear goals and metrics, so improvements directly translate to value
-          (not just process changes).
-        </p>
-      </div>
+        <div class="p-8">
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Whether you need an interim CTO to set direction, a technical roadmap to align engineering with business goals, or hands-on coaching to level up your team's practices -- we bring 15+ years of engineering leadership.
+          </p>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex items-center gap-2 text-sm text-gray-700">
+              <div class="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+              IT Strategy
+            </div>
+            <div class="flex items-center gap-2 text-sm text-gray-700">
+              <div class="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+              Interim CTO
+            </div>
+            <div class="flex items-center gap-2 text-sm text-gray-700">
+              <div class="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+              Team Coaching
+            </div>
+            <div class="flex items-center gap-2 text-sm text-gray-700">
+              <div class="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+              Developer Mentoring
+            </div>
+          </div>
+        </div>
+      </a>
 
-      <!-- AI & Platform Expertise -->
-      <div
-        class="bg-gradient-to-br from-purple-50 to-white p-8 rounded-xl border border-purple-100 hover:shadow-lg transition-shadow duration-300"
-      >
-        <div
-          class="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-6"
-        >
-          <svg
-            class="w-6 h-6 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-            ></path>
-          </svg>
+      <!-- Solutions Pillar -->
+      <a href="/solutions" class="pillar-card scroll-fade group block bg-white rounded-2xl border border-gray-200 overflow-hidden" style="transition-delay: 100ms">
+        <div class="bg-gradient-to-r from-blue-600 to-purple-700 p-8">
+          <div class="flex items-center justify-between mb-4">
+            <div class="inline-flex items-center px-3 py-1 rounded-full bg-white/10 text-purple-200 text-xs font-medium">
+              Platform
+            </div>
+            <svg class="w-5 h-5 text-white/60 group-hover:text-white group-hover:translate-x-1 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </div>
+          <h3 class="text-3xl font-bold text-white mb-2">Solutions</h3>
+          <p class="text-purple-200">AI-powered platform components for your product</p>
         </div>
-        <h3 class="text-xl font-semibold text-gray-900 mb-4">
-          AI & Platform Expertise
-        </h3>
-        <p class="text-gray-600 leading-relaxed">
-          We help teams "do more with less" by introducing AI tools and internal
-          developer platforms. Our Polysee tool uses your code repository as the
-          source of truth to guide decisions.
-        </p>
-      </div>
+        <div class="p-8">
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Production-grade, embeddable components for AI-augmented software. An integrated platform where intelligence, communication, and knowledge work together seamlessly inside your product.
+          </p>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex items-center gap-2 text-sm text-gray-700">
+              <div class="w-1.5 h-1.5 bg-purple-600 rounded-full"></div>
+              AI Engine
+            </div>
+            <div class="flex items-center gap-2 text-sm text-gray-700">
+              <div class="w-1.5 h-1.5 bg-purple-600 rounded-full"></div>
+              Real-Time Chat
+            </div>
+            <div class="flex items-center gap-2 text-sm text-gray-700">
+              <div class="w-1.5 h-1.5 bg-purple-600 rounded-full"></div>
+              Collaborative Editing
+            </div>
+            <div class="flex items-center gap-2 text-sm text-gray-700">
+              <div class="w-1.5 h-1.5 bg-purple-600 rounded-full"></div>
+              Search & RAG
+            </div>
+          </div>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>
 
-<!-- Our Approach Section -->
+<!-- Products Showcase -->
 <section class="py-20 bg-gray-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-        Our Approach
-      </h2>
-      <p class="text-xl text-gray-600 max-w-4xl mx-auto">
-        We build learning cultures and feedback loops into every team. Drawing
-        on Extreme Programming and Lean, we emphasize simplicity, feedback, and
-        continuous improvement.
-      </p>
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-12">
-      <!-- Continuous Learning -->
-      <div class="flex space-x-4">
-        <div class="flex-shrink-0">
-          <div
-            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center"
-          >
-            <span class="text-white font-semibold">1</span>
-          </div>
-        </div>
-        <div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-3">
-            Continuous Learning
-          </h3>
-          <p class="text-gray-600 leading-relaxed">
-            We create an environment where every engineer grows through code
-            reviews, brown‑bags, and pair programming. Research shows that a
-            strong learning culture "is virtuous and positively impacts a team's
-            ability to deliver value."
-          </p>
-        </div>
-      </div>
-
-      <!-- Rapid Feedback -->
-      <div class="flex space-x-4">
-        <div class="flex-shrink-0">
-          <div
-            class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center"
-          >
-            <span class="text-white font-semibold">2</span>
-          </div>
-        </div>
-        <div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-3">
-            Rapid Feedback
-          </h3>
-          <p class="text-gray-600 leading-relaxed">
-            By delivering in small increments and tracking everything (e.g. via
-            pull request analytics), teams see problems early and adapt quickly.
-            This feedback‑driven mindset ensures we catch defects sooner and
-            steer toward goals faster.
-          </p>
-        </div>
-      </div>
-
-      <!-- Lean Mindset -->
-      <div class="flex space-x-4">
-        <div class="flex-shrink-0">
-          <div
-            class="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center"
-          >
-            <span class="text-white font-semibold">3</span>
-          </div>
-        </div>
-        <div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-3">Lean Mindset</h3>
-          <p class="text-gray-600 leading-relaxed">
-            We ruthlessly eliminate waste – unused code, delays, and unnecessary
-            complexity. Lean principles teach that "waste is anything that
-            interferes with giving customers what they really value."
-          </p>
-        </div>
-      </div>
-
-      <!-- Right Tools & Architecture -->
-      <div class="flex space-x-4">
-        <div class="flex-shrink-0">
-          <div
-            class="w-10 h-10 bg-orange-600 rounded-full flex items-center justify-center"
-          >
-            <span class="text-white font-semibold">4</span>
-          </div>
-        </div>
-        <div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-3">
-            Right Tools & Architecture
-          </h3>
-          <p class="text-gray-600 leading-relaxed">
-            We use the right tools and build missing ones to improve flow.
-            Cloud, microservices, and event-driven architectures are common
-            solutions we employ for scalability and maintainability.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Products Section with Tabs -->
-<section class="py-20 bg-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-        Our Products
-      </h2>
+    <div class="text-center mb-16 scroll-fade">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Products</h2>
       <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-        Data-driven tools and open-source solutions to accelerate your
-        development process
+        Data-driven tools and open-source solutions to accelerate your development process
       </p>
     </div>
 
-    <!-- Tab Navigation -->
-    <div class="flex justify-center mb-8">
-      <div class="bg-gray-100 rounded-lg p-1 flex">
-        <button
-          onclick="switchTab('polysee')"
-          id="polysee-tab"
-          class="px-6 py-3 rounded-md text-sm font-medium transition-colors duration-200 bg-blue-600 text-white"
-        >
-          Polysee
-        </button>
-        <button
-          onclick="switchTab('specjest')"
-          id="specjest-tab"
-          class="px-6 py-3 rounded-md text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-gray-900"
-        >
-          SpecJest
-        </button>
-      </div>
-    </div>
+    <div class="grid lg:grid-cols-2 gap-8">
 
-    <!-- Polysee Tab Content -->
-    <div id="polysee-content" class="tab-content">
-      <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
-        <!-- Content -->
-        <div>
-          <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-            Polysee – Delivery Intelligence Platform
-          </h3>
-          <p class="text-xl text-gray-600 mb-8">
-            To put our data‑driven philosophy into practice, we built Polysee. A
-            developer dashboard that "redefines software delivery", helping
-            teams achieve more by doing less.
+      <!-- Polysee -->
+      <div class="scroll-fade bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow duration-300">
+        <div class="bg-gradient-to-r from-blue-600 to-indigo-700 p-6">
+          <h3 class="text-xl font-bold text-white">Polysee</h3>
+          <p class="text-blue-100 text-sm mt-1">Delivery Intelligence Platform</p>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+            A developer dashboard that redefines software delivery -- helping teams achieve more by doing less with interactive boards, analytics, and automated engineering health checks.
           </p>
-
-          <div class="space-y-6 mb-8">
-            <div class="flex items-start space-x-3">
-              <div
-                class="flex-shrink-0 w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center mt-1"
-              >
-                <svg
-                  class="w-3 h-3 text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900">Interactive Boards</h4>
-                <p class="text-gray-600">
-                  Personal and team views of ongoing work, reviews needed, and
-                  suggested next tasks. No manual updates – boards auto‑refresh
-                  from GitHub data.
-                </p>
-              </div>
-            </div>
-
-            <div class="flex items-start space-x-3">
-              <div
-                class="flex-shrink-0 w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center mt-1"
-              >
-                <svg
-                  class="w-3 h-3 text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900">Analytics Dashboard</h4>
-                <p class="text-gray-600">
-                  Out‑of‑the‑box reports (throughput, review times, test
-                  coverage, etc.) highlight bottlenecks and measure team health.
-                </p>
-              </div>
-            </div>
-
-            <div class="flex items-start space-x-3">
-              <div
-                class="flex-shrink-0 w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center mt-1"
-              >
-                <svg
-                  class="w-3 h-3 text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900">Assessments</h4>
-                <p class="text-gray-600">
-                  Automated engineering health checks with reminders and
-                  progress tracking, so improvement is measurable and
-                  continuous.
-                </p>
-              </div>
-            </div>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-medium">Boards</span>
+            <span class="px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-medium">Analytics</span>
+            <span class="px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-medium">Assessments</span>
           </div>
-
-          <div class="flex flex-col sm:flex-row gap-4">
-            <a
-              href="https://polysee.dev"
-              target="_blank"
-              class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors duration-200"
-            >
-              Try Polysee Free
-              <svg
-                class="ml-2 w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                ></path>
-              </svg>
-            </a>
-            <a
-              href="#learn-more"
-              class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-blue-600 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors duration-200"
-            >
-              Learn More
-            </a>
-          </div>
-        </div>
-
-        <!-- Visual -->
-        <div class="mt-12 lg:mt-0">
-          <div
-            class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8 border border-blue-100"
-          >
-            <div class="bg-white rounded-lg shadow-lg p-6">
-              <div class="flex items-center justify-between mb-4">
-                <h4 class="font-semibold text-gray-900">
-                  Development Dashboard
-                </h4>
-                <div class="flex space-x-1">
-                  <div class="w-3 h-3 bg-red-400 rounded-full"></div>
-                  <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                  <div class="w-3 h-3 bg-green-400 rounded-full"></div>
-                </div>
-              </div>
-              <div class="space-y-3">
-                <div class="h-2 bg-blue-200 rounded-full"></div>
-                <div class="h-2 bg-green-200 rounded-full w-4/5"></div>
-                <div class="h-2 bg-purple-200 rounded-full w-3/5"></div>
-                <div class="grid grid-cols-2 gap-4 mt-6">
-                  <div class="bg-gray-50 rounded p-3">
-                    <div class="text-xs text-gray-500">Throughput</div>
-                    <div class="text-lg font-semibold text-green-600">
-                      ↗ 23%
-                    </div>
-                  </div>
-                  <div class="bg-gray-50 rounded p-3">
-                    <div class="text-xs text-gray-500">Review Time</div>
-                    <div class="text-lg font-semibold text-blue-600">2.1h</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <a href="https://polysee.dev" target="_blank" class="inline-flex items-center text-blue-600 hover:text-blue-700 text-sm font-semibold transition-colors">
+            Try Polysee Free
+            <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          </a>
         </div>
       </div>
-    </div>
 
-    <!-- SpecJest Tab Content -->
-    <div id="specjest-content" class="tab-content hidden">
-      <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12">
-          <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-            SpecJest – BDD Meets Jest
-          </h3>
-          <p class="text-lg text-gray-600">
-            To bridge behavior-driven development and modern JavaScript testing,
-            we open-sourced SpecJest. A simple CLI that converts Gherkin
-            .feature files into Jest test skeletons – and the inverse.
+      <!-- SpecJest -->
+      <div class="scroll-fade bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow duration-300" style="transition-delay: 100ms">
+        <div class="bg-gradient-to-r from-gray-800 to-gray-900 p-6">
+          <h3 class="text-xl font-bold text-white">SpecJest</h3>
+          <p class="text-gray-300 text-sm mt-1">BDD Meets Jest (Open Source)</p>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+            A CLI that converts Gherkin .feature files into Jest test skeletons and back. Bridge behavior-driven development and modern JavaScript testing without abandoning either.
           </p>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg p-8">
-          <div class="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h4 class="text-xl font-semibold text-gray-900 mb-4">
-                Key Features
-              </h4>
-              <ul class="space-y-3">
-                <li class="flex items-start space-x-3">
-                  <svg
-                    class="w-5 h-5 text-green-600 mt-0.5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                  <span class="text-gray-700"
-                    >Convert Gherkin .feature files to Jest tests</span
-                  >
-                </li>
-                <li class="flex items-start space-x-3">
-                  <svg
-                    class="w-5 h-5 text-green-600 mt-0.5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                  <span class="text-gray-700"
-                    >Generate feature files from Jest output</span
-                  >
-                </li>
-                <li class="flex items-start space-x-3">
-                  <svg
-                    class="w-5 h-5 text-green-600 mt-0.5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                  <span class="text-gray-700"
-                    >Use BDD-style scenarios without abandoning Jest</span
-                  >
-                </li>
-              </ul>
-            </div>
-
-            <div
-              class="bg-gray-900 rounded-lg p-6 text-green-400 font-mono text-sm"
-            >
-              <div class="mb-2 text-gray-400"># Install SpecJest</div>
-              <div class="mb-4">$ npm install specjest</div>
-              <div class="mb-2 text-gray-400"># Convert feature to tests</div>
-              <div class="mb-4">$ specjest test features/</div>
-              <div class="text-gray-400"># Generate features from Jest</div>
-              <div>$ jest --json | specjest</div>
-            </div>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="px-2.5 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">Gherkin</span>
+            <span class="px-2.5 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">Jest</span>
+            <span class="px-2.5 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">Open Source</span>
           </div>
-
-          <div class="mt-8 text-center">
-            <a
-              href="https://github.com/osmanekalache/specjest"
-              target="_blank"
-              class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-gray-900 hover:bg-gray-800 rounded-lg transition-colors duration-200"
-            >
-              <svg class="mr-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                  fill-rule="evenodd"
-                  d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-              View on GitHub
-            </a>
-          </div>
+          <a href="https://github.com/osmanekalache/specjest" target="_blank" class="inline-flex items-center text-gray-700 hover:text-gray-900 text-sm font-semibold transition-colors">
+            View on GitHub
+            <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          </a>
         </div>
       </div>
+
     </div>
   </div>
 </section>
-
-<script>
-  function switchTab(tabName) {
-    // Hide all tab content
-    document.querySelectorAll(".tab-content").forEach((content) => {
-      content.classList.add("hidden");
-    });
-
-    // Show selected tab content
-    document.getElementById(tabName + "-content").classList.remove("hidden");
-
-    // Update tab button styles
-    document.querySelectorAll('button[id$="-tab"]').forEach((tab) => {
-      tab.classList.remove("bg-blue-600", "text-white");
-      tab.classList.add("text-gray-600", "hover:text-gray-900");
-    });
-
-    // Style active tab
-    const activeTab = document.getElementById(tabName + "-tab");
-    activeTab.classList.add("bg-blue-600", "text-white");
-    activeTab.classList.remove("text-gray-600", "hover:text-gray-900");
-  }
-</script>
 
 <!-- Founder Section -->
 <section class="py-20 bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="lg:grid lg:grid-cols-3 lg:gap-16 items-center">
+    <div class="lg:grid lg:grid-cols-3 lg:gap-16 items-center scroll-fade">
       <!-- Profile Image -->
       <div class="text-center lg:text-left">
         <div class="inline-block relative">
@@ -614,107 +265,52 @@
             alt="Osmane Kalache"
             onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxjaXJjbGUgY3g9IjEwMCIgY3k9IjcwIiByPSIzMCIgZmlsbD0iIzk5QTNBRiIvPgo8cGF0aCBkPSJNNDAgMTUwQzQwIDEyMi4zODYgNjIuMzg2IDEwMCA9MCAxMDBIMTEwQzEzNy42MTQgMTAwIDE2MCAxMjIuMzg2IDE2MCAxNTBWMjAwSDQwVjE1MFoiIGZpbGw9IiM5OUEzQUYiLz4KPC9zdmc+Cg=='"
           />
-          <div
-            class="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-white flex items-center justify-center"
-          >
-            <svg
-              class="w-4 h-4 text-white"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
+          <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-white flex items-center justify-center">
+            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
           </div>
         </div>
       </div>
 
       <!-- Content -->
       <div class="lg:col-span-2 mt-8 lg:mt-0">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-          Osmane Kalache
-        </h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Osmane Kalache</h2>
         <p class="text-xl text-gray-600 mb-6">
-          Passionate software engineer with 15+ years of professional experience
-          in designing and implementing large-scale web applications, mobile
-          apps, desktop applications, and robotics solutions.
+          Passionate software engineer with 15+ years of professional experience in designing and implementing large-scale web applications, mobile apps, desktop applications, and robotics solutions.
         </p>
-        <blockquote
-          class="text-lg italic text-gray-700 mb-6 border-l-4 border-blue-600 pl-6"
-        >
-          "I help software teams meet business goals 🚀 with hands-on
-          engineering practices ⚡ (Architecture, Platform, AI)"
+        <blockquote class="text-lg italic text-gray-700 mb-6 border-l-4 border-blue-600 pl-6">
+          "I help software teams meet business goals with hands-on engineering practices (Architecture, Platform, AI)"
         </blockquote>
 
         <div class="grid md:grid-cols-2 gap-6 mb-8">
           <div>
             <h3 class="font-semibold text-gray-900 mb-3">Experience</h3>
             <p class="text-gray-600 text-sm">
-              Worked across diverse industries including IoT (home appliances),
-              telecom, real estate, and fintech. Now leveraging acquired
-              expertise to help teams and entrepreneurs achieve their goals
-              through software, automation, and AI.
+              Worked across diverse industries including IoT (home appliances), telecom, real estate, and fintech. Now leveraging acquired expertise to help teams and entrepreneurs achieve their goals through software, automation, and AI.
             </p>
           </div>
           <div>
             <h3 class="font-semibold text-gray-900 mb-3">Focus Areas</h3>
             <p class="text-gray-600 text-sm">
-              DDD, TDD, XP, Conway's Law (organization/team), Fast Feedback
-              Loops, CI/CD, Platform Engineering, and Developer Experience (DX).
+              DDD, TDD, XP, Conway's Law (organization/team), Fast Feedback Loops, CI/CD, Platform Engineering, and Developer Experience (DX).
             </p>
           </div>
         </div>
 
-        <p class="text-gray-600 mb-8">
-          Technology agnostic with strong problem-solving, organizing,
-          communication, and planning skills. Suitable to create dynamic
-          momentum in software delivery teams through proven engineering
-          practices.
-        </p>
-
         <!-- Social Links -->
         <div class="flex flex-wrap gap-4">
-          <a
-            href="https://fr.linkedin.com/in/osmane-kalache"
-            target="_blank"
-            class="inline-flex items-center px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors duration-200"
-          >
-            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-              <path
-                fill-rule="evenodd"
-                d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
+          <a href="https://fr.linkedin.com/in/osmane-kalache" target="_blank"
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors duration-200">
+            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd"></path></svg>
             LinkedIn
           </a>
-          <a
-            href="https://github.com/osminosm"
-            target="_blank"
-            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors duration-200"
-          >
-            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-              <path
-                fill-rule="evenodd"
-                d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
+          <a href="https://github.com/osminosm" target="_blank"
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors duration-200">
+            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path></svg>
             GitHub
           </a>
-          <a
-            href="https://twitter.com/osmanekalache"
-            target="_blank"
-            class="inline-flex items-center px-4 py-2 text-sm font-medium text-blue-400 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors duration-200"
-          >
-            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-              <path
-                d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84"
-              ></path>
-            </svg>
+          <a href="https://twitter.com/osmanekalache" target="_blank"
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-blue-400 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors duration-200">
+            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84"></path></svg>
             Twitter
           </a>
         </div>
@@ -724,73 +320,41 @@
 </section>
 
 <!-- Contact/CTA Section -->
-<section
-  id="contact"
-  class="py-20 bg-gradient-to-br from-blue-600 to-purple-700"
->
+<section id="contact" class="py-20 bg-gradient-to-br from-blue-600 to-purple-700">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
-        Get Started – Let's Talk
-      </h2>
-      <p class="text-xl text-blue-100 mb-8">
-        Your next-level engineering practice is one conversation away. Skip the
-        generic form – schedule a call with us instead.
-      </p>
-      <p class="text-lg text-blue-100 mb-12">
-        Contact ioprodz to book a free strategy session: we'll discuss your
-        challenges, share quick wins, and lay out a roadmap for transforming
-        your team. Whether you need a one-hour consult or a longer CTO
-        engagement, we'll tailor the session to your needs.
+    <div class="max-w-4xl mx-auto scroll-fade">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Get Started -- Let's Talk</h2>
+      <p class="text-xl text-blue-100 mb-12">
+        Your next-level engineering practice is one conversation away. Whether you need a one-hour consult or a longer engagement, we'll tailor it to your needs.
       </p>
 
       <div class="flex flex-col sm:flex-row gap-6 justify-center mb-8">
-        <a
-          href="mailto:osmane@ioprodz.com"
-          class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-blue-600 bg-white hover:bg-gray-50 rounded-lg transition-colors duration-200 shadow-lg"
-        >
-          <svg
-            class="w-5 h-5 mr-2"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M3 8l7.89 4.09a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-1.997 1.884z"
-            ></path>
-          </svg>
+        <a href="mailto:osmane@ioprodz.com"
+          class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-blue-600 bg-white hover:bg-gray-50 rounded-xl transition-all duration-200 shadow-lg hover:-translate-y-0.5">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.09a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-1.997 1.884z"></path></svg>
           Email Us
         </a>
-        <a
-          href="https://calendly.com/osminosm/30min"
-          target="_blank"
-          class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-blue-800 hover:bg-blue-900 rounded-lg transition-colors duration-200 shadow-lg border-2 border-blue-500"
-        >
-          <svg
-            class="w-5 h-5 mr-2"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-            ></path>
-          </svg>
+        <a href="https://calendly.com/osminosm/30min" target="_blank"
+          class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-sm rounded-xl transition-all duration-200 shadow-lg hover:-translate-y-0.5">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
           Schedule Call
         </a>
       </div>
 
       <p class="text-blue-200 text-lg font-medium">
-        Why wait? Let's turn your software delivery into a competitive
-        advantage.
+        Why wait? Let's turn your software delivery into a competitive advantage.
       </p>
     </div>
   </div>
 </section>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.scroll-fade').forEach(el => observer.observe(el));
+</script>
+
 {{ end }}

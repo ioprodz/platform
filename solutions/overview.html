@@ -1,0 +1,447 @@
+{{ define "content" }}
+
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .hero-animate {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .hero-animate-delay-1 {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.15s forwards;
+  }
+
+  .hero-animate-delay-2 {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.3s forwards;
+  }
+
+  .hero-animate-delay-3 {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.45s forwards;
+  }
+
+  .scroll-fade {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .scroll-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .pillar-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .pillar-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  }
+
+  .gradient-bg {
+    background: linear-gradient(-45deg, #0f172a, #1e293b, #1e1b4b, #172554);
+    background-size: 400% 400%;
+    animation: gradientShift 12s ease infinite;
+  }
+
+  .floating-shape {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .floating-shape-delay {
+    animation: float 6s ease-in-out 2s infinite;
+  }
+
+  .integration-line {
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+    height: 2px;
+  }
+</style>
+
+<!-- Hero Section -->
+<section class="relative pt-32 pb-24 overflow-hidden gradient-bg">
+  <!-- Decorative shapes -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="floating-shape absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
+    <div class="floating-shape-delay absolute bottom-10 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+    <div class="floating-shape absolute top-40 right-1/4 w-48 h-48 bg-cyan-500/10 rounded-full blur-2xl"></div>
+  </div>
+
+  <div class="relative mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+    <div class="text-center">
+      <div class="hero-animate inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-blue-200 text-sm font-medium mb-8">
+        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path>
+        </svg>
+        AI-Augmented Software Platform
+      </div>
+
+      <h1 class="hero-animate-delay-1 text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 max-w-5xl mx-auto leading-tight">
+        Three Pillars of
+        <span class="bg-gradient-to-r from-blue-400 via-cyan-300 to-purple-400 bg-clip-text text-transparent">
+          Intelligent Software
+        </span>
+      </h1>
+
+      <p class="hero-animate-delay-2 text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+        Modern software teams need more than isolated tools. Polysee delivers an integrated platform where
+        <strong class="text-white">intelligence</strong>, <strong class="text-white">communication</strong>,
+        and <strong class="text-white">knowledge</strong> work together seamlessly.
+      </p>
+
+      <div class="hero-animate-delay-3 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://calendly.com/osminosm/30min" target="_blank"
+          class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-xl transition-all duration-200 shadow-lg shadow-blue-600/30 hover:shadow-blue-500/40 hover:-translate-y-0.5">
+          Schedule a Demo
+          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+        <a href="#pillars"
+          class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-xl transition-all duration-200 hover:-translate-y-0.5">
+          Explore Solutions
+          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Integration Flow -->
+<section class="py-12 bg-gray-50">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="scroll-fade flex flex-col md:flex-row items-center justify-center gap-4 text-center">
+      <div class="flex items-center gap-3 bg-white rounded-xl px-5 py-3 shadow-sm border border-gray-100">
+        <div class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center">
+          <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+        </div>
+        <span class="font-medium text-gray-700">Communicate</span>
+      </div>
+      <svg class="w-6 h-6 text-gray-300 hidden md:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+      <div class="flex items-center gap-3 bg-white rounded-xl px-5 py-3 shadow-sm border border-gray-100">
+        <div class="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center">
+          <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        </div>
+        <span class="font-medium text-gray-700">Search</span>
+      </div>
+      <svg class="w-6 h-6 text-gray-300 hidden md:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+      <div class="flex items-center gap-3 bg-white rounded-xl px-5 py-3 shadow-sm border border-gray-100">
+        <div class="w-8 h-8 rounded-lg bg-violet-100 flex items-center justify-center">
+          <svg class="w-4 h-4 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+        </div>
+        <span class="font-medium text-gray-700">Reason</span>
+      </div>
+      <svg class="w-6 h-6 text-gray-300 hidden md:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+      <div class="flex items-center gap-3 bg-white rounded-xl px-5 py-3 shadow-sm border border-gray-100">
+        <div class="w-8 h-8 rounded-lg bg-emerald-100 flex items-center justify-center">
+          <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+        </div>
+        <span class="font-medium text-gray-700">Act</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Four Pillars Section -->
+<section id="pillars" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 scroll-fade">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+        Platform Components
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Four production-grade components that can be embedded into any product -- powerful individually, transformative together.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+
+      <!-- AI Engine Card -->
+      <a href="/solutions/ai-engine" class="pillar-card scroll-fade group block bg-white rounded-2xl border border-gray-200 overflow-hidden">
+        <div class="bg-gradient-to-r from-violet-600 to-indigo-700 p-6">
+          <div class="flex items-center justify-between">
+            <div class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+              </svg>
+            </div>
+            <svg class="w-5 h-5 text-white/60 group-hover:text-white group-hover:translate-x-1 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-white mt-4">AI Engine</h3>
+          <p class="text-violet-100 mt-2">Complete AI orchestration layer</p>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-600 mb-4">
+            A full agent runtime that connects large language models to your product's domain. Define agents, give them tools, and let them reason and act autonomously.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-violet-50 text-violet-700 rounded-full text-xs font-medium">Multi-Provider</span>
+            <span class="px-3 py-1 bg-violet-50 text-violet-700 rounded-full text-xs font-medium">Tool Calling</span>
+            <span class="px-3 py-1 bg-violet-50 text-violet-700 rounded-full text-xs font-medium">MCP Protocol</span>
+            <span class="px-3 py-1 bg-violet-50 text-violet-700 rounded-full text-xs font-medium">Voice I/O</span>
+            <span class="px-3 py-1 bg-violet-50 text-violet-700 rounded-full text-xs font-medium">Streaming</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Chat & Collaboration Card -->
+      <a href="/solutions/chat-collaboration" class="pillar-card scroll-fade group block bg-white rounded-2xl border border-gray-200 overflow-hidden" style="transition-delay: 100ms">
+        <div class="bg-gradient-to-r from-blue-600 to-cyan-600 p-6">
+          <div class="flex items-center justify-between">
+            <div class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+              </svg>
+            </div>
+            <svg class="w-5 h-5 text-white/60 group-hover:text-white group-hover:translate-x-1 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-white mt-4">Multi Modal Chat</h3>
+          <p class="text-blue-100 mt-2">AI-native messaging backbone</p>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-600 mb-4">
+            A unified communication layer where humans and AI agents collaborate naturally. Rich media, interactive workflows, and intelligent notifications in one system.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-medium">AI Agents</span>
+            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-medium">Voice Messages</span>
+            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-medium">Interactive Elements</span>
+            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-medium">Real-Time SSE</span>
+            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-medium">File Sharing</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Collaborative Editing Card -->
+      <a href="/solutions/collaborative-editing" class="pillar-card scroll-fade group block bg-white rounded-2xl border border-gray-200 overflow-hidden" style="transition-delay: 200ms">
+        <div class="bg-gradient-to-r from-emerald-600 to-teal-600 p-6">
+          <div class="flex items-center justify-between">
+            <div class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+              </svg>
+            </div>
+            <svg class="w-5 h-5 text-white/60 group-hover:text-white group-hover:translate-x-1 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-white mt-4">Collaborative Document Editing</h3>
+          <p class="text-emerald-100 mt-2">Real-time multi-user editing with AI</p>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-600 mb-4">
+            Multiple people and AI agents edit the same document simultaneously with automatic conflict resolution. The same technology behind Google Docs, embeddable into any product.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full text-xs font-medium">CRDT Sync</span>
+            <span class="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full text-xs font-medium">Live Cursors</span>
+            <span class="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full text-xs font-medium">Version History</span>
+            <span class="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full text-xs font-medium">AI Editing</span>
+            <span class="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full text-xs font-medium">Rich Content</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Search & RAG Card -->
+      <a href="/solutions/search-rag" class="pillar-card scroll-fade group block bg-white rounded-2xl border border-gray-200 overflow-hidden" style="transition-delay: 300ms">
+        <div class="bg-gradient-to-r from-amber-500 to-orange-600 p-6">
+          <div class="flex items-center justify-between">
+            <div class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              </svg>
+            </div>
+            <svg class="w-5 h-5 text-white/60 group-hover:text-white group-hover:translate-x-1 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-white mt-4">Search & RAG</h3>
+          <p class="text-amber-100 mt-2">Semantic search & intelligent retrieval</p>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-600 mb-4">
+            Indexes your content automatically, combines vector similarity with full-text search, and provides a retrieval API that AI agents use to ground their responses in real data.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-amber-50 text-amber-700 rounded-full text-xs font-medium">Hybrid Search</span>
+            <span class="px-3 py-1 bg-amber-50 text-amber-700 rounded-full text-xs font-medium">Auto Indexing</span>
+            <span class="px-3 py-1 bg-amber-50 text-amber-700 rounded-full text-xs font-medium">RAG API</span>
+            <span class="px-3 py-1 bg-amber-50 text-amber-700 rounded-full text-xs font-medium">Vector + Keyword</span>
+            <span class="px-3 py-1 bg-amber-50 text-amber-700 rounded-full text-xs font-medium">Multi-Entity</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- Industries Section -->
+<section class="py-24 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 scroll-fade">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+        Built for Every Industry
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        The platform adapts to your domain. Here's how organizations across industries use Polysee's components.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <div class="scroll-fade bg-white rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow duration-300">
+        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+        </div>
+        <h3 class="font-semibold text-gray-900 mb-2">Software Development</h3>
+        <p class="text-sm text-gray-600">Code review agents, team channels, codebase search</p>
+      </div>
+
+      <div class="scroll-fade bg-white rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow duration-300" style="transition-delay: 50ms">
+        <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+        </div>
+        <h3 class="font-semibold text-gray-900 mb-2">Healthcare</h3>
+        <p class="text-sm text-gray-600">Clinical decision support, provider messaging, medical knowledge retrieval</p>
+      </div>
+
+      <div class="scroll-fade bg-white rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow duration-300" style="transition-delay: 100ms">
+        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        </div>
+        <h3 class="font-semibold text-gray-900 mb-2">Financial Services</h3>
+        <p class="text-sm text-gray-600">Risk analysis, compliance chat, regulatory document search</p>
+      </div>
+
+      <div class="scroll-fade bg-white rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow duration-300" style="transition-delay: 150ms">
+        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>
+        </div>
+        <h3 class="font-semibold text-gray-900 mb-2">Legal</h3>
+        <p class="text-sm text-gray-600">Contract analysis, case collaboration, precedent search</p>
+      </div>
+
+      <div class="scroll-fade bg-white rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow duration-300" style="transition-delay: 200ms">
+        <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+        </div>
+        <h3 class="font-semibold text-gray-900 mb-2">Education</h3>
+        <p class="text-sm text-gray-600">Adaptive tutoring, student messaging, curriculum search</p>
+      </div>
+
+      <div class="scroll-fade bg-white rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow duration-300" style="transition-delay: 250ms">
+        <div class="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+        </div>
+        <h3 class="font-semibold text-gray-900 mb-2">Customer Support</h3>
+        <p class="text-sm text-gray-600">Ticket resolution agents, multi-channel support, knowledge base retrieval</p>
+      </div>
+
+      <div class="scroll-fade bg-white rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow duration-300" style="transition-delay: 300ms">
+        <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+        </div>
+        <h3 class="font-semibold text-gray-900 mb-2">Manufacturing</h3>
+        <p class="text-sm text-gray-600">Quality analysis, field coordination, technical manual search</p>
+      </div>
+
+      <div class="scroll-fade bg-white rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow duration-300" style="transition-delay: 350ms">
+        <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+        </div>
+        <h3 class="font-semibold text-gray-900 mb-2">Real Estate</h3>
+        <p class="text-sm text-gray-600">Market analysis, agent-client communication, property search</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-24 bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center scroll-fade">
+    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+      Ready to Build Intelligent Software?
+    </h2>
+    <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+      These components are powerful individually, but transformative together. Let's discuss how they fit your product.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="https://calendly.com/osminosm/30min" target="_blank"
+        class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-blue-700 bg-white hover:bg-gray-50 rounded-xl transition-all duration-200 shadow-lg hover:-translate-y-0.5">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+        Schedule a Demo
+      </a>
+      <a href="mailto:osmane@ioprodz.com"
+        class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-xl transition-all duration-200 hover:-translate-y-0.5">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.09a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-1.997 1.884z"></path></svg>
+        Contact Us
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Intersection Observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  document.querySelectorAll('.scroll-fade').forEach(el => observer.observe(el));
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+
+{{ end }}

@@ -16,6 +16,8 @@ var public Paths = Paths{
 	"/auth/github",
 	"/auth/google",
 	"/blog",
+	"/consulting",
+	"/solutions",
 	"/static",
 }
 
