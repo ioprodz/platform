@@ -7,6 +7,7 @@ import (
 	"ioprodz/blog"
 	"ioprodz/common/config"
 	"ioprodz/common/middlewares"
+	"ioprodz/common/seo"
 	"ioprodz/consulting"
 	"ioprodz/cv"
 	"ioprodz/home"
@@ -28,6 +29,7 @@ func main() {
 	staticRouter := router.PathPrefix("/static").Subrouter()
 	staticRouter.PathPrefix("/favicon/").Handler(http.StripPrefix("/static/favicon/", http.FileServer(http.Dir("common/ui/favicon/"))))
 	staticRouter.PathPrefix("/cv-osmane-kalache/").Handler(http.StripPrefix("/static/cv-osmane-kalache/", http.FileServer(http.Dir("cv_osm/"))))
+	staticRouter.PathPrefix("/img/").Handler(http.StripPrefix("/static/img/", http.FileServer(http.Dir("static/img/"))))
 
 	// Hook global middlewares
 	router.Use(middlewares.RequestLogger)
@@ -36,7 +38,7 @@ func main() {
 	auth.ConfigureModule(router)
 	members.ConfigureModule(router)
 	qna.ConfigureModule(router)
-	blog.ConfigureModule(router)
+	blogRepo := blog.ConfigureModule(router)
 	cv.ConfigureModule(router)
 
 	// Configure consulting module
@@ -44,6 +46,9 @@ func main() {
 
 	// Configure solutions module
 	solutions.ConfigureModule(router)
+
+	// SEO routes
+	seo.ConfigureRoutes(router, blogRepo)
 
 	// Configure home module last (has catch-all "/" route)
 	home.ConfigureModule(router)

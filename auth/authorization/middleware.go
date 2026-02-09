@@ -18,6 +18,9 @@ var public Paths = Paths{
 	"/blog",
 	"/consulting",
 	"/solutions",
+	"/robots.txt",
+	"/sitemap.xml",
+	"/llms.txt",
 	"/static",
 }
 

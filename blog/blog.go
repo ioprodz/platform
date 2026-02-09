@@ -2,13 +2,14 @@ package blog
 
 import (
 	blog_infra "ioprodz/blog/_infra"
+	blog_models "ioprodz/blog/_models"
 	blog_admin "ioprodz/blog/admin"
 	blog_reader "ioprodz/blog/reader"
 
 	"github.com/gorilla/mux"
 )
 
-func ConfigureModule(router *mux.Router) {
+func ConfigureModule(router *mux.Router) blog_models.BlogRepository {
 
 	blogRepo := blog_infra.CreateBlogRepository()
 
@@ -25,4 +26,6 @@ func ConfigureModule(router *mux.Router) {
 	router.HandleFunc("/api/admin/blog", blog_admin.CreateCreateBlogHandler(blogRepo)).Methods("POST")
 	router.HandleFunc("/api/admin/blog/{id}/review", blog_admin.CreateReviewHandler(blogRepo)).Methods("PUT")
 	router.HandleFunc("/api/admin/blog/{id}/publish", blog_admin.CreatePublishHandler(blogRepo)).Methods("PUT")
+
+	return blogRepo
 }
