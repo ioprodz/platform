@@ -1,9 +1,12 @@
 package ui
 
 import (
+	"bytes"
 	"ioprodz/common/config"
 	"ioprodz/common/policies"
+	"log"
 	"net/http"
+	"sync"
 	"text/template"
 )
 
@@ -45,15 +48,36 @@ func (m PageMeta) OGImageURL() string {
 	return config.Load().BASE_URL + "/static/img/og-image.png"
 }
 
+var (
+	templateCache sync.Map
+	commonFiles   = []string{"common/ui/layout.html", "common/ui/header.html", "common/ui/footer.html"}
+)
+
+func getTemplate(files ...string) (*template.Template, error) {
+	key := files[len(files)-1] // use the page-specific template as cache key
+	if cached, ok := templateCache.Load(key); ok {
+		return cached.(*template.Template), nil
+	}
+	tpl, err := template.ParseFiles(files...)
+	if err != nil {
+		return nil, err
+	}
+	templateCache.Store(key, tpl)
+	return tpl, nil
+}
+
 func RenderPageWithMeta(w http.ResponseWriter, r *http.Request, tmpl string, data interface{}, meta PageMeta) {
 	user := r.Context().Value(policies.CurrentUserCtxKey).(policies.CurrentUser)
 
-	tpl, err := template.ParseFiles("common/ui/layout.html", "common/ui/header.html", "common/ui/footer.html", tmpl+".html")
+	tpl, err := getTemplate(append(commonFiles, tmpl+".html")...)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		log.Printf("template parse error: %v", err)
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 		return
 	}
-	err = tpl.ExecuteTemplate(w, "layout", map[string]interface{}{
+
+	var buf bytes.Buffer
+	err = tpl.ExecuteTemplate(&buf, "layout", map[string]interface{}{
 		"contentData":     data,
 		"isAuthenticated": user.IsAuthenticated(),
 		"user":            user,
@@ -61,9 +85,11 @@ func RenderPageWithMeta(w http.ResponseWriter, r *http.Request, tmpl string, dat
 		"baseURL":         config.Load().BASE_URL,
 	})
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		log.Printf("template execute error: %v", err)
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 		return
 	}
+	buf.WriteTo(w)
 }
 
 func RenderPage(w http.ResponseWriter, r *http.Request, tmpl string, data interface{}) {
@@ -73,14 +99,17 @@ func RenderPage(w http.ResponseWriter, r *http.Request, tmpl string, data interf
 func RenderAdminPage(w http.ResponseWriter, r *http.Request, tmpl string, data interface{}) {
 	user := r.Context().Value(policies.CurrentUserCtxKey).(policies.CurrentUser)
 
-	tpl, err := template.ParseFiles("common/ui/layout.html", "common/ui/header.html", "common/ui/footer.html", "common/ui/admin-layout.html", tmpl+".html")
+	adminFiles := append(commonFiles, "common/ui/admin-layout.html", tmpl+".html")
+	tpl, err := getTemplate(adminFiles...)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		log.Printf("template parse error: %v", err)
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 		return
 	}
 
 	meta := PageMeta{Title: "Admin", Description: "Admin panel", OGType: "website"}
-	err = tpl.ExecuteTemplate(w, "layout", map[string]interface{}{
+	var buf bytes.Buffer
+	err = tpl.ExecuteTemplate(&buf, "layout", map[string]interface{}{
 		"contentData":     data,
 		"isAuthenticated": user.IsAuthenticated(),
 		"layout":          "admin",
@@ -89,9 +118,11 @@ func RenderAdminPage(w http.ResponseWriter, r *http.Request, tmpl string, data i
 		"baseURL":         config.Load().BASE_URL,
 	})
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		log.Printf("template execute error: %v", err)
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 		return
 	}
+	buf.WriteTo(w)
 }
 
 func Render404(w http.ResponseWriter, r *http.Request) {
