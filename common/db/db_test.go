@@ -1,8 +1,10 @@
 package db_test
 
 import (
+	"context"
 	"ioprodz/common/db"
 	"ioprodz/common/policies"
+	"os"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -19,9 +21,21 @@ func (b TestEntity) GetId() string {
 
 func TestBaseRepository(t *testing.T) {
 
-	db.GetInstance()
+	repos := []policies.BaseRepository[TestEntity]{db.CreateMemoryRepo[TestEntity]()}
 
-	repos := []policies.BaseRepository[TestEntity]{db.CreateMongoRepo[TestEntity]("test_collection"), db.CreateMemoryRepo[TestEntity]()}
+	if os.Getenv("DATABASE_URL") != "" {
+		pool := db.GetPool()
+		_, err := pool.Exec(context.Background(),
+			"CREATE TABLE IF NOT EXISTS test_entities (id TEXT PRIMARY KEY, data JSONB NOT NULL)")
+		if err != nil {
+			t.Fatalf("failed to create test_entities table: %v", err)
+		}
+		_, _ = pool.Exec(context.Background(), "TRUNCATE test_entities")
+		t.Cleanup(func() {
+			_, _ = pool.Exec(context.Background(), "DROP TABLE test_entities")
+		})
+		repos = append(repos, db.CreatePostgresRepo[TestEntity]("test_entities"))
+	}
 
 	for _, repo := range repos {
 		repo.Create(TestEntity{Id: "test-id1", Data: "data1"})
@@ -30,16 +44,21 @@ func TestBaseRepository(t *testing.T) {
 		t.Run("return inserted documents list", func(t *testing.T) {
 
 			list, _ := repo.List()
-			assert.Equal(t, "data1", list[0].Data)
-			assert.Equal(t, "data2", list[1].Data)
+			assert.Equal(t, 2, len(list))
+			ids := map[string]string{}
+			for _, e := range list {
+				ids[e.Id] = e.Data
+			}
+			assert.Equal(t, "data1", ids["test-id1"])
+			assert.Equal(t, "data2", ids["test-id2"])
 		})
 
 		t.Run("update inserted document by id", func(t *testing.T) {
 
 			repo.Update(TestEntity{Id: "test-id1", Data: "data0"})
 
-			blog, _ := repo.Get("test-id1")
-			assert.Equal(t, "data0", blog.Data)
+			entity, _ := repo.Get("test-id1")
+			assert.Equal(t, "data0", entity.Data)
 		})
 	}
 

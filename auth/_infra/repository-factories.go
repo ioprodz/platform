@@ -11,7 +11,7 @@ func CreateAccountRepository() auth_models.AccountRepository {
 	if isTest {
 		return CreateMemoryAccountRepo()
 	} else {
-		return CreateMongoAccountRepo()
+		return CreatePostgresAccountRepo()
 	}
 }
 
@@ -21,6 +21,6 @@ func CreateSessionRepository() auth_models.SessionRepository {
 	if isTest {
 		return CreateMemorySessionRepo()
 	} else {
-		return CreateMongoSessionRepo()
+		return CreatePostgresSessionRepo()
 	}
 }

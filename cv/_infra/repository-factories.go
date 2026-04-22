@@ -11,6 +11,6 @@ func CreateCVRepository() cv_models.CVRepository {
 	if isTest {
 		return CreateMemoryCVRepo()
 	} else {
-		return CreateMongoCVRepo()
+		return CreatePostgresCVRepo()
 	}
 }

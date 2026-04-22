@@ -1,0 +1,39 @@
+CREATE TABLE IF NOT EXISTS user_accounts (
+    id   TEXT  PRIMARY KEY,
+    data JSONB NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS sessions (
+    id   TEXT  PRIMARY KEY,
+    data JSONB NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS blogposts (
+    id   TEXT  PRIMARY KEY,
+    data JSONB NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS curriculums (
+    id   TEXT  PRIMARY KEY,
+    data JSONB NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS members (
+    id   TEXT  PRIMARY KEY,
+    data JSONB NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS user_projects (
+    id   TEXT  PRIMARY KEY,
+    data JSONB NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS qna (
+    id   TEXT  PRIMARY KEY,
+    data JSONB NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS answers (
+    id   TEXT  PRIMARY KEY,
+    data JSONB NOT NULL
+);

@@ -15,7 +15,7 @@ type configStore struct {
 	PORT          string
 	IS_PRODUCTION bool
 
-	DB_MONGO_URI string
+	DATABASE_URL string
 
 	// Auth
 	AUTH_OAUTH_COOKIE_SECRET string
@@ -47,7 +47,7 @@ func Load() configStore {
 		ENVIRONMENT:              os.Getenv("APP_ENV"),
 		PORT:                     os.Getenv("PORT"),
 		APP_DOMAIN:               os.Getenv("APP_DOMAIN"),
-		DB_MONGO_URI:             os.Getenv("DB_MONGO_URI"),
+		DATABASE_URL:             os.Getenv("DATABASE_URL"),
 		AUTH_OAUTH_COOKIE_SECRET: os.Getenv("AUTH_OAUTH_COOKIE_SECRET"),
 		AUTH_APP_COOKIE_SECRET:   os.Getenv("AUTH_APP_COOKIE_SECRET"),
 		OPEN_AI_API_KEY:          os.Getenv("OPENAI_API_KEY"),

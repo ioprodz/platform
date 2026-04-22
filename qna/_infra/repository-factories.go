@@ -11,7 +11,7 @@ func CreateAnswersRepository() qna_models.AnswersRepository {
 	if isTest {
 		return CreateMemoryAnswerRepo()
 	} else {
-		return CreateMongoAnswerRepo()
+		return CreatePostgresAnswerRepo()
 	}
 }
 
@@ -21,6 +21,6 @@ func CreateQNARepository() qna_models.QNARepository {
 	if isTest {
 		return CreateMemoryQNARepo()
 	} else {
-		return CreateMongoQNARepo()
+		return CreatePostgresQNARepo()
 	}
 }

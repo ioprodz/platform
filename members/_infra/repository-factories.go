@@ -11,7 +11,7 @@ func CreateMembersRepository() members_models.MembersRepository {
 	if isTest {
 		return CreateMemoryMemberRepo()
 	} else {
-		return CreateMongoMemberRepo()
+		return CreatePostgresMemberRepo()
 	}
 }
 
@@ -21,6 +21,6 @@ func CreateUserProjectRepository() members_models.UserProjectRepository {
 	if isTest {
 		return CreateMemoryUserProjectRepo()
 	} else {
-		return CreateMongoUserProjectRepo()
+		return CreatePostgresUserProjectRepo()
 	}
 }

@@ -11,6 +11,6 @@ func CreateBlogRepository() blog_models.BlogRepository {
 	if isTest {
 		return CreateMemoryBlogRepo()
 	} else {
-		return CreateMongoBlogRepo()
+		return CreatePostgresBlogRepo()
 	}
 }

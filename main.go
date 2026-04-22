@@ -6,6 +6,7 @@ import (
 	"ioprodz/auth"
 	"ioprodz/blog"
 	"ioprodz/common/config"
+	"ioprodz/common/db"
 	"ioprodz/common/middlewares"
 	"ioprodz/common/seo"
 	"ioprodz/consulting"
@@ -22,8 +23,8 @@ import (
 
 func main() {
 	configuration := config.Load()
+	db.RunMigrations()
 	router := mux.NewRouter()
-	//db.NewMongoConnection()
 
 	// Create static subrouter with strict matching
 	staticRouter := router.PathPrefix("/static").Subrouter()
