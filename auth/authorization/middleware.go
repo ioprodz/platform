@@ -13,11 +13,14 @@ type Paths []string
 
 var public Paths = Paths{
 	"/",
+	"/about",
+	"/login",
 	"/auth/github",
 	"/auth/google",
 	"/blog",
 	"/consulting",
 	"/solutions",
+	"/cv",
 	"/robots.txt",
 	"/sitemap.xml",
 	"/llms.txt",
