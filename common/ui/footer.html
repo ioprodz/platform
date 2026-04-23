@@ -1,1 +1,55 @@
-{{ define "footer" }} {{end}}
+{{ define "footer" }}
+<footer class="border-t border-border mt-16">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 py-12">
+    <div class="grid gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-5">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="flex h-7 w-7 items-center justify-center rounded-md bg-surface border border-border">
+            <span class="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px_rgba(198,242,78,0.7)]"></span>
+          </span>
+          <span class="font-semibold tracking-tight text-text text-[15px]">ioprodz</span>
+        </div>
+        <p class="text-[14px] text-text-muted leading-relaxed max-w-sm">
+          From ChatGPT wrapper to real product — on sovereign AI, shipped daily, without the slop.
+        </p>
+        <p class="mt-4 font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim">
+          Independent engineering consultancy · France · Since 2025
+        </p>
+      </div>
+
+      <div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
+        <div>
+          <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-3">Site</div>
+          <ul class="space-y-2 text-[13px]">
+            <li><a href="/" class="text-text-muted hover:text-text transition-colors">Home</a></li>
+            <li><a href="/about" class="text-text-muted hover:text-text transition-colors">About</a></li>
+            <li><a href="/consulting" class="text-text-muted hover:text-text transition-colors">Services</a></li>
+            <li><a href="/blog" class="text-text-muted hover:text-text transition-colors">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-3">Connect</div>
+          <ul class="space-y-2 text-[13px]">
+            <li><a href="https://calendly.com/osminosm/30min" target="_blank" rel="noopener" class="text-text-muted hover:text-accent transition-colors">Book a screening</a></li>
+            <li><a href="mailto:osmane@ioprodz.com" class="text-text-muted hover:text-text transition-colors">osmane@ioprodz.com</a></li>
+            <li><a href="https://fr.linkedin.com/in/osmane-kalache" target="_blank" rel="noopener" class="text-text-muted hover:text-text transition-colors">LinkedIn</a></li>
+            <li><a href="https://github.com/osminosm" target="_blank" rel="noopener" class="text-text-muted hover:text-text transition-colors">GitHub</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-3">Lab</div>
+          <ul class="space-y-2 text-[13px]">
+            <li><a href="https://polysee.dev" target="_blank" rel="noopener" class="text-text-muted hover:text-text transition-colors">Polysee</a></li>
+            <li><a href="https://github.com/osmanekalache/specjest" target="_blank" rel="noopener" class="text-text-muted hover:text-text transition-colors">SpecJest (OSS)</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 pt-6 border-t border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+      <p class="font-mono text-[11px] text-text-dim">© 2025–2026 ioprodz · Osmane Kalache</p>
+      <p class="font-mono text-[11px] text-text-dim">Counter-voice to AI slop.</p>
+    </div>
+  </div>
+</footer>
+{{ end }}

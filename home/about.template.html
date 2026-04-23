@@ -1,0 +1,176 @@
+{{ define "content" }}
+
+<!-- Hero -->
+<section class="relative overflow-hidden border-b border-border">
+  <div class="absolute inset-0 grid-bg opacity-60 pointer-events-none"></div>
+  <div class="absolute inset-0 accent-glow pointer-events-none"></div>
+  <div class="relative mx-auto max-w-4xl px-6 lg:px-8 pt-20 pb-20 lg:pt-24 lg:pb-24">
+    <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-4">Manifesto · Late 2025</div>
+    <h1 class="text-5xl lg:text-7xl leading-[0.98] tracking-tighter font-semibold text-text">
+      The counter-voice<br/>
+      <span class="text-text-muted">to AI slop.</span>
+    </h1>
+    <p class="mt-6 text-lg text-text-muted leading-relaxed max-w-xl">
+      Why I started ioprodz.
+    </p>
+  </div>
+</section>
+
+<!-- Founding story -->
+<section class="border-b border-border">
+  <div class="mx-auto max-w-3xl px-6 lg:px-8 py-20 lg:py-24 space-y-6 text-[17px] text-text-muted leading-relaxed scroll-fade">
+
+    <p>
+      With the AI shift, almost everything about the industry feels like new ground. The entire market is debating model sizes, context windows, prompts — while the mainstream providers profit handsomely from the token-grinding companies building slop on top of their APIs. Almost nobody is talking about the boring engineering that decides whether an AI feature actually survives production.
+    </p>
+
+    <p>
+      After 15+ years shipping real software across IoT, telecom, real estate, and fintech, I'd seen this pattern before — different name, same mistake.
+    </p>
+
+    <div class="py-4">
+      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">The moment it clicked</div>
+      <p class="text-text text-[17px] leading-relaxed">
+        I watched a team I'd mentored years ago ship a polished, production-grade AI feature in under a month — because they already had TDD, CI/CD, and a clean domain model. A competitor down the street, with 3× the engineers, couldn't get theirs out of preview. Same tools. Same models. Different engineering maturity.
+      </p>
+    </div>
+
+    <p>
+      I started ioprodz in late 2025 to be the counter-voice: the one that says the boring engineering is the competitive advantage, and that a small team with the right practices outlasts a big team stacking tokens.
+    </p>
+  </div>
+</section>
+
+<!-- What I believe -->
+<section class="border-b border-border">
+  <div class="mx-auto max-w-4xl px-6 lg:px-8 py-20 lg:py-24">
+    <div class="mb-12 scroll-fade">
+      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">What I believe</div>
+      <h2 class="text-3xl lg:text-5xl tracking-tighter font-semibold text-text">Four convictions I'll defend in any room.</h2>
+    </div>
+
+    <div class="space-y-4">
+      <div class="scroll-fade rounded-2xl border border-border bg-surface/50 p-7">
+        <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-3">01</div>
+        <h3 class="text-xl font-semibold text-text tracking-tight mb-2">Shipping AI is an engineering problem disguised as a model problem.</h3>
+        <p class="text-text-muted text-[15px] leading-relaxed">
+          The hardest parts — evals, rollback, observability, domain modeling, cost guardrails — are exactly what every AI tutorial skips. That's where engagements live and die.
+        </p>
+      </div>
+
+      <div class="scroll-fade rounded-2xl border border-border bg-surface/50 p-7" style="transition-delay: 80ms">
+        <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-3">02</div>
+        <h3 class="text-xl font-semibold text-text tracking-tight mb-2">The teams winning with AI already practiced TDD, DDD, XP, CI/CD before AI existed.</h3>
+        <p class="text-text-muted text-[15px] leading-relaxed">
+          AI didn't make those practices obsolete. It made them a superpower. Mature engineering culture is the invisible moat that compounds exactly when everyone else is scrambling.
+        </p>
+      </div>
+
+      <div class="scroll-fade rounded-2xl border border-border bg-surface/50 p-7" style="transition-delay: 160ms">
+        <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-3">03</div>
+        <h3 class="text-xl font-semibold text-text tracking-tight mb-2">AI doesn't belong in your feature factory. It belongs in your <em class="not-italic text-accent">factory</em> factory.</h3>
+        <p class="text-text-muted text-[15px] leading-relaxed">
+          Automate the internal work first — docs, demos, refactors, metrics, code review. That buys your team time to do the one thing AI can't: talk to the people who actually pay them.
+        </p>
+      </div>
+
+      <div class="scroll-fade rounded-2xl border border-border bg-surface/50 p-7" style="transition-delay: 240ms">
+        <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-3">04</div>
+        <h3 class="text-xl font-semibold text-text tracking-tight mb-2">By 2028, most B2B SaaS will be 90% autonomous.</h3>
+        <p class="text-text-muted text-[15px] leading-relaxed">
+          Machines ingest feedback, ship aligned changes. The humans on those teams don't write features — they validate, govern, own outcomes, and spend their time with customers. Shortcuts taken now = locked out of that future.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Who I am -->
+<section class="border-b border-border">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 py-20 lg:py-24">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 scroll-fade">
+      <div class="lg:col-span-4">
+        <div class="relative w-40 h-40 lg:w-48 lg:h-48">
+          <img
+            class="w-full h-full rounded-2xl object-cover border border-border"
+            src="https://avatars.githubusercontent.com/u/7093627"
+            alt="Osmane Kalache"
+          />
+        </div>
+      </div>
+
+      <div class="lg:col-span-8">
+        <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">Who I am</div>
+        <h2 class="text-3xl lg:text-5xl tracking-tighter font-semibold text-text mb-5">Osmane Kalache.</h2>
+        <p class="text-text-muted text-lg leading-relaxed max-w-2xl mb-6">
+          Software engineer, 15+ years. Worked across IoT (home appliances), telecom, real estate, and fintech. Practitioner of DDD, TDD, XP, Conway's Law, fast feedback loops, CI/CD, platform engineering, and DX. Builder of <a href="https://github.com/osmanekalache/specjest" target="_blank" rel="noopener" class="text-accent underline underline-offset-4">SpecJest</a> (open source) and <a href="https://polysee.dev" target="_blank" rel="noopener" class="text-accent underline underline-offset-4">Polysee</a> — the lab where I stress-test the methodology. Based in France.
+        </p>
+
+        <div class="flex flex-wrap gap-2 mb-8">
+          <span class="font-mono text-[11px] px-2.5 py-1 rounded-md border border-border text-text-muted">DDD</span>
+          <span class="font-mono text-[11px] px-2.5 py-1 rounded-md border border-border text-text-muted">TDD</span>
+          <span class="font-mono text-[11px] px-2.5 py-1 rounded-md border border-border text-text-muted">XP</span>
+          <span class="font-mono text-[11px] px-2.5 py-1 rounded-md border border-border text-text-muted">CI/CD</span>
+          <span class="font-mono text-[11px] px-2.5 py-1 rounded-md border border-border text-text-muted">Conway's Law</span>
+          <span class="font-mono text-[11px] px-2.5 py-1 rounded-md border border-border text-text-muted">Fast feedback</span>
+          <span class="font-mono text-[11px] px-2.5 py-1 rounded-md border border-border text-text-muted">Platform engineering</span>
+          <span class="font-mono text-[11px] px-2.5 py-1 rounded-md border border-border text-text-muted">DX</span>
+        </div>
+
+        <div class="flex flex-wrap gap-2">
+          <a href="https://fr.linkedin.com/in/osmane-kalache" target="_blank" rel="noopener"
+            class="inline-flex items-center gap-2 rounded-md border border-border bg-surface/40 px-3.5 py-1.5 text-[13px] text-text-muted hover:text-text hover:border-border-strong transition-colors">
+            LinkedIn
+          </a>
+          <a href="https://github.com/osminosm" target="_blank" rel="noopener"
+            class="inline-flex items-center gap-2 rounded-md border border-border bg-surface/40 px-3.5 py-1.5 text-[13px] text-text-muted hover:text-text hover:border-border-strong transition-colors">
+            GitHub
+          </a>
+          <a href="https://twitter.com/osmanekalache" target="_blank" rel="noopener"
+            class="inline-flex items-center gap-2 rounded-md border border-border bg-surface/40 px-3.5 py-1.5 text-[13px] text-text-muted hover:text-text hover:border-border-strong transition-colors">
+            Twitter
+          </a>
+          <a href="/blog"
+            class="inline-flex items-center gap-2 rounded-md border border-border bg-surface/40 px-3.5 py-1.5 text-[13px] text-text-muted hover:text-text hover:border-border-strong transition-colors">
+            Blog
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="relative overflow-hidden">
+  <div class="absolute inset-0 accent-glow pointer-events-none"></div>
+  <div class="relative mx-auto max-w-4xl px-6 lg:px-8 py-24 lg:py-32 text-center scroll-fade">
+    <h2 class="text-4xl lg:text-6xl tracking-tighter font-semibold text-text mb-6 leading-[1.02]">
+      Ready to leave<br/>
+      <span class="text-text-muted">the wrapper behind?</span>
+    </h2>
+    <p class="text-text-muted text-lg leading-relaxed max-w-xl mx-auto mb-10">
+      A tailored 30-minute screening. I'll tell you honestly whether your AI product has a wrapper problem or an engineering problem — and what the 90-day path looks like if you want to fix it.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="https://calendly.com/osminosm/30min" target="_blank" rel="noopener"
+        class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-6 py-3 text-[14px] font-medium text-black hover:bg-accent/90 transition-colors">
+        Book a tailored screening
+      </a>
+      <a href="mailto:osmane@ioprodz.com"
+        class="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-surface/40 px-6 py-3 text-[14px] font-medium text-text hover:border-border-strong hover:bg-surface transition-colors">
+        osmane@ioprodz.com
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.scroll-fade').forEach(el => observer.observe(el));
+</script>
+
+{{ end }}
