@@ -1,35 +1,32 @@
 {{ define "content" }}
 <section>
-  <div
-    class="m-auto space-y-8 px-4 text-gray-600 sm:px-12 xl:max-w-6xl xl:px-0"
-  >
-    <div class="flex">
-      <h1 class="text-2xl flex-1">
-        <a class="text-gray-400" href="/admin/qna">QNAs</a> / {{ .Name }}
-      </h1>
-
-      <a
-        class="inline-flex border items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow h-9 px-4 py-2"
-        href="/qna/{{ .Id }}"
-        >Answer QNA</a
-      >
+  <div class="space-y-6">
+    <div class="flex items-center justify-between gap-3">
+      <h2 class="text-xl font-semibold text-text tracking-tight">
+        <a class="text-text-dim hover:text-text transition-colors" href="/admin/qna">QNAs</a>
+        <span class="text-text-dim mx-1.5">/</span>
+        {{ .Name }}
+      </h2>
+      <a href="/qna/{{ .Id }}"
+        class="inline-flex items-center gap-1.5 rounded-md bg-accent px-3.5 py-1.5 text-[13px] font-medium text-black hover:bg-accent/90 transition-colors">
+        Answer QNA
+      </a>
     </div>
 
-    <ul>
-      {{range .Questions}}
-      <li class="border border-gray rounded mb-2 p-2">
-        <h3 class="text-lg">{{.Value}}</h3>
-        <div class="grid grid-cols-3 gap-4">
-          {{range .Choices}}
-          <div
-            class="border {{if .IsCorrect}} border-green-500 {{else}} border-red-500 {{end}} rounded p-2"
-          >
+    <ul class="space-y-3">
+      {{ range .Questions }}
+      <li class="rounded-xl border border-border bg-surface/40 p-5">
+        <h3 class="text-[15px] font-semibold text-text tracking-tight mb-4">{{ .Value }}</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+          {{ range .Choices }}
+          <div class="rounded-md border {{ if .IsCorrect }}border-accent bg-accent/5{{ else }}border-border bg-surface/50{{ end }} p-3 text-[13px] {{ if .IsCorrect }}text-text{{ else }}text-text-muted{{ end }}">
+            {{ if .IsCorrect }}<span class="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">Correct</span><br/>{{ end }}
             {{ .Value }}
           </div>
-          {{end}}
+          {{ end }}
         </div>
       </li>
-      {{end}}
+      {{ end }}
     </ul>
   </div>
 </section>

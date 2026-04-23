@@ -1,64 +1,95 @@
 {{ define "content" }}
-<div class="px-4 sm:px-12 xl:max-w-6xl xl:px-0 m-auto pt-24">
-  <div class="flex p-2">
-    <div class="">
-      <img src="{{ .AvatarUrl }}" class="rounded-lg w-32" />
-    </div>
-    <div class="flex-1 p-2">
-      <h1 class="text-4xl font-bold text-sky-600">{{ .Personal.FullName }}</h1>
-      <h2 class="text-2xl font-bold text-slate-800">{{ .Title }}</h2>
-      <p>{{ .Personal.Phone }} - {{ .Personal.Email }}</p>
-      <p></p>
-      <p>{{ .Personal.Address }}</p>
-    </div>
-    <div class="p-2 flex-1">
-      <p class="text-sm">{{ .Abstract }}</p>
-    </div>
-  </div>
-  <hr />
-  <div class="p-2">
-    <h3
-      class="text-center rounded-lg text-lg text-white font-bold p-2 bg-sky-700"
-    >
-      Professional Experience
-    </h3>
-    {{ range .Experience }}
-    <div class="border rounded p-1 my-1">
-      <div class="flex items-center">
-        <h1 class="text-lg text-sky-600 font-bold">{{ .Title }}</h1>
-        <h2 class="flex-1 pl-1">
-          <b class="text-slate-800 font-bold"> @ {{ .Company }}</b>
-        </h2>
-        <i class="text-sm text-slate-500)">
-          xx years ({{ .Period.Start }} to {{ .Period.End }})</i
-        >
-      </div>
 
-      <p class="whitespace-pre">{{ .Details }}</p>
-    </div>
-    {{ end }}
-  </div>
-  <hr />
-  <div class="p-2">
-    <h3
-      class="text-center rounded-lg text-lg text-white font-bold p-2 bg-sky-600"
-    >
-      Education
-    </h3>
-    {{ range .Education }}
-    <div class="flex border rounded p-1 my-1">
-      <div class="flex flex-col text-xs text-center p-1">
-        <span>{{ .Period.Start }} </span>
-        <span>to</span>
-        <span>{{ .Period.End }} </span>
+<!-- Header -->
+<section class="border-b border-border">
+  <div class="mx-auto max-w-5xl px-6 lg:px-8 py-16 lg:py-20">
+    <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+      <div class="lg:col-span-3">
+        <img src="{{ .AvatarUrl }}" class="w-32 h-32 lg:w-40 lg:h-40 rounded-2xl object-cover border border-border" />
       </div>
-      <div class="p-1">
-        <h1 class="text-lg font-bold text-sky-600">{{.Degree}}</h1>
-        <h1>{{.School}}</h1>
+      <div class="lg:col-span-9">
+        <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">Curriculum vitae</div>
+        <h1 class="text-4xl lg:text-5xl tracking-tighter font-semibold text-text mb-2">{{ .Personal.FullName }}</h1>
+        <h2 class="text-lg lg:text-xl text-text-muted mb-6">{{ .Title }}</h2>
+
+        {{ if .Abstract }}
+        <p class="text-[15px] text-text-muted leading-relaxed max-w-2xl mb-6">{{ .Abstract }}</p>
+        {{ end }}
+
+        <div class="flex flex-wrap gap-2">
+          {{ if .Personal.Email }}
+          <a href="mailto:{{ .Personal.Email }}" class="inline-flex items-center gap-2 rounded-md border border-border bg-surface/40 px-3 py-1.5 text-[13px] text-text-muted hover:text-text hover:border-border-strong transition-colors">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.09a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-1.997 1.884z"></path></svg>
+            {{ .Personal.Email }}
+          </a>
+          {{ end }}
+          {{ if .Personal.Phone }}
+          <span class="inline-flex items-center gap-2 rounded-md border border-border bg-surface/40 px-3 py-1.5 text-[13px] text-text-muted">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+            {{ .Personal.Phone }}
+          </span>
+          {{ end }}
+          {{ if .Personal.Address }}
+          <span class="inline-flex items-center gap-2 rounded-md border border-border bg-surface/40 px-3 py-1.5 text-[13px] text-text-muted">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+            {{ .Personal.Address }}
+          </span>
+          {{ end }}
+        </div>
       </div>
     </div>
-    {{ end }}
   </div>
-</div>
+</section>
+
+<!-- Experience -->
+<section class="border-b border-border">
+  <div class="mx-auto max-w-5xl px-6 lg:px-8 py-16 lg:py-20">
+    <div class="mb-10">
+      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">01 · Experience</div>
+      <h2 class="text-3xl lg:text-4xl tracking-tighter font-semibold text-text">Professional experience</h2>
+    </div>
+
+    <div class="space-y-3">
+      {{ range .Experience }}
+      <div class="rounded-2xl border border-border bg-surface/50 p-6 hover:border-border-strong transition-colors">
+        <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-3">
+          <h3 class="text-lg font-semibold text-text tracking-tight">{{ .Title }}</h3>
+          <span class="text-text-muted">@ <span class="text-text">{{ .Company }}</span></span>
+          <span class="ml-auto font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim">
+            {{ .Period.Start }} → {{ .Period.End }}
+          </span>
+        </div>
+        {{ if .Details }}
+        <p class="whitespace-pre-line text-text-muted text-[14px] leading-relaxed">{{ .Details }}</p>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<!-- Education -->
+<section class="border-b border-border">
+  <div class="mx-auto max-w-5xl px-6 lg:px-8 py-16 lg:py-20">
+    <div class="mb-10">
+      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">02 · Education</div>
+      <h2 class="text-3xl lg:text-4xl tracking-tighter font-semibold text-text">Education</h2>
+    </div>
+
+    <div class="space-y-3">
+      {{ range .Education }}
+      <div class="rounded-2xl border border-border bg-surface/50 p-6 hover:border-border-strong transition-colors">
+        <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+          <h3 class="text-lg font-semibold text-text tracking-tight">{{ .Degree }}</h3>
+          <span class="text-text-muted">{{ .School }}</span>
+          <span class="ml-auto font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim">
+            {{ .Period.Start }} → {{ .Period.End }}
+          </span>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
 
 {{ end }}

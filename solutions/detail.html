@@ -4,321 +4,166 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
 <style>
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero-animate {
-    animation: fadeInUp 0.7s ease-out forwards;
-  }
-
-  .hero-animate-delay {
-    opacity: 0;
-    animation: fadeInUp 0.7s ease-out 0.15s forwards;
-  }
-
-  .scroll-fade {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-  }
-
-  .scroll-fade.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .reading-progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 3px;
-    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-    z-index: 50;
-    transition: width 0.1s ease;
-  }
-
-  /* Table of Contents */
-  .toc-link {
-    transition: all 0.2s ease;
-    border-left: 2px solid transparent;
-  }
-
-  .toc-link:hover {
-    color: #3b82f6;
-    border-left-color: #3b82f6;
-    background: #eff6ff;
-  }
-
-  .toc-link.active {
-    color: #2563eb;
-    border-left-color: #2563eb;
-    background: #eff6ff;
-    font-weight: 600;
-  }
-
-  /* Markdown content styles */
-  #solutionContent {
-    line-height: 1.8;
-    color: #374151;
-  }
-
-  #solutionContent h1 {
-    font-size: 2rem;
-    font-weight: 800;
-    margin: 2.5rem 0 1rem 0;
-    color: #1f2937;
-    border-bottom: 2px solid #e5e7eb;
-    padding-bottom: 0.5rem;
-  }
-
-  #solutionContent h2 {
-    font-size: 1.625rem;
-    font-weight: 700;
-    margin: 2rem 0 0.75rem 0;
-    color: #1f2937;
-    scroll-margin-top: 100px;
-  }
-
-  #solutionContent h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin: 1.5rem 0 0.5rem 0;
-    color: #374151;
-    scroll-margin-top: 100px;
-  }
-
-  #solutionContent h4 {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin: 1.25rem 0 0.5rem 0;
-    color: #374151;
-  }
-
-  #solutionContent p {
-    margin: 0.75rem 0;
-  }
-
-  #solutionContent ul, #solutionContent ol {
-    margin: 0.75rem 0;
-    padding-left: 1.5rem;
-  }
-
-  #solutionContent ul {
-    list-style-type: disc;
-  }
-
-  #solutionContent ol {
-    list-style-type: decimal;
-  }
-
-  #solutionContent li {
-    margin: 0.4rem 0;
-  }
-
+  #solutionContent { font-size: 16px; line-height: 1.75; color: var(--text); }
+  #solutionContent > *:first-child { margin-top: 0; }
+  #solutionContent h1,
+  #solutionContent h2,
+  #solutionContent h3,
+  #solutionContent h4 { color: var(--text); letter-spacing: -0.02em; font-weight: 600; }
+  #solutionContent h1 { font-size: 2rem; margin: 2.25rem 0 0.75rem; letter-spacing: -0.03em; }
+  #solutionContent h2 { font-size: 1.625rem; margin: 2rem 0 0.75rem; scroll-margin-top: 96px; }
+  #solutionContent h3 { font-size: 1.25rem; margin: 1.5rem 0 0.5rem; scroll-margin-top: 96px; }
+  #solutionContent h4 { font-size: 1.05rem; margin: 1.25rem 0 0.5rem; }
+  #solutionContent p { margin: 1rem 0; }
+  #solutionContent ul, #solutionContent ol { margin: 1rem 0; padding-left: 1.25rem; }
+  #solutionContent li { margin: 0.35rem 0; }
+  #solutionContent li::marker { color: var(--text-muted); }
   #solutionContent blockquote {
-    border-left: 4px solid #3b82f6;
-    background: #f8fafc;
-    padding: 1rem 1.5rem;
+    border-left: 2px solid var(--accent);
+    padding: 0.1rem 0 0.1rem 1.25rem;
     margin: 1.5rem 0;
+    color: var(--text-muted);
     font-style: italic;
-    border-radius: 0 0.5rem 0.5rem 0;
   }
-
   #solutionContent pre {
-    background: #0f172a;
+    background: #0d0d10;
+    border: 1px solid var(--border);
     border-radius: 0.75rem;
-    padding: 1.25rem;
+    padding: 1.25rem 1.5rem;
     margin: 1.5rem 0;
     overflow-x: auto;
-    border: 1px solid #1e293b;
-    font-size: 0.85rem;
+    font-size: 13px;
     line-height: 1.6;
   }
-
   #solutionContent code {
-    background: #f1f5f9;
+    background: rgba(255,255,255,0.06);
     padding: 0.15rem 0.4rem;
-    border-radius: 0.25rem;
-    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-    font-size: 0.85em;
-    color: #be185d;
+    border-radius: 4px;
+    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-size: 0.9em;
+    color: var(--accent);
   }
-
-  #solutionContent pre code {
-    background: transparent;
-    padding: 0;
-    color: #e2e8f0;
-    font-size: inherit;
-  }
-
+  #solutionContent pre code { background: transparent; padding: 0; color: #e5e7eb; font-size: inherit; }
   #solutionContent a {
-    color: #3b82f6;
-    text-decoration: underline;
-    font-weight: 500;
+    color: var(--accent); text-decoration: underline;
+    text-underline-offset: 3px; text-decoration-thickness: 1px; font-weight: 500;
   }
-
-  #solutionContent a:hover {
-    color: #1d4ed8;
-  }
-
+  #solutionContent a:hover { text-decoration-thickness: 2px; }
   #solutionContent table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 1.5rem 0;
-    border-radius: 0.75rem;
-    overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-    font-size: 0.9rem;
+    width: 100%; border-collapse: collapse; margin: 1.5rem 0;
+    border: 1px solid var(--border); border-radius: 0.5rem; overflow: hidden;
+    font-size: 14px;
   }
-
   #solutionContent th, #solutionContent td {
-    padding: 0.75rem 1rem;
-    text-align: left;
-    border-bottom: 1px solid #e5e7eb;
+    padding: 0.65rem 0.875rem; text-align: left; border-bottom: 1px solid var(--border);
+  }
+  #solutionContent th { background: rgba(255,255,255,0.03); font-weight: 600; color: var(--text); white-space: nowrap; }
+  #solutionContent tr:last-child td { border-bottom: none; }
+  #solutionContent hr { border: 0; border-top: 1px solid var(--border); margin: 2.25rem 0; }
+  #solutionContent strong { color: var(--text); font-weight: 600; }
+
+  .reading-progress {
+    position: fixed; top: 64px; left: 0;
+    width: 0%; height: 2px;
+    background: var(--accent);
+    z-index: 40; transition: width 0.1s ease;
   }
 
-  #solutionContent th {
-    background: #f8fafc;
-    font-weight: 600;
-    color: #374151;
-    white-space: nowrap;
+  .toc-link {
+    border-left: 1px solid transparent;
+    transition: color .15s ease, border-color .15s ease, background .15s ease;
   }
-
-  #solutionContent tr:last-child td {
-    border-bottom: none;
-  }
-
-  #solutionContent tr:hover td {
-    background: #f8fafc;
-  }
-
-  #solutionContent hr {
-    border: none;
-    height: 1px;
-    background: #e5e7eb;
-    margin: 2.5rem 0;
-  }
-
-  #solutionContent strong {
-    color: #111827;
-    font-weight: 600;
-  }
-
-  /* Solution navigation cards at bottom */
-  .solution-nav-card {
-    transition: all 0.2s ease;
-  }
-
-  .solution-nav-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-  }
+  .toc-link:hover { color: var(--text); border-left-color: var(--border-strong); background: rgba(255,255,255,0.03); }
+  .toc-link.active { color: var(--accent); border-left-color: var(--accent); background: rgba(198,242,78,0.05); }
 </style>
 
 <div class="reading-progress" id="reading-progress"></div>
 
-<!-- Hero Banner -->
-<section class="relative pt-28 pb-16 overflow-hidden bg-gradient-to-r {{ .GradientFrom }} {{ .GradientTo }}">
-  <div class="absolute inset-0 overflow-hidden">
-    <div class="absolute top-10 left-10 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-10 right-10 w-80 h-80 bg-black/5 rounded-full blur-3xl"></div>
-  </div>
-
-  <div class="relative mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-    <!-- Breadcrumb -->
-    <div class="hero-animate mb-6">
-      <a href="/solutions" class="inline-flex items-center text-white/70 hover:text-white text-sm font-medium transition-colors duration-200">
-        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-        </svg>
-        Back to Solutions
-      </a>
+<!-- Hero -->
+<section class="relative overflow-hidden border-b border-border">
+  <div class="absolute inset-0 grid-bg opacity-60 pointer-events-none"></div>
+  <div class="absolute inset-0 accent-glow pointer-events-none"></div>
+  <div class="relative mx-auto max-w-7xl px-6 lg:px-8 pt-16 pb-16 lg:pt-20 lg:pb-20">
+    <a href="/solutions" class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-text-muted hover:text-accent transition-colors mb-6">
+      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+      Back to Solutions
+    </a>
+    <div class="max-w-3xl">
+      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-4">Component</div>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl leading-[1.02] tracking-tighter font-semibold text-text">{{ .Title }}</h1>
+      <p class="mt-6 text-lg text-text-muted leading-relaxed max-w-2xl">{{ .Subtitle }}</p>
     </div>
-
-    <h1 class="hero-animate text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 max-w-4xl">
-      {{ .Title }}
-    </h1>
-    <p class="hero-animate-delay text-lg md:text-xl text-white/80 max-w-3xl">
-      {{ .Subtitle }}
-    </p>
   </div>
 </section>
 
-<!-- Content Area -->
-<section class="py-12 bg-white">
-  <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+<!-- Content + ToC -->
+<section class="border-b border-border">
+  <div class="mx-auto px-6 lg:px-8 max-w-7xl py-16">
     <div class="lg:grid lg:grid-cols-4 lg:gap-12">
 
-      <!-- Table of Contents Sidebar (desktop) -->
       <aside class="hidden lg:block lg:col-span-1">
-        <div class="sticky top-20">
-          <h4 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">On this page</h4>
-          <nav id="toc" class="space-y-1 max-h-[calc(100vh-120px)] overflow-y-auto">
+        <div class="sticky top-24">
+          <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-4">On this page</div>
+          <nav id="toc" class="space-y-0.5 max-h-[calc(100vh-140px)] overflow-y-auto">
             <!-- Generated by JS -->
           </nav>
         </div>
       </aside>
 
-      <!-- Main Content -->
       <div class="lg:col-span-3">
-        <div class="bg-white rounded-2xl">
-          <div id="solutionContent" class="max-w-none">
-            {{ .Content }}
-          </div>
+        <div id="solutionContent">
+          {{ .Content }}
         </div>
 
-        <!-- Solution Navigation -->
-        <div class="mt-16 pt-8 border-t border-gray-200">
-          <h3 class="text-lg font-semibold text-gray-900 mb-6">Explore Other Solutions</h3>
-          <div class="grid sm:grid-cols-2 gap-4">
+        <!-- Related -->
+        <div class="mt-16 pt-10 border-t border-border">
+          <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-5">Explore other solutions</div>
+          <div class="grid sm:grid-cols-2 gap-3">
 
             {{ if ne .Slug "ai-engine" }}
-            <a href="/solutions/ai-engine" class="solution-nav-card flex items-center gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100">
-              <div class="w-10 h-10 bg-gradient-to-r from-violet-600 to-indigo-700 rounded-lg flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+            <a href="/solutions/ai-engine" class="flex items-center gap-4 rounded-xl border border-border bg-surface/50 p-4 hover:border-border-strong transition-colors">
+              <div class="flex h-9 w-9 items-center justify-center rounded-md bg-white/[0.03] border border-border flex-shrink-0">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
               </div>
               <div>
-                <div class="font-semibold text-gray-900 text-sm">AI Engine</div>
-                <div class="text-xs text-gray-500">AI orchestration layer</div>
+                <div class="font-semibold text-text text-[14px] tracking-tight">AI Engine</div>
+                <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim">Orchestration layer</div>
               </div>
             </a>
             {{ end }}
 
             {{ if ne .Slug "chat-collaboration" }}
-            <a href="/solutions/chat-collaboration" class="solution-nav-card flex items-center gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100">
-              <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+            <a href="/solutions/chat-collaboration" class="flex items-center gap-4 rounded-xl border border-border bg-surface/50 p-4 hover:border-border-strong transition-colors">
+              <div class="flex h-9 w-9 items-center justify-center rounded-md bg-white/[0.03] border border-border flex-shrink-0">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
               </div>
               <div>
-                <div class="font-semibold text-gray-900 text-sm">Multi Modal Chat</div>
-                <div class="text-xs text-gray-500">AI-native messaging</div>
+                <div class="font-semibold text-text text-[14px] tracking-tight">Multi Modal Chat</div>
+                <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim">AI-native messaging</div>
               </div>
             </a>
             {{ end }}
 
             {{ if ne .Slug "collaborative-editing" }}
-            <a href="/solutions/collaborative-editing" class="solution-nav-card flex items-center gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100">
-              <div class="w-10 h-10 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+            <a href="/solutions/collaborative-editing" class="flex items-center gap-4 rounded-xl border border-border bg-surface/50 p-4 hover:border-border-strong transition-colors">
+              <div class="flex h-9 w-9 items-center justify-center rounded-md bg-white/[0.03] border border-border flex-shrink-0">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
               </div>
               <div>
-                <div class="font-semibold text-gray-900 text-sm">Collaborative Editing</div>
-                <div class="text-xs text-gray-500">Real-time document editing</div>
+                <div class="font-semibold text-text text-[14px] tracking-tight">Collaborative Editing</div>
+                <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim">Real-time documents</div>
               </div>
             </a>
             {{ end }}
 
             {{ if ne .Slug "search-rag" }}
-            <a href="/solutions/search-rag" class="solution-nav-card flex items-center gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100">
-              <div class="w-10 h-10 bg-gradient-to-r from-amber-500 to-orange-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            <a href="/solutions/search-rag" class="flex items-center gap-4 rounded-xl border border-border bg-surface/50 p-4 hover:border-border-strong transition-colors">
+              <div class="flex h-9 w-9 items-center justify-center rounded-md bg-white/[0.03] border border-border flex-shrink-0">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
               </div>
               <div>
-                <div class="font-semibold text-gray-900 text-sm">Search & RAG</div>
-                <div class="text-xs text-gray-500">Semantic search & retrieval</div>
+                <div class="font-semibold text-text text-[14px] tracking-tight">Search &amp; RAG</div>
+                <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim">Semantic retrieval</div>
               </div>
             </a>
             {{ end }}
@@ -327,20 +172,23 @@
         </div>
 
         <!-- CTA -->
-        <div class="mt-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-center">
-          <h3 class="text-2xl font-bold text-white mb-3">Want to see this in action?</h3>
-          <p class="text-blue-100 mb-6 max-w-xl mx-auto">
-            Schedule a demo to see how these components can be embedded into your product.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://calendly.com/osminosm/30min" target="_blank"
-              class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-blue-700 bg-white hover:bg-gray-50 rounded-xl transition-all duration-200 hover:-translate-y-0.5">
-              Schedule a Demo
-            </a>
-            <a href="/solutions"
-              class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl transition-all duration-200 hover:-translate-y-0.5">
-              View All Solutions
-            </a>
+        <div class="mt-12 rounded-2xl border border-border bg-surface/50 p-8 text-center relative overflow-hidden">
+          <div class="absolute inset-0 accent-glow pointer-events-none"></div>
+          <div class="relative">
+            <h3 class="text-2xl font-semibold text-text tracking-tight mb-3">Want to see this in action?</h3>
+            <p class="text-text-muted text-[14px] leading-relaxed max-w-lg mx-auto mb-6">
+              Schedule a demo to see how these components embed into your product.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+              <a href="https://calendly.com/osminosm/30min" target="_blank" rel="noopener"
+                class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-5 py-2.5 text-[13px] font-medium text-black hover:bg-accent/90 transition-colors">
+                Schedule a demo
+              </a>
+              <a href="/solutions"
+                class="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-surface/60 px-5 py-2.5 text-[13px] font-medium text-text hover:border-border-strong transition-colors">
+                View all solutions
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -351,14 +199,10 @@
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
-  // Parse markdown content
   const contentEl = document.getElementById('solutionContent');
   contentEl.innerHTML = marked.parse(contentEl.innerHTML.trim());
-
-  // Highlight code blocks
   hljs.highlightAll();
 
-  // Generate Table of Contents
   const toc = document.getElementById('toc');
   const headings = contentEl.querySelectorAll('h2, h3');
   const tocLinks = [];
@@ -366,38 +210,28 @@
   headings.forEach((heading, index) => {
     const id = 'section-' + index;
     heading.id = id;
-
     const link = document.createElement('a');
     link.href = '#' + id;
     link.textContent = heading.textContent;
-    link.className = 'toc-link block py-1.5 px-3 text-sm rounded-r-md ' +
-      (heading.tagName === 'H3' ? 'pl-6 text-gray-400 hover:text-gray-600' : 'text-gray-600');
-
+    link.className = 'toc-link block py-1.5 pl-3 text-[13px] text-text-muted ' + (heading.tagName === 'H3' ? 'pl-6 text-[12px]' : '');
     link.addEventListener('click', function(e) {
       e.preventDefault();
       heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
-
     toc.appendChild(link);
     tocLinks.push({ link, heading });
   });
 
-  // Active ToC tracking
   function updateActiveToC() {
     let current = null;
     tocLinks.forEach(({ link, heading }) => {
       const rect = heading.getBoundingClientRect();
-      if (rect.top <= 120) {
-        current = link;
-      }
+      if (rect.top <= 120) current = link;
       link.classList.remove('active');
     });
-    if (current) {
-      current.classList.add('active');
-    }
+    if (current) current.classList.add('active');
   }
 
-  // Reading progress
   function updateReadingProgress() {
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -409,17 +243,6 @@
     updateReadingProgress();
     updateActiveToC();
   });
-
-  // Scroll animations
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.scroll-fade').forEach(el => observer.observe(el));
 </script>
 
 {{ end }}

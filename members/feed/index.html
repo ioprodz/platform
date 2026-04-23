@@ -1,41 +1,33 @@
 {{ define "content" }}
-<div class="px-4 sm:px-12 xl:max-w-6xl xl:px-0 m-auto pt-24">
-  <div class="flex min-h-[400px]">
-    <div class="flex flex-col m-auto w-2/3">
-      {{ if .ProfileCompleted }}
-      <h1 class="text-lg font-bold">Feed</h1>
-      <div class="flex gap-1">
-        <img
-          class="w-10 h-10 rounded-full"
-          src="{{ .Member.AvatarUrl }}"
-          alt=""
-        />
-        <input
-          class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-          type="text"
-          placeholder="What's on your mind?"
-        />
-        <button
-          class="inline-flex bg-black text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
-          onclick="alert('9iw !')"
-        >
-          Post
-        </button>
-      </div>
-
-      {{ else }}
-      <h1 class="text-center text-4xl mb-16">Welcome to ioprodz!</h1>
-      <span class="flex-1 m-auto text-sm text-center w-2/3">
-        It looks like you have not reviewed your profile yet<br />
-        click here to
-        <a class="text-sky-900" href="/profile"
-          >review and complete your profile</a
-        >
-        in order to start posting updated on your feed
-      </span>
-      {{ end }}
-    </div>
+<div class="mx-auto max-w-3xl px-6 lg:px-8 py-16 lg:py-24">
+  {{ if .ProfileCompleted }}
+  <div class="mb-8">
+    <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-2">Feed</div>
+    <h1 class="text-3xl lg:text-4xl tracking-tighter font-semibold text-text">What's on your mind?</h1>
   </div>
-</div>
 
+  <div class="flex items-center gap-3 rounded-xl border border-border bg-surface/50 p-3">
+    <img class="w-9 h-9 rounded-full border border-border object-cover" src="{{ .Member.AvatarUrl }}" alt="" />
+    <input type="text" placeholder="Share something…"
+      class="flex-1 h-10 rounded-md border border-border bg-surface/60 px-3 py-2 text-[14px] text-text placeholder:text-text-dim focus:outline-none focus:border-accent/50 transition-colors" />
+    <button onclick="alert('9iw !')"
+      class="inline-flex items-center gap-1.5 rounded-md bg-accent px-3.5 py-1.5 text-[13px] font-medium text-black hover:bg-accent/90 transition-colors">
+      Post
+    </button>
+  </div>
+
+  {{ else }}
+  <div class="text-center py-12">
+    <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">Welcome</div>
+    <h1 class="text-4xl lg:text-5xl tracking-tighter font-semibold text-text mb-6">Welcome to ioprodz.</h1>
+    <p class="text-text-muted text-[15px] max-w-md mx-auto mb-8">
+      Your profile isn't complete yet. Finish it so you can start posting on your feed.
+    </p>
+    <a href="/profile"
+      class="inline-flex items-center gap-1.5 rounded-md bg-accent px-5 py-2.5 text-[14px] font-medium text-black hover:bg-accent/90 transition-colors">
+      Complete your profile
+    </a>
+  </div>
+  {{ end }}
+</div>
 {{ end }}

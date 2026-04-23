@@ -1,6 +1,6 @@
 {{ define "layout" }}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -48,11 +48,73 @@
     <link rel="shortcut icon" href="/static/favicon/favicon.ico">
 
     <!-- Fonts, Tailwind, HTMX -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-      href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              bg: '#0a0a0a',
+              surface: '#111113',
+              'surface-2': '#16161a',
+              border: 'rgba(255,255,255,0.08)',
+              'border-strong': 'rgba(255,255,255,0.16)',
+              text: '#ededed',
+              'text-muted': '#9a9a9a',
+              'text-dim': '#6a6a6a',
+              accent: '#c6f24e',
+              'accent-dim': '#9fc139',
+            },
+            fontFamily: {
+              sans: ['Geist', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+              mono: ['"Geist Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+            },
+            letterSpacing: {
+              tightest: '-0.04em',
+              tighter: '-0.03em',
+            },
+          }
+        }
+      }
+    </script>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0a0a0a;
+        --surface: #111113;
+        --border: rgba(255,255,255,0.08);
+        --border-strong: rgba(255,255,255,0.16);
+        --text: #ededed;
+        --text-muted: #9a9a9a;
+        --accent: #c6f24e;
+      }
+      html, body { background: var(--bg); color: var(--text); }
+      body { font-family: 'Geist', ui-sans-serif, system-ui, -apple-system, sans-serif; -webkit-font-smoothing: antialiased; padding-top: 64px; }
+      ::selection { background: var(--accent); color: #0a0a0a; }
+      /* Subtle grid texture for hero-ish sections */
+      .grid-bg {
+        background-image:
+          linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 48px 48px;
+      }
+      .accent-glow {
+        background: radial-gradient(60% 60% at 50% 0%, rgba(198, 242, 78, 0.18), transparent 70%);
+      }
+      /* Scroll fade */
+      .scroll-fade { opacity: 0; transform: translateY(20px); transition: opacity .6s ease-out, transform .6s ease-out; }
+      .scroll-fade.visible { opacity: 1; transform: translateY(0); }
+      /* Prose anchors inside content bodies default to accent underline */
+      .prose-dark a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+      .prose-dark a:hover { text-decoration-thickness: 2px; }
+    </style>
     <script
       src="https://unpkg.com/htmx.org@1.9.10"
       integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
@@ -66,7 +128,7 @@
       plausible.init()
     </script>
   </head>
-  <body class="min-h-screen bg-white selection:bg-primary/10 selection:text-primary">
+  <body class="min-h-screen bg-bg text-text font-sans antialiased">
     {{ template "header" . }}
     {{ if eq .layout "admin" }}
       {{ template "admin-layout" .contentData }}

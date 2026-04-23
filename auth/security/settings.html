@@ -1,77 +1,63 @@
 {{ define "content" }}
-<div class="px-4 sm:px-12 xl:max-w-6xl xl:px-0 m-auto pt-24">
-  <div class="hidden space-y-6 p-10 pb-16 md:block">
-    <div class="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
-      <aside class="-mx-4 lg:w-1/5">
-        <nav class="flex space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1">
-          <a
-            class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 px-4 py-2 hover:bg-transparent hover:underline justify-start"
-            href="/profile"
-            >Profile</a
-          ><a
-            class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 px-4 py-2 hover:bg-transparent hover:underline justify-start"
-            href="/cvs"
-            >Curriculums</a
-          ><a
-            class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 px-4 py-2 hover:bg-transparent hover:underline justify-start"
-            href="/projects"
-            >Projects</a
-          ><a
-            class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 px-4 py-2 bg-gray-300 hover:bg-muted justify-start"
-            href="/security"
-            >Security</a
-          >
-        </nav>
-      </aside>
-      <div class="flex-1 lg:max-w-2xl">
-        <div class="space-y-6">
-          <div class="flex">
-            <div class="flex-1 pr-2">
-              <h3 class="text-lg font-medium">Sessions</h3>
-              <p class="text-sm text-muted-foreground">
-                All the devices where you are/were connected
-              </p>
-              <br />
-              {{ range . }}
-              <div class="flex space-y-2 border rounded p-1 mb-2">
-                <div class="flex flex-col flex-1">
-                  <label
-                    class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    for=":rdf:-form-item"
-                    >{{ .Title }} {{ if .IsCurrent }} (Current) {{end}}</label
-                  >
-                  <p
-                    id=":rdf:-form-item-description"
-                    class="text-[0.8rem] text-muted-foreground"
-                  >
-                    Connected {{ .CreatedOn }} <br />
-                    Last used {{ .LastUsed }}
-                  </p>
-                </div>
-                <div>
-                  {{ if .IsCurrent }}
-                  <a
-                    class="inline-flex mr-2 items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow h-9 px-4 py-2"
-                    href="/logout"
-                  >
-                    Logout
-                  </a>
-                  {{ else }}
-                  <button
-                    class="inline-flex mr-2 bg-black text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow h-9 px-4 py-2"
-                    hx-delete="/security/sessions/{{ .Id }}"
-                  >
-                    Disconnect
-                  </button>
-                  {{ end }}
-                </div>
+<div class="mx-auto max-w-7xl px-6 lg:px-8 py-10 lg:py-14">
+  <div class="mb-10">
+    <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-2">Account</div>
+    <h1 class="text-3xl lg:text-4xl tracking-tighter font-semibold text-text">Settings</h1>
+  </div>
+
+  <div class="grid lg:grid-cols-12 gap-8">
+    <aside class="lg:col-span-3">
+      <nav class="flex lg:flex-col gap-1 lg:sticky lg:top-24">
+        <a href="/profile" class="inline-flex items-center gap-2 rounded-md border border-border bg-surface/40 text-text-muted hover:text-text hover:border-border-strong px-3 py-2 text-[13px] transition-colors">
+          <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-text-dim">01</span> Profile
+        </a>
+        <a href="/cvs" class="inline-flex items-center gap-2 rounded-md border border-border bg-surface/40 text-text-muted hover:text-text hover:border-border-strong px-3 py-2 text-[13px] transition-colors">
+          <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-text-dim">02</span> Curriculums
+        </a>
+        <a href="/projects" class="inline-flex items-center gap-2 rounded-md border border-border bg-surface/40 text-text-muted hover:text-text hover:border-border-strong px-3 py-2 text-[13px] transition-colors">
+          <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-text-dim">03</span> Projects
+        </a>
+        <a href="/security" class="inline-flex items-center gap-2 rounded-md border border-border-strong bg-surface text-text px-3 py-2 text-[13px] transition-colors">
+          <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-text-dim">04</span> Security
+        </a>
+      </nav>
+    </aside>
+
+    <div class="lg:col-span-9 max-w-2xl">
+      <div class="rounded-2xl border border-border bg-surface/50 p-6 lg:p-8">
+        <div class="mb-6">
+          <h2 class="text-xl font-semibold text-text tracking-tight">Sessions</h2>
+          <p class="text-[13px] text-text-muted mt-1">All the devices where you are/were connected.</p>
+        </div>
+
+        <div class="space-y-2">
+          {{ range . }}
+          <div class="flex items-center gap-3 rounded-xl border border-border bg-surface/40 p-4">
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2">
+                <span class="h-1.5 w-1.5 rounded-full {{ if .IsCurrent }}bg-accent shadow-[0_0_10px_rgba(198,242,78,0.7)]{{ else }}bg-text-dim{{ end }}"></span>
+                <span class="text-[14px] font-medium text-text truncate">{{ .Title }}</span>
+                {{ if .IsCurrent }}<span class="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">Current</span>{{ end }}
               </div>
-              {{ end }}
+              <div class="mt-1.5 font-mono text-[11px] text-text-dim">
+                Connected {{ .CreatedOn }} · Last used {{ .LastUsed }}
+              </div>
             </div>
+            {{ if .IsCurrent }}
+            <a href="/logout" class="inline-flex items-center gap-1.5 rounded-md bg-accent px-3.5 py-1.5 text-[13px] font-medium text-black hover:bg-accent/90 transition-colors">
+              Logout
+            </a>
+            {{ else }}
+            <button hx-delete="/security/sessions/{{ .Id }}"
+              class="inline-flex items-center gap-1.5 rounded-md border border-border bg-surface/60 px-3.5 py-1.5 text-[13px] text-text-muted hover:text-text hover:border-border-strong transition-colors">
+              Disconnect
+            </button>
+            {{ end }}
           </div>
+          {{ end }}
         </div>
       </div>
     </div>
   </div>
-  {{ end }}
 </div>
+{{ end }}

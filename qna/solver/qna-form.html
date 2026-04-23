@@ -1,52 +1,44 @@
 {{ define "content" }}
-<section class="pt-32 text-white">
-  <div
-    class="m-auto space-y-8 px-4 text-gray-600 dark:text-gray-400 sm:px-12 xl:max-w-6xl xl:px-0"
-  >
-    <a href="/admin/qna">Back to list</a>
-    <a href="/admin/qna/{{ .Id }}">Edit</a>
-    <h1 class="font-bold text-2xl">Answer: {{ .Name }}</h1>
-    <form
-      id="myForm"
-      hx-post="/qna/{{ .Id }}/answers"
-      hx-trigger="submit"
-      hx-target="#result"
-    >
-      <ul>
-        {{range $questionIndex, $question := .Questions}}
-        <li class="border border-gray rounded mb-2 p-2">
-          <h3 class="font-bold text-lg">{{$question.Value}}</h3>
-          <div class="grid grid-cols-3 gap-4">
-            {{range $choiceIndex, $choice := .Choices}}
-            <div class="border rounded p-2">
-              <input
-                type="radio"
-                name="question-{{$questionIndex}}-choice"
-                value="{{$choiceIndex}}"
-                required
-              />
-              {{ $choice.Value }}
-            </div>
-            {{end}}
-          </div>
-        </li>
-        {{end}}
-      </ul>
-
-      <button class="p-2 border rounded">Submit answers</button>
-    </form>
-    <!-- Display area for the result -->
-    <div id="result" hx-swap="outerHTML"></div>
-    <!-- JavaScript to handle the response and navigate -->
+<section class="mx-auto max-w-4xl px-6 lg:px-8 py-12 lg:py-16">
+  <div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-4">
+    <a href="/admin/qna" class="hover:text-accent transition-colors">Back to list</a>
+    <span class="text-border-strong">·</span>
+    <a href="/admin/qna/{{ .Id }}" class="hover:text-accent transition-colors">Edit</a>
   </div>
+  <h1 class="text-3xl lg:text-4xl tracking-tighter font-semibold text-text mb-8">Answer: {{ .Name }}</h1>
+
+  <form id="myForm" hx-post="/qna/{{ .Id }}/answers" hx-trigger="submit" hx-target="#result" class="space-y-4">
+    <ul class="space-y-4">
+      {{ range $questionIndex, $question := .Questions }}
+      <li class="rounded-xl border border-border bg-surface/40 p-5">
+        <h3 class="text-[15px] font-semibold text-text tracking-tight mb-4">{{ $question.Value }}</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+          {{ range $choiceIndex, $choice := .Choices }}
+          <label class="rounded-md border border-border bg-surface/60 p-3 text-[13px] text-text-muted hover:text-text hover:border-border-strong cursor-pointer transition-colors flex items-start gap-2">
+            <input type="radio" name="question-{{$questionIndex}}-choice" value="{{$choiceIndex}}" required
+              class="mt-0.5 h-4 w-4 accent-accent" />
+            <span>{{ $choice.Value }}</span>
+          </label>
+          {{ end }}
+        </div>
+      </li>
+      {{ end }}
+    </ul>
+
+    <div class="pt-4">
+      <button class="inline-flex items-center gap-1.5 rounded-md bg-accent px-5 py-2.5 text-[13px] font-medium text-black hover:bg-accent/90 transition-colors">
+        Submit answers
+      </button>
+    </div>
+  </form>
+
+  <div id="result" hx-swap="outerHTML"></div>
 </section>
+
 <script>
-  document
-    .getElementById("myForm")
-    .addEventListener("htmx:afterRequest", function (event) {
-      var id = event.detail.xhr.response;
-      // Navigate to the URL with the returned ID
-      window.location.href = "/qna-answers/" + id;
-    });
+  document.getElementById("myForm").addEventListener("htmx:afterRequest", function (event) {
+    var id = event.detail.xhr.response;
+    window.location.href = "/qna-answers/" + id;
+  });
 </script>
 {{ end }}

@@ -1,206 +1,104 @@
 {{ define "content" }}
-<div class="px-4 sm:px-12 xl:max-w-6xl xl:px-0 m-auto pt-24">
-  <div class="hidden space-y-6 p-10 pb-16 md:block">
-    <div class="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
-      <aside class="-mx-4 lg:w-1/5">
-        <nav class="flex space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1">
-          <a
-            class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 px-4 py-2 bg-gray-300 hover:bg-muted justify-start"
-            href="/profile"
-            >Profile</a
-          ><a
-            class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 px-4 py-2 hover:bg-transparent hover:underline justify-start"
-            href="/cvs"
-            >Curriculums</a
-          ><a
-            class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 px-4 py-2 hover:bg-transparent hover:underline justify-start"
-            href="/projects"
-            >Projects</a
-          ><a
-            class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 px-4 py-2 hover:bg-transparent hover:underline justify-start"
-            href="/security"
-            >Security</a
-          >
-        </nav>
-      </aside>
-      <div class="flex-1 lg:max-w-2xl">
-        <div class="space-y-6">
-          <div class="flex">
-            <div class="flex-1 pr-2">
-              <h3 class="text-lg font-medium">Profile</h3>
-              <p class="text-sm text-muted-foreground">
-                This is how others will see you on the site.
-              </p>
-              <br />
-              <div class="space-y-2">
-                <label
-                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  for=":rdf:-form-item"
-                  >Email</label
-                ><input
-                  class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-                  value="{{ .Email }}"
-                  disabled
-                />
-                <p
-                  id=":rdf:-form-item-description"
-                  class="text-[0.8rem] text-muted-foreground"
-                >
-                  This is your email acting as you account identifier
-                  (read-only)
-                </p>
-              </div>
-            </div>
-            <div>
-              <img
-                class="w-48 rounded-md"
-                src="{{ .AvatarUrl }}"
-                alt="{{ .Email }}' avatar"
-              />
-              <a
-                href="/logout"
-                class="inline-flex w-full items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-8 rounded-md px-3 text-xs mt-2"
-                type="button"
-              >
-                Logout
-              </a>
-            </div>
-          </div>
-          <div
-            data-orientation="horizontal"
-            role="none"
-            class="shrink-0 bg-border h-[1px] w-full"
-          ></div>
-          <form
-            id="myForm"
-            hx-post="/profile"
-            hx-trigger="submit"
-            hx-target="#loadingSpinner"
-            class="space-y-8"
-          >
-            <div class="space-y-2">
-              <label
-                class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                for=":rdf:-form-item"
-                >Name</label
-              ><input
-                class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-                value="{{ .Name }}"
-                name="name"
-              />
-              <p
-                id=":rdf:-form-item-description"
-                class="text-[0.8rem] text-muted-foreground"
-              >
-                This is the name that will be displayed for others
-              </p>
-            </div>
-            <div class="space-y-2">
-              <label
-                class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                for=":rdi:-form-item"
-                >Bio</label
-              ><textarea
-                class="flex min-h-[60px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 resize-none"
-                placeholder="Tell us a little bit about yourself"
-                name="bio"
-                id=":rdi:-form-item"
-                aria-describedby=":rdi:-form-item-description"
-                aria-invalid="false"
-              >
-{{ .Bio }}</textarea
-              >
-              <p
-                id=":rdi:-form-item-description"
-                class="text-[0.8rem] text-muted-foreground"
-              >
-                A brief description about your self and what you do in the
-                software field.
-              </p>
-            </div>
-            <div>
-              <div class="space-y-2">
-                <label
-                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  for=":rdj:-form-item"
-                  >URLs</label
-                >
-                <p
-                  id=":rdj:-form-item-description"
-                  class="text-[0.8rem] text-muted-foreground"
-                >
-                  Add links to your website, blog, or social media profiles.
-                </p>
-              </div>
-              <div id="links_list" class="space-y-2">
-                <label
-                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 sr-only"
-                  for=":rdk:-form-item"
-                  >URLs</label
-                >
-                <p
-                  id=":rdk:-form-item-description"
-                  class="text-[0.8rem] text-muted-foreground sr-only"
-                >
-                  Add links to your website, blog, or social media profiles.
-                </p>
-                {{ range .Links }}
-                <div class="flex items-center">
-                  <input
-                    class="flex h-9 w-20 mr-1 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-                    id=":rdk:-form-item"
-                    aria-describedby=":rdk:-form-item-description"
-                    aria-invalid="false"
-                    value="{{ .Name }}"
-                    name="links_names[]"
-                    placeholder="title"
-                    required
-                  />
-                  <input
-                    class="flex h-9 w-full mr-1 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-                    id=":rdk:-form-item"
-                    aria-describedby=":rdk:-form-item-description"
-                    aria-invalid="false"
-                    value="{{ .Url }}"
-                    name="links_urls[]"
-                    placeholder="url"
-                    required
-                  />
-                  <button
-                    class="inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 text-xs mt-2"
-                    type="button"
-                    onclick="removeLink(this)"
-                  >
-                    x
-                  </button>
-                </div>
-                {{ end }}
-              </div>
-              <button
-                class="inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-8 rounded-md px-3 text-xs mt-2"
-                type="button"
-                onclick="addLink()"
-              >
-                Add URL
-              </button>
-            </div>
-            <div>
-              <button
-                class="inline-flex bg-black text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
-                type="submit"
-                id="submit_button"
-                hx-indicator="#loadingSpinner"
-              >
-                Save profile
-              </button>
-              <span id="loadingSpinner" style="display: none">Saving...</span>
-            </div>
-          </form>
+<div class="mx-auto max-w-7xl px-6 lg:px-8 py-10 lg:py-14">
+  <div class="mb-10">
+    <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-2">Account</div>
+    <h1 class="text-3xl lg:text-4xl tracking-tighter font-semibold text-text">Profile</h1>
+  </div>
+
+  <div class="grid lg:grid-cols-12 gap-8">
+    <aside class="lg:col-span-3">
+      <nav class="flex lg:flex-col gap-1 lg:sticky lg:top-24">
+        <a href="/profile" class="inline-flex items-center gap-2 rounded-md border border-border-strong bg-surface text-text px-3 py-2 text-[13px] transition-colors">
+          <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-text-dim">01</span> Profile
+        </a>
+        <a href="/cvs" class="inline-flex items-center gap-2 rounded-md border border-border bg-surface/40 text-text-muted hover:text-text hover:border-border-strong px-3 py-2 text-[13px] transition-colors">
+          <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-text-dim">02</span> Curriculums
+        </a>
+        <a href="/projects" class="inline-flex items-center gap-2 rounded-md border border-border bg-surface/40 text-text-muted hover:text-text hover:border-border-strong px-3 py-2 text-[13px] transition-colors">
+          <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-text-dim">03</span> Projects
+        </a>
+        <a href="/security" class="inline-flex items-center gap-2 rounded-md border border-border bg-surface/40 text-text-muted hover:text-text hover:border-border-strong px-3 py-2 text-[13px] transition-colors">
+          <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-text-dim">04</span> Security
+        </a>
+      </nav>
+    </aside>
+
+    <div class="lg:col-span-9 max-w-2xl">
+      <div class="rounded-2xl border border-border bg-surface/50 p-6 lg:p-8 space-y-8">
+        <div>
+          <h2 class="text-xl font-semibold text-text tracking-tight">Profile</h2>
+          <p class="text-[13px] text-text-muted mt-1">This is how others see you on the site.</p>
         </div>
+
+        <div class="flex items-start gap-6">
+          <div class="flex-1 space-y-1.5">
+            <label class="block text-[13px] font-medium text-text">Email</label>
+            <input type="email" value="{{ .Email }}" disabled
+              class="w-full h-10 rounded-md border border-border bg-surface/30 px-3 py-2 text-[14px] text-text-muted cursor-not-allowed" />
+            <p class="text-[12px] text-text-dim">Your email acts as your account identifier (read-only).</p>
+          </div>
+          <div class="shrink-0 text-center">
+            <img class="w-32 h-32 rounded-lg border border-border object-cover" src="{{ .AvatarUrl }}" alt="{{ .Email }}'s avatar" />
+            <a href="/logout"
+              class="mt-2 inline-flex items-center justify-center gap-1.5 w-full rounded-md border border-border bg-surface/40 px-3 py-1.5 text-[12px] text-text-muted hover:text-text hover:border-border-strong transition-colors">
+              Logout
+            </a>
+          </div>
+        </div>
+
+        <div class="border-t border-border"></div>
+
+        <form id="myForm" hx-post="/profile" hx-trigger="submit" hx-target="#loadingSpinner" class="space-y-6">
+          <div class="space-y-1.5">
+            <label class="block text-[13px] font-medium text-text">Name</label>
+            <input type="text" name="name" value="{{ .Name }}"
+              class="w-full h-10 rounded-md border border-border bg-surface/60 px-3 py-2 text-[14px] text-text placeholder:text-text-dim focus:outline-none focus:border-accent/50 transition-colors" />
+            <p class="text-[12px] text-text-dim">Displayed name.</p>
+          </div>
+
+          <div class="space-y-1.5">
+            <label class="block text-[13px] font-medium text-text">Bio</label>
+            <textarea name="bio" placeholder="Tell us a little about yourself"
+              class="w-full min-h-[90px] rounded-md border border-border bg-surface/60 px-3 py-2 text-[14px] text-text placeholder:text-text-dim focus:outline-none focus:border-accent/50 transition-colors resize-y">{{ .Bio }}</textarea>
+            <p class="text-[12px] text-text-dim">A brief description of you and what you do in software.</p>
+          </div>
+
+          <div class="space-y-3">
+            <div>
+              <label class="block text-[13px] font-medium text-text">URLs</label>
+              <p class="text-[12px] text-text-dim">Links to your website, blog, or social profiles.</p>
+            </div>
+            <div id="links_list" class="space-y-2">
+              {{ range .Links }}
+              <div class="flex items-center gap-2">
+                <input type="text" name="links_names[]" value="{{ .Name }}" placeholder="title" required
+                  class="h-9 w-28 rounded-md border border-border bg-surface/60 px-3 py-1 text-[13px] text-text placeholder:text-text-dim focus:outline-none focus:border-accent/50 transition-colors" />
+                <input type="text" name="links_urls[]" value="{{ .Url }}" placeholder="https://…" required
+                  class="flex-1 h-9 rounded-md border border-border bg-surface/60 px-3 py-1 text-[13px] text-text placeholder:text-text-dim focus:outline-none focus:border-accent/50 transition-colors" />
+                <button type="button" onclick="removeLink(this)"
+                  class="h-9 w-9 inline-flex items-center justify-center rounded-md border border-border bg-surface/40 text-text-dim hover:text-text hover:border-border-strong transition-colors">×</button>
+              </div>
+              {{ end }}
+            </div>
+            <button type="button" onclick="addLink()"
+              class="inline-flex items-center gap-1.5 rounded-md border border-border bg-surface/40 px-3 py-1.5 text-[12px] text-text-muted hover:text-text hover:border-border-strong transition-colors">
+              + Add URL
+            </button>
+          </div>
+
+          <div class="pt-4 border-t border-border flex items-center gap-3">
+            <button type="submit" id="submit_button" hx-indicator="#loadingSpinner"
+              class="inline-flex items-center gap-1.5 rounded-md bg-accent px-4 py-2 text-[13px] font-medium text-black hover:bg-accent/90 transition-colors">
+              Save profile
+            </button>
+            <span id="loadingSpinner" class="text-[12px] text-text-dim font-mono" style="display: none">Saving…</span>
+          </div>
+        </form>
       </div>
     </div>
   </div>
 </div>
+
 <script>
   const form = document.getElementById("myForm");
   form.addEventListener("htmx:afterRequest", function (event) {
@@ -213,52 +111,28 @@
   });
   form.addEventListener("htmx:beforeRequest", function (event) {
     let button = document.getElementById("submit_button");
-    button.innerHTML = "Saving...";
+    button.innerHTML = "Saving…";
     button.disabled = true;
   });
 
   function addLink() {
     const elm = `
-    <div id="newLink" class="flex">
-                  <input
-                    class="flex h-9 w-20 mr-1 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-                    id=":rdk:-form-item"
-                    aria-describedby=":rdk:-form-item-description"
-                    aria-invalid="false"
-                    value=""
-                    name="links_names[]"
-                    placeholder="title"
-                    required
-                  />
-                  <input
-                    class="flex h-9 w-full mr-1 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-                    id=":rdk:-form-item"
-                    aria-describedby=":rdk:-form-item-description"
-                    aria-invalid="false"
-                    value=""
-                    name="links_urls[]"
-                    placeholder="url"
-                    required
-                  />
-                  <button
-                    class="inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 text-xs mt-2"
-                    type="button"
-                    onclick="removeLink(this)"
-                  >
-                    x
-                  </button>
-                </div>
-    `;
-    var originalDiv = document.getElementById("links_list");
-    var parser = new DOMParser();
-    var xmlDoc = parser.parseFromString(elm, "text/html");
-
-    var rootElement = xmlDoc.documentElement;
-    originalDiv.appendChild(rootElement);
+    <div class="flex items-center gap-2">
+      <input type="text" name="links_names[]" value="" placeholder="title" required
+        class="h-9 w-28 rounded-md border border-border bg-surface/60 px-3 py-1 text-[13px] text-text placeholder:text-text-dim focus:outline-none focus:border-accent/50 transition-colors" />
+      <input type="text" name="links_urls[]" value="" placeholder="https://…" required
+        class="flex-1 h-9 rounded-md border border-border bg-surface/60 px-3 py-1 text-[13px] text-text placeholder:text-text-dim focus:outline-none focus:border-accent/50 transition-colors" />
+      <button type="button" onclick="removeLink(this)"
+        class="h-9 w-9 inline-flex items-center justify-center rounded-md border border-border bg-surface/40 text-text-dim hover:text-text hover:border-border-strong transition-colors">×</button>
+    </div>`;
+    const list = document.getElementById("links_list");
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(elm, "text/html");
+    list.appendChild(doc.body.firstElementChild);
   }
 
   function removeLink(el) {
-    el.parentNode.parentNode.removeChild(el.parentNode);
+    el.parentNode.remove();
   }
 </script>
 {{ end }}

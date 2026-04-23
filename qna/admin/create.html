@@ -1,64 +1,42 @@
 {{ define "content" }}
 <section>
-  <div
-    class="m-auto space-y-8 px-4 text-gray-600 sm:px-12 xl:max-w-6xl xl:px-0"
-  >
-    <h1 class="text-2xl">Create QNA</h1>
-    <form
-      id="myForm"
-      hx-post="/api/admin/qna"
-      hx-target="#result"
-      hx-trigger="submit"
-    >
-      <label
-        class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-        for="name"
-        >Subject</label
-      >
-      <input
-        type="text"
-        name="name"
-        id="name"
-        class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-        required
-      />
-      <p
-        id=":r1d:-form-item-description"
-        class="text-[0.8rem] text-muted-foreground"
-      >
-        The subject that you want the questions about, examples:
-        <b>"highschool second degree equations"</b>, <b>"robotics"</b>,
-        <b>"cooking pasta..."</b>
-      </p>
+  <div class="space-y-6 max-w-2xl">
+    <div>
+      <h2 class="text-xl font-semibold text-text tracking-tight">Create QNA</h2>
+      <p class="text-[13px] text-text-muted mt-1">Generate a question set with AI.</p>
+    </div>
 
-      <div class="mt-5">
-        <a
-          class="inline-flex border items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow h-9 px-4 py-2"
-          href="/admin/qna"
-          >Back to list</a
-        >
-        <button
-          id="submit_button"
-          class="inline-flex bg-black text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow h-9 px-4 py-2"
-          hx-indicator="#spinner"
-        >
+    <form id="myForm" hx-post="/api/admin/qna" hx-target="#result" hx-trigger="submit" class="space-y-5">
+      <div class="space-y-1.5">
+        <label for="name" class="block text-[13px] font-medium text-text">Subject</label>
+        <input type="text" name="name" id="name" required
+          class="w-full h-10 rounded-md border border-border bg-surface/60 px-3 py-2 text-[14px] text-text placeholder:text-text-dim focus:outline-none focus:border-accent/50 transition-colors"
+          placeholder="e.g. highschool second-degree equations" />
+        <p class="text-[12px] text-text-dim">The subject to quiz on. Examples: "robotics", "cooking pasta".</p>
+      </div>
+
+      <div class="flex items-center justify-between pt-4 border-t border-border">
+        <a href="/admin/qna"
+          class="inline-flex items-center gap-1.5 rounded-md border border-border bg-surface/40 px-3.5 py-1.5 text-[13px] text-text-muted hover:text-text hover:border-border-strong transition-colors">
+          Back to list
+        </a>
+        <button id="submit_button" type="submit"
+          class="inline-flex items-center gap-1.5 rounded-md bg-accent px-3.5 py-1.5 text-[13px] font-medium text-black hover:bg-accent/90 transition-colors">
           Create
         </button>
       </div>
     </form>
-    <!-- Display area for the result -->
     <div id="result" hx-swap="outerHTML"></div>
-    <!-- JavaScript to handle the response and navigate -->
+
     <script>
       const form = document.getElementById("myForm");
       form.addEventListener("htmx:afterRequest", function (event) {
         var id = event.detail.xhr.response;
-        // Navigate to the URL with the returned ID
         window.location.href = "/admin/qna/" + id;
       });
       form.addEventListener("htmx:beforeRequest", function (event) {
         let button = document.getElementById("submit_button");
-        button.innerHTML = "Generating QNA...";
+        button.innerHTML = "Generating QNA…";
         button.setAttribute("disabled", "disabled");
       });
     </script>
