@@ -79,7 +79,9 @@
       "readManifesto": "اقرأ البيان",
       "linkLinkedin": "LinkedIn",
       "linkGithub": "GitHub",
-      "linkTwitter": "Twitter"
+      "linkTwitter": "Twitter",
+      "linkCv": "السيرة الذاتية",
+      "cvUrl": "/static/cv-osmane-kalache/en.html"
     },
     "finalCta": {
       "eyebrow": "05 · لنتحدث",

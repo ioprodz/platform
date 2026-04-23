@@ -6,10 +6,63 @@
     <title>Osmane Kalache - CV</title>
     <style>
         @media print {
-            body { margin: 0; }
+            @page { size: A4; margin: 0; }
+            html, body { margin: 0 !important; padding: 0 !important; }
+            body { padding: 12mm 14mm !important; }
+            .cv-banner { display: none !important; }
             /* .page-break { page-break-before: always; } */
         }
-        
+
+        .cv-banner {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #4a90e2;
+            color: #fff;
+            padding: 10px 16px;
+            margin: -20px -20px 24px -20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .cv-banner .lang-switch {
+            display: flex;
+            gap: 4px;
+        }
+        .cv-banner .lang-switch a {
+            display: inline-block;
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 12px;
+            border: 1px solid rgba(255,255,255,0.45);
+            border-radius: 4px;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
+        .cv-banner .lang-switch a.active {
+            background: #fff;
+            color: #4a90e2;
+            font-weight: 600;
+            border-color: #fff;
+        }
+        .cv-banner .print-btn {
+            background: #fff;
+            color: #4a90e2;
+            border: none;
+            padding: 7px 16px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 13px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .cv-banner .print-btn:hover { background: #f0f3f7; }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.4;
@@ -241,12 +294,23 @@
     </style>
 </head>
 <body>
+    <div class="cv-banner">
+        <div class="lang-switch">
+            <a href="fr.html" class="active" aria-current="page">FR</a>
+            <a href="en.html">EN</a>
+        </div>
+        <button type="button" class="print-btn" onclick="window.print()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            Imprimer / PDF
+        </button>
+    </div>
+
     <!-- Page 1 -->
     <div class="header">
         <div class="header-left">
             <h1>Osmane Kalache</h1>
             <div class="title">Ingénieur logiciel / Leadership Technique</div>
-            <div class="experience">15 ans d'expérience</div>
+            <div class="experience">15+ ans d'expérience</div>
             <div class="contact-info">
                 <div>+33 6 66 52 88 84</div>
                 <div>osminosm@gmail.com</div>
@@ -335,6 +399,52 @@
     <!-- Page 2 -->
     <div class="section">
         <h2 class="section-title">Expérience Professionnelle</h2>
+
+        <div class="job">
+            <div class="job-header">
+                <div class="job-title">Chief Technology Officer (Contrat)</div>
+                <div class="company-duration">TeOnto (Belgique) | mars 2026 - aujourd'hui</div>
+                <div class="project-info">Conseil en management · Contrat</div>
+            </div>
+
+            <div class="job-objective">
+                <h4>Objectif</h4>
+                <p>Accompagner la direction technique en tant que CTO contractuel : stratégie technologique, choix d'architecture, pratiques d'ingénierie, et structuration de l'équipe produit.</p>
+            </div>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <div class="job-title">Fondateur &amp; Ingénieur Consultant</div>
+                <div class="company-duration">ioprodz (Paris, France) | déc. 2025 - aujourd'hui</div>
+                <div class="project-info">Cabinet de conseil indépendant en ingénierie logicielle — Europe / Afrique du Nord</div>
+                <div class="project-info">Méthodologie : Agile, DDD, TDD, XP, CI/CD</div>
+            </div>
+
+            <div class="job-objective">
+                <h4>Objectif</h4>
+                <p>Accompagner les équipes qui construisent des produits IA à passer du « vibe coding » à de vrais produits en ~90 jours : installer l'ingénierie qui rend la livraison quotidienne sûre (évaluations, rollback, observabilité, modèle de domaine), sur une infrastructure IA souveraine et model-agnostique (OpenAI, Claude, Gemini, Grok ou modèles ouverts auto-hébergés).</p>
+            </div>
+
+            <div class="job-actions">
+                <h4>Actions réalisées</h4>
+                <ul>
+                    <li>Audit d'ingénierie sur produits IA : évaluations, garde-fous, rollback, observabilité, maîtrise des coûts</li>
+                    <li>Installation d'une stack IA souveraine — fournisseur/modèle interchangeable par feature, sans vendor lock-in</li>
+                    <li>Remise en place des pratiques TDD / DDD / XP appliquées aux features IA (et non abandonnées à cause d'elles)</li>
+                    <li>Refonte de la pipeline CI/CD pour atteindre une cadence de plusieurs livraisons par jour</li>
+                    <li>Activation de l'IA dans « l'usine interne » (documentation, refactorings, génération de tests, analyse métriques, revue de code) pour libérer du temps à l'équipe</li>
+                </ul>
+            </div>
+
+            <div class="tech-env">
+                <h4>Environnement technique</h4>
+                <p><strong>Plateforme :</strong> Multi-cloud (AWS, GCP, Azure) + self-hosted (Coolify, Railway, Vercel)</p>
+                <p><strong>Stack :</strong> Go, TypeScript / NodeJS, NestJS, React / NextJS, PostgreSQL, MongoDB</p>
+                <p><strong>IA :</strong> OpenAI, Claude, Gemini, Grok, modèles open-weight ; évaluations, observabilité LLM</p>
+                <p><strong>Outils :</strong> GitHub, Docker, K8S, Terraform</p>
+            </div>
+        </div>
 
         <div class="job">
             <div class="job-header">

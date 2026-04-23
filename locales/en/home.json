@@ -79,7 +79,9 @@
       "readManifesto": "Read the manifesto",
       "linkLinkedin": "LinkedIn",
       "linkGithub": "GitHub",
-      "linkTwitter": "Twitter"
+      "linkTwitter": "Twitter",
+      "linkCv": "Resume",
+      "cvUrl": "/static/cv-osmane-kalache/en.html"
     },
     "finalCta": {
       "eyebrow": "05 · Let's talk",
