@@ -8,7 +8,7 @@
     "contact": {
       "phone": "+33 6 66 52 88 84",
       "email": "osminosm@gmail.com",
-      "address": "161 rue de Javel 75015, Paris"
+      "address": "Paris, Île-de-France"
     }
   },
   "ui": {
@@ -30,20 +30,52 @@
     "viewBrief": "Résumé",
     "viewExtended": "Détaillé",
     "printLabel": "Imprimer / PDF",
-    "briefFooterNote": "Version détaillée disponible sur demande."
+    "briefFooterNote": "Voir la version détaillée"
   },
   "education": [
-    { "date": "Sept. 2015", "degree": "Diplôme de master en Systèmes Intelligents et Communicants", "school": "Université de Médéa" },
-    { "date": "Juil. 2010", "degree": "Diplôme de licence en Systèmes d'information et Intelligence Artificielle", "school": "Université de Médéa" },
-    { "date": "Juin 2007", "degree": "Baccalauréat Sciences Naturelles", "school": "Lycée Ahmed Ouroua Médéa" }
+    {
+      "date": "Sept. 2015",
+      "degree": "Diplôme de master en Systèmes Intelligents et Communicants",
+      "school": "Université de Médéa",
+      "website": "https://www.univ-medea.dz/en/"
+    },
+    {
+      "date": "Juil. 2010",
+      "degree": "Diplôme de licence en Systèmes d'information et Intelligence Artificielle",
+      "school": "Université de Médéa",
+      "website": "https://www.univ-medea.dz/en/"
+    },
+    {
+      "date": "Juin 2007",
+      "degree": "Baccalauréat Sciences Naturelles",
+      "school": "Lycée Ahmed Ouroua Médéa"
+    }
   ],
   "skills": [
-    { "category": "Langages de programmation", "items": "Javascript/TypeScript, PHP, SQL, C#, Go, JAVA" },
-    { "category": "Bases de données", "items": "MySQL, PostgreSQL, MongoDB, MSSql" },
-    { "category": "Méthodologies, Outils et techniques", "items": "Agile, Scrum · Gitlab, Git, VSTS, Jenkins, Linux, SSH, REST, OAuth, JWT, NodeJS, Express, Joi, Mongoose, Sequelize, TDD, Jest / Mocha / Chai, Babel, Webpack, npm/yarn, NginX, Traefik" },
-    { "category": "Cloud", "items": "Azure, AWS, GCP, Heroku, Vercel, Railway, Coolify" },
-    { "category": "Outils DevOps, CI-CD", "items": "Gitlab-ci, Jenkins, Docker, K8S, Terraform" },
-    { "category": "Front-end", "items": "React, NextJS, Tailwind" }
+    {
+      "category": "Langages de programmation",
+      "items": "Javascript/TypeScript, PHP, SQL, C#, Go, JAVA"
+    },
+    {
+      "category": "Bases de données",
+      "items": "MySQL, PostgreSQL, MongoDB, MSSql"
+    },
+    {
+      "category": "Méthodologies, Outils et techniques",
+      "items": "Agile, Scrum · Gitlab, Git, VSTS, Jenkins, Linux, SSH, REST, OAuth, JWT, NodeJS, Express, Joi, Mongoose, Sequelize, TDD, Jest / Mocha / Chai, Babel, Webpack, npm/yarn, NginX, Traefik"
+    },
+    {
+      "category": "Cloud",
+      "items": "Azure, AWS, GCP, Heroku, Vercel, Railway, Coolify"
+    },
+    {
+      "category": "Outils DevOps, CI-CD",
+      "items": "Gitlab-ci, Jenkins, Docker, K8S, Terraform"
+    },
+    {
+      "category": "Front-end",
+      "items": "React, NextJS, Tailwind"
+    }
   ],
   "functionalSkills": [
     "Analyse fonctionnelle et technique des besoins des clients",
@@ -60,9 +92,13 @@
     {
       "title": "Chief Technology Officer (Contrat)",
       "company": "TeOnto",
+      "website": "https://teonto.com",
       "location": "Belgique",
       "period": "mars 2026 - aujourd'hui",
-      "tags": ["Conseil en management", "Contrat"],
+      "tags": [
+        "Conseil en management",
+        "Contrat"
+      ],
       "briefLine": "CTO contractuel : stratégie technologique, architecture et structuration de l'équipe produit en phase de démarrage.",
       "objective": "Accompagner la direction technique en tant que CTO contractuel : stratégie technologique, choix d'architecture, pratiques d'ingénierie, et structuration de l'équipe produit.",
       "actions": null,
@@ -72,6 +108,7 @@
     {
       "title": "Fondateur & Ingénieur Consultant",
       "company": "ioprodz",
+      "website": "https://ioprodz.com",
       "location": "Paris, France",
       "period": "déc. 2025 - aujourd'hui",
       "project": "Cabinet de conseil indépendant en ingénierie logicielle — Europe / Afrique du Nord",
@@ -86,16 +123,29 @@
         "Activation de l'IA dans « l'usine interne » (documentation, refactorings, génération de tests, analyse métriques, revue de code) pour libérer du temps à l'équipe"
       ],
       "techEnv": [
-        { "category": "Plateforme", "value": "Multi-cloud (AWS, GCP, Azure) + self-hosted (Coolify, Railway, Vercel)" },
-        { "category": "Stack", "value": "Go, TypeScript / NodeJS, NestJS, React / NextJS, PostgreSQL, MongoDB" },
-        { "category": "IA", "value": "OpenAI, Claude, Gemini, Grok, modèles open-weight ; évaluations, observabilité LLM" },
-        { "category": "Outils", "value": "GitHub, Docker, K8S, Terraform" }
+        {
+          "category": "Plateforme",
+          "value": "Multi-cloud (AWS, GCP, Azure) + self-hosted (Coolify, Railway, Vercel)"
+        },
+        {
+          "category": "Stack",
+          "value": "Go, TypeScript / NodeJS, NestJS, React / NextJS, PostgreSQL, MongoDB"
+        },
+        {
+          "category": "IA",
+          "value": "OpenAI, Claude, Gemini, Grok, modèles open-weight ; évaluations, observabilité LLM"
+        },
+        {
+          "category": "Outils",
+          "value": "GitHub, Docker, K8S, Terraform"
+        }
       ],
       "showInBrief": true
     },
     {
       "title": "Senior Lead Backend Engineer",
       "company": "INFINIT.com",
+      "website": "https://infinit.com",
       "period": "17 juin 2024 - 09 sept. 2025",
       "duration": "1 an 3 mois",
       "teamSize": "(20+) : 2 squads (Engineering Manager + PM + Designer + 3-4 fullstack devs)",
@@ -111,16 +161,29 @@
         "Maintenir une feuille de route technique (gérer la dette technologique, améliorer l'architecture / DX...)"
       ],
       "techEnv": [
-        { "category": "Plateforme", "value": "Fournisseurs Cloud : Azure" },
-        { "category": "Stack", "value": "NestJS, PostgreSQL, REST, EventBus, docker, React" },
-        { "category": "Tests", "value": "Jest, PlayWright, BDD (Gherkin)" },
-        { "category": "Outils", "value": "Github, Notion, Grafana" }
+        {
+          "category": "Plateforme",
+          "value": "Fournisseurs Cloud : Azure"
+        },
+        {
+          "category": "Stack",
+          "value": "NestJS, PostgreSQL, REST, EventBus, docker, React"
+        },
+        {
+          "category": "Tests",
+          "value": "Jest, PlayWright, BDD (Gherkin)"
+        },
+        {
+          "category": "Outils",
+          "value": "Github, Notion, Grafana"
+        }
       ],
       "showInBrief": true
     },
     {
       "title": "Lead Software Engineer",
       "company": "MASTEOS.com",
+      "website": "https://www.masteos.com/",
       "period": "17 janv. 2022 - 12 avr. 2024",
       "duration": "2 ans 3 mois",
       "teamSize": "(30+) : 4 team managers, 8 Product Managers, 12 développeurs Full-stack, ingénieurs UiUx",
@@ -136,16 +199,29 @@
         "Maintenir une feuille de route technique (gérer la dette technologique, améliorer l'architecture / DX...)"
       ],
       "techEnv": [
-        { "category": "Plateforme", "value": "Fournisseurs Cloud : AWS / GCP" },
-        { "category": "Stack", "value": "NestJS, Mongo(Atlas), GraphQL, docker, React Native Web, Storybook" },
-        { "category": "Tests", "value": "Jest, Supertest, PlayWright, BDD (Gherkin)" },
-        { "category": "Outils", "value": "Github, Notion, sonarcloud, DataDog, Sentry" }
+        {
+          "category": "Plateforme",
+          "value": "Fournisseurs Cloud : AWS / GCP"
+        },
+        {
+          "category": "Stack",
+          "value": "NestJS, Mongo(Atlas), GraphQL, docker, React Native Web, Storybook"
+        },
+        {
+          "category": "Tests",
+          "value": "Jest, Supertest, PlayWright, BDD (Gherkin)"
+        },
+        {
+          "category": "Outils",
+          "value": "Github, Notion, sonarcloud, DataDog, Sentry"
+        }
       ],
       "showInBrief": false
     },
     {
       "title": "Team Lead Web UI",
       "company": "STREAMWIDE",
+      "website": "https://www.streamwide.com/fr/accueil/",
       "period": "23 déc. 2020 – 7 janv. 2022",
       "duration": "7 mois",
       "project": "SmartMS",
@@ -160,6 +236,7 @@
     {
       "title": "Ingénieur de développement en informatique",
       "company": "OSITEL FRANCE",
+      "website": "https://www.ositel-group.com",
       "period": "23 sept. 2019 – 15 déc. 2020",
       "duration": "1 an et 3 mois",
       "project": "SmartMS (mission chez le client STREAMWIDE)",
@@ -177,16 +254,29 @@
         "Développer des projets en R&D"
       ],
       "techEnv": [
-        { "category": "Plateforme", "value": "Redhat Linux 8 / Oracle Virtualbox (Self hosted solution)" },
-        { "category": "Interfaces web", "value": "React, HTML, CSS, Sass, Javascript, Jquery, PHP, Zend / Symphony" },
-        { "category": "Tests", "value": "Mocha, Chai" },
-        { "category": "Outils", "value": "Git / Gitlab, Jira, Jenkins, NPM" }
+        {
+          "category": "Plateforme",
+          "value": "Redhat Linux 8 / Oracle Virtualbox (Self hosted solution)"
+        },
+        {
+          "category": "Interfaces web",
+          "value": "React, HTML, CSS, Sass, Javascript, Jquery, PHP, Zend / Symphony"
+        },
+        {
+          "category": "Tests",
+          "value": "Mocha, Chai"
+        },
+        {
+          "category": "Outils",
+          "value": "Git / Gitlab, Jira, Jenkins, NPM"
+        }
       ],
       "showInBrief": false
     },
     {
       "title": "Développeur full-stack senior",
       "company": "CEVITAL SPA",
+      "website": "https://cevital.com",
       "period": "04 juin 2017 – 30 juin 2019",
       "duration": "2 ans",
       "project": "Four connecté De Dietrich (IoT)",
@@ -201,10 +291,22 @@
         "Écriture des tests (TDD) et revue de code des collaborateurs"
       ],
       "techEnv": [
-        { "category": "Plateforme Cloud", "value": "Microsoft Azure (.net C#) (IotHub, NotificationHub, EventHub, StreamAnalytics, CosmosDB, Azure Functions, B2C Oauth)" },
-        { "category": "Module de connectivité embarqué", "value": "ESP32 (C/C++), MQTT" },
-        { "category": "Application mobile", "value": "React-Native (NodeJS/Javascript), redux, event-bus, Push notifications, Android/iOS, Oauth" },
-        { "category": "Outils", "value": "Git, TFS, Reactotron, NPM" }
+        {
+          "category": "Plateforme Cloud",
+          "value": "Microsoft Azure (.net C#) (IotHub, NotificationHub, EventHub, StreamAnalytics, CosmosDB, Azure Functions, B2C Oauth)"
+        },
+        {
+          "category": "Module de connectivité embarqué",
+          "value": "ESP32 (C/C++), MQTT"
+        },
+        {
+          "category": "Application mobile",
+          "value": "React-Native (NodeJS/Javascript), redux, event-bus, Push notifications, Android/iOS, Oauth"
+        },
+        {
+          "category": "Outils",
+          "value": "Git, TFS, Reactotron, NPM"
+        }
       ],
       "showInBrief": false
     },
@@ -225,11 +327,26 @@
         "Établissement d'un processus d'intégration continue"
       ],
       "techEnv": [
-        { "category": "Infrastructure", "value": "serveurs dédiés (OVH), NginX, Déploiement et Intégration Continue : Jenkins" },
-        { "category": "Serveur de streaming", "value": "Nimble" },
-        { "category": "Backend", "value": "Application express.js, jwt, Joi, Mocha/Chai/Mockgoose, BDD : MongoDB" },
-        { "category": "Portail d'administration", "value": "Application Web ReactJs" },
-        { "category": "Outils", "value": "Git, TFS, Jenkins, NPM" }
+        {
+          "category": "Infrastructure",
+          "value": "serveurs dédiés (OVH), NginX, Déploiement et Intégration Continue : Jenkins"
+        },
+        {
+          "category": "Serveur de streaming",
+          "value": "Nimble"
+        },
+        {
+          "category": "Backend",
+          "value": "Application express.js, jwt, Joi, Mocha/Chai/Mockgoose, BDD : MongoDB"
+        },
+        {
+          "category": "Portail d'administration",
+          "value": "Application Web ReactJs"
+        },
+        {
+          "category": "Outils",
+          "value": "Git, TFS, Jenkins, NPM"
+        }
       ],
       "showInBrief": false
     },
@@ -250,16 +367,29 @@
         "Établissement d'un processus d'intégration continue"
       ],
       "techEnv": [
-        { "category": "Infrastructure", "value": "serveurs dédiés (OVH), FireBase (Cloud)" },
-        { "category": "Backend", "value": "ExpressJs, jwt, Joi, Mocha/Chai/Mockgoose, BDD : MongoDB" },
-        { "category": "Portail d'administration", "value": "Application Web ReactJs" },
-        { "category": "Outils", "value": "Git, TFS, Jenkins, NPM" }
+        {
+          "category": "Infrastructure",
+          "value": "serveurs dédiés (OVH), FireBase (Cloud)"
+        },
+        {
+          "category": "Backend",
+          "value": "ExpressJs, jwt, Joi, Mocha/Chai/Mockgoose, BDD : MongoDB"
+        },
+        {
+          "category": "Portail d'administration",
+          "value": "Application Web ReactJs"
+        },
+        {
+          "category": "Outils",
+          "value": "Git, TFS, Jenkins, NPM"
+        }
       ],
       "showInBrief": false
     },
     {
       "title": "Développeur Full-Stack en freelance",
       "company": "En auto-entrepreneuriat",
+      "website": "https://www.freelancer.com/u/osminosm",
       "period": "Janvier 2012 – Mai 2017",
       "duration": "5 ans 5 mois",
       "briefLine": null,
@@ -313,10 +443,22 @@
     }
   ],
   "freelanceOverallTech": [
-    { "category": "Infrastructure", "value": "Hébergement mutualisé, Serveurs dédiés, MS Azure, Amazon Web Services, DNS, FTP" },
-    { "category": "Développement Web", "value": "HTML5, CSS3, Javascript, jQuery, PHP, CodeIgniter, WordPress" },
-    { "category": "Bases de données", "value": "MySQL, PostgreSQL, MSSQL" },
-    { "category": "Outils", "value": "Git, GitLab, GitHub, Composer" }
+    {
+      "category": "Infrastructure",
+      "value": "Hébergement mutualisé, Serveurs dédiés, MS Azure, Amazon Web Services, DNS, FTP"
+    },
+    {
+      "category": "Développement Web",
+      "value": "HTML5, CSS3, Javascript, jQuery, PHP, CodeIgniter, WordPress"
+    },
+    {
+      "category": "Bases de données",
+      "value": "MySQL, PostgreSQL, MSSQL"
+    },
+    {
+      "category": "Outils",
+      "value": "Git, GitLab, GitHub, Composer"
+    }
   ],
   "juniorRole": {
     "title": "Développeur Junior",

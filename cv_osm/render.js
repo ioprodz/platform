@@ -30,6 +30,35 @@
     history.pushState({ lang, view }, '', '?' + p.toString());
   }
 
+  function track(event, params) {
+    if (typeof window.plausible !== 'function') return;
+    try { window.plausible(event, params); } catch (e) { /* ignore */ }
+  }
+
+  function domainOf(website) {
+    if (!website) return null;
+    try { return new URL(website).hostname.replace(/^www\./, ''); }
+    catch (e) { return null; }
+  }
+
+  function logoImg(website, className) {
+    const domain = domainOf(website);
+    if (!domain) return '';
+    const src = 'https://www.google.com/s2/favicons?domain=' + encodeURIComponent(domain) + '&sz=64';
+    const img = '<img class="' + className + '" src="' + src +
+      '" alt="" loading="lazy" referrerpolicy="no-referrer" ' +
+      'onerror="this.parentElement&&this.parentElement.remove()">';
+    return '<a class="' + className + '-link" href="' + esc(website) +
+      '" target="_blank" rel="noopener noreferrer" aria-label="' + esc(domain) + '">' +
+      img + '</a>';
+  }
+
+  function linkedText(text, website, className) {
+    if (!website) return esc(text);
+    return '<a class="' + className + '" href="' + esc(website) +
+      '" target="_blank" rel="noopener noreferrer">' + esc(text) + '</a>';
+  }
+
   const dataCache = {};
   async function loadData(lang) {
     if (dataCache[lang]) return dataCache[lang];
@@ -64,6 +93,8 @@
   function renderBrief(data) {
     const meta = data.meta;
     const ui = data.ui;
+    const params = parseParams();
+    const extendedHref = './?lang=' + encodeURIComponent(params.lang) + '&view=extended';
 
     const skillsLines = data.skills.map(function (s) {
       return '<div class="brief-skills-line"><strong>' +
@@ -71,27 +102,35 @@
     }).join('');
 
     const briefJobs = data.experience.filter(function (e) { return e.showInBrief; }).map(function (e) {
-      const companyPart = e.company
-        ? ' · <span class="company">' + esc(e.company) + '</span>'
+      const companyInner = e.company
+        ? (e.website
+          ? '<a class="company company-link" href="' + esc(e.website) + '" target="_blank" rel="noopener noreferrer">' + esc(e.company) + '</a>'
+          : '<span class="company">' + esc(e.company) + '</span>')
         : '';
+      const companyPart = e.company ? ' · ' + companyInner : '';
       const periodPart = e.period
         ? '<span class="period">' + esc(e.period) + '</span>'
         : '';
       const line = e.briefLine
         ? '<div class="brief-job-line">' + esc(e.briefLine) + '</div>'
         : '';
+      const logo = logoImg(e.website, 'brief-logo');
       return [
         '<div class="brief-job">',
-        '  <div class="brief-job-head">' + esc(e.title) + companyPart + ' ' + periodPart + '</div>',
-        '  ' + line,
+        '  ' + logo,
+        '  <div class="brief-job-body">',
+        '    <div class="brief-job-head">' + esc(e.title) + companyPart + ' ' + periodPart + '</div>',
+        '    ' + line,
+        '  </div>',
         '</div>'
       ].join('\n');
     }).join('');
 
     const eduItems = data.education.map(function (e) {
+      const schoolHtml = linkedText(e.school, e.website, 'school-link');
       return '<div class="brief-edu-item">' +
         '<span class="date">' + esc(e.date) + '</span>' +
-        esc(e.degree) + ' — ' + esc(e.school) +
+        esc(e.degree) + ' — ' + schoolHtml +
         '</div>';
     }).join('');
 
@@ -107,7 +146,11 @@
       '  <h2 class="section-title">' + esc(ui.sectionEducation) + '</h2>',
       '  ' + eduItems,
       '</div>',
-      '<div class="brief-footer">' + esc(ui.briefFooterNote) + '</div>'
+      '<div class="brief-footer">' +
+        '<a class="brief-footer-link" href="' + esc(extendedHref) + '">' +
+          esc(ui.briefFooterNote) +
+        '</a>' +
+      '</div>'
     ].join('\n');
   }
 
@@ -121,7 +164,8 @@
       if (job.period) durBits.push(esc(job.period));
       if (job.duration) durBits.push(esc(ui.labelDuration) + ' : ' + esc(job.duration));
       const right = durBits.length ? ' | ' + durBits.join(' - ') : '';
-      headBits.push('<div class="company-duration">' + esc(job.company) + locPart + right + '</div>');
+      const companyHtml = linkedText(job.company, job.website, 'company-link');
+      headBits.push('<div class="company-duration">' + companyHtml + locPart + right + '</div>');
     } else if (job.period) {
       headBits.push('<div class="company-duration">' + esc(job.period) + '</div>');
     }
@@ -139,7 +183,13 @@
       headBits.push('<div class="project-info">' + job.tags.map(esc).join(' · ') + '</div>');
     }
 
-    const parts = ['<div class="job-header">' + headBits.join('') + '</div>'];
+    const logo = logoImg(job.website, 'job-logo');
+    const parts = [
+      '<div class="job-header">' +
+        logo +
+        '<div class="job-header-text">' + headBits.join('') + '</div>' +
+      '</div>'
+    ];
 
     if (job.objective) {
       parts.push(
@@ -188,11 +238,12 @@
     const ui = data.ui;
 
     const eduBlock = data.education.map(function (e) {
+      const schoolHtml = linkedText(e.school, e.website, 'school-link');
       return [
         '<div class="education-item">',
         '  <div class="education-date">' + esc(e.date) + '</div>',
         '  <div class="education-degree">' + esc(e.degree) + '</div>',
-        '  <div class="education-school">' + esc(e.school) + '</div>',
+        '  <div class="education-school">' + schoolHtml + '</div>',
         '</div>'
       ].join('\n');
     }).join('');
@@ -291,6 +342,7 @@
       document.body.classList.toggle('cv-extended', params.view === 'extended');
       root.innerHTML = params.view === 'brief' ? renderBrief(data) : renderExtended(data);
       updateBanner(data, params);
+      track('CV Navigate', { props: { lang: params.lang, view: params.view } });
     } catch (err) {
       console.error(err);
       root.innerHTML = '<div class="cv-error">Failed to load CV data.</div>';
@@ -317,7 +369,11 @@
       });
     });
     const printBtn = document.getElementById('print-btn');
-    if (printBtn) printBtn.addEventListener('click', function () { window.print(); });
+    if (printBtn) printBtn.addEventListener('click', function () {
+      const p = parseParams();
+      track('CV Print', { props: { lang: p.lang, view: p.view } });
+      window.print();
+    });
     window.addEventListener('popstate', paint);
   }
 

@@ -8,7 +8,7 @@
     "contact": {
       "phone": "+33 6 66 52 88 84",
       "email": "osminosm@gmail.com",
-      "address": "161 rue de Javel 75015, Paris"
+      "address": "Paris, Île-de-France area"
     }
   },
   "ui": {
@@ -30,20 +30,52 @@
     "viewBrief": "Brief",
     "viewExtended": "Extended",
     "printLabel": "Print / PDF",
-    "briefFooterNote": "Full detailed version available on request."
+    "briefFooterNote": "View extended version"
   },
   "education": [
-    { "date": "Sept. 2015", "degree": "Master's degree in Intelligent and Communicating Systems", "school": "University of Médéa" },
-    { "date": "Jul. 2010", "degree": "Bachelor's degree in Information Systems and Artificial Intelligence", "school": "University of Médéa" },
-    { "date": "Jun. 2007", "degree": "Natural Sciences Baccalaureate (high-school diploma)", "school": "Ahmed Ouroua High School, Médéa" }
+    {
+      "date": "Sept. 2015",
+      "degree": "Master's degree in Intelligent and Communicating Systems",
+      "school": "University of Médéa",
+      "website": "https://www.univ-medea.dz/en/"
+    },
+    {
+      "date": "Jul. 2010",
+      "degree": "Bachelor's degree in Information Systems and Artificial Intelligence",
+      "school": "University of Médéa",
+      "website": "https://www.univ-medea.dz/en/"
+    },
+    {
+      "date": "Jun. 2007",
+      "degree": "Natural Sciences Baccalaureate (high-school diploma)",
+      "school": "Ahmed Ouroua High School, Médéa"
+    }
   ],
   "skills": [
-    { "category": "Programming languages", "items": "JavaScript/TypeScript, PHP, SQL, C#, Go, Java" },
-    { "category": "Databases", "items": "MySQL, PostgreSQL, MongoDB, MSSQL" },
-    { "category": "Methodologies, tools & techniques", "items": "Agile, Scrum · GitLab, Git, VSTS, Jenkins, Linux, SSH, REST, OAuth, JWT, Node.js, Express, Joi, Mongoose, Sequelize, TDD, Jest / Mocha / Chai, Babel, Webpack, npm/yarn, NginX, Traefik" },
-    { "category": "Cloud", "items": "Azure, AWS, GCP, Heroku, Vercel, Railway, Coolify" },
-    { "category": "DevOps, CI/CD tools", "items": "GitLab CI, Jenkins, Docker, K8s, Terraform" },
-    { "category": "Front-end", "items": "React, Next.js, Tailwind" }
+    {
+      "category": "Programming languages",
+      "items": "JavaScript/TypeScript, PHP, SQL, C#, Go, Java"
+    },
+    {
+      "category": "Databases",
+      "items": "MySQL, PostgreSQL, MongoDB, MSSQL"
+    },
+    {
+      "category": "Methodologies, tools & techniques",
+      "items": "Agile, Scrum · GitLab, Git, VSTS, Jenkins, Linux, SSH, REST, OAuth, JWT, Node.js, Express, Joi, Mongoose, Sequelize, TDD, Jest / Mocha / Chai, Babel, Webpack, npm/yarn, NginX, Traefik"
+    },
+    {
+      "category": "Cloud",
+      "items": "Azure, AWS, GCP, Heroku, Vercel, Railway, Coolify"
+    },
+    {
+      "category": "DevOps, CI/CD tools",
+      "items": "GitLab CI, Jenkins, Docker, K8s, Terraform"
+    },
+    {
+      "category": "Front-end",
+      "items": "React, Next.js, Tailwind"
+    }
   ],
   "functionalSkills": [
     "Functional and technical analysis of client needs",
@@ -60,9 +92,13 @@
     {
       "title": "Chief Technology Officer (Contract)",
       "company": "TeOnto",
+      "website": "https://teonto.com",
       "location": "Belgium",
       "period": "Mar 2026 - Present",
-      "tags": ["Management Consulting", "Contract"],
+      "tags": [
+        "Management Consulting",
+        "Contract"
+      ],
       "briefLine": "Contract CTO: technology strategy, architecture decisions, and structuring the product team during the startup phase.",
       "objective": "Supporting leadership as a contract CTO: technology strategy, architecture decisions, engineering practices, and structuring the product team.",
       "actions": null,
@@ -72,6 +108,7 @@
     {
       "title": "Founder & Software Engineering Consultant",
       "company": "ioprodz",
+      "website": "https://ioprodz.com",
       "location": "Paris, France",
       "period": "Dec 2025 - Present",
       "project": "Independent software engineering consultancy — Europe / North Africa",
@@ -86,16 +123,29 @@
         "Activating AI inside the \"internal factory\" (documentation, refactors, test generation, metrics analysis, code review) to give the team time back"
       ],
       "techEnv": [
-        { "category": "Platform", "value": "Multi-cloud (AWS, GCP, Azure) + self-hosted (Coolify, Railway, Vercel)" },
-        { "category": "Stack", "value": "Go, TypeScript / Node.js, NestJS, React / Next.js, PostgreSQL, MongoDB" },
-        { "category": "AI", "value": "OpenAI, Claude, Gemini, Grok, open-weight models; evals, LLM observability" },
-        { "category": "Tools", "value": "GitHub, Docker, K8s, Terraform" }
+        {
+          "category": "Platform",
+          "value": "Multi-cloud (AWS, GCP, Azure) + self-hosted (Coolify, Railway, Vercel)"
+        },
+        {
+          "category": "Stack",
+          "value": "Go, TypeScript / Node.js, NestJS, React / Next.js, PostgreSQL, MongoDB"
+        },
+        {
+          "category": "AI",
+          "value": "OpenAI, Claude, Gemini, Grok, open-weight models; evals, LLM observability"
+        },
+        {
+          "category": "Tools",
+          "value": "GitHub, Docker, K8s, Terraform"
+        }
       ],
       "showInBrief": true
     },
     {
       "title": "Senior Lead Backend Engineer",
       "company": "INFINIT.com",
+      "website": "https://infinit.com",
       "period": "Jun 17, 2024 - Sep 9, 2025",
       "duration": "1 year 3 months",
       "teamSize": "(20+): 2 squads (Engineering Manager + PM + Designer + 3-4 fullstack devs)",
@@ -111,16 +161,29 @@
         "Maintaining a technical roadmap (managing tech debt, improving architecture / DX...)"
       ],
       "techEnv": [
-        { "category": "Platform", "value": "Cloud providers — Azure" },
-        { "category": "Stack", "value": "NestJS, PostgreSQL, REST, EventBus, Docker, React" },
-        { "category": "Testing", "value": "Jest, Playwright, BDD (Gherkin)" },
-        { "category": "Tools", "value": "GitHub, Notion, Grafana" }
+        {
+          "category": "Platform",
+          "value": "Cloud providers — Azure"
+        },
+        {
+          "category": "Stack",
+          "value": "NestJS, PostgreSQL, REST, EventBus, Docker, React"
+        },
+        {
+          "category": "Testing",
+          "value": "Jest, Playwright, BDD (Gherkin)"
+        },
+        {
+          "category": "Tools",
+          "value": "GitHub, Notion, Grafana"
+        }
       ],
       "showInBrief": true
     },
     {
       "title": "Lead Software Engineer",
       "company": "MASTEOS.com",
+      "website": "https://www.masteos.com/",
       "period": "Jan 17, 2022 - Apr 12, 2024",
       "duration": "2 years 3 months",
       "teamSize": "(30+): 4 team managers, 8 Product Managers, 12 full-stack developers, UI/UX engineers",
@@ -136,16 +199,29 @@
         "Maintaining a technical roadmap (managing tech debt, improving architecture / DX...)"
       ],
       "techEnv": [
-        { "category": "Platform", "value": "Cloud providers — AWS / GCP" },
-        { "category": "Stack", "value": "NestJS, MongoDB (Atlas), GraphQL, Docker, React Native Web, Storybook" },
-        { "category": "Testing", "value": "Jest, Supertest, Playwright, BDD (Gherkin)" },
-        { "category": "Tools", "value": "GitHub, Notion, SonarCloud, DataDog, Sentry" }
+        {
+          "category": "Platform",
+          "value": "Cloud providers — AWS / GCP"
+        },
+        {
+          "category": "Stack",
+          "value": "NestJS, MongoDB (Atlas), GraphQL, Docker, React Native Web, Storybook"
+        },
+        {
+          "category": "Testing",
+          "value": "Jest, Supertest, Playwright, BDD (Gherkin)"
+        },
+        {
+          "category": "Tools",
+          "value": "GitHub, Notion, SonarCloud, DataDog, Sentry"
+        }
       ],
       "showInBrief": false
     },
     {
       "title": "Team Lead Web UI",
       "company": "STREAMWIDE",
+      "website": "https://www.streamwide.com/fr/accueil/",
       "period": "Dec 23, 2020 – Jan 7, 2022",
       "duration": "7 months",
       "project": "SmartMS",
@@ -160,6 +236,7 @@
     {
       "title": "Software Development Engineer",
       "company": "OSITEL FRANCE",
+      "website": "https://www.ositel-group.com",
       "period": "Sep 23, 2019 – Dec 15, 2020",
       "duration": "1 year 3 months",
       "project": "SmartMS (contractor at STREAMWIDE)",
@@ -177,16 +254,29 @@
         "Developing R&D projects"
       ],
       "techEnv": [
-        { "category": "Platform", "value": "RedHat Linux 8 / Oracle VirtualBox (self-hosted solution)" },
-        { "category": "Web interfaces", "value": "React, HTML, CSS, Sass, JavaScript, jQuery, PHP, Zend / Symfony" },
-        { "category": "Testing", "value": "Mocha, Chai" },
-        { "category": "Tools", "value": "Git / GitLab, Jira, Jenkins, NPM" }
+        {
+          "category": "Platform",
+          "value": "RedHat Linux 8 / Oracle VirtualBox (self-hosted solution)"
+        },
+        {
+          "category": "Web interfaces",
+          "value": "React, HTML, CSS, Sass, JavaScript, jQuery, PHP, Zend / Symfony"
+        },
+        {
+          "category": "Testing",
+          "value": "Mocha, Chai"
+        },
+        {
+          "category": "Tools",
+          "value": "Git / GitLab, Jira, Jenkins, NPM"
+        }
       ],
       "showInBrief": false
     },
     {
       "title": "Senior Full-Stack Developer",
       "company": "CEVITAL SPA",
+      "website": "https://cevital.com",
       "period": "Jun 4, 2017 – Jun 30, 2019",
       "duration": "2 years",
       "project": "De Dietrich Connected Oven (IoT)",
@@ -201,10 +291,22 @@
         "Writing tests (TDD) and reviewing collaborators' code"
       ],
       "techEnv": [
-        { "category": "Cloud platform", "value": "Microsoft Azure (.NET C#) (IoT Hub, Notification Hub, Event Hub, Stream Analytics, Cosmos DB, Azure Functions, B2C OAuth)" },
-        { "category": "Embedded connectivity module", "value": "ESP32 (C/C++), MQTT" },
-        { "category": "Mobile app", "value": "React Native (Node.js/JavaScript), Redux, event bus, push notifications, Android/iOS, OAuth" },
-        { "category": "Tools", "value": "Git, TFS, Reactotron, NPM" }
+        {
+          "category": "Cloud platform",
+          "value": "Microsoft Azure (.NET C#) (IoT Hub, Notification Hub, Event Hub, Stream Analytics, Cosmos DB, Azure Functions, B2C OAuth)"
+        },
+        {
+          "category": "Embedded connectivity module",
+          "value": "ESP32 (C/C++), MQTT"
+        },
+        {
+          "category": "Mobile app",
+          "value": "React Native (Node.js/JavaScript), Redux, event bus, push notifications, Android/iOS, OAuth"
+        },
+        {
+          "category": "Tools",
+          "value": "Git, TFS, Reactotron, NPM"
+        }
       ],
       "showInBrief": false
     },
@@ -225,11 +327,26 @@
         "Setting up a continuous integration process"
       ],
       "techEnv": [
-        { "category": "Infrastructure", "value": "Dedicated servers (OVH), NginX, Deployment & CI: Jenkins" },
-        { "category": "Streaming server", "value": "Nimble" },
-        { "category": "Backend", "value": "Express.js application, JWT, Joi, Mocha/Chai/Mockgoose, DB: MongoDB" },
-        { "category": "Admin portal", "value": "React.js web application" },
-        { "category": "Tools", "value": "Git, TFS, Jenkins, NPM" }
+        {
+          "category": "Infrastructure",
+          "value": "Dedicated servers (OVH), NginX, Deployment & CI: Jenkins"
+        },
+        {
+          "category": "Streaming server",
+          "value": "Nimble"
+        },
+        {
+          "category": "Backend",
+          "value": "Express.js application, JWT, Joi, Mocha/Chai/Mockgoose, DB: MongoDB"
+        },
+        {
+          "category": "Admin portal",
+          "value": "React.js web application"
+        },
+        {
+          "category": "Tools",
+          "value": "Git, TFS, Jenkins, NPM"
+        }
       ],
       "showInBrief": false
     },
@@ -250,16 +367,29 @@
         "Setting up a continuous integration process"
       ],
       "techEnv": [
-        { "category": "Infrastructure", "value": "Dedicated servers (OVH), Firebase (Cloud)" },
-        { "category": "Backend", "value": "Express.js, JWT, Joi, Mocha/Chai/Mockgoose, DB: MongoDB" },
-        { "category": "Admin portal", "value": "React.js web application" },
-        { "category": "Tools", "value": "Git, TFS, Jenkins, NPM" }
+        {
+          "category": "Infrastructure",
+          "value": "Dedicated servers (OVH), Firebase (Cloud)"
+        },
+        {
+          "category": "Backend",
+          "value": "Express.js, JWT, Joi, Mocha/Chai/Mockgoose, DB: MongoDB"
+        },
+        {
+          "category": "Admin portal",
+          "value": "React.js web application"
+        },
+        {
+          "category": "Tools",
+          "value": "Git, TFS, Jenkins, NPM"
+        }
       ],
       "showInBrief": false
     },
     {
       "title": "Freelance Full-Stack Developer",
       "company": "Self-employed",
+      "website": "https://www.freelancer.com/u/osminosm",
       "period": "January 2012 – May 2017",
       "duration": "5 years 5 months",
       "briefLine": null,
@@ -313,10 +443,22 @@
     }
   ],
   "freelanceOverallTech": [
-    { "category": "Infrastructure", "value": "Shared hosting, dedicated servers, MS Azure, Amazon Web Services, DNS, FTP" },
-    { "category": "Web development", "value": "HTML5, CSS3, JavaScript, jQuery, PHP, CodeIgniter, WordPress" },
-    { "category": "Databases", "value": "MySQL, PostgreSQL, MSSQL" },
-    { "category": "Tools", "value": "Git, GitLab, GitHub, Composer" }
+    {
+      "category": "Infrastructure",
+      "value": "Shared hosting, dedicated servers, MS Azure, Amazon Web Services, DNS, FTP"
+    },
+    {
+      "category": "Web development",
+      "value": "HTML5, CSS3, JavaScript, jQuery, PHP, CodeIgniter, WordPress"
+    },
+    {
+      "category": "Databases",
+      "value": "MySQL, PostgreSQL, MSSQL"
+    },
+    {
+      "category": "Tools",
+      "value": "Git, GitLab, GitHub, Composer"
+    }
   ],
   "juniorRole": {
     "title": "Junior Developer",
