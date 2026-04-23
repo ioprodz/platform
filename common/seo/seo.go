@@ -63,6 +63,7 @@ func CreateSitemapHandler(blogRepo blog_models.BlogRepository) http.HandlerFunc 
 
 	pages := []staticPage{
 		{"/", "weekly", "1.0"},
+		{"/about", "monthly", "0.9"},
 		{"/consulting", "monthly", "0.8"},
 		{"/consulting/it-strategy", "monthly", "0.7"},
 		{"/consulting/coaching", "monthly", "0.7"},
