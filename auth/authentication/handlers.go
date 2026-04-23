@@ -5,6 +5,7 @@ import (
 	"hash/fnv"
 	auth_infra "ioprodz/auth/_infra"
 	auth_models "ioprodz/auth/_models"
+	"log"
 	"net/http"
 
 	"github.com/markbates/goth"
@@ -17,7 +18,9 @@ func CreateOAuthCallbackHandler(accountRepo auth_models.AccountRepository, sessi
 
 		user, err := gothic.CompleteUserAuth(w, r)
 		if err != nil {
-			fmt.Println("Unauthorized: " + err.Error())
+			log.Printf("auth callback failed: provider=%s err=%v ua=%q referer=%q",
+				r.URL.Query().Get("state"), err, r.UserAgent(), r.Referer())
+			http.Redirect(w, r, "/login?error=auth_failed", http.StatusTemporaryRedirect)
 			return
 		}
 
