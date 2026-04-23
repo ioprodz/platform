@@ -2,7 +2,7 @@
 
 > I turn vibe-coded software into real products — on sovereign AI, shipped daily, without the slop.
 
-Independent engineering consultancy based in France, founded late 2025 by Osmane Kalache. ioprodz is the counter-voice to AI slop: a practice focused on turning vibe-coded software (Cursor, Copilot, Claude Code sprints, ChatGPT-wrapper MVPs) into real products through engineering maturity — daily releases, sovereign AI infrastructure, and the boring engineering work every AI tutorial skips.
+Independent engineering consultancy serving Europe / North Africa, founded late 2025 by Osmane Kalache. ioprodz is the counter-voice to AI slop: a practice focused on turning vibe-coded software (Cursor, Copilot, Claude Code sprints, ChatGPT-wrapper MVPs) into real products through engineering maturity — daily releases, sovereign AI infrastructure, and the boring engineering work every AI tutorial skips.
 
 ## What Osmane does
 
