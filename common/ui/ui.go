@@ -24,7 +24,7 @@ type PageMeta struct {
 func DefaultMeta() PageMeta {
 	return PageMeta{
 		Title:       "",
-		Description: "I turn ChatGPT wrappers into real products in 90 days — on sovereign AI infrastructure (OpenAI, Claude, Gemini, Grok, or local), shipped daily, with the boring engineering every AI tutorial skips: evals, rollback, observability, domain modeling. Independent engineering consultancy based in France.",
+		Description: "I turn vibe-coded software into real products in 90 days — on sovereign AI infrastructure (OpenAI, Claude, Gemini, Grok, or local), shipped daily, with the boring engineering every AI tutorial skips: evals, rollback, observability, domain modeling. Independent engineering consultancy based in France.",
 		Path:        "/",
 		OGType:      "website",
 	}
@@ -33,7 +33,7 @@ func DefaultMeta() PageMeta {
 // FullTitle returns "PageTitle | ioprodz" or just the brand title for the homepage.
 func (m PageMeta) FullTitle() string {
 	if m.Title == "" {
-		return "ioprodz — From ChatGPT wrapper to real product, in 90 days"
+		return "ioprodz — From vibe coding to real product, in 90 days"
 	}
 	return m.Title + " | ioprodz"
 }

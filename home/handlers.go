@@ -11,7 +11,7 @@ func GetHandler(w http.ResponseWriter, r *http.Request) {
 
 	meta := ui.PageMeta{
 		Title:       "",
-		Description: "I turn ChatGPT wrappers into real products in 90 days — on sovereign AI infrastructure (OpenAI, Claude, Gemini, Grok, or local), shipped daily, with the boring engineering every AI tutorial skips: evals, rollback, observability, domain modeling. Independent engineering consultancy based in France.",
+		Description: "I turn vibe-coded software into real products in 90 days — on sovereign AI infrastructure (OpenAI, Claude, Gemini, Grok, or local), shipped daily, with the boring engineering every AI tutorial skips: evals, rollback, observability, domain modeling. Independent engineering consultancy based in France.",
 		Path:        "/",
 		OGType:      "website",
 	}

@@ -1,12 +1,12 @@
 # ioprodz
 
-> I turn ChatGPT wrappers into real products — on sovereign AI, shipped daily, without the slop.
+> I turn vibe-coded software into real products — on sovereign AI, shipped daily, without the slop.
 
-Independent engineering consultancy based in France, founded late 2025 by Osmane Kalache. ioprodz is the counter-voice to AI slop: a practice focused on turning ChatGPT wrappers into real products through engineering maturity — daily releases, sovereign AI infrastructure, and the boring engineering work every AI tutorial skips.
+Independent engineering consultancy based in France, founded late 2025 by Osmane Kalache. ioprodz is the counter-voice to AI slop: a practice focused on turning vibe-coded software (Cursor, Copilot, Claude Code sprints, ChatGPT-wrapper MVPs) into real products through engineering maturity — daily releases, sovereign AI infrastructure, and the boring engineering work every AI tutorial skips.
 
 ## What Osmane does
 
-- Turns ChatGPT-wrapper MVPs, vibe-coded prototypes, and legacy codebases into production-grade AI products in ~90 days
+- Turns vibe-coded prototypes, Cursor/Copilot outputs, ChatGPT-wrapper MVPs, and legacy codebases into production-grade AI products in ~90 days
 - Installs model-agnostic AI infrastructure: OpenAI, Claude, Gemini, Grok, or local open-weight models, scoped per feature, no vendor lock-in
 - Wires AI into the engine room (internal tooling, docs, refactors, metrics) before pointing it at end users
 - Coaches teams on TDD, DDD, XP, CI/CD, fast feedback loops, and the practices that make AI features survive production
