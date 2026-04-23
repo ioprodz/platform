@@ -1,0 +1,334 @@
+{
+  "meta": {
+    "name": "Osmane Kalache",
+    "title": "Software Engineer / Technical Leadership",
+    "experienceSummary": "15+ years of experience",
+    "avatar": "IMG_5310sm.png",
+    "bio": "15+ years shipping real software across IoT, telecom, real estate, and fintech. Founder of ioprodz — independent software engineering consultancy for AI products.",
+    "contact": {
+      "phone": "+33 6 66 52 88 84",
+      "email": "osminosm@gmail.com",
+      "address": "161 rue de Javel 75015, Paris"
+    }
+  },
+  "ui": {
+    "docTitle": "Osmane Kalache — Resume",
+    "sectionEducation": "Education",
+    "sectionTechSkills": "Technical Skills",
+    "sectionFunctionalSkills": "Functional Skills",
+    "sectionExperience": "Professional Experience",
+    "sectionFreelance": "Selected freelance projects",
+    "sectionOverallTech": "Overall technical environment",
+    "labelObjective": "Objective",
+    "labelActions": "Key actions",
+    "labelTechEnv": "Technical environment",
+    "labelTeamSize": "Team size",
+    "labelProject": "Project",
+    "labelMethodology": "Methodology",
+    "labelDuration": "Duration",
+    "labelClient": "Client",
+    "viewBrief": "Brief",
+    "viewExtended": "Extended",
+    "printLabel": "Print / PDF",
+    "briefFooterNote": "Full detailed version available on request."
+  },
+  "education": [
+    { "date": "Sept. 2015", "degree": "Master's degree in Intelligent and Communicating Systems", "school": "University of Médéa" },
+    { "date": "Jul. 2010", "degree": "Bachelor's degree in Information Systems and Artificial Intelligence", "school": "University of Médéa" },
+    { "date": "Jun. 2007", "degree": "Natural Sciences Baccalaureate (high-school diploma)", "school": "Ahmed Ouroua High School, Médéa" }
+  ],
+  "skills": [
+    { "category": "Programming languages", "items": "JavaScript/TypeScript, PHP, SQL, C#, Go, Java" },
+    { "category": "Databases", "items": "MySQL, PostgreSQL, MongoDB, MSSQL" },
+    { "category": "Methodologies, tools & techniques", "items": "Agile, Scrum · GitLab, Git, VSTS, Jenkins, Linux, SSH, REST, OAuth, JWT, Node.js, Express, Joi, Mongoose, Sequelize, TDD, Jest / Mocha / Chai, Babel, Webpack, npm/yarn, NginX, Traefik" },
+    { "category": "Cloud", "items": "Azure, AWS, GCP, Heroku, Vercel, Railway, Coolify" },
+    { "category": "DevOps, CI/CD tools", "items": "GitLab CI, Jenkins, Docker, K8s, Terraform" },
+    { "category": "Front-end", "items": "React, Next.js, Tailwind" }
+  ],
+  "functionalSkills": [
+    "Functional and technical analysis of client needs",
+    "Writing technical specification documents",
+    "Architecture studies and solution design (DDD, Event Storming, Context Maps...)",
+    "Code analysis and review (Audit, Static Analysis)",
+    "Hands-on mastery of Agile, Lean, XP, Shape Up development methodologies",
+    "Feedback-driven, continuous learning (PDCA, Kaizen, DORA)",
+    "Team coordination, knowledge transfer (Coaching)",
+    "Communication / conflict resolution skills",
+    "Languages: Arabic, French, English, Norwegian"
+  ],
+  "experience": [
+    {
+      "title": "Chief Technology Officer (Contract)",
+      "company": "TeOnto",
+      "location": "Belgium",
+      "period": "Mar 2026 - Present",
+      "tags": ["Management Consulting", "Contract"],
+      "briefLine": "Contract CTO: technology strategy, architecture decisions, and structuring the product team during the startup phase.",
+      "objective": "Supporting leadership as a contract CTO: technology strategy, architecture decisions, engineering practices, and structuring the product team.",
+      "actions": null,
+      "techEnv": null,
+      "showInBrief": true
+    },
+    {
+      "title": "Founder & Software Engineering Consultant",
+      "company": "ioprodz",
+      "location": "Paris, France",
+      "period": "Dec 2025 - Present",
+      "project": "Independent software engineering consultancy — Europe / North Africa",
+      "methodology": "Agile, DDD, TDD, XP, CI/CD",
+      "briefLine": "Founder of ioprodz: taking AI teams from vibe coding to real product in 90 days, on sovereign AI infrastructure.",
+      "objective": "Help teams building AI products move from \"vibe coding\" to real product in ~90 days: install the engineering that makes daily releases safe (evals, rollback, observability, domain modeling), on a sovereign, model-agnostic AI infrastructure (OpenAI, Claude, Gemini, Grok, or self-hosted open-weight models).",
+      "actions": [
+        "Engineering audits of AI products: evals, guardrails, rollback, observability, cost control",
+        "Installation of a sovereign AI stack — provider/model swappable per feature, no vendor lock-in",
+        "Reinstating TDD / DDD / XP practices applied to AI features (not abandoned because of them)",
+        "Rebuilding the CI/CD pipeline to reach a cadence of multiple releases per day",
+        "Activating AI inside the \"internal factory\" (documentation, refactors, test generation, metrics analysis, code review) to give the team time back"
+      ],
+      "techEnv": [
+        { "category": "Platform", "value": "Multi-cloud (AWS, GCP, Azure) + self-hosted (Coolify, Railway, Vercel)" },
+        { "category": "Stack", "value": "Go, TypeScript / Node.js, NestJS, React / Next.js, PostgreSQL, MongoDB" },
+        { "category": "AI", "value": "OpenAI, Claude, Gemini, Grok, open-weight models; evals, LLM observability" },
+        { "category": "Tools", "value": "GitHub, Docker, K8s, Terraform" }
+      ],
+      "showInBrief": true
+    },
+    {
+      "title": "Senior Lead Backend Engineer",
+      "company": "INFINIT.com",
+      "period": "Jun 17, 2024 - Sep 9, 2025",
+      "duration": "1 year 3 months",
+      "teamSize": "(20+): 2 squads (Engineering Manager + PM + Designer + 3-4 fullstack devs)",
+      "project": "Automotive SaaS (web/mobile app + internal back-office)",
+      "methodology": "Agile, DDD",
+      "briefLine": "Lead backend on a B2B automotive SaaS: qualified stock sourcing and credit-line financing for used-car dealers.",
+      "objective": "Developing a system enabling used-vehicle dealers to source qualified stock from B2B platforms and obtain financing (credit line) while managing default risk and high-risk vehicles.",
+      "actions": [
+        "Transitioning the development process toward an AI-first approach (experimentation, tool selection, prompt engineering)",
+        "Interfacing with non-technical stakeholders and balancing value delivery with code maintenance",
+        "Designing and developing new features in small releasable iterations (functional specs → technical specs → coding → code review → testing → deployment → monitoring)",
+        "Improving team performance through feedback loops and pragmatic experimentation (DORA, mentoring, workflows, automation...)",
+        "Maintaining a technical roadmap (managing tech debt, improving architecture / DX...)"
+      ],
+      "techEnv": [
+        { "category": "Platform", "value": "Cloud providers — Azure" },
+        { "category": "Stack", "value": "NestJS, PostgreSQL, REST, EventBus, Docker, React" },
+        { "category": "Testing", "value": "Jest, Playwright, BDD (Gherkin)" },
+        { "category": "Tools", "value": "GitHub, Notion, Grafana" }
+      ],
+      "showInBrief": true
+    },
+    {
+      "title": "Lead Software Engineer",
+      "company": "MASTEOS.com",
+      "period": "Jan 17, 2022 - Apr 12, 2024",
+      "duration": "2 years 3 months",
+      "teamSize": "(30+): 4 team managers, 8 Product Managers, 12 full-stack developers, UI/UX engineers",
+      "project": "Masteos (customer app), Helios (internal business tool)",
+      "methodology": "Agile, DDD",
+      "briefLine": "Led web engineering for high-fidelity real-estate investment products (sourcing, qualification, renovation, property management).",
+      "objective": "Leading web engineering to deliver high-fidelity real estate investment products (property sourcing, qualification, renovation cost estimation, transaction tracking, and property management).",
+      "actions": [
+        "Designing a financial model for detailed profitability and valuation calculations based on investment type (country, legal structure, rental tension, market trends...)",
+        "Interfacing with non-technical stakeholders and balancing value delivery with code maintenance",
+        "Designing and developing new features in small releasable iterations (functional specs → technical specs → coding → code review → testing → deployment → monitoring)",
+        "Improving team performance through feedback loops and pragmatic experimentation (DORA, mentoring, workflows, automation...)",
+        "Maintaining a technical roadmap (managing tech debt, improving architecture / DX...)"
+      ],
+      "techEnv": [
+        { "category": "Platform", "value": "Cloud providers — AWS / GCP" },
+        { "category": "Stack", "value": "NestJS, MongoDB (Atlas), GraphQL, Docker, React Native Web, Storybook" },
+        { "category": "Testing", "value": "Jest, Supertest, Playwright, BDD (Gherkin)" },
+        { "category": "Tools", "value": "GitHub, Notion, SonarCloud, DataDog, Sentry" }
+      ],
+      "showInBrief": false
+    },
+    {
+      "title": "Team Lead Web UI",
+      "company": "STREAMWIDE",
+      "period": "Dec 23, 2020 – Jan 7, 2022",
+      "duration": "7 months",
+      "project": "SmartMS",
+      "methodology": "Agile (Scrum)",
+      "teamSize": "(15): 1 project manager, 12 full-stack developers, 2 QA engineers",
+      "briefLine": null,
+      "objective": null,
+      "actions": null,
+      "techEnv": null,
+      "showInBrief": false
+    },
+    {
+      "title": "Software Development Engineer",
+      "company": "OSITEL FRANCE",
+      "period": "Sep 23, 2019 – Dec 15, 2020",
+      "duration": "1 year 3 months",
+      "project": "SmartMS (contractor at STREAMWIDE)",
+      "methodology": "Agile (Scrum)",
+      "teamSize": "(15): 1 project manager, 12 full-stack developers, 2 QA engineers",
+      "briefLine": null,
+      "objective": "Building web/mobile apps on top of Streamwide's proprietary \"mission-critical\" telecom engine — features such as Telephony / PTT / Geofencing used by a range of customers (Defense, Law Enforcement, Firefighters, Aviation Security...).",
+      "actions": [
+        "Managing the France UI team",
+        "Analyzing and producing technical specifications from functional specs",
+        "Developing innovative new features while ensuring a high level of code quality",
+        "Driving our refactoring and migration-to-React.js project",
+        "Maintaining and documenting Streamwide product code",
+        "Participating in the team's quality process: code review, testing...",
+        "Developing R&D projects"
+      ],
+      "techEnv": [
+        { "category": "Platform", "value": "RedHat Linux 8 / Oracle VirtualBox (self-hosted solution)" },
+        { "category": "Web interfaces", "value": "React, HTML, CSS, Sass, JavaScript, jQuery, PHP, Zend / Symfony" },
+        { "category": "Testing", "value": "Mocha, Chai" },
+        { "category": "Tools", "value": "Git / GitLab, Jira, Jenkins, NPM" }
+      ],
+      "showInBrief": false
+    },
+    {
+      "title": "Senior Full-Stack Developer",
+      "company": "CEVITAL SPA",
+      "period": "Jun 4, 2017 – Jun 30, 2019",
+      "duration": "2 years",
+      "project": "De Dietrich Connected Oven (IoT)",
+      "methodology": "Agile (Scrum)",
+      "teamSize": "(15): 1 project manager, 1 cloud architect, 1 backend developer, 1 DevOps engineer, 2 mobile developers, 4 embedded-systems developers, 2 QA engineers, 1 BI engineer",
+      "briefLine": null,
+      "objective": "Launched as a pilot project in the field of home appliance connectivity, this project introduces an IoT solution to connect and control appliances over the internet. The De Dietrich oven embeds a WiFi connectivity module that exchanges messages (commands and telemetry) with the mobile app through a cloud platform.",
+      "actions": [
+        "Contributing to conceptual decisions and technology choices for the mobile app",
+        "Writing and reviewing documentation",
+        "Developing the mobile application",
+        "Writing tests (TDD) and reviewing collaborators' code"
+      ],
+      "techEnv": [
+        { "category": "Cloud platform", "value": "Microsoft Azure (.NET C#) (IoT Hub, Notification Hub, Event Hub, Stream Analytics, Cosmos DB, Azure Functions, B2C OAuth)" },
+        { "category": "Embedded connectivity module", "value": "ESP32 (C/C++), MQTT" },
+        { "category": "Mobile app", "value": "React Native (Node.js/JavaScript), Redux, event bus, push notifications, Android/iOS, OAuth" },
+        { "category": "Tools", "value": "Git, TFS, Reactotron, NPM" }
+      ],
+      "showInBrief": false
+    },
+    {
+      "title": "Project: Likoul — Educational platform for Brandt smart TVs",
+      "company": null,
+      "period": null,
+      "methodology": "Agile",
+      "teamSize": "(6): 1 project manager, 1 backend developer, 1 DevOps engineer, 2 Android developers, 1 front-end developer",
+      "briefLine": null,
+      "objective": "Likoul is an educational platform allowing users of Brandt smart TVs to access a catalog of courses (aligned with the Algerian national curriculum) through a TV app. We delivered a streaming solution to manage content and collect usage analytics.",
+      "actions": [
+        "Contributing to conceptual decisions and technology choices for the solution",
+        "Writing and reviewing documentation",
+        "Developing the backend and the admin portal (web)",
+        "Writing tests (TDD) and reviewing collaborators' code",
+        "Introducing OWASP security rules / Token-Based Auth (JWT)",
+        "Setting up a continuous integration process"
+      ],
+      "techEnv": [
+        { "category": "Infrastructure", "value": "Dedicated servers (OVH), NginX, Deployment & CI: Jenkins" },
+        { "category": "Streaming server", "value": "Nimble" },
+        { "category": "Backend", "value": "Express.js application, JWT, Joi, Mocha/Chai/Mockgoose, DB: MongoDB" },
+        { "category": "Admin portal", "value": "React.js web application" },
+        { "category": "Tools", "value": "Git, TFS, Jenkins, NPM" }
+      ],
+      "showInBrief": false
+    },
+    {
+      "title": "Project: Brandt Time — Solution to manage an application bouquet on smart TVs",
+      "company": null,
+      "period": null,
+      "methodology": "Agile",
+      "teamSize": "(7): 1 project manager, 2 full-stack developers, 1 DevOps engineer, 3 Android developers",
+      "briefLine": null,
+      "objective": "Comprehensive solution to manage all Brandt TVs and phones in Algeria, including warranty management, firmware and application updates, and usage-data collection...",
+      "actions": [
+        "Contributing to conceptual decisions and technology choices for the solution",
+        "Writing and reviewing documentation",
+        "Developing the backend and the admin portal (web)",
+        "Writing tests (TDD) and reviewing collaborators' code",
+        "Introducing OWASP security rules / Token-Based Auth (JWT)",
+        "Setting up a continuous integration process"
+      ],
+      "techEnv": [
+        { "category": "Infrastructure", "value": "Dedicated servers (OVH), Firebase (Cloud)" },
+        { "category": "Backend", "value": "Express.js, JWT, Joi, Mocha/Chai/Mockgoose, DB: MongoDB" },
+        { "category": "Admin portal", "value": "React.js web application" },
+        { "category": "Tools", "value": "Git, TFS, Jenkins, NPM" }
+      ],
+      "showInBrief": false
+    },
+    {
+      "title": "Freelance Full-Stack Developer",
+      "company": "Self-employed",
+      "period": "January 2012 – May 2017",
+      "duration": "5 years 5 months",
+      "briefLine": null,
+      "objective": "Providing development and IT consulting services, primarily via the Freelancer.com platform.",
+      "actions": [
+        "Functional and technical analysis of client needs",
+        "Developing websites and services (APIs)",
+        "Integrating third-party services (online payments, social networks, auto-mailing, maps...)",
+        "Deployment and migration of web solutions",
+        "Automation tasks (web scraping)"
+      ],
+      "techEnv": null,
+      "showInBrief": false
+    }
+  ],
+  "freelanceProjects": [
+    {
+      "title": "Viewer-engagement visualization for movie reviews",
+      "client": "Slash Comment (United States)",
+      "duration": "1 month",
+      "objective": "The \"/comment\" site publishes reviews of new movies. As added value, the site's author Rich Heimlich proposes a novel way to express viewer engagement (Appeal) without spoiling scenes for the reader. I integrated a data-visualization tool driven from an admin interface, rendering charts on the various articles published on the site.",
+      "techEnv": "PHP, MySQL, Chart.js, JavaScript (jQuery), CSS, social media sharing (Pinterest)"
+    },
+    {
+      "title": "Mobile app: civil aviation equipment inventory",
+      "client": "NVS Technology Solutions (Dubai)",
+      "duration": "8 months",
+      "objective": "Novus Technologies, a subsidiary of Novus Aviation Capital, provides innovative solutions for civil aviation. NVSscan is a solution for inventorying safety equipment on aircraft. I worked with their team to build a mobile app that communicates with an NFC reader device and returns the scanned equipment IDs, flagging missing items or anomalies.",
+      "techEnv": "React Native (JavaScript), Native Modules (Java), Bluetooth, NFC, GitLab"
+    },
+    {
+      "title": "Online signing and generation of training contracts",
+      "client": "PSYHYPNOSEPNL (France)",
+      "duration": "2 months",
+      "objective": "To simplify a procedure that required multiple email exchanges and a paper contract filled by hand and scanned back to the training organization, I was asked to build a tool allowing platform users to view their contract and sign it using a mouse or graphics tablet. A PDF copy is then emailed to the signer.",
+      "techEnv": "PHP, TCPDF, MySQL, SVG, JavaScript (jQuery), CSS"
+    },
+    {
+      "title": "E-commerce site: Yatas Bedding",
+      "client": "Yatas Bedding (Turkey)",
+      "duration": "6 months",
+      "objective": "Build an e-commerce site for a major supplier of bedding, home articles, and décor, integrating PayU — Turkey's largest payment gateway.",
+      "techEnv": "PHP (CodeIgniter/OpenCart), MySQL, HTML, CSS, jQuery, PayU API, Git"
+    },
+    {
+      "title": "Back-pay calculation software for local communal-guard officers",
+      "client": "Delegation of the Communal Guard of Médéa (Algeria)",
+      "duration": "4 months",
+      "objective": "Build software using the existing employee database (5,000+ records) of the Wilaya of Médéa's Communal Guard to compute salary back-pay based on each officer's years of experience. The software prints, in multiple formats, the documents and slips sent to the treasury and archives.",
+      "techEnv": "Windows Forms Applications (C# .NET), Crystal Reports, MS Access"
+    }
+  ],
+  "freelanceOverallTech": [
+    { "category": "Infrastructure", "value": "Shared hosting, dedicated servers, MS Azure, Amazon Web Services, DNS, FTP" },
+    { "category": "Web development", "value": "HTML5, CSS3, JavaScript, jQuery, PHP, CodeIgniter, WordPress" },
+    { "category": "Databases", "value": "MySQL, PostgreSQL, MSSQL" },
+    { "category": "Tools", "value": "Git, GitLab, GitHub, Composer" }
+  ],
+  "juniorRole": {
+    "title": "Junior Developer",
+    "company": "Smart Solutions Médéa",
+    "period": "July 2010 – December 2011",
+    "duration": "1 year 4 months",
+    "objective": "Contributing to the development of the products maintained by the small company.",
+    "actions": [
+      "Desktop application development tasks",
+      "Technical client support",
+      "Simple website development (showcase sites)"
+    ],
+    "techEnv": "Windows Forms Applications (C# .NET), Crystal Reports, MSSQL, PHP, HTML, CSS, MySQL"
+  }
+}

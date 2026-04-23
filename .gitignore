@@ -1,3 +1,5 @@
 tmp
 .env
 data
+!cv_osm/data/
+!cv_osm/data/**
