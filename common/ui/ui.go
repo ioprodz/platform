@@ -18,6 +18,7 @@ type PageMeta struct {
 	OGType               string // "website" or "article"
 	Keywords             string
 	ArticlePublishedTime string // RFC3339, only for blog articles
+	NoIndex              bool   // true → emits noindex,nofollow robots meta
 }
 
 // DefaultMeta returns fallback metadata for pages that haven't been migrated yet.

@@ -1,0 +1,48 @@
+{{ define "content" }}
+
+<section class="relative overflow-hidden min-h-[70vh] flex items-center">
+  <div class="absolute inset-0 grid-bg opacity-60 pointer-events-none"></div>
+  <div class="absolute inset-0 accent-glow pointer-events-none"></div>
+
+  <div class="relative mx-auto max-w-md w-full px-6 lg:px-8 py-20">
+    <div class="text-center mb-10">
+      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-4">Sign in</div>
+      <h1 class="text-4xl lg:text-5xl tracking-tighter font-semibold text-text leading-[1.02] mb-4">
+        Welcome back.
+      </h1>
+      <p class="text-text-muted text-[14px] leading-relaxed">
+        Internal-only. This page isn't linked from anywhere —
+        if you landed here by accident, there's nothing to see.
+      </p>
+    </div>
+
+    <div class="rounded-2xl border border-border bg-surface/50 p-6 space-y-3">
+      <a href="/auth/github"
+        class="flex items-center justify-center gap-3 rounded-md bg-accent px-4 py-3 text-[14px] font-medium text-black hover:bg-accent/90 transition-colors">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+        </svg>
+        Continue with GitHub
+      </a>
+
+      <a href="/auth/google"
+        class="flex items-center justify-center gap-3 rounded-md border border-border bg-surface/60 px-4 py-3 text-[14px] font-medium text-text hover:border-border-strong hover:bg-surface transition-colors">
+        <svg class="w-4 h-4" viewBox="0 0 48 48" aria-hidden="true">
+          <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+          <path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/>
+          <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0124 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
+          <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 01-4.087 5.571l.002-.001 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
+        </svg>
+        Continue with Google
+      </a>
+    </div>
+
+    <div class="mt-6 text-center">
+      <a href="/" class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim hover:text-text transition-colors">
+        ← Back to site
+      </a>
+    </div>
+  </div>
+</section>
+
+{{ end }}

@@ -10,7 +10,7 @@
     <meta name="description" content="{{ .meta.Description }}" />
     {{ if .meta.Keywords }}<meta name="keywords" content="{{ .meta.Keywords }}" />{{ end }}
     <link rel="canonical" href="{{ .meta.CanonicalURL }}" />
-    {{ if eq .layout "admin" }}<meta name="robots" content="noindex, nofollow" />
+    {{ if or (eq .layout "admin") .meta.NoIndex }}<meta name="robots" content="noindex, nofollow" />
     {{ else }}<meta name="robots" content="index, follow" />{{ end }}
 
     <!-- Open Graph -->
