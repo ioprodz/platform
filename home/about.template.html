@@ -5,13 +5,13 @@
   <div class="absolute inset-0 grid-bg opacity-60 pointer-events-none"></div>
   <div class="absolute inset-0 accent-glow pointer-events-none"></div>
   <div class="relative mx-auto max-w-4xl px-6 lg:px-8 pt-20 pb-20 lg:pt-24 lg:pb-24">
-    <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-4">Manifesto · Late 2025</div>
+    <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-4">{{ t "home:about.hero.eyebrow" }}</div>
     <h1 class="text-5xl lg:text-7xl leading-[0.98] tracking-tighter font-semibold text-text">
-      The counter-voice<br/>
-      <span class="text-text-muted">to AI slop.</span>
+      {{ t "home:about.hero.headingLine1" }}<br/>
+      <span class="text-text-muted">{{ t "home:about.hero.headingLine2" }}</span>
     </h1>
     <p class="mt-6 text-lg text-text-muted leading-relaxed max-w-xl">
-      Why I started ioprodz.
+      {{ t "home:about.hero.lede" }}
     </p>
   </div>
 </section>
@@ -21,22 +21,22 @@
   <div class="mx-auto max-w-3xl px-6 lg:px-8 py-20 lg:py-24 space-y-6 text-[17px] text-text-muted leading-relaxed scroll-fade">
 
     <p>
-      With the AI shift, almost everything about the industry feels like new ground. The entire market is debating model sizes, context windows, prompts — while the mainstream providers profit handsomely from the token-grinding companies building slop on top of their APIs. Almost nobody is talking about the boring engineering that decides whether an AI feature actually survives production.
+      {{ t "home:about.story.p1" }}
     </p>
 
     <p>
-      After 15+ years shipping real software across IoT, telecom, real estate, and fintech, I'd seen this pattern before — different name, same mistake.
+      {{ t "home:about.story.p2" }}
     </p>
 
     <div class="py-4">
-      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">The moment it clicked</div>
+      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">{{ t "home:about.story.clickedEyebrow" }}</div>
       <p class="text-text text-[17px] leading-relaxed">
-        I watched a team I'd mentored years ago ship a polished, production-grade AI feature in under a month — because they already had TDD, CI/CD, and a clean domain model. A competitor down the street, with 3× the engineers, couldn't get theirs out of preview. Same tools. Same models. Different engineering maturity.
+        {{ t "home:about.story.clickedBody" }}
       </p>
     </div>
 
     <p>
-      I started ioprodz in late 2025 to be the counter-voice: the one that says the boring engineering is the competitive advantage, and that a small team with the right practices outlasts a big team stacking tokens.
+      {{ t "home:about.story.p3" }}
     </p>
   </div>
 </section>
@@ -45,40 +45,40 @@
 <section class="border-b border-border">
   <div class="mx-auto max-w-4xl px-6 lg:px-8 py-20 lg:py-24">
     <div class="mb-12 scroll-fade">
-      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">What I believe</div>
-      <h2 class="text-3xl lg:text-5xl tracking-tighter font-semibold text-text">Four convictions I'll defend in any room.</h2>
+      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">{{ t "home:about.beliefs.eyebrow" }}</div>
+      <h2 class="text-3xl lg:text-5xl tracking-tighter font-semibold text-text">{{ t "home:about.beliefs.heading" }}</h2>
     </div>
 
     <div class="space-y-4">
       <div class="scroll-fade rounded-2xl border border-border bg-surface/50 p-7">
         <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-3">01</div>
-        <h3 class="text-xl font-semibold text-text tracking-tight mb-2">Shipping AI is an engineering problem disguised as a model problem.</h3>
+        <h3 class="text-xl font-semibold text-text tracking-tight mb-2">{{ t "home:about.beliefs.c1Title" }}</h3>
         <p class="text-text-muted text-[15px] leading-relaxed">
-          The hardest parts — evals, rollback, observability, domain modeling, cost guardrails — are exactly what every AI tutorial skips. That's where engagements live and die.
+          {{ t "home:about.beliefs.c1Body" }}
         </p>
       </div>
 
       <div class="scroll-fade rounded-2xl border border-border bg-surface/50 p-7" style="transition-delay: 80ms">
         <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-3">02</div>
-        <h3 class="text-xl font-semibold text-text tracking-tight mb-2">The teams winning with AI already practiced TDD, DDD, XP, CI/CD before AI existed.</h3>
+        <h3 class="text-xl font-semibold text-text tracking-tight mb-2">{{ t "home:about.beliefs.c2Title" }}</h3>
         <p class="text-text-muted text-[15px] leading-relaxed">
-          AI didn't make those practices obsolete. It made them a superpower. Mature engineering culture is the invisible moat that compounds exactly when everyone else is scrambling.
+          {{ t "home:about.beliefs.c2Body" }}
         </p>
       </div>
 
       <div class="scroll-fade rounded-2xl border border-border bg-surface/50 p-7" style="transition-delay: 160ms">
         <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-3">03</div>
-        <h3 class="text-xl font-semibold text-text tracking-tight mb-2">AI doesn't belong in your feature factory. It belongs in your <em class="not-italic text-accent">factory</em> factory.</h3>
+        <h3 class="text-xl font-semibold text-text tracking-tight mb-2">{{ t "home:about.beliefs.c3Title" }}</h3>
         <p class="text-text-muted text-[15px] leading-relaxed">
-          Automate the internal work first — docs, demos, refactors, metrics, code review. That buys your team time to do the one thing AI can't: talk to the people who actually pay them.
+          {{ t "home:about.beliefs.c3Body" }}
         </p>
       </div>
 
       <div class="scroll-fade rounded-2xl border border-border bg-surface/50 p-7" style="transition-delay: 240ms">
         <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-3">04</div>
-        <h3 class="text-xl font-semibold text-text tracking-tight mb-2">By 2028, most B2B SaaS will be 90% autonomous.</h3>
+        <h3 class="text-xl font-semibold text-text tracking-tight mb-2">{{ t "home:about.beliefs.c4Title" }}</h3>
         <p class="text-text-muted text-[15px] leading-relaxed">
-          Machines ingest feedback, ship aligned changes. The humans on those teams don't write features — they validate, govern, own outcomes, and spend their time with customers. Shortcuts taken now = locked out of that future.
+          {{ t "home:about.beliefs.c4Body" }}
         </p>
       </div>
     </div>
@@ -100,10 +100,10 @@
       </div>
 
       <div class="lg:col-span-8">
-        <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">Who I am</div>
-        <h2 class="text-3xl lg:text-5xl tracking-tighter font-semibold text-text mb-5">Osmane Kalache.</h2>
+        <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">{{ t "home:about.who.eyebrow" }}</div>
+        <h2 class="text-3xl lg:text-5xl tracking-tighter font-semibold text-text mb-5">{{ t "home:about.who.name" }}</h2>
         <p class="text-text-muted text-lg leading-relaxed max-w-2xl mb-6">
-          Software engineer, 15+ years. Worked across IoT (home appliances), telecom, real estate, and fintech. Practitioner of DDD, TDD, XP, Conway's Law, fast feedback loops, CI/CD, platform engineering, and DX. Builder of <a href="https://github.com/osmanekalache/specjest" target="_blank" rel="noopener" class="text-accent underline underline-offset-4">SpecJest</a> (open source) and <a href="https://polysee.dev" target="_blank" rel="noopener" class="text-accent underline underline-offset-4">Polysee</a> — the lab where I stress-test the methodology. Serving Europe / North Africa.
+          {{ t "home:about.who.bio" }}
         </p>
 
         <div class="flex flex-wrap gap-2 mb-8">
@@ -120,19 +120,19 @@
         <div class="flex flex-wrap gap-2">
           <a href="https://fr.linkedin.com/in/osmane-kalache" target="_blank" rel="noopener"
             class="inline-flex items-center gap-2 rounded-md border border-border bg-surface/40 px-3.5 py-1.5 text-[13px] text-text-muted hover:text-text hover:border-border-strong transition-colors">
-            LinkedIn
+            {{ t "home:about.who.linkLinkedin" }}
           </a>
           <a href="https://github.com/osminosm" target="_blank" rel="noopener"
             class="inline-flex items-center gap-2 rounded-md border border-border bg-surface/40 px-3.5 py-1.5 text-[13px] text-text-muted hover:text-text hover:border-border-strong transition-colors">
-            GitHub
+            {{ t "home:about.who.linkGithub" }}
           </a>
           <a href="https://twitter.com/osmanekalache" target="_blank" rel="noopener"
             class="inline-flex items-center gap-2 rounded-md border border-border bg-surface/40 px-3.5 py-1.5 text-[13px] text-text-muted hover:text-text hover:border-border-strong transition-colors">
-            Twitter
+            {{ t "home:about.who.linkTwitter" }}
           </a>
           <a href="/blog"
             class="inline-flex items-center gap-2 rounded-md border border-border bg-surface/40 px-3.5 py-1.5 text-[13px] text-text-muted hover:text-text hover:border-border-strong transition-colors">
-            Blog
+            {{ t "home:about.who.linkBlog" }}
           </a>
         </div>
       </div>
@@ -145,16 +145,16 @@
   <div class="absolute inset-0 accent-glow pointer-events-none"></div>
   <div class="relative mx-auto max-w-4xl px-6 lg:px-8 py-24 lg:py-32 text-center scroll-fade">
     <h2 class="text-4xl lg:text-6xl tracking-tighter font-semibold text-text mb-6 leading-[1.02]">
-      Ready to leave<br/>
-      <span class="text-text-muted">the vibes behind?</span>
+      {{ t "home:about.cta.headingLine1" }}<br/>
+      <span class="text-text-muted">{{ t "home:about.cta.headingLine2" }}</span>
     </h2>
     <p class="text-text-muted text-lg leading-relaxed max-w-xl mx-auto mb-10">
-      A tailored 30-minute screening. I'll tell you honestly whether your AI product has a vibe-coding problem or an engineering problem — and what the 90-day path looks like if you want to fix it.
+      {{ t "home:about.cta.body" }}
     </p>
     <div class="flex flex-col sm:flex-row gap-3 justify-center">
       <a href="https://calendly.com/osminosm/30min" target="_blank" rel="noopener"
         class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-6 py-3 text-[14px] font-medium text-black hover:bg-accent/90 transition-colors">
-        Book a tailored screening
+        {{ t "home:about.cta.book" }}
       </a>
       <a href="mailto:osmane@ioprodz.com"
         class="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-surface/40 px-6 py-3 text-[14px] font-medium text-text hover:border-border-strong hover:bg-surface transition-colors">

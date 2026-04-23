@@ -5,6 +5,7 @@ import (
 	"fmt"
 	blog_models "ioprodz/blog/_models"
 	"ioprodz/common/config"
+	"ioprodz/common/i18n"
 	"net/http"
 	"os"
 	"time"
@@ -61,37 +62,49 @@ type siteURL struct {
 
 func CreateSitemapHandler(blogRepo blog_models.BlogRepository) http.HandlerFunc {
 	type staticPage struct {
-		path       string
-		changefreq string
-		priority   string
+		path         string
+		changefreq   string
+		priority     string
+		translatable bool
 	}
 
 	pages := []staticPage{
-		{"/", "weekly", "1.0"},
-		{"/about", "monthly", "0.9"},
-		{"/consulting", "monthly", "0.8"},
-		{"/consulting/it-strategy", "monthly", "0.7"},
-		{"/consulting/coaching", "monthly", "0.7"},
-		{"/solutions", "monthly", "0.8"},
-		{"/solutions/ai-engine", "monthly", "0.7"},
-		{"/solutions/chat-collaboration", "monthly", "0.7"},
-		{"/solutions/collaborative-editing", "monthly", "0.7"},
-		{"/solutions/search-rag", "monthly", "0.7"},
-		{"/blog", "weekly", "0.8"},
+		{"/", "weekly", "1.0", true},
+		{"/about", "monthly", "0.9", true},
+		{"/consulting", "monthly", "0.8", true},
+		{"/consulting/it-strategy", "monthly", "0.7", true},
+		{"/consulting/coaching", "monthly", "0.7", true},
+		{"/solutions", "monthly", "0.8", true},
+		{"/solutions/ai-engine", "monthly", "0.7", true},
+		{"/solutions/chat-collaboration", "monthly", "0.7", true},
+		{"/solutions/collaborative-editing", "monthly", "0.7", true},
+		{"/solutions/search-rag", "monthly", "0.7", true},
+		{"/blog", "weekly", "0.8", false},
 	}
 
 	return func(w http.ResponseWriter, r *http.Request) {
 		baseURL := config.Load().BASE_URL
 		now := time.Now().Format("2006-01-02")
 
-		urls := make([]siteURL, 0, len(pages)+10)
+		urls := make([]siteURL, 0, len(pages)*len(i18n.AllLangs)+10)
 		for _, p := range pages {
-			urls = append(urls, siteURL{
-				Loc:        baseURL + p.path,
-				LastMod:    now,
-				ChangeFreq: p.changefreq,
-				Priority:   p.priority,
-			})
+			if p.translatable {
+				for _, lang := range i18n.AllLangs {
+					urls = append(urls, siteURL{
+						Loc:        baseURL + i18n.MetaFor(lang).URLPrefix + p.path,
+						LastMod:    now,
+						ChangeFreq: p.changefreq,
+						Priority:   p.priority,
+					})
+				}
+			} else {
+				urls = append(urls, siteURL{
+					Loc:        baseURL + p.path,
+					LastMod:    now,
+					ChangeFreq: p.changefreq,
+					Priority:   p.priority,
+				})
+			}
 		}
 
 		posts, err := blogRepo.ListPublished()

@@ -7,11 +7,11 @@ import (
 
 func GetLoginHandler(w http.ResponseWriter, r *http.Request) {
 	meta := ui.PageMeta{
-		Title:       "Sign in",
-		Description: "Owner sign-in page.",
-		Path:        "/login",
-		OGType:      "website",
-		NoIndex:     true,
+		TitleKey: "home:meta.login.title",
+		DescKey:  "home:meta.login.description",
+		Path:     "/login",
+		OGType:   "website",
+		NoIndex:  true,
 	}
 	ui.RenderPageWithMeta(w, r, "home/login.template", nil, meta)
 }

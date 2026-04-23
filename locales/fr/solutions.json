@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "overview": {
+      "title": "Solutions de plateforme IA",
+      "description": "Composants de plateforme IA intégrables et prêts pour la production : Moteur IA, Chat multi-modal, Édition collaborative, et Recherche & RAG."
+    },
+    "aiEngine": {
+      "title": "Moteur IA — Runtime d'agents et orchestration",
+      "description": "Une couche d'orchestration IA complète : support multi-fournisseur de LLM, appel d'outils, protocole MCP, entrées/sorties vocales et streaming pour votre produit."
+    },
+    "chat": {
+      "title": "Chat multi-modal",
+      "description": "Une couche de communication unifiée où humains et agents IA collaborent naturellement avec média riche, messages vocaux et workflows interactifs."
+    },
+    "collabEditing": {
+      "title": "Édition collaborative de documents",
+      "description": "Édition temps réel multi-utilisateur avec assistance IA, synchronisation CRDT, curseurs en direct et historique des versions — intégrable dans tout produit."
+    },
+    "searchRag": {
+      "title": "Recherche & RAG",
+      "description": "Recherche sémantique et retrieval intelligent qui rend toute votre base de connaissances accessible à l'IA, avec recherche hybride vectorielle et textuelle."
+    }
+  },
+  "overview": {
+    "hero": {
+      "badge": "Plateforme augmentée par l'IA",
+      "headingLine1": "Un logiciel intelligent,",
+      "headingLine2": "en quatre composants.",
+      "lede": "Des briques prêtes pour la production où <span class=\"text-text\">intelligence</span>, <span class=\"text-text\">communication</span> et <span class=\"text-text\">connaissance</span> fonctionnent ensemble dans votre produit.",
+      "ctaDemo": "Planifier une démo",
+      "ctaExplore": "Explorer les composants"
+    },
+    "flow": {
+      "communicate": "Communiquer",
+      "search": "Chercher",
+      "reason": "Raisonner",
+      "act": "Agir"
+    },
+    "pillars": {
+      "eyebrow": "01 · Composants de la plateforme",
+      "heading": "Puissants individuellement. Transformateurs ensemble.",
+      "aiEngineTitle": "Moteur IA",
+      "aiEngineKicker": "Couche d'orchestration",
+      "aiEngineBody": "Un runtime d'agents complet qui connecte les LLM au domaine de votre produit. Définissez des agents, donnez-leur des outils, laissez-les raisonner et agir.",
+      "chatTitle": "Chat multi-modal",
+      "chatKicker": "Épine dorsale de messagerie",
+      "chatBody": "Une couche de communication unifiée où humains et agents IA collaborent naturellement. Média riche, workflows interactifs, notifications intelligentes.",
+      "collabTitle": "Édition collaborative de documents",
+      "collabKicker": "Multi-utilisateur temps réel + IA",
+      "collabBody": "Plusieurs personnes et agents IA éditent le même document simultanément avec résolution automatique des conflits. La technologie derrière Google Docs, intégrable partout.",
+      "ragTitle": "Recherche & RAG",
+      "ragKicker": "Retrieval sémantique",
+      "ragBody": "Indexe le contenu automatiquement, combine similarité vectorielle et recherche full-text, et fournit une API de retrieval que les agents utilisent pour ancrer leurs réponses dans des données réelles."
+    },
+    "industries": {
+      "eyebrow": "02 · Secteurs",
+      "heading": "S'adapte à votre domaine.",
+      "softwareTitle": "Développement logiciel",
+      "softwareBody": "Agents de revue de code, canaux d'équipe, recherche dans la codebase.",
+      "healthcareTitle": "Santé",
+      "healthcareBody": "Support à la décision clinique, messagerie entre praticiens, retrieval de connaissances médicales.",
+      "financeTitle": "Services financiers",
+      "financeBody": "Analyse de risque, chat de conformité, recherche dans la documentation réglementaire.",
+      "legalTitle": "Juridique",
+      "legalBody": "Analyse de contrats, collaboration sur les dossiers, recherche de jurisprudence.",
+      "educationTitle": "Éducation",
+      "educationBody": "Tutorat adaptatif, messagerie élèves, recherche dans le curriculum.",
+      "supportTitle": "Support client",
+      "supportBody": "Agents de résolution de tickets, support multi-canal, retrieval dans la base de connaissances.",
+      "manufacturingTitle": "Industrie",
+      "manufacturingBody": "Analyse qualité, coordination terrain, recherche dans les manuels techniques.",
+      "realestateTitle": "Immobilier",
+      "realestateBody": "Analyse de marché, communication agent-client, recherche de biens."
+    },
+    "cta": {
+      "headingLine1": "Prêt à construire",
+      "headingLine2": "un logiciel intelligent ?",
+      "body": "Ces composants sont puissants individuellement, transformateurs ensemble. Discutons de la façon dont ils s'adaptent à votre produit.",
+      "ctaDemo": "Planifier une démo",
+      "ctaContact": "Nous contacter"
+    }
+  },
+  "detail": {
+    "back": "Retour aux Solutions",
+    "component": "Composant",
+    "onThisPage": "Sur cette page",
+    "exploreOthers": "Explorer les autres solutions",
+    "aiEngineTitle": "Moteur IA",
+    "aiEngineKicker": "Couche d'orchestration",
+    "chatTitle": "Chat multi-modal",
+    "chatKicker": "Messagerie nativement IA",
+    "collabTitle": "Édition collaborative",
+    "collabKicker": "Documents temps réel",
+    "ragTitle": "Recherche & RAG",
+    "ragKicker": "Retrieval sémantique",
+    "seeInAction": "Envie de voir ça en action ?",
+    "seeInActionBody": "Planifiez une démo pour voir comment ces composants s'intègrent dans votre produit.",
+    "ctaDemo": "Planifier une démo",
+    "ctaAll": "Voir toutes les solutions"
+  },
+  "aiEngine": {
+    "heroTitle": "Moteur IA",
+    "heroSubtitle": "Des assistants de chat aux agents autonomes — une couche d'orchestration IA complète"
+  },
+  "chat": {
+    "heroTitle": "Chat multi-modal",
+    "heroSubtitle": "Une épine dorsale de messagerie complète où humains et agents IA communiquent d'égal à égal"
+  },
+  "collabEditing": {
+    "heroTitle": "Édition collaborative de documents",
+    "heroSubtitle": "Édition temps réel multi-utilisateur avec assistance IA — comme Google Docs, conçu pour votre produit"
+  },
+  "searchRag": {
+    "heroTitle": "Recherche & RAG",
+    "heroSubtitle": "Recherche sémantique et retrieval intelligent qui rend toute votre base de connaissances accessible à l'IA"
+  }
+}

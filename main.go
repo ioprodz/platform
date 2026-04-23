@@ -7,6 +7,7 @@ import (
 	"ioprodz/blog"
 	"ioprodz/common/config"
 	"ioprodz/common/db"
+	"ioprodz/common/i18n"
 	"ioprodz/common/middlewares"
 	"ioprodz/common/seo"
 	"ioprodz/consulting"
@@ -24,6 +25,9 @@ import (
 func main() {
 	configuration := config.Load()
 	db.RunMigrations()
+	if err := i18n.Load(); err != nil {
+		log.Fatalf("i18n load: %v", err)
+	}
 	router := mux.NewRouter()
 
 	// Create static subrouter with strict matching
@@ -54,8 +58,11 @@ func main() {
 	// Configure home module last (has catch-all "/" route)
 	home.ConfigureModule(router)
 
-	// Mount routes to the HTTP server
-	http.Handle("/", router)
+	// Mount routes to the HTTP server.
+	// LocaleResolver wraps the router at the top level so URL-path rewrites
+	// happen BEFORE Gorilla Mux does route matching (router.Use middlewares
+	// run after matching, which is too late for a path rewrite).
+	http.Handle("/", middlewares.LocaleResolver(router))
 
 	// Start the HTTP server
 	fmt.Println("Server listening on port " + configuration.PORT)

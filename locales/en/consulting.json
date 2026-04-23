@@ -1,0 +1,135 @@
+{
+  "meta": {
+    "overview": {
+      "title": "Consulting Services",
+      "description": "Strategic technology leadership, IT strategy, and hands-on team coaching for software organizations."
+    },
+    "itStrategy": {
+      "title": "IT Strategy Consulting",
+      "description": "Technology roadmaps, architecture decisions, and hands-on engineering leadership that align technology to business outcomes."
+    },
+    "coaching": {
+      "title": "Team & Individual Coaching",
+      "description": "Build a learning culture rooted in Extreme Programming and Lean principles. Coaching on code reviews, TDD, pair programming, and engineering practices."
+    }
+  },
+  "overview": {
+    "hero": {
+      "badge": "Consulting",
+      "headingLine1": "Strategic technology",
+      "headingLine2": "leadership.",
+      "lede": "Interim CTO, technical roadmap, or hands-on coaching. We bring 15+ years of engineering leadership to help teams ship faster with higher quality."
+    },
+    "howWeHelp": {
+      "eyebrow": "01 · How we help",
+      "heading": "Two ways to work together.",
+      "itStrategyTitle": "IT Strategy",
+      "itStrategyBody": "From technology roadmaps to acting CTO engagements. We align your engineering to business outcomes with clear goals, modern architecture, and data-driven decisions.",
+      "itStrategyB1": "Interim CTO / Engineering lead",
+      "itStrategyB2": "Technical roadmap & architecture",
+      "itStrategyB3": "AI & platform integration",
+      "itStrategyB4": "Digital transformation",
+      "coachingTitle": "Team & Individual Coaching",
+      "coachingBody": "Build a learning culture rooted in Extreme Programming and Lean. We coach teams and individuals on the practices that create high-performing engineering organizations.",
+      "coachingB1": "Pair programming & code reviews",
+      "coachingB2": "TDD, CI/CD & fast feedback",
+      "coachingB3": "Lean & XP methodology",
+      "coachingB4": "Individual developer mentoring"
+    },
+    "cta": {
+      "headingLine1": "Let's talk about",
+      "headingLine2": "your challenges.",
+      "body": "Book a 30-minute screening. We'll discuss your situation, share quick wins, and lay out a path forward.",
+      "book": "Book a tailored screening",
+      "email": "Or send an email"
+    }
+  },
+  "itStrategy": {
+    "hero": {
+      "back": "Back to Consulting",
+      "eyebrow": "Service · 01",
+      "heading": "IT Strategy",
+      "lede": "Technology roadmaps, architecture decisions, and hands-on leadership that align engineering to business outcomes."
+    },
+    "whatWeDo": {
+      "eyebrow": "01 · What we do",
+      "heading": "A strategic technology partner, or an interim CTO.",
+      "c1Title": "Interim CTO / Engineering Lead",
+      "c1Body": "Step in as acting CTO or engineering manager to provide immediate leadership. Draw the technical roadmap, implement it, and bring structure, velocity, and accountability.",
+      "c2Title": "Outcome-focused consulting",
+      "c2Body": "Every engagement starts with clear goals and metrics. We align engineering to business outcomes so improvements directly translate to value — not just process changes.",
+      "c3Title": "Architecture & modernization",
+      "c3Body": "Cloud, microservices, event-driven — the right tools for your context. Modernize development processes, optimize existing systems, and build what's missing to improve flow."
+    },
+    "howWeWork": {
+      "eyebrow": "02 · How we work",
+      "heading": "Embedded, not bolted on.",
+      "body": "We don't hand you a 100-page report and walk away. We embed with your team, implement alongside you, and transfer knowledge so you're self-sufficient when we leave.",
+      "step1Title": "Assess",
+      "step1Body": "Understand your current state — codebase, team structure, delivery pipeline, pain points.",
+      "step2Title": "Plan",
+      "step2Body": "Define a clear roadmap with milestones, metrics, and quick wins you can act on immediately.",
+      "step3Title": "Execute",
+      "step3Body": "Roll up our sleeves and implement — architecture changes, tooling, process improvements, hiring guidance.",
+      "step4Title": "Measure & iterate",
+      "step4Body": "Track progress against goals. Adjust the plan based on real data. Repeat until the transformation sticks.",
+      "areasTitle": "Typical engagement areas",
+      "area1": "Technology stack evaluation and migration strategy",
+      "area2": "CI/CD pipeline design and developer experience optimization",
+      "area3": "AI integration strategy — identifying where AI delivers real ROI",
+      "area4": "Internal developer platform design and implementation",
+      "area5": "Team structure and organization (Conway's Law applied)",
+      "area6": "Engineering metrics and delivery intelligence",
+      "area7": "Scalability and performance architecture"
+    },
+    "cta": {
+      "headingLine1": "Start with a",
+      "headingLine2": "conversation.",
+      "body": "A tailored 30-minute screening. We'll discuss your challenges, share quick wins, and lay out a roadmap tailored to your needs.",
+      "book": "Book a tailored screening",
+      "exploreCoaching": "Explore Coaching"
+    }
+  },
+  "coaching": {
+    "hero": {
+      "back": "Back to Consulting",
+      "eyebrow": "Service · 02",
+      "heading": "Team & Individual Coaching",
+      "lede": "Build a learning culture rooted in Extreme Programming and Lean. We coach teams and individuals on the practices that create high-performing engineering organizations."
+    },
+    "philosophy": {
+      "eyebrow": "01 · Philosophy",
+      "heading": "Simplicity, feedback, continuous improvement.",
+      "c1Title": "Continuous learning",
+      "c1Body": "Environments where every engineer grows through code reviews, brown-bags, and pair programming. Growth isn't a side effect — it's the system.",
+      "c2Title": "Rapid feedback",
+      "c2Body": "Delivering in small increments and tracking everything means teams see problems early and adapt quickly. Catches defects sooner, steers toward goals faster.",
+      "c3Title": "Lean mindset",
+      "c3Body": "Ruthlessly eliminate waste — unused code, delays, unnecessary complexity. Waste is anything that interferes with giving customers what they really value."
+    },
+    "whatWeCover": {
+      "eyebrow": "02 · What we cover",
+      "heading": "Hands-on, practical, immediately useful.",
+      "codeReviewTitle": "Code reviews",
+      "codeReviewBody": "Transform reviews from gatekeeping into learning opportunities. Actionable, kind, and educational feedback.",
+      "pairTitle": "Pair programming",
+      "pairBody": "Two minds, one keyboard. Spread knowledge, catch bugs earlier, build stronger teams.",
+      "tddTitle": "Test-driven development",
+      "tddBody": "Red-green-refactor. TDD as a design tool, not just a testing technique. Write better code by writing the test first.",
+      "ciTitle": "CI/CD & fast feedback",
+      "ciBody": "Pipelines that give developers confidence. Automated testing, continuous deployment, issues caught in minutes, not days.",
+      "dddTitle": "Domain-driven design",
+      "dddBody": "Align your code to your business. Bounded contexts, ubiquitous language, strategic design. Software that models reality.",
+      "mentoringTitle": "Individual mentoring",
+      "mentoringBody": "One-on-one for developers levelling up. Architecture thinking, problem-solving, career growth, technical leadership."
+    },
+    "quote": "\"Start where you are and incrementally make it better — transform your development process with proven engineering practices.\"",
+    "cta": {
+      "headingLine1": "Level up the",
+      "headingLine2": "whole team.",
+      "body": "Let's discuss your team's challenges and design a coaching engagement that creates lasting change.",
+      "book": "Book a tailored screening",
+      "exploreItStrategy": "Explore IT Strategy"
+    }
+  }
+}

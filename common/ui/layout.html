@@ -1,31 +1,40 @@
 {{ define "layout" }}
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="{{ .langMeta.HTMLLang }}" dir="{{ .langMeta.Dir }}" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- SEO -->
-    <title>{{ .meta.FullTitle }}</title>
-    <meta name="description" content="{{ .meta.Description }}" />
+    <title>{{ .pageTitle }}</title>
+    <meta name="description" content="{{ .pageDescription }}" />
     {{ if .meta.Keywords }}<meta name="keywords" content="{{ .meta.Keywords }}" />{{ end }}
-    <link rel="canonical" href="{{ .meta.CanonicalURL }}" />
+    <link rel="canonical" href="{{ .pageCanonicalURL }}" />
     {{ if or (eq .layout "admin") .meta.NoIndex }}<meta name="robots" content="noindex, nofollow" />
     {{ else }}<meta name="robots" content="index, follow" />{{ end }}
 
+    <!-- Alternate locales -->
+    {{ if and .translatable (not .meta.NoIndex) }}
+    {{ range .allLangs }}
+    <link rel="alternate" hreflang="{{ .HTMLLang }}" href="{{ $.baseURL }}{{ .URLPrefix }}{{ $.meta.Path }}" />
+    {{ end }}
+    <link rel="alternate" hreflang="x-default" href="{{ .baseURL }}{{ .meta.Path }}" />
+    {{ end }}
+
     <!-- Open Graph -->
     <meta property="og:type" content="{{ .meta.OGType }}" />
-    <meta property="og:title" content="{{ .meta.FullTitle }}" />
-    <meta property="og:description" content="{{ .meta.Description }}" />
-    <meta property="og:url" content="{{ .meta.CanonicalURL }}" />
+    <meta property="og:title" content="{{ .pageTitle }}" />
+    <meta property="og:description" content="{{ .pageDescription }}" />
+    <meta property="og:url" content="{{ .pageCanonicalURL }}" />
     <meta property="og:image" content="{{ .meta.OGImageURL }}" />
     <meta property="og:site_name" content="ioprodz" />
+    <meta property="og:locale" content="{{ .langMeta.HTMLLang }}" />
     {{ if .meta.ArticlePublishedTime }}<meta property="article:published_time" content="{{ .meta.ArticlePublishedTime }}" />{{ end }}
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="{{ .meta.FullTitle }}" />
-    <meta name="twitter:description" content="{{ .meta.Description }}" />
+    <meta name="twitter:title" content="{{ .pageTitle }}" />
+    <meta name="twitter:description" content="{{ .pageDescription }}" />
     <meta name="twitter:image" content="{{ .meta.OGImageURL }}" />
 
     <!-- Structured Data -->
@@ -50,10 +59,17 @@
     <!-- Fonts, Tailwind, HTMX -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    {{ if eq .lang "ar" }}
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;300;400;500;600;700&family=Geist+Mono:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    {{ else }}
     <link
       href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap"
       rel="stylesheet"
     />
+    {{ end }}
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -99,6 +115,7 @@
       }
       html, body { background: var(--bg); color: var(--text); }
       body { font-family: 'Geist', ui-sans-serif, system-ui, -apple-system, sans-serif; -webkit-font-smoothing: antialiased; padding-top: 64px; }
+      html[lang="ar"] body { font-family: 'IBM Plex Sans Arabic', ui-sans-serif, system-ui, -apple-system, sans-serif; }
       ::selection { background: var(--accent); color: #0a0a0a; }
       /* Subtle grid texture for hero-ish sections */
       .grid-bg {

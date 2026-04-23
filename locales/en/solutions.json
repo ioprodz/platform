@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "overview": {
+      "title": "AI Platform Solutions",
+      "description": "Production-grade, embeddable AI platform components: AI Engine, Multi Modal Chat, Collaborative Editing, and Search & RAG."
+    },
+    "aiEngine": {
+      "title": "AI Engine — Agent Runtime & Orchestration",
+      "description": "A complete AI orchestration layer: multi-provider LLM support, tool calling, MCP protocol, voice I/O, and streaming for your product."
+    },
+    "chat": {
+      "title": "Multi Modal Chat",
+      "description": "A unified communication layer where humans and AI agents collaborate naturally with rich media, voice messages, and interactive workflows."
+    },
+    "collabEditing": {
+      "title": "Collaborative Document Editing",
+      "description": "Multi-user real-time editing with AI assistance, CRDT sync, live cursors, and version history — embeddable into any product."
+    },
+    "searchRag": {
+      "title": "Search & RAG",
+      "description": "Semantic search and intelligent retrieval that makes your entire knowledge base AI-accessible with hybrid vector and keyword search."
+    }
+  },
+  "overview": {
+    "hero": {
+      "badge": "AI-augmented platform",
+      "headingLine1": "Intelligent software,",
+      "headingLine2": "in four components.",
+      "lede": "Production-grade building blocks where <span class=\"text-text\">intelligence</span>, <span class=\"text-text\">communication</span>, and <span class=\"text-text\">knowledge</span> work together inside your product.",
+      "ctaDemo": "Schedule a demo",
+      "ctaExplore": "Explore components"
+    },
+    "flow": {
+      "communicate": "Communicate",
+      "search": "Search",
+      "reason": "Reason",
+      "act": "Act"
+    },
+    "pillars": {
+      "eyebrow": "01 · Platform components",
+      "heading": "Powerful on their own. Transformative together.",
+      "aiEngineTitle": "AI Engine",
+      "aiEngineKicker": "Orchestration layer",
+      "aiEngineBody": "A full agent runtime that connects LLMs to your product's domain. Define agents, give them tools, let them reason and act.",
+      "chatTitle": "Multi Modal Chat",
+      "chatKicker": "Messaging backbone",
+      "chatBody": "A unified communication layer where humans and AI agents collaborate naturally. Rich media, interactive workflows, intelligent notifications.",
+      "collabTitle": "Collaborative Document Editing",
+      "collabKicker": "Real-time multi-user + AI",
+      "collabBody": "Multiple people and AI agents edit the same document simultaneously with automatic conflict resolution. The tech behind Google Docs, embeddable anywhere.",
+      "ragTitle": "Search & RAG",
+      "ragKicker": "Semantic retrieval",
+      "ragBody": "Indexes content automatically, combines vector similarity with full-text search, and provides a retrieval API agents use to ground responses in real data."
+    },
+    "industries": {
+      "eyebrow": "02 · Industries",
+      "heading": "Adapts to your domain.",
+      "softwareTitle": "Software development",
+      "softwareBody": "Code-review agents, team channels, codebase search.",
+      "healthcareTitle": "Healthcare",
+      "healthcareBody": "Clinical decision support, provider messaging, medical knowledge retrieval.",
+      "financeTitle": "Financial services",
+      "financeBody": "Risk analysis, compliance chat, regulatory document search.",
+      "legalTitle": "Legal",
+      "legalBody": "Contract analysis, case collaboration, precedent search.",
+      "educationTitle": "Education",
+      "educationBody": "Adaptive tutoring, student messaging, curriculum search.",
+      "supportTitle": "Customer support",
+      "supportBody": "Ticket resolution agents, multi-channel support, knowledge base retrieval.",
+      "manufacturingTitle": "Manufacturing",
+      "manufacturingBody": "Quality analysis, field coordination, technical manual search.",
+      "realestateTitle": "Real estate",
+      "realestateBody": "Market analysis, agent-client communication, property search."
+    },
+    "cta": {
+      "headingLine1": "Ready to build",
+      "headingLine2": "intelligent software?",
+      "body": "These components are powerful individually, transformative together. Let's discuss how they fit your product.",
+      "ctaDemo": "Schedule a demo",
+      "ctaContact": "Contact us"
+    }
+  },
+  "detail": {
+    "back": "Back to Solutions",
+    "component": "Component",
+    "onThisPage": "On this page",
+    "exploreOthers": "Explore other solutions",
+    "aiEngineTitle": "AI Engine",
+    "aiEngineKicker": "Orchestration layer",
+    "chatTitle": "Multi Modal Chat",
+    "chatKicker": "AI-native messaging",
+    "collabTitle": "Collaborative Editing",
+    "collabKicker": "Real-time documents",
+    "ragTitle": "Search & RAG",
+    "ragKicker": "Semantic retrieval",
+    "seeInAction": "Want to see this in action?",
+    "seeInActionBody": "Schedule a demo to see how these components embed into your product.",
+    "ctaDemo": "Schedule a demo",
+    "ctaAll": "View all solutions"
+  },
+  "aiEngine": {
+    "heroTitle": "AI Engine",
+    "heroSubtitle": "From chat assistants to autonomous agents -- a complete AI orchestration layer"
+  },
+  "chat": {
+    "heroTitle": "Multi Modal Chat",
+    "heroSubtitle": "A complete messaging backbone where humans and AI agents communicate as equals"
+  },
+  "collabEditing": {
+    "heroTitle": "Collaborative Document Editing",
+    "heroSubtitle": "Multi-user real-time editing with AI assistance -- like Google Docs, built for your product"
+  },
+  "searchRag": {
+    "heroTitle": "Search & RAG",
+    "heroSubtitle": "Semantic search and intelligent retrieval that makes your entire knowledge base AI-accessible"
+  }
+}

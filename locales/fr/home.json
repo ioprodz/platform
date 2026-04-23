@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "home": {
+      "title": "",
+      "description": "Je transforme le logiciel vibe-codé en vrai produit en 90 jours — sur une infrastructure IA souveraine (OpenAI, Claude, Gemini, Grok, ou local), livré tous les jours, avec l'ingénierie rigoureuse que tous les tutos IA zappent : évaluations, rollback, observabilité, modélisation du domaine. Cabinet indépendant d'ingénierie au service de l'Europe et de l'Afrique du Nord."
+    },
+    "about": {
+      "title": "Manifeste — La contre-voix au slop IA",
+      "description": "Pourquoi j'ai lancé ioprodz fin 2025. La contre-voix au slop IA : l'ingénierie rigoureuse est l'avantage compétitif, et une petite équipe avec les bonnes pratiques tient plus longtemps qu'une grosse équipe qui empile des tokens."
+    },
+    "login": {
+      "title": "Connexion",
+      "description": "Page de connexion du propriétaire."
+    }
+  },
+  "home": {
+    "hero": {
+      "badge": "Cabinet indépendant d'ingénierie · Europe / Afrique du Nord · Depuis 2025",
+      "headingLine1": "Du vibe coding",
+      "headingLine2": "au vrai produit.",
+      "headingLine3": "En 90 jours.",
+      "lede": "Maturité d'ingénierie pour vos produits IA. Livraisons quotidiennes, IA souveraine, zéro slop.",
+      "ctaBook": "Réserver un pré-entretien sur mesure",
+      "ctaHowIWork": "Ma méthode",
+      "tagEvals": "Évaluations",
+      "tagRollback": "Rollback",
+      "tagObservability": "Observabilité",
+      "tagDomain": "Modèle de domaine",
+      "tagAnyModel": "Modèle au choix par fonctionnalité"
+    },
+    "whatIDo": {
+      "eyebrow": "01 · Ce que je fais",
+      "heading": "Trois choses. À chaque mission.",
+      "c1Kicker": "01 / Ingénierie",
+      "c1Title": "Montée en ingénierie",
+      "c1Body": "J'amène votre produit IA au niveau d'ingénierie que vos clients paient réellement : évaluations, rollback, observabilité, modèle de domaine propre, pipeline CI/CD qui livre plusieurs fois par jour. TDD, DDD, XP — appliqués aux fonctionnalités IA, pas abandonnés à cause d'elles.",
+      "c2Kicker": "02 / Infrastructure",
+      "c2Title": "Stack IA souveraine",
+      "c2Body": "J'installe une infrastructure IA agnostique vis-à-vis du modèle, que vous possédez réellement. Utilisez OpenAI, Claude, Gemini, Grok, ou des modèles open-weight locaux — au choix par fonctionnalité, interchangeables à tout moment. Pas de verrouillage fournisseur, pas de fuite de données, pas de surprise tarifaire.",
+      "c3Kicker": "03 / Effet de levier",
+      "c3Title": "L'IA comme usine interne",
+      "c3Body": "Je branche l'IA dans votre salle des machines avant votre produit. Documentation, vidéos de démo, refactors, génération de tests, analyse de métriques, revue de code. Votre équipe cesse de se noyer dans les tâches ingrates et récupère le temps que l'IA ne peut pas lui rendre — le temps avec vos clients."
+    },
+    "slop": {
+      "eyebrow": "02 · Le pari",
+      "headingLine1": "Arrêter de noyer les utilisateurs",
+      "headingLine2": "dans du slop IA.",
+      "p1": "Le discours du marché dit : <em class=\"text-text not-italic\">\"livrez plus de fonctionnalités IA, parce que l'IA.\"</em> Vos utilisateurs ne suivent plus. Votre produit devient instable. Vos métriques de confiance s'effondrent. Pendant ce temps, les fournisseurs de modèles frontière engrangent confortablement les revenus générés par ce mouliné de tokens.",
+      "p2": "Je parie l'inverse. L'IA a sa place d'abord dans votre <span class=\"text-text\">salle des machines</span> : documentation, vidéos de démo, refactors, génération de tests, analyse de métriques, revue de code — le travail interne ingrat où l'IA est réellement bonne aujourd'hui. Ça rend à votre équipe la seule chose que l'IA ne peut pas lui donner : du temps pour parler aux gens qui vous paient.",
+      "p3": "Les utilisateurs ressentent la différence. Moins de fonctionnalités, mieux livrées, réactives aux retours. Moins de slop, plus de produit."
+    },
+    "stats": {
+      "s1Value": "1+",
+      "s1Unit": "/jour",
+      "s1Label": "Cadence de livraison",
+      "s1Body": "Ce que votre équipe livre une fois l'ingénierie en place. Pas de gel de code, pas de merges big-bang.",
+      "s2Value": "Tout",
+      "s2Unit": " modèle",
+      "s2Label": "Par fonctionnalité",
+      "s2Body": "OpenAI · Claude · Gemini · Grok · open-weight local. Au choix par fonctionnalité, interchangeables à tout moment.",
+      "s3Value": "~90",
+      "s3Unit": " jours",
+      "s3Label": "Vibe coding → vrai produit",
+      "s3Body": "Fenêtre d'engagement de bout en bout : audit, installation, formation, transmission. Un ingénieur à temps partiel suffit ensuite."
+    },
+    "thesis": {
+      "eyebrow": "03 · La thèse",
+      "headingLine1": "D'ici 2028, la plupart des SaaS B2B",
+      "headingLine2": "seront à 90 % autonomes.",
+      "p1": "Des machines qui digèrent les retours utilisateurs et livrent des changements alignés. Les humains restants dans l'équipe n'écriront plus de code — ils valideront des résultats, réviseront des designs, approuveront des ADR majeurs, porteront les SLA. En un mot : ils seront <span class=\"text-text\">responsables</span>.",
+      "p2": "Les équipes qui atteignent ce futur ne sont pas celles qui empilent plus de tokens aujourd'hui. Ce sont celles qui installent l'ingénierie rigoureuse qui permet au logiciel d'évoluer en sécurité tout seul. C'est le playbook que je construis à chaque mission.",
+      "readManifesto": "Lire le manifeste"
+    },
+    "founder": {
+      "eyebrow": "04 · Qui vous embauchez",
+      "name": "Osmane Kalache.",
+      "bio": "15+ ans à livrer du vrai logiciel dans l'IoT, les télécoms, l'immobilier et la fintech. J'ai lancé ioprodz fin 2025 pour être la contre-voix au slop IA — celle qui dit que l'ingénierie rigoureuse est l'avantage compétitif, et qu'une petite équipe avec les bonnes pratiques tient plus longtemps qu'une grosse équipe qui empile des tokens.",
+      "quote": "« L'IA s'occupe du code. Vous récupérez votre temps — pour ce que l'IA ne peut pas faire : construire les relations avec les gens qui vous paient. »",
+      "readManifesto": "Lire le manifeste",
+      "linkLinkedin": "LinkedIn",
+      "linkGithub": "GitHub",
+      "linkTwitter": "Twitter"
+    },
+    "finalCta": {
+      "eyebrow": "05 · Parlons-en",
+      "headingLine1": "Une conversation",
+      "headingLine2": "change la trajectoire.",
+      "body": "Un pré-entretien de 30 minutes sur mesure. Je vous dirai honnêtement si votre produit IA a un problème de vibe coding ou un problème d'ingénierie — et à quoi ressemble le parcours de 90 jours si vous voulez y remédier.",
+      "ctaBook": "Réserver un pré-entretien sur mesure"
+    }
+  },
+  "about": {
+    "hero": {
+      "eyebrow": "Manifeste · Fin 2025",
+      "headingLine1": "La contre-voix",
+      "headingLine2": "au slop IA.",
+      "lede": "Pourquoi j'ai lancé ioprodz."
+    },
+    "story": {
+      "p1": "Avec la vague IA, presque tout dans l'industrie ressemble à un terrain neuf. Le marché entier débat de la taille des modèles, des fenêtres de contexte, des prompts — pendant que les grands fournisseurs engrangent confortablement les revenus des entreprises qui moulinent des tokens pour empiler du slop au-dessus de leurs APIs. Presque personne ne parle de l'ingénierie rigoureuse qui décide si une fonctionnalité IA survit réellement en production.",
+      "p2": "Après 15+ ans à livrer du vrai logiciel dans l'IoT, les télécoms, l'immobilier et la fintech, j'avais déjà vu ce schéma — nom différent, même erreur.",
+      "clickedEyebrow": "Le moment du déclic",
+      "clickedBody": "J'ai vu une équipe que j'avais accompagnée des années plus tôt livrer une fonctionnalité IA aboutie, prête pour la production, en moins d'un mois — parce qu'ils avaient déjà TDD, CI/CD et un modèle de domaine propre. Un concurrent du coin, avec 3× plus d'ingénieurs, n'arrivait pas à sortir la sienne de la préversion. Mêmes outils. Mêmes modèles. Maturité d'ingénierie différente.",
+      "p3": "J'ai lancé ioprodz fin 2025 pour être cette contre-voix : celle qui dit que l'ingénierie rigoureuse est l'avantage compétitif, et qu'une petite équipe avec les bonnes pratiques tient plus longtemps qu'une grosse équipe qui empile des tokens."
+    },
+    "beliefs": {
+      "eyebrow": "Ce en quoi je crois",
+      "heading": "Quatre convictions que je défendrai dans n'importe quelle salle.",
+      "c1Title": "Livrer de l'IA est un problème d'ingénierie déguisé en problème de modèle.",
+      "c1Body": "Les parties les plus dures — évaluations, rollback, observabilité, modélisation du domaine, garde-fous de coût — sont précisément ce que tous les tutos IA zappent. C'est là que les missions se jouent.",
+      "c2Title": "Les équipes qui gagnent avec l'IA pratiquaient déjà TDD, DDD, XP, CI/CD avant même que l'IA existe.",
+      "c2Body": "L'IA n'a pas rendu ces pratiques obsolètes. Elle en a fait un superpouvoir. Une culture d'ingénierie mature est le fossé invisible qui compose des intérêts précisément quand les autres paniquent.",
+      "c3Title": "L'IA n'a pas sa place dans votre usine à fonctionnalités. Elle a sa place dans votre <em class=\"not-italic text-accent\">usine</em> à usine.",
+      "c3Body": "Automatisez d'abord le travail interne — docs, démos, refactors, métriques, revue de code. Ça rend à votre équipe le temps de faire la seule chose que l'IA ne peut pas faire : parler aux gens qui vous paient.",
+      "c4Title": "D'ici 2028, la plupart des SaaS B2B seront à 90 % autonomes.",
+      "c4Body": "Les machines digèrent les retours, livrent des changements alignés. Les humains dans ces équipes n'écrivent plus de fonctionnalités — ils valident, gouvernent, portent les résultats, et passent leur temps avec les clients. Les raccourcis pris aujourd'hui = sortie définitive de ce futur."
+    },
+    "who": {
+      "eyebrow": "Qui je suis",
+      "name": "Osmane Kalache.",
+      "bio": "Ingénieur logiciel, 15+ ans d'expérience. J'ai travaillé dans l'IoT (électroménager), les télécoms, l'immobilier et la fintech. Praticien de DDD, TDD, XP, loi de Conway, boucles de feedback rapides, CI/CD, platform engineering et DX. Créateur de <a href=\"https://github.com/osmanekalache/specjest\" target=\"_blank\" rel=\"noopener\" class=\"text-accent underline underline-offset-4\">SpecJest</a> (open source) et de <a href=\"https://polysee.dev\" target=\"_blank\" rel=\"noopener\" class=\"text-accent underline underline-offset-4\">Polysee</a> — le labo où je mets la méthode à l'épreuve. J'accompagne l'Europe et l'Afrique du Nord.",
+      "linkLinkedin": "LinkedIn",
+      "linkGithub": "GitHub",
+      "linkTwitter": "Twitter",
+      "linkBlog": "Blog"
+    },
+    "cta": {
+      "headingLine1": "Prêt à laisser",
+      "headingLine2": "les vibes derrière ?",
+      "body": "Un pré-entretien de 30 minutes sur mesure. Je vous dirai honnêtement si votre produit IA a un problème de vibe coding ou un problème d'ingénierie — et à quoi ressemble le parcours de 90 jours si vous voulez y remédier.",
+      "book": "Réserver un pré-entretien sur mesure"
+    }
+  },
+  "login": {
+    "eyebrow": "Connexion",
+    "heading": "Bon retour.",
+    "body": "Accès interne uniquement. Cette page n'est liée depuis nulle part — si vous avez atterri ici par hasard, il n'y a rien à voir.",
+    "github": "Continuer avec GitHub",
+    "google": "Continuer avec Google",
+    "back": "← Retour au site"
+  }
+}

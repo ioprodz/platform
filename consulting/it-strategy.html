@@ -5,15 +5,15 @@
   <div class="absolute inset-0 grid-bg opacity-60 pointer-events-none"></div>
   <div class="absolute inset-0 accent-glow pointer-events-none"></div>
   <div class="relative mx-auto max-w-7xl px-6 lg:px-8 pt-16 pb-16 lg:pt-20 lg:pb-20">
-    <a href="/consulting" class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-text-muted hover:text-accent transition-colors mb-6">
-      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-      Back to Consulting
+    <a href="{{ lp "/consulting" }}" class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-text-muted hover:text-accent transition-colors mb-6">
+      <svg class="w-3.5 h-3.5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+      {{ t "consulting:itStrategy.hero.back" }}
     </a>
     <div class="max-w-3xl">
-      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-4">Service · 01</div>
-      <h1 class="text-4xl md:text-5xl lg:text-6xl leading-[1.02] tracking-tighter font-semibold text-text">IT Strategy</h1>
+      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-4">{{ t "consulting:itStrategy.hero.eyebrow" }}</div>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl leading-[1.02] tracking-tighter font-semibold text-text">{{ t "consulting:itStrategy.hero.heading" }}</h1>
       <p class="mt-6 text-lg text-text-muted leading-relaxed max-w-2xl">
-        Technology roadmaps, architecture decisions, and hands-on leadership that align engineering to business outcomes.
+        {{ t "consulting:itStrategy.hero.lede" }}
       </p>
     </div>
   </div>
@@ -23,9 +23,9 @@
 <section class="border-b border-border">
   <div class="mx-auto max-w-7xl px-6 lg:px-8 py-20">
     <div class="mb-12 scroll-fade">
-      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">01 · What we do</div>
+      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">{{ t "consulting:itStrategy.whatWeDo.eyebrow" }}</div>
       <h2 class="text-3xl lg:text-5xl tracking-tighter font-semibold text-text max-w-2xl">
-        A strategic technology partner, or an interim CTO.
+        {{ t "consulting:itStrategy.whatWeDo.heading" }}
       </h2>
     </div>
 
@@ -34,9 +34,9 @@
         <div class="flex h-10 w-10 items-center justify-center rounded-md bg-white/[0.03] border border-border mb-6">
           <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
         </div>
-        <h3 class="text-lg font-semibold text-text tracking-tight mb-3">Interim CTO / Engineering Lead</h3>
+        <h3 class="text-lg font-semibold text-text tracking-tight mb-3">{{ t "consulting:itStrategy.whatWeDo.c1Title" }}</h3>
         <p class="text-text-muted text-[14px] leading-relaxed">
-          Step in as acting CTO or engineering manager to provide immediate leadership. Draw the technical roadmap, implement it, and bring structure, velocity, and accountability.
+          {{ t "consulting:itStrategy.whatWeDo.c1Body" }}
         </p>
       </div>
 
@@ -44,9 +44,9 @@
         <div class="flex h-10 w-10 items-center justify-center rounded-md bg-white/[0.03] border border-border mb-6">
           <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
         </div>
-        <h3 class="text-lg font-semibold text-text tracking-tight mb-3">Outcome-focused consulting</h3>
+        <h3 class="text-lg font-semibold text-text tracking-tight mb-3">{{ t "consulting:itStrategy.whatWeDo.c2Title" }}</h3>
         <p class="text-text-muted text-[14px] leading-relaxed">
-          Every engagement starts with clear goals and metrics. We align engineering to business outcomes so improvements directly translate to value — not just process changes.
+          {{ t "consulting:itStrategy.whatWeDo.c2Body" }}
         </p>
       </div>
 
@@ -54,9 +54,9 @@
         <div class="flex h-10 w-10 items-center justify-center rounded-md bg-white/[0.03] border border-border mb-6">
           <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
         </div>
-        <h3 class="text-lg font-semibold text-text tracking-tight mb-3">Architecture &amp; modernization</h3>
+        <h3 class="text-lg font-semibold text-text tracking-tight mb-3">{{ t "consulting:itStrategy.whatWeDo.c3Title" }}</h3>
         <p class="text-text-muted text-[14px] leading-relaxed">
-          Cloud, microservices, event-driven — the right tools for your context. Modernize development processes, optimize existing systems, and build what's missing to improve flow.
+          {{ t "consulting:itStrategy.whatWeDo.c3Body" }}
         </p>
       </div>
     </div>
@@ -68,39 +68,39 @@
   <div class="mx-auto max-w-7xl px-6 lg:px-8 py-20">
     <div class="grid lg:grid-cols-12 gap-12">
       <div class="lg:col-span-7 scroll-fade">
-        <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">02 · How we work</div>
-        <h2 class="text-3xl lg:text-5xl tracking-tighter font-semibold text-text mb-4">Embedded, not bolted on.</h2>
+        <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">{{ t "consulting:itStrategy.howWeWork.eyebrow" }}</div>
+        <h2 class="text-3xl lg:text-5xl tracking-tighter font-semibold text-text mb-4">{{ t "consulting:itStrategy.howWeWork.heading" }}</h2>
         <p class="text-text-muted text-lg leading-relaxed mb-10 max-w-xl">
-          We don't hand you a 100-page report and walk away. We embed with your team, implement alongside you, and transfer knowledge so you're self-sufficient when we leave.
+          {{ t "consulting:itStrategy.howWeWork.body" }}
         </p>
 
         <div class="space-y-5">
           <div class="flex gap-5">
             <div class="flex-shrink-0 font-mono text-[13px] text-accent w-8 pt-0.5">01</div>
-            <div class="flex-1 border-l border-border pl-5 pb-5">
-              <h3 class="font-semibold text-text tracking-tight mb-1.5">Assess</h3>
-              <p class="text-text-muted text-[14px] leading-relaxed">Understand your current state — codebase, team structure, delivery pipeline, pain points.</p>
+            <div class="flex-1 border-s border-border ps-5 pb-5">
+              <h3 class="font-semibold text-text tracking-tight mb-1.5">{{ t "consulting:itStrategy.howWeWork.step1Title" }}</h3>
+              <p class="text-text-muted text-[14px] leading-relaxed">{{ t "consulting:itStrategy.howWeWork.step1Body" }}</p>
             </div>
           </div>
           <div class="flex gap-5">
             <div class="flex-shrink-0 font-mono text-[13px] text-accent w-8 pt-0.5">02</div>
-            <div class="flex-1 border-l border-border pl-5 pb-5">
-              <h3 class="font-semibold text-text tracking-tight mb-1.5">Plan</h3>
-              <p class="text-text-muted text-[14px] leading-relaxed">Define a clear roadmap with milestones, metrics, and quick wins you can act on immediately.</p>
+            <div class="flex-1 border-s border-border ps-5 pb-5">
+              <h3 class="font-semibold text-text tracking-tight mb-1.5">{{ t "consulting:itStrategy.howWeWork.step2Title" }}</h3>
+              <p class="text-text-muted text-[14px] leading-relaxed">{{ t "consulting:itStrategy.howWeWork.step2Body" }}</p>
             </div>
           </div>
           <div class="flex gap-5">
             <div class="flex-shrink-0 font-mono text-[13px] text-accent w-8 pt-0.5">03</div>
-            <div class="flex-1 border-l border-border pl-5 pb-5">
-              <h3 class="font-semibold text-text tracking-tight mb-1.5">Execute</h3>
-              <p class="text-text-muted text-[14px] leading-relaxed">Roll up our sleeves and implement — architecture changes, tooling, process improvements, hiring guidance.</p>
+            <div class="flex-1 border-s border-border ps-5 pb-5">
+              <h3 class="font-semibold text-text tracking-tight mb-1.5">{{ t "consulting:itStrategy.howWeWork.step3Title" }}</h3>
+              <p class="text-text-muted text-[14px] leading-relaxed">{{ t "consulting:itStrategy.howWeWork.step3Body" }}</p>
             </div>
           </div>
           <div class="flex gap-5">
             <div class="flex-shrink-0 font-mono text-[13px] text-accent w-8 pt-0.5">04</div>
-            <div class="flex-1 border-l border-border pl-5">
-              <h3 class="font-semibold text-text tracking-tight mb-1.5">Measure &amp; iterate</h3>
-              <p class="text-text-muted text-[14px] leading-relaxed">Track progress against goals. Adjust the plan based on real data. Repeat until the transformation sticks.</p>
+            <div class="flex-1 border-s border-border ps-5">
+              <h3 class="font-semibold text-text tracking-tight mb-1.5">{{ t "consulting:itStrategy.howWeWork.step4Title" }}</h3>
+              <p class="text-text-muted text-[14px] leading-relaxed">{{ t "consulting:itStrategy.howWeWork.step4Body" }}</p>
             </div>
           </div>
         </div>
@@ -108,15 +108,15 @@
 
       <div class="lg:col-span-5 scroll-fade" style="transition-delay: 150ms">
         <div class="sticky top-24 rounded-2xl border border-border bg-surface/50 p-7">
-          <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-4">Typical engagement areas</div>
+          <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-4">{{ t "consulting:itStrategy.howWeWork.areasTitle" }}</div>
           <ul class="space-y-3 text-[14px]">
-            <li class="flex gap-3"><span class="flex-shrink-0 mt-1.5 h-1 w-1 rounded-full bg-accent"></span><span class="text-text-muted leading-relaxed">Technology stack evaluation and migration strategy</span></li>
-            <li class="flex gap-3"><span class="flex-shrink-0 mt-1.5 h-1 w-1 rounded-full bg-accent"></span><span class="text-text-muted leading-relaxed">CI/CD pipeline design and developer experience optimization</span></li>
-            <li class="flex gap-3"><span class="flex-shrink-0 mt-1.5 h-1 w-1 rounded-full bg-accent"></span><span class="text-text-muted leading-relaxed">AI integration strategy — identifying where AI delivers real ROI</span></li>
-            <li class="flex gap-3"><span class="flex-shrink-0 mt-1.5 h-1 w-1 rounded-full bg-accent"></span><span class="text-text-muted leading-relaxed">Internal developer platform design and implementation</span></li>
-            <li class="flex gap-3"><span class="flex-shrink-0 mt-1.5 h-1 w-1 rounded-full bg-accent"></span><span class="text-text-muted leading-relaxed">Team structure and organization (Conway's Law applied)</span></li>
-            <li class="flex gap-3"><span class="flex-shrink-0 mt-1.5 h-1 w-1 rounded-full bg-accent"></span><span class="text-text-muted leading-relaxed">Engineering metrics and delivery intelligence</span></li>
-            <li class="flex gap-3"><span class="flex-shrink-0 mt-1.5 h-1 w-1 rounded-full bg-accent"></span><span class="text-text-muted leading-relaxed">Scalability and performance architecture</span></li>
+            <li class="flex gap-3"><span class="flex-shrink-0 mt-1.5 h-1 w-1 rounded-full bg-accent"></span><span class="text-text-muted leading-relaxed">{{ t "consulting:itStrategy.howWeWork.area1" }}</span></li>
+            <li class="flex gap-3"><span class="flex-shrink-0 mt-1.5 h-1 w-1 rounded-full bg-accent"></span><span class="text-text-muted leading-relaxed">{{ t "consulting:itStrategy.howWeWork.area2" }}</span></li>
+            <li class="flex gap-3"><span class="flex-shrink-0 mt-1.5 h-1 w-1 rounded-full bg-accent"></span><span class="text-text-muted leading-relaxed">{{ t "consulting:itStrategy.howWeWork.area3" }}</span></li>
+            <li class="flex gap-3"><span class="flex-shrink-0 mt-1.5 h-1 w-1 rounded-full bg-accent"></span><span class="text-text-muted leading-relaxed">{{ t "consulting:itStrategy.howWeWork.area4" }}</span></li>
+            <li class="flex gap-3"><span class="flex-shrink-0 mt-1.5 h-1 w-1 rounded-full bg-accent"></span><span class="text-text-muted leading-relaxed">{{ t "consulting:itStrategy.howWeWork.area5" }}</span></li>
+            <li class="flex gap-3"><span class="flex-shrink-0 mt-1.5 h-1 w-1 rounded-full bg-accent"></span><span class="text-text-muted leading-relaxed">{{ t "consulting:itStrategy.howWeWork.area6" }}</span></li>
+            <li class="flex gap-3"><span class="flex-shrink-0 mt-1.5 h-1 w-1 rounded-full bg-accent"></span><span class="text-text-muted leading-relaxed">{{ t "consulting:itStrategy.howWeWork.area7" }}</span></li>
           </ul>
         </div>
       </div>
@@ -129,19 +129,19 @@
   <div class="absolute inset-0 accent-glow pointer-events-none"></div>
   <div class="relative mx-auto max-w-4xl px-6 lg:px-8 py-24 lg:py-32 text-center scroll-fade">
     <h2 class="text-4xl lg:text-6xl tracking-tighter font-semibold text-text leading-[1.02] mb-6">
-      Start with a<br/><span class="text-text-muted">conversation.</span>
+      {{ t "consulting:itStrategy.cta.headingLine1" }}<br/><span class="text-text-muted">{{ t "consulting:itStrategy.cta.headingLine2" }}</span>
     </h2>
     <p class="text-text-muted text-lg leading-relaxed max-w-xl mx-auto mb-10">
-      A tailored 30-minute screening. We'll discuss your challenges, share quick wins, and lay out a roadmap tailored to your needs.
+      {{ t "consulting:itStrategy.cta.body" }}
     </p>
     <div class="flex flex-col sm:flex-row gap-3 justify-center">
       <a href="https://calendly.com/osminosm/30min" target="_blank" rel="noopener"
         class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-6 py-3 text-[14px] font-medium text-black hover:bg-accent/90 transition-colors">
-        Book a tailored screening
+        {{ t "consulting:itStrategy.cta.book" }}
       </a>
-      <a href="/consulting/coaching"
+      <a href="{{ lp "/consulting/coaching" }}"
         class="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-surface/40 px-6 py-3 text-[14px] font-medium text-text hover:border-border-strong hover:bg-surface transition-colors">
-        Explore Coaching
+        {{ t "consulting:itStrategy.cta.exploreCoaching" }}
       </a>
     </div>
   </div>

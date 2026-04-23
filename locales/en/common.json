@@ -1,0 +1,61 @@
+{
+  "nav": {
+    "consulting": "Consulting",
+    "consultingOverview": "Overview",
+    "consultingOverviewSub": "Our consulting services",
+    "itStrategy": "IT Strategy",
+    "itStrategySub": "Roadmap, architecture & leadership",
+    "coaching": "Team & Individual Coaching",
+    "coachingSub": "Practices, culture & growth",
+    "solutions": "Solutions",
+    "solutionsOverview": "Platform Overview",
+    "solutionsOverviewSub": "The complete Polysee platform",
+    "aiEngine": "AI Engine",
+    "aiEngineSub": "Agent runtime & orchestration",
+    "chat": "Multi Modal Chat",
+    "chatSub": "AI-native messaging",
+    "collabEditing": "Collaborative Editing",
+    "collabEditingSub": "Real-time document editing",
+    "searchRag": "Search & RAG",
+    "searchRagSub": "Semantic search & retrieval",
+    "about": "About",
+    "blog": "Blog",
+    "feed": "Feed",
+    "admin": "Admin"
+  },
+  "cta": {
+    "bookScreening": "Book a screening"
+  },
+  "footer": {
+    "tagline": "From vibe coding to real product — on sovereign AI, shipped daily, without the slop.",
+    "kicker": "Independent engineering consultancy · Europe / North Africa · Since 2025",
+    "siteCol": "Site",
+    "connectCol": "Connect",
+    "labCol": "Lab",
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "blog": "Blog",
+    "bookScreening": "Book a screening",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "polysee": "Polysee",
+    "specjest": "SpecJest (OSS)",
+    "rights": "© 2025–2026 ioprodz · Osmane Kalache",
+    "slogan": "Counter-voice to AI slop."
+  },
+  "lang": {
+    "switcherLabel": "Language"
+  },
+  "notFound": {
+    "eyebrow": "Error · 404",
+    "headingLine1": "Nothing here.",
+    "headingLine2": "Not yet, anyway.",
+    "body": "The page you're looking for doesn't exist, moved, or never did. Try the home page.",
+    "backHome": "Back home",
+    "readBlog": "Read the blog"
+  },
+  "hamburger": {
+    "openMenu": "Open menu"
+  }
+}

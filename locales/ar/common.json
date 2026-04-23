@@ -1,0 +1,61 @@
+{
+  "nav": {
+    "consulting": "الاستشارات",
+    "consultingOverview": "نظرة عامة",
+    "consultingOverviewSub": "خدماتنا الاستشارية",
+    "itStrategy": "استراتيجية تقنية المعلومات",
+    "itStrategySub": "خارطة الطريق، المعمارية والقيادة",
+    "coaching": "تدريب الفرق والأفراد",
+    "coachingSub": "الممارسات، الثقافة والتطوير",
+    "solutions": "الحلول",
+    "solutionsOverview": "نظرة عامة على المنصة",
+    "solutionsOverviewSub": "منصة Polysee الكاملة",
+    "aiEngine": "محرك الذكاء الاصطناعي",
+    "aiEngineSub": "تشغيل الوكلاء والتنسيق",
+    "chat": "محادثة متعددة الوسائط",
+    "chatSub": "مراسلة أصلية الذكاء الاصطناعي",
+    "collabEditing": "التحرير التعاوني",
+    "collabEditingSub": "تحرير المستندات في الوقت الفعلي",
+    "searchRag": "البحث و RAG",
+    "searchRagSub": "البحث الدلالي والاسترجاع",
+    "about": "من نحن",
+    "blog": "المدونة",
+    "feed": "الخلاصة",
+    "admin": "الإدارة"
+  },
+  "cta": {
+    "bookScreening": "احجز مقابلة أولية"
+  },
+  "footer": {
+    "tagline": "من الـ vibe coding إلى منتج حقيقي — على ذكاء اصطناعي سيادي، يُطلق يوميًا، بلا slop.",
+    "kicker": "استشارات هندسية مستقلة · أوروبا / شمال أفريقيا · منذ 2025",
+    "siteCol": "الموقع",
+    "connectCol": "تواصل",
+    "labCol": "المختبر",
+    "home": "الرئيسية",
+    "about": "من نحن",
+    "services": "الخدمات",
+    "blog": "المدونة",
+    "bookScreening": "احجز مقابلة أولية",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "polysee": "Polysee",
+    "specjest": "SpecJest (OSS)",
+    "rights": "© 2025–2026 ioprodz · Osmane Kalache",
+    "slogan": "الصوت المضاد لـ slop الذكاء الاصطناعي."
+  },
+  "lang": {
+    "switcherLabel": "اللغة"
+  },
+  "notFound": {
+    "eyebrow": "خطأ · 404",
+    "headingLine1": "لا شيء هنا.",
+    "headingLine2": "ليس بعد، على أية حال.",
+    "body": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها أو لم توجد أصلاً. جرّب الصفحة الرئيسية.",
+    "backHome": "العودة إلى الرئيسية",
+    "readBlog": "قراءة المدونة"
+  },
+  "hamburger": {
+    "openMenu": "فتح القائمة"
+  }
+}

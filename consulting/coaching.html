@@ -5,15 +5,15 @@
   <div class="absolute inset-0 grid-bg opacity-60 pointer-events-none"></div>
   <div class="absolute inset-0 accent-glow pointer-events-none"></div>
   <div class="relative mx-auto max-w-7xl px-6 lg:px-8 pt-16 pb-16 lg:pt-20 lg:pb-20">
-    <a href="/consulting" class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-text-muted hover:text-accent transition-colors mb-6">
-      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-      Back to Consulting
+    <a href="{{ lp "/consulting" }}" class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-text-muted hover:text-accent transition-colors mb-6">
+      <svg class="w-3.5 h-3.5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+      {{ t "consulting:coaching.hero.back" }}
     </a>
     <div class="max-w-3xl">
-      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-4">Service · 02</div>
-      <h1 class="text-4xl md:text-5xl lg:text-6xl leading-[1.02] tracking-tighter font-semibold text-text">Team &amp; Individual Coaching</h1>
+      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-4">{{ t "consulting:coaching.hero.eyebrow" }}</div>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl leading-[1.02] tracking-tighter font-semibold text-text">{{ t "consulting:coaching.hero.heading" }}</h1>
       <p class="mt-6 text-lg text-text-muted leading-relaxed max-w-2xl">
-        Build a learning culture rooted in Extreme Programming and Lean. We coach teams and individuals on the practices that create high-performing engineering organizations.
+        {{ t "consulting:coaching.hero.lede" }}
       </p>
     </div>
   </div>
@@ -23,9 +23,9 @@
 <section class="border-b border-border">
   <div class="mx-auto max-w-7xl px-6 lg:px-8 py-20">
     <div class="mb-12 scroll-fade">
-      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">01 · Philosophy</div>
+      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">{{ t "consulting:coaching.philosophy.eyebrow" }}</div>
       <h2 class="text-3xl lg:text-5xl tracking-tighter font-semibold text-text max-w-2xl">
-        Simplicity, feedback, continuous improvement.
+        {{ t "consulting:coaching.philosophy.heading" }}
       </h2>
     </div>
 
@@ -34,9 +34,9 @@
         <div class="flex h-10 w-10 items-center justify-center rounded-md bg-white/[0.03] border border-border mb-6">
           <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
         </div>
-        <h3 class="text-lg font-semibold text-text tracking-tight mb-3">Continuous learning</h3>
+        <h3 class="text-lg font-semibold text-text tracking-tight mb-3">{{ t "consulting:coaching.philosophy.c1Title" }}</h3>
         <p class="text-text-muted text-[14px] leading-relaxed">
-          Environments where every engineer grows through code reviews, brown-bags, and pair programming. Growth isn't a side effect — it's the system.
+          {{ t "consulting:coaching.philosophy.c1Body" }}
         </p>
       </div>
 
@@ -44,9 +44,9 @@
         <div class="flex h-10 w-10 items-center justify-center rounded-md bg-white/[0.03] border border-border mb-6">
           <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
         </div>
-        <h3 class="text-lg font-semibold text-text tracking-tight mb-3">Rapid feedback</h3>
+        <h3 class="text-lg font-semibold text-text tracking-tight mb-3">{{ t "consulting:coaching.philosophy.c2Title" }}</h3>
         <p class="text-text-muted text-[14px] leading-relaxed">
-          Delivering in small increments and tracking everything means teams see problems early and adapt quickly. Catches defects sooner, steers toward goals faster.
+          {{ t "consulting:coaching.philosophy.c2Body" }}
         </p>
       </div>
 
@@ -54,9 +54,9 @@
         <div class="flex h-10 w-10 items-center justify-center rounded-md bg-white/[0.03] border border-border mb-6">
           <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
         </div>
-        <h3 class="text-lg font-semibold text-text tracking-tight mb-3">Lean mindset</h3>
+        <h3 class="text-lg font-semibold text-text tracking-tight mb-3">{{ t "consulting:coaching.philosophy.c3Title" }}</h3>
         <p class="text-text-muted text-[14px] leading-relaxed">
-          Ruthlessly eliminate waste — unused code, delays, unnecessary complexity. Waste is anything that interferes with giving customers what they really value.
+          {{ t "consulting:coaching.philosophy.c3Body" }}
         </p>
       </div>
     </div>
@@ -67,9 +67,9 @@
 <section class="border-b border-border">
   <div class="mx-auto max-w-7xl px-6 lg:px-8 py-20">
     <div class="mb-12 scroll-fade">
-      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">02 · What we cover</div>
+      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">{{ t "consulting:coaching.whatWeCover.eyebrow" }}</div>
       <h2 class="text-3xl lg:text-5xl tracking-tighter font-semibold text-text max-w-2xl">
-        Hands-on, practical, immediately useful.
+        {{ t "consulting:coaching.whatWeCover.heading" }}
       </h2>
     </div>
 
@@ -80,8 +80,8 @@
             <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
           </div>
           <div>
-            <h3 class="font-semibold text-text tracking-tight mb-1.5">Code reviews</h3>
-            <p class="text-text-muted text-[13.5px] leading-relaxed">Transform reviews from gatekeeping into learning opportunities. Actionable, kind, and educational feedback.</p>
+            <h3 class="font-semibold text-text tracking-tight mb-1.5">{{ t "consulting:coaching.whatWeCover.codeReviewTitle" }}</h3>
+            <p class="text-text-muted text-[13.5px] leading-relaxed">{{ t "consulting:coaching.whatWeCover.codeReviewBody" }}</p>
           </div>
         </div>
       </div>
@@ -92,8 +92,8 @@
             <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
           </div>
           <div>
-            <h3 class="font-semibold text-text tracking-tight mb-1.5">Pair programming</h3>
-            <p class="text-text-muted text-[13.5px] leading-relaxed">Two minds, one keyboard. Spread knowledge, catch bugs earlier, build stronger teams.</p>
+            <h3 class="font-semibold text-text tracking-tight mb-1.5">{{ t "consulting:coaching.whatWeCover.pairTitle" }}</h3>
+            <p class="text-text-muted text-[13.5px] leading-relaxed">{{ t "consulting:coaching.whatWeCover.pairBody" }}</p>
           </div>
         </div>
       </div>
@@ -104,8 +104,8 @@
             <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
           </div>
           <div>
-            <h3 class="font-semibold text-text tracking-tight mb-1.5">Test-driven development</h3>
-            <p class="text-text-muted text-[13.5px] leading-relaxed">Red-green-refactor. TDD as a design tool, not just a testing technique. Write better code by writing the test first.</p>
+            <h3 class="font-semibold text-text tracking-tight mb-1.5">{{ t "consulting:coaching.whatWeCover.tddTitle" }}</h3>
+            <p class="text-text-muted text-[13.5px] leading-relaxed">{{ t "consulting:coaching.whatWeCover.tddBody" }}</p>
           </div>
         </div>
       </div>
@@ -116,8 +116,8 @@
             <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
           </div>
           <div>
-            <h3 class="font-semibold text-text tracking-tight mb-1.5">CI/CD &amp; fast feedback</h3>
-            <p class="text-text-muted text-[13.5px] leading-relaxed">Pipelines that give developers confidence. Automated testing, continuous deployment, issues caught in minutes, not days.</p>
+            <h3 class="font-semibold text-text tracking-tight mb-1.5">{{ t "consulting:coaching.whatWeCover.ciTitle" }}</h3>
+            <p class="text-text-muted text-[13.5px] leading-relaxed">{{ t "consulting:coaching.whatWeCover.ciBody" }}</p>
           </div>
         </div>
       </div>
@@ -128,8 +128,8 @@
             <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
           </div>
           <div>
-            <h3 class="font-semibold text-text tracking-tight mb-1.5">Domain-driven design</h3>
-            <p class="text-text-muted text-[13.5px] leading-relaxed">Align your code to your business. Bounded contexts, ubiquitous language, strategic design. Software that models reality.</p>
+            <h3 class="font-semibold text-text tracking-tight mb-1.5">{{ t "consulting:coaching.whatWeCover.dddTitle" }}</h3>
+            <p class="text-text-muted text-[13.5px] leading-relaxed">{{ t "consulting:coaching.whatWeCover.dddBody" }}</p>
           </div>
         </div>
       </div>
@@ -140,8 +140,8 @@
             <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
           </div>
           <div>
-            <h3 class="font-semibold text-text tracking-tight mb-1.5">Individual mentoring</h3>
-            <p class="text-text-muted text-[13.5px] leading-relaxed">One-on-one for developers levelling up. Architecture thinking, problem-solving, career growth, technical leadership.</p>
+            <h3 class="font-semibold text-text tracking-tight mb-1.5">{{ t "consulting:coaching.whatWeCover.mentoringTitle" }}</h3>
+            <p class="text-text-muted text-[13.5px] leading-relaxed">{{ t "consulting:coaching.whatWeCover.mentoringBody" }}</p>
           </div>
         </div>
       </div>
@@ -153,7 +153,7 @@
 <section class="border-b border-border">
   <div class="mx-auto max-w-4xl px-6 lg:px-8 py-20 text-center scroll-fade">
     <blockquote class="text-2xl md:text-3xl italic text-text leading-relaxed tracking-tight">
-      "Start where you are and incrementally make it better — transform your development process with proven engineering practices."
+      {{ t "consulting:coaching.quote" }}
     </blockquote>
   </div>
 </section>
@@ -163,19 +163,19 @@
   <div class="absolute inset-0 accent-glow pointer-events-none"></div>
   <div class="relative mx-auto max-w-4xl px-6 lg:px-8 py-24 lg:py-32 text-center scroll-fade">
     <h2 class="text-4xl lg:text-6xl tracking-tighter font-semibold text-text leading-[1.02] mb-6">
-      Level up the<br/><span class="text-text-muted">whole team.</span>
+      {{ t "consulting:coaching.cta.headingLine1" }}<br/><span class="text-text-muted">{{ t "consulting:coaching.cta.headingLine2" }}</span>
     </h2>
     <p class="text-text-muted text-lg leading-relaxed max-w-xl mx-auto mb-10">
-      Let's discuss your team's challenges and design a coaching engagement that creates lasting change.
+      {{ t "consulting:coaching.cta.body" }}
     </p>
     <div class="flex flex-col sm:flex-row gap-3 justify-center">
       <a href="https://calendly.com/osminosm/30min" target="_blank" rel="noopener"
         class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-6 py-3 text-[14px] font-medium text-black hover:bg-accent/90 transition-colors">
-        Book a tailored screening
+        {{ t "consulting:coaching.cta.book" }}
       </a>
-      <a href="/consulting/it-strategy"
+      <a href="{{ lp "/consulting/it-strategy" }}"
         class="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-surface/40 px-6 py-3 text-[14px] font-medium text-text hover:border-border-strong hover:bg-surface transition-colors">
-        Explore IT Strategy
+        {{ t "consulting:coaching.cta.exploreItStrategy" }}
       </a>
     </div>
   </div>

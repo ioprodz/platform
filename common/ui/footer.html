@@ -12,45 +12,45 @@
           <span class="font-semibold tracking-tight text-text text-[15px]">ioprodz</span>
         </div>
         <p class="text-[14px] text-text-muted leading-relaxed max-w-sm">
-          From vibe coding to real product — on sovereign AI, shipped daily, without the slop.
+          {{ t "common:footer.tagline" }}
         </p>
         <p class="mt-4 font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim">
-          Independent engineering consultancy · Europe / North Africa · Since 2025
+          {{ t "common:footer.kicker" }}
         </p>
       </div>
 
       <div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
         <div>
-          <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-3">Site</div>
+          <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-3">{{ t "common:footer.siteCol" }}</div>
           <ul class="space-y-2 text-[13px]">
-            <li><a href="/" class="text-text-muted hover:text-text transition-colors">Home</a></li>
-            <li><a href="/about" class="text-text-muted hover:text-text transition-colors">About</a></li>
-            <li><a href="/consulting" class="text-text-muted hover:text-text transition-colors">Services</a></li>
-            <li><a href="/blog" class="text-text-muted hover:text-text transition-colors">Blog</a></li>
+            <li><a href="{{ localizedPath $.langMeta.Code "/" }}" class="text-text-muted hover:text-text transition-colors">{{ t "common:footer.home" }}</a></li>
+            <li><a href="{{ localizedPath $.langMeta.Code "/about" }}" class="text-text-muted hover:text-text transition-colors">{{ t "common:footer.about" }}</a></li>
+            <li><a href="{{ localizedPath $.langMeta.Code "/consulting" }}" class="text-text-muted hover:text-text transition-colors">{{ t "common:footer.services" }}</a></li>
+            <li><a href="/blog" class="text-text-muted hover:text-text transition-colors">{{ t "common:footer.blog" }}</a></li>
           </ul>
         </div>
         <div>
-          <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-3">Connect</div>
+          <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-3">{{ t "common:footer.connectCol" }}</div>
           <ul class="space-y-2 text-[13px]">
-            <li><a href="https://calendly.com/osminosm/30min" target="_blank" rel="noopener" class="text-text-muted hover:text-accent transition-colors">Book a screening</a></li>
+            <li><a href="https://calendly.com/osminosm/30min" target="_blank" rel="noopener" class="text-text-muted hover:text-accent transition-colors">{{ t "common:footer.bookScreening" }}</a></li>
             <li><a href="mailto:osmane@ioprodz.com" class="text-text-muted hover:text-text transition-colors">osmane@ioprodz.com</a></li>
-            <li><a href="https://fr.linkedin.com/in/osmane-kalache" target="_blank" rel="noopener" class="text-text-muted hover:text-text transition-colors">LinkedIn</a></li>
-            <li><a href="https://github.com/osminosm" target="_blank" rel="noopener" class="text-text-muted hover:text-text transition-colors">GitHub</a></li>
+            <li><a href="https://fr.linkedin.com/in/osmane-kalache" target="_blank" rel="noopener" class="text-text-muted hover:text-text transition-colors">{{ t "common:footer.linkedin" }}</a></li>
+            <li><a href="https://github.com/osminosm" target="_blank" rel="noopener" class="text-text-muted hover:text-text transition-colors">{{ t "common:footer.github" }}</a></li>
           </ul>
         </div>
         <div>
-          <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-3">Lab</div>
+          <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-3">{{ t "common:footer.labCol" }}</div>
           <ul class="space-y-2 text-[13px]">
-            <li><a href="https://polysee.dev" target="_blank" rel="noopener" class="text-text-muted hover:text-text transition-colors">Polysee</a></li>
-            <li><a href="https://github.com/osmanekalache/specjest" target="_blank" rel="noopener" class="text-text-muted hover:text-text transition-colors">SpecJest (OSS)</a></li>
+            <li><a href="https://polysee.dev" target="_blank" rel="noopener" class="text-text-muted hover:text-text transition-colors">{{ t "common:footer.polysee" }}</a></li>
+            <li><a href="https://github.com/osmanekalache/specjest" target="_blank" rel="noopener" class="text-text-muted hover:text-text transition-colors">{{ t "common:footer.specjest" }}</a></li>
           </ul>
         </div>
       </div>
     </div>
 
     <div class="mt-10 pt-6 border-t border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-      <p class="font-mono text-[11px] text-text-dim">© 2025–2026 ioprodz · Osmane Kalache</p>
-      <p class="font-mono text-[11px] text-text-dim">Counter-voice to AI slop.</p>
+      <p class="font-mono text-[11px] text-text-dim">{{ t "common:footer.rights" }}</p>
+      <p class="font-mono text-[11px] text-text-dim">{{ t "common:footer.slogan" }}</p>
     </div>
   </div>
 </footer>

@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "home": {
+      "title": "",
+      "description": "I turn vibe-coded software into real products in 90 days — on sovereign AI infrastructure (OpenAI, Claude, Gemini, Grok, or local), shipped daily, with the boring engineering every AI tutorial skips: evals, rollback, observability, domain modeling. Independent engineering consultancy serving Europe and North Africa."
+    },
+    "about": {
+      "title": "Manifesto — The counter-voice to AI slop",
+      "description": "Why I started ioprodz in late 2025. The counter-voice to AI slop: boring engineering is the competitive advantage, and a small team with the right practices outlasts a big team stacking tokens."
+    },
+    "login": {
+      "title": "Sign in",
+      "description": "Owner sign-in page."
+    }
+  },
+  "home": {
+    "hero": {
+      "badge": "Independent engineering consultancy · Europe / North Africa · Since 2025",
+      "headingLine1": "From vibe coding",
+      "headingLine2": "to real product.",
+      "headingLine3": "In 90 days.",
+      "lede": "Engineering maturity for AI products. Daily releases, sovereign AI, zero slop.",
+      "ctaBook": "Book a tailored screening",
+      "ctaHowIWork": "How I work",
+      "tagEvals": "Evals",
+      "tagRollback": "Rollback",
+      "tagObservability": "Observability",
+      "tagDomain": "Domain model",
+      "tagAnyModel": "Any model per feature"
+    },
+    "whatIDo": {
+      "eyebrow": "01 · What I do",
+      "heading": "Three things. Every engagement.",
+      "c1Kicker": "01 / Engineering",
+      "c1Title": "Engineering uplift",
+      "c1Body": "I bring your AI product up to the engineering bar your customers actually pay for: evals, rollback, observability, a clean domain model, and a CI/CD pipeline that ships multiple releases a day. TDD, DDD, XP — applied to AI features, not abandoned because of them.",
+      "c2Kicker": "02 / Infrastructure",
+      "c2Title": "Sovereign AI stack",
+      "c2Body": "I install model-agnostic AI infrastructure you actually own. Run OpenAI, Claude, Gemini, Grok, or local open-weight models — scoped per feature, swap anytime. No vendor lock-in, no data leakage, no surprise pricing.",
+      "c3Kicker": "03 / Leverage",
+      "c3Title": "AI as internal factory",
+      "c3Body": "I wire AI into your engine room before your product. Docs, demo videos, refactors, test generation, metrics analysis, code review. Your team stops drowning in busywork and reclaims the time that AI can't give them back — time with your customers."
+    },
+    "slop": {
+      "eyebrow": "02 · The bet",
+      "headingLine1": "Stop flooding users",
+      "headingLine2": "with AI slop.",
+      "p1": "The market narrative says: <em class=\"text-text not-italic\">\"ship more AI features, because AI.\"</em> Your users can't keep up. Your product gets unstable. Your trust metrics crater. Meanwhile the frontier model providers profit handsomely from the token-grinding that funds it.",
+      "p2": "I bet the opposite. AI belongs inside your <span class=\"text-text\">engine room</span> first: documentation, demo videos, refactors, test generation, metrics analysis, code review — the boring internal work where AI is genuinely good today. That buys your team the one thing AI can't give them: time to talk to the people who actually pay you.",
+      "p3": "Users feel the difference. Fewer features, better shipped, responsive to feedback. Less slop, more product."
+    },
+    "stats": {
+      "s1Value": "1+",
+      "s1Unit": "/day",
+      "s1Label": "Release cadence",
+      "s1Body": "What your team ships once the engineering is right. No freeze windows, no big-bang merges.",
+      "s2Value": "Any",
+      "s2Unit": " model",
+      "s2Label": "Per feature",
+      "s2Body": "OpenAI · Claude · Gemini · Grok · local open-weight. Scoped per feature, swappable anytime.",
+      "s3Value": "~90",
+      "s3Unit": " days",
+      "s3Label": "Vibe coding → real product",
+      "s3Body": "End-to-end engagement window: audit, install, teach, hand back. One part-time engineer left on the other side."
+    },
+    "thesis": {
+      "eyebrow": "03 · The thesis",
+      "headingLine1": "By 2028, most B2B SaaS",
+      "headingLine2": "will be 90% autonomous.",
+      "p1": "Machines ingesting user feedback, shipping aligned changes. The humans left on the team won't write code — they'll validate results, review designs, approve major ADRs, own SLAs. In one word: they'll be <span class=\"text-text\">accountable</span>.",
+      "p2": "The teams that reach that future aren't the ones stacking more tokens today. They're the ones installing the boring engineering that lets software evolve safely on its own. That's the playbook I'm building with every engagement.",
+      "readManifesto": "Read the manifesto"
+    },
+    "founder": {
+      "eyebrow": "04 · Who you're hiring",
+      "name": "Osmane Kalache.",
+      "bio": "15+ years shipping real software across IoT, telecom, real estate, and fintech. I started ioprodz in late 2025 to be the counter-voice to AI slop — the one that says the boring engineering is the competitive advantage, and that a small team with the right practices outlasts a big team stacking tokens.",
+      "quote": "\"AI handles the code. You get your time back — for the thing AI can't do: building the relationships with the people who pay you.\"",
+      "readManifesto": "Read the manifesto",
+      "linkLinkedin": "LinkedIn",
+      "linkGithub": "GitHub",
+      "linkTwitter": "Twitter"
+    },
+    "finalCta": {
+      "eyebrow": "05 · Let's talk",
+      "headingLine1": "One conversation",
+      "headingLine2": "changes the trajectory.",
+      "body": "A tailored 30-minute screening. I'll tell you honestly whether your AI product has a vibe-coding problem or an engineering problem — and what the 90-day path looks like if you want to fix it.",
+      "ctaBook": "Book a tailored screening"
+    }
+  },
+  "about": {
+    "hero": {
+      "eyebrow": "Manifesto · Late 2025",
+      "headingLine1": "The counter-voice",
+      "headingLine2": "to AI slop.",
+      "lede": "Why I started ioprodz."
+    },
+    "story": {
+      "p1": "With the AI shift, almost everything about the industry feels like new ground. The entire market is debating model sizes, context windows, prompts — while the mainstream providers profit handsomely from the token-grinding companies building slop on top of their APIs. Almost nobody is talking about the boring engineering that decides whether an AI feature actually survives production.",
+      "p2": "After 15+ years shipping real software across IoT, telecom, real estate, and fintech, I'd seen this pattern before — different name, same mistake.",
+      "clickedEyebrow": "The moment it clicked",
+      "clickedBody": "I watched a team I'd mentored years ago ship a polished, production-grade AI feature in under a month — because they already had TDD, CI/CD, and a clean domain model. A competitor down the street, with 3× the engineers, couldn't get theirs out of preview. Same tools. Same models. Different engineering maturity.",
+      "p3": "I started ioprodz in late 2025 to be the counter-voice: the one that says the boring engineering is the competitive advantage, and that a small team with the right practices outlasts a big team stacking tokens."
+    },
+    "beliefs": {
+      "eyebrow": "What I believe",
+      "heading": "Four convictions I'll defend in any room.",
+      "c1Title": "Shipping AI is an engineering problem disguised as a model problem.",
+      "c1Body": "The hardest parts — evals, rollback, observability, domain modeling, cost guardrails — are exactly what every AI tutorial skips. That's where engagements live and die.",
+      "c2Title": "The teams winning with AI already practiced TDD, DDD, XP, CI/CD before AI existed.",
+      "c2Body": "AI didn't make those practices obsolete. It made them a superpower. Mature engineering culture is the invisible moat that compounds exactly when everyone else is scrambling.",
+      "c3Title": "AI doesn't belong in your feature factory. It belongs in your <em class=\"not-italic text-accent\">factory</em> factory.",
+      "c3Body": "Automate the internal work first — docs, demos, refactors, metrics, code review. That buys your team time to do the one thing AI can't: talk to the people who actually pay them.",
+      "c4Title": "By 2028, most B2B SaaS will be 90% autonomous.",
+      "c4Body": "Machines ingest feedback, ship aligned changes. The humans on those teams don't write features — they validate, govern, own outcomes, and spend their time with customers. Shortcuts taken now = locked out of that future."
+    },
+    "who": {
+      "eyebrow": "Who I am",
+      "name": "Osmane Kalache.",
+      "bio": "Software engineer, 15+ years. Worked across IoT (home appliances), telecom, real estate, and fintech. Practitioner of DDD, TDD, XP, Conway's Law, fast feedback loops, CI/CD, platform engineering, and DX. Builder of <a href=\"https://github.com/osmanekalache/specjest\" target=\"_blank\" rel=\"noopener\" class=\"text-accent underline underline-offset-4\">SpecJest</a> (open source) and <a href=\"https://polysee.dev\" target=\"_blank\" rel=\"noopener\" class=\"text-accent underline underline-offset-4\">Polysee</a> — the lab where I stress-test the methodology. Serving Europe / North Africa.",
+      "linkLinkedin": "LinkedIn",
+      "linkGithub": "GitHub",
+      "linkTwitter": "Twitter",
+      "linkBlog": "Blog"
+    },
+    "cta": {
+      "headingLine1": "Ready to leave",
+      "headingLine2": "the vibes behind?",
+      "body": "A tailored 30-minute screening. I'll tell you honestly whether your AI product has a vibe-coding problem or an engineering problem — and what the 90-day path looks like if you want to fix it.",
+      "book": "Book a tailored screening"
+    }
+  },
+  "login": {
+    "eyebrow": "Sign in",
+    "heading": "Welcome back.",
+    "body": "Internal-only. This page isn't linked from anywhere — if you landed here by accident, there's nothing to see.",
+    "github": "Continue with GitHub",
+    "google": "Continue with Google",
+    "back": "← Back to site"
+  }
+}

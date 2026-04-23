@@ -1,0 +1,135 @@
+{
+  "meta": {
+    "overview": {
+      "title": "Services de conseil",
+      "description": "Leadership technologique stratégique, stratégie IT et coaching d'équipes pour les organisations logicielles."
+    },
+    "itStrategy": {
+      "title": "Conseil en stratégie IT",
+      "description": "Feuilles de route technologiques, décisions d'architecture et leadership d'ingénierie aligné sur les objectifs métier."
+    },
+    "coaching": {
+      "title": "Coaching d'équipe et individuel",
+      "description": "Construisez une culture d'apprentissage ancrée dans l'Extreme Programming et les principes Lean. Coaching sur les revues de code, le TDD, le pair programming et les pratiques d'ingénierie."
+    }
+  },
+  "overview": {
+    "hero": {
+      "badge": "Conseil",
+      "headingLine1": "Leadership technologique",
+      "headingLine2": "stratégique.",
+      "lede": "CTO à temps partagé, feuille de route technique, ou coaching terrain. Nous apportons 15+ ans de leadership d'ingénierie pour aider les équipes à livrer plus vite et mieux."
+    },
+    "howWeHelp": {
+      "eyebrow": "01 · Comment nous aidons",
+      "heading": "Deux façons de collaborer.",
+      "itStrategyTitle": "Stratégie IT",
+      "itStrategyBody": "Des feuilles de route technologiques aux missions de CTO à temps partagé. Nous alignons votre ingénierie sur les résultats métier avec des objectifs clairs, une architecture moderne et des décisions basées sur les données.",
+      "itStrategyB1": "CTO / Lead Engineering à temps partagé",
+      "itStrategyB2": "Feuille de route technique et architecture",
+      "itStrategyB3": "Intégration IA et plateforme",
+      "itStrategyB4": "Transformation numérique",
+      "coachingTitle": "Coaching d'équipe et individuel",
+      "coachingBody": "Construisez une culture d'apprentissage ancrée dans l'Extreme Programming et le Lean. Nous accompagnons équipes et individus sur les pratiques qui font les organisations d'ingénierie performantes.",
+      "coachingB1": "Pair programming et revues de code",
+      "coachingB2": "TDD, CI/CD et feedback rapide",
+      "coachingB3": "Méthodologie Lean et XP",
+      "coachingB4": "Mentoring individuel de développeurs"
+    },
+    "cta": {
+      "headingLine1": "Parlons de",
+      "headingLine2": "vos défis.",
+      "body": "Réservez un pré-entretien de 30 minutes. Nous discuterons de votre situation, partagerons des victoires rapides et traçerons une voie.",
+      "book": "Réserver un pré-entretien sur mesure",
+      "email": "Ou écrivez-nous un email"
+    }
+  },
+  "itStrategy": {
+    "hero": {
+      "back": "Retour au Conseil",
+      "eyebrow": "Service · 01",
+      "heading": "Stratégie IT",
+      "lede": "Feuilles de route technologiques, décisions d'architecture et leadership terrain qui alignent l'ingénierie sur les résultats métier."
+    },
+    "whatWeDo": {
+      "eyebrow": "01 · Ce que nous faisons",
+      "heading": "Un partenaire technologique stratégique, ou un CTO à temps partagé.",
+      "c1Title": "CTO / Lead Engineering à temps partagé",
+      "c1Body": "Nous intervenons en tant que CTO ou manager d'ingénierie par intérim pour apporter un leadership immédiat. Nous traçons la feuille de route technique, la mettons en œuvre, et apportons structure, vélocité et responsabilisation.",
+      "c2Title": "Conseil orienté résultats",
+      "c2Body": "Chaque mission démarre avec des objectifs et des métriques clairs. Nous alignons l'ingénierie sur les résultats métier pour que les améliorations se traduisent directement en valeur — pas en simples changements de processus.",
+      "c3Title": "Architecture et modernisation",
+      "c3Body": "Cloud, microservices, event-driven — les bons outils pour votre contexte. Modernisez les processus de développement, optimisez les systèmes existants et construisez ce qui manque pour fluidifier le travail."
+    },
+    "howWeWork": {
+      "eyebrow": "02 · Comment nous travaillons",
+      "heading": "Intégrés, pas greffés.",
+      "body": "Nous ne vous livrons pas un rapport de 100 pages pour repartir ensuite. Nous nous intégrons à votre équipe, implémentons à vos côtés et transférons les connaissances pour que vous soyez autonomes à notre départ.",
+      "step1Title": "Évaluer",
+      "step1Body": "Comprendre votre état actuel — codebase, structure d'équipe, pipeline de livraison, points douloureux.",
+      "step2Title": "Planifier",
+      "step2Body": "Définir une feuille de route claire avec jalons, métriques et victoires rapides actionnables immédiatement.",
+      "step3Title": "Exécuter",
+      "step3Body": "Retrousser les manches et mettre en œuvre — changements d'architecture, outillage, améliorations de processus, conseils de recrutement.",
+      "step4Title": "Mesurer et itérer",
+      "step4Body": "Suivre l'avancement par rapport aux objectifs. Ajuster le plan selon les données réelles. Itérer jusqu'à ce que la transformation tienne.",
+      "areasTitle": "Axes d'intervention typiques",
+      "area1": "Évaluation de la stack technologique et stratégie de migration",
+      "area2": "Conception de pipeline CI/CD et optimisation de l'expérience développeur",
+      "area3": "Stratégie d'intégration IA — identifier où l'IA apporte un vrai ROI",
+      "area4": "Conception et mise en œuvre de plateforme interne pour développeurs",
+      "area5": "Structure et organisation d'équipe (loi de Conway appliquée)",
+      "area6": "Métriques d'ingénierie et intelligence de livraison",
+      "area7": "Architecture de scalabilité et de performance"
+    },
+    "cta": {
+      "headingLine1": "Commencer par une",
+      "headingLine2": "conversation.",
+      "body": "Un pré-entretien de 30 minutes sur mesure. Nous discuterons de vos défis, partagerons des victoires rapides et traçerons une feuille de route adaptée à vos besoins.",
+      "book": "Réserver un pré-entretien sur mesure",
+      "exploreCoaching": "Explorer le Coaching"
+    }
+  },
+  "coaching": {
+    "hero": {
+      "back": "Retour au Conseil",
+      "eyebrow": "Service · 02",
+      "heading": "Coaching d'équipe et individuel",
+      "lede": "Construisez une culture d'apprentissage ancrée dans l'Extreme Programming et le Lean. Nous accompagnons équipes et individus sur les pratiques qui font les organisations d'ingénierie performantes."
+    },
+    "philosophy": {
+      "eyebrow": "01 · Philosophie",
+      "heading": "Simplicité, feedback, amélioration continue.",
+      "c1Title": "Apprentissage continu",
+      "c1Body": "Des environnements où chaque ingénieur grandit grâce aux revues de code, aux brown-bags et au pair programming. La progression n'est pas un effet secondaire — c'est le système.",
+      "c2Title": "Feedback rapide",
+      "c2Body": "Livrer en petits incréments et tout mesurer permet aux équipes de voir les problèmes tôt et de s'adapter vite. On attrape les défauts plus tôt et on corrige le cap plus vite.",
+      "c3Title": "État d'esprit Lean",
+      "c3Body": "Éliminer sans concession le gaspillage — code inutilisé, délais, complexité superflue. Le gaspillage, c'est tout ce qui s'interpose entre vous et la valeur que vos clients attendent vraiment."
+    },
+    "whatWeCover": {
+      "eyebrow": "02 · Ce que nous couvrons",
+      "heading": "Concret, pratique, immédiatement utile.",
+      "codeReviewTitle": "Revues de code",
+      "codeReviewBody": "Transformer la revue d'un gardien en opportunité d'apprentissage. Des retours actionnables, bienveillants et pédagogiques.",
+      "pairTitle": "Pair programming",
+      "pairBody": "Deux têtes, un clavier. Diffuser la connaissance, attraper les bugs plus tôt, renforcer l'équipe.",
+      "tddTitle": "Développement piloté par les tests",
+      "tddBody": "Rouge-vert-refactor. Le TDD comme outil de conception, pas seulement comme technique de test. Écrivez un meilleur code en écrivant le test d'abord.",
+      "ciTitle": "CI/CD et feedback rapide",
+      "ciBody": "Des pipelines qui donnent confiance aux développeurs. Tests automatisés, déploiement continu, problèmes détectés en minutes, pas en jours.",
+      "dddTitle": "Domain-driven design",
+      "dddBody": "Alignez votre code sur votre métier. Contextes délimités, langage ubiquitaire, conception stratégique. Un logiciel qui modélise le réel.",
+      "mentoringTitle": "Mentoring individuel",
+      "mentoringBody": "Accompagnement en tête-à-tête pour les développeurs qui montent en niveau. Pensée architecturale, résolution de problèmes, croissance de carrière, leadership technique."
+    },
+    "quote": "« Partir de là où vous êtes et améliorer progressivement — transformez votre processus de développement avec des pratiques d'ingénierie éprouvées. »",
+    "cta": {
+      "headingLine1": "Faire monter",
+      "headingLine2": "toute l'équipe.",
+      "body": "Parlons des défis de votre équipe et concevons un accompagnement qui crée un changement durable.",
+      "book": "Réserver un pré-entretien sur mesure",
+      "exploreItStrategy": "Explorer la Stratégie IT"
+    }
+  }
+}

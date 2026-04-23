@@ -1,6 +1,7 @@
 package solutions
 
 import (
+	"ioprodz/common/i18n"
 	"ioprodz/common/ui"
 	"net/http"
 	"os"
@@ -14,27 +15,40 @@ func readMarkdown(path string) string {
 	return string(data)
 }
 
+// readMarkdownLocalized tries docs/deep-dive-<slug>.<lang>.md first, then falls
+// back to the English docs/deep-dive-<slug>.md. Returns empty string if neither
+// exists.
+func readMarkdownLocalized(slug string, lang i18n.Lang) string {
+	if lang != i18n.DefaultLang {
+		if data, err := os.ReadFile("docs/deep-dive-" + slug + "." + string(lang) + ".md"); err == nil {
+			return string(data)
+		}
+	}
+	return readMarkdown("docs/deep-dive-" + slug + ".md")
+}
+
 func OverviewHandler(w http.ResponseWriter, r *http.Request) {
 	meta := ui.PageMeta{
-		Title:       "AI Platform Solutions",
-		Description: "Production-grade, embeddable AI platform components: AI Engine, Multi Modal Chat, Collaborative Editing, and Search & RAG.",
-		Path:        "/solutions",
-		OGType:      "website",
+		TitleKey: "solutions:meta.overview.title",
+		DescKey:  "solutions:meta.overview.description",
+		Path:     "/solutions",
+		OGType:   "website",
 	}
 	ui.RenderPageWithMeta(w, r, "solutions/overview", nil, meta)
 }
 
 func AIEngineHandler(w http.ResponseWriter, r *http.Request) {
-	content := readMarkdown("docs/deep-dive-ai-engine.md")
+	lang := ui.LangFrom(r)
+	content := readMarkdownLocalized("ai-engine", lang)
 	meta := ui.PageMeta{
-		Title:       "AI Engine — Agent Runtime & Orchestration",
-		Description: "A complete AI orchestration layer: multi-provider LLM support, tool calling, MCP protocol, voice I/O, and streaming for your product.",
-		Path:        "/solutions/ai-engine",
-		OGType:      "website",
+		TitleKey: "solutions:meta.aiEngine.title",
+		DescKey:  "solutions:meta.aiEngine.description",
+		Path:     "/solutions/ai-engine",
+		OGType:   "website",
 	}
 	ui.RenderPageWithMeta(w, r, "solutions/detail", map[string]interface{}{
-		"Title":        "AI Engine",
-		"Subtitle":     "From chat assistants to autonomous agents -- a complete AI orchestration layer",
+		"TitleKey":     "solutions:aiEngine.heroTitle",
+		"SubtitleKey":  "solutions:aiEngine.heroSubtitle",
 		"Content":      content,
 		"Slug":         "ai-engine",
 		"GradientFrom": "from-violet-600",
@@ -44,16 +58,17 @@ func AIEngineHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func ChatCollaborationHandler(w http.ResponseWriter, r *http.Request) {
-	content := readMarkdown("docs/deep-dive-chat-collaboration.md")
+	lang := ui.LangFrom(r)
+	content := readMarkdownLocalized("chat-collaboration", lang)
 	meta := ui.PageMeta{
-		Title:       "Multi Modal Chat",
-		Description: "A unified communication layer where humans and AI agents collaborate naturally with rich media, voice messages, and interactive workflows.",
-		Path:        "/solutions/chat-collaboration",
-		OGType:      "website",
+		TitleKey: "solutions:meta.chat.title",
+		DescKey:  "solutions:meta.chat.description",
+		Path:     "/solutions/chat-collaboration",
+		OGType:   "website",
 	}
 	ui.RenderPageWithMeta(w, r, "solutions/detail", map[string]interface{}{
-		"Title":        "Multi Modal Chat",
-		"Subtitle":     "A complete messaging backbone where humans and AI agents communicate as equals",
+		"TitleKey":     "solutions:chat.heroTitle",
+		"SubtitleKey":  "solutions:chat.heroSubtitle",
 		"Content":      content,
 		"Slug":         "chat-collaboration",
 		"GradientFrom": "from-blue-600",
@@ -63,16 +78,17 @@ func ChatCollaborationHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func CollaborativeEditingHandler(w http.ResponseWriter, r *http.Request) {
-	content := readMarkdown("docs/deep-dive-collaborative-editing.md")
+	lang := ui.LangFrom(r)
+	content := readMarkdownLocalized("collaborative-editing", lang)
 	meta := ui.PageMeta{
-		Title:       "Collaborative Document Editing",
-		Description: "Multi-user real-time editing with AI assistance, CRDT sync, live cursors, and version history — embeddable into any product.",
-		Path:        "/solutions/collaborative-editing",
-		OGType:      "website",
+		TitleKey: "solutions:meta.collabEditing.title",
+		DescKey:  "solutions:meta.collabEditing.description",
+		Path:     "/solutions/collaborative-editing",
+		OGType:   "website",
 	}
 	ui.RenderPageWithMeta(w, r, "solutions/detail", map[string]interface{}{
-		"Title":        "Collaborative Document Editing",
-		"Subtitle":     "Multi-user real-time editing with AI assistance -- like Google Docs, built for your product",
+		"TitleKey":     "solutions:collabEditing.heroTitle",
+		"SubtitleKey":  "solutions:collabEditing.heroSubtitle",
 		"Content":      content,
 		"Slug":         "collaborative-editing",
 		"GradientFrom": "from-emerald-600",
@@ -82,16 +98,17 @@ func CollaborativeEditingHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func SearchRAGHandler(w http.ResponseWriter, r *http.Request) {
-	content := readMarkdown("docs/deep-dive-search-rag.md")
+	lang := ui.LangFrom(r)
+	content := readMarkdownLocalized("search-rag", lang)
 	meta := ui.PageMeta{
-		Title:       "Search & RAG",
-		Description: "Semantic search and intelligent retrieval that makes your entire knowledge base AI-accessible with hybrid vector and keyword search.",
-		Path:        "/solutions/search-rag",
-		OGType:      "website",
+		TitleKey: "solutions:meta.searchRag.title",
+		DescKey:  "solutions:meta.searchRag.description",
+		Path:     "/solutions/search-rag",
+		OGType:   "website",
 	}
 	ui.RenderPageWithMeta(w, r, "solutions/detail", map[string]interface{}{
-		"Title":        "Search & RAG",
-		"Subtitle":     "Semantic search and intelligent retrieval that makes your entire knowledge base AI-accessible",
+		"TitleKey":     "solutions:searchRag.heroTitle",
+		"SubtitleKey":  "solutions:searchRag.heroSubtitle",
 		"Content":      content,
 		"Slug":         "search-rag",
 		"GradientFrom": "from-amber-500",

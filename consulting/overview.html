@@ -8,14 +8,14 @@
     <div class="max-w-3xl">
       <div class="inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.18em] text-text-muted mb-6">
         <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
-        Consulting
+        {{ t "consulting:overview.hero.badge" }}
       </div>
       <h1 class="text-5xl lg:text-7xl leading-[0.98] tracking-tighter font-semibold text-text">
-        Strategic technology<br/>
-        <span class="text-text-muted">leadership.</span>
+        {{ t "consulting:overview.hero.headingLine1" }}<br/>
+        <span class="text-text-muted">{{ t "consulting:overview.hero.headingLine2" }}</span>
       </h1>
       <p class="mt-6 text-lg text-text-muted leading-relaxed max-w-2xl">
-        Interim CTO, technical roadmap, or hands-on coaching. We bring 15+ years of engineering leadership to help teams ship faster with higher quality.
+        {{ t "consulting:overview.hero.lede" }}
       </p>
     </div>
   </div>
@@ -25,42 +25,42 @@
 <section class="border-b border-border">
   <div class="mx-auto max-w-6xl px-6 lg:px-8 py-20 lg:py-24">
     <div class="mb-12 scroll-fade">
-      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">01 · How we help</div>
-      <h2 class="text-3xl lg:text-5xl tracking-tighter font-semibold text-text">Two ways to work together.</h2>
+      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">{{ t "consulting:overview.howWeHelp.eyebrow" }}</div>
+      <h2 class="text-3xl lg:text-5xl tracking-tighter font-semibold text-text">{{ t "consulting:overview.howWeHelp.heading" }}</h2>
     </div>
 
     <div class="grid md:grid-cols-2 gap-4">
-      <a href="/consulting/it-strategy" class="scroll-fade group block rounded-2xl border border-border bg-surface/50 p-8 lg:p-10 hover:border-border-strong hover:bg-surface transition-colors">
+      <a href="{{ lp "/consulting/it-strategy" }}" class="scroll-fade group block rounded-2xl border border-border bg-surface/50 p-8 lg:p-10 hover:border-border-strong hover:bg-surface transition-colors">
         <div class="flex items-center justify-between mb-8">
           <span class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim">01</span>
           <svg class="w-4 h-4 text-text-dim group-hover:text-accent group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
         </div>
-        <h3 class="text-2xl lg:text-3xl tracking-tighter font-semibold text-text mb-2">IT Strategy</h3>
+        <h3 class="text-2xl lg:text-3xl tracking-tighter font-semibold text-text mb-2">{{ t "consulting:overview.howWeHelp.itStrategyTitle" }}</h3>
         <p class="text-text-muted text-[14px] leading-relaxed mb-8">
-          From technology roadmaps to acting CTO engagements. We align your engineering to business outcomes with clear goals, modern architecture, and data-driven decisions.
+          {{ t "consulting:overview.howWeHelp.itStrategyBody" }}
         </p>
         <ul class="space-y-2 text-[14px] text-text-muted">
-          <li class="flex items-center gap-2"><span class="h-1 w-1 rounded-full bg-accent"></span> Interim CTO / Engineering lead</li>
-          <li class="flex items-center gap-2"><span class="h-1 w-1 rounded-full bg-accent"></span> Technical roadmap &amp; architecture</li>
-          <li class="flex items-center gap-2"><span class="h-1 w-1 rounded-full bg-accent"></span> AI &amp; platform integration</li>
-          <li class="flex items-center gap-2"><span class="h-1 w-1 rounded-full bg-accent"></span> Digital transformation</li>
+          <li class="flex items-center gap-2"><span class="h-1 w-1 rounded-full bg-accent"></span> {{ t "consulting:overview.howWeHelp.itStrategyB1" }}</li>
+          <li class="flex items-center gap-2"><span class="h-1 w-1 rounded-full bg-accent"></span> {{ t "consulting:overview.howWeHelp.itStrategyB2" }}</li>
+          <li class="flex items-center gap-2"><span class="h-1 w-1 rounded-full bg-accent"></span> {{ t "consulting:overview.howWeHelp.itStrategyB3" }}</li>
+          <li class="flex items-center gap-2"><span class="h-1 w-1 rounded-full bg-accent"></span> {{ t "consulting:overview.howWeHelp.itStrategyB4" }}</li>
         </ul>
       </a>
 
-      <a href="/consulting/coaching" class="scroll-fade group block rounded-2xl border border-border bg-surface/50 p-8 lg:p-10 hover:border-border-strong hover:bg-surface transition-colors" style="transition-delay: 100ms">
+      <a href="{{ lp "/consulting/coaching" }}" class="scroll-fade group block rounded-2xl border border-border bg-surface/50 p-8 lg:p-10 hover:border-border-strong hover:bg-surface transition-colors" style="transition-delay: 100ms">
         <div class="flex items-center justify-between mb-8">
           <span class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim">02</span>
           <svg class="w-4 h-4 text-text-dim group-hover:text-accent group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
         </div>
-        <h3 class="text-2xl lg:text-3xl tracking-tighter font-semibold text-text mb-2">Team &amp; Individual Coaching</h3>
+        <h3 class="text-2xl lg:text-3xl tracking-tighter font-semibold text-text mb-2">{{ t "consulting:overview.howWeHelp.coachingTitle" }}</h3>
         <p class="text-text-muted text-[14px] leading-relaxed mb-8">
-          Build a learning culture rooted in Extreme Programming and Lean. We coach teams and individuals on the practices that create high-performing engineering organizations.
+          {{ t "consulting:overview.howWeHelp.coachingBody" }}
         </p>
         <ul class="space-y-2 text-[14px] text-text-muted">
-          <li class="flex items-center gap-2"><span class="h-1 w-1 rounded-full bg-accent"></span> Pair programming &amp; code reviews</li>
-          <li class="flex items-center gap-2"><span class="h-1 w-1 rounded-full bg-accent"></span> TDD, CI/CD &amp; fast feedback</li>
-          <li class="flex items-center gap-2"><span class="h-1 w-1 rounded-full bg-accent"></span> Lean &amp; XP methodology</li>
-          <li class="flex items-center gap-2"><span class="h-1 w-1 rounded-full bg-accent"></span> Individual developer mentoring</li>
+          <li class="flex items-center gap-2"><span class="h-1 w-1 rounded-full bg-accent"></span> {{ t "consulting:overview.howWeHelp.coachingB1" }}</li>
+          <li class="flex items-center gap-2"><span class="h-1 w-1 rounded-full bg-accent"></span> {{ t "consulting:overview.howWeHelp.coachingB2" }}</li>
+          <li class="flex items-center gap-2"><span class="h-1 w-1 rounded-full bg-accent"></span> {{ t "consulting:overview.howWeHelp.coachingB3" }}</li>
+          <li class="flex items-center gap-2"><span class="h-1 w-1 rounded-full bg-accent"></span> {{ t "consulting:overview.howWeHelp.coachingB4" }}</li>
         </ul>
       </a>
     </div>
@@ -72,19 +72,19 @@
   <div class="absolute inset-0 accent-glow pointer-events-none"></div>
   <div class="relative mx-auto max-w-4xl px-6 lg:px-8 py-24 lg:py-32 text-center scroll-fade">
     <h2 class="text-4xl lg:text-6xl tracking-tighter font-semibold text-text leading-[1.02] mb-6">
-      Let's talk about<br/><span class="text-text-muted">your challenges.</span>
+      {{ t "consulting:overview.cta.headingLine1" }}<br/><span class="text-text-muted">{{ t "consulting:overview.cta.headingLine2" }}</span>
     </h2>
     <p class="text-text-muted text-lg leading-relaxed max-w-xl mx-auto mb-10">
-      Book a 30-minute screening. We'll discuss your situation, share quick wins, and lay out a path forward.
+      {{ t "consulting:overview.cta.body" }}
     </p>
     <div class="flex flex-col sm:flex-row gap-3 justify-center">
       <a href="https://calendly.com/osminosm/30min" target="_blank" rel="noopener"
         class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-6 py-3 text-[14px] font-medium text-black hover:bg-accent/90 transition-colors">
-        Book a tailored screening
+        {{ t "consulting:overview.cta.book" }}
       </a>
       <a href="mailto:osmane@ioprodz.com"
         class="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-surface/40 px-6 py-3 text-[14px] font-medium text-text hover:border-border-strong hover:bg-surface transition-colors">
-        Or send an email
+        {{ t "consulting:overview.cta.email" }}
       </a>
     </div>
   </div>

@@ -8,24 +8,24 @@
     <div class="max-w-3xl">
       <div class="inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.18em] text-text-muted mb-6">
         <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
-        AI-augmented platform
+        {{ t "solutions:overview.hero.badge" }}
       </div>
       <h1 class="text-5xl lg:text-7xl leading-[0.98] tracking-tighter font-semibold text-text">
-        Intelligent software,<br/>
-        <span class="text-text-muted">in four components.</span>
+        {{ t "solutions:overview.hero.headingLine1" }}<br/>
+        <span class="text-text-muted">{{ t "solutions:overview.hero.headingLine2" }}</span>
       </h1>
       <p class="mt-6 text-lg text-text-muted leading-relaxed max-w-2xl">
-        Production-grade building blocks where <span class="text-text">intelligence</span>, <span class="text-text">communication</span>, and <span class="text-text">knowledge</span> work together inside your product.
+        {{ t "solutions:overview.hero.lede" }}
       </p>
       <div class="mt-10 flex flex-col sm:flex-row gap-3">
         <a href="https://calendly.com/osminosm/30min" target="_blank" rel="noopener"
           class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-5 py-3 text-[14px] font-medium text-black hover:bg-accent/90 transition-colors">
-          Schedule a demo
+          {{ t "solutions:overview.hero.ctaDemo" }}
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
         </a>
         <a href="#pillars"
           class="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-surface/40 px-5 py-3 text-[14px] font-medium text-text hover:border-border-strong hover:bg-surface transition-colors">
-          Explore components
+          {{ t "solutions:overview.hero.ctaExplore" }}
         </a>
       </div>
     </div>
@@ -38,22 +38,22 @@
     <div class="scroll-fade flex flex-col md:flex-row items-center justify-center gap-3 text-center">
       <div class="flex items-center gap-2.5 rounded-md border border-border bg-surface px-4 py-2">
         <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-        <span class="text-[13px] text-text">Communicate</span>
+        <span class="text-[13px] text-text">{{ t "solutions:overview.flow.communicate" }}</span>
       </div>
-      <svg class="w-4 h-4 text-text-dim hidden md:block rotate-0 md:rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+      <svg class="w-4 h-4 text-text-dim hidden md:block rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
       <div class="flex items-center gap-2.5 rounded-md border border-border bg-surface px-4 py-2">
         <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-        <span class="text-[13px] text-text">Search</span>
+        <span class="text-[13px] text-text">{{ t "solutions:overview.flow.search" }}</span>
       </div>
-      <svg class="w-4 h-4 text-text-dim hidden md:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+      <svg class="w-4 h-4 text-text-dim hidden md:block rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
       <div class="flex items-center gap-2.5 rounded-md border border-border bg-surface px-4 py-2">
         <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
-        <span class="text-[13px] text-text">Reason</span>
+        <span class="text-[13px] text-text">{{ t "solutions:overview.flow.reason" }}</span>
       </div>
-      <svg class="w-4 h-4 text-text-dim hidden md:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+      <svg class="w-4 h-4 text-text-dim hidden md:block rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
       <div class="flex items-center gap-2.5 rounded-md border border-border bg-surface px-4 py-2">
         <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-        <span class="text-[13px] text-text">Act</span>
+        <span class="text-[13px] text-text">{{ t "solutions:overview.flow.act" }}</span>
       </div>
     </div>
   </div>
@@ -63,24 +63,24 @@
 <section id="pillars" class="border-b border-border">
   <div class="mx-auto max-w-7xl px-6 lg:px-8 py-20">
     <div class="mb-12 scroll-fade">
-      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">01 · Platform components</div>
+      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">{{ t "solutions:overview.pillars.eyebrow" }}</div>
       <h2 class="text-3xl lg:text-5xl tracking-tighter font-semibold text-text max-w-3xl">
-        Powerful on their own. Transformative together.
+        {{ t "solutions:overview.pillars.heading" }}
       </h2>
     </div>
 
     <div class="grid md:grid-cols-2 gap-4">
-      <a href="/solutions/ai-engine" class="scroll-fade group block rounded-2xl border border-border bg-surface/50 p-8 hover:border-border-strong hover:bg-surface transition-colors">
+      <a href="{{ lp "/solutions/ai-engine" }}" class="scroll-fade group block rounded-2xl border border-border bg-surface/50 p-8 hover:border-border-strong hover:bg-surface transition-colors">
         <div class="flex items-center justify-between mb-6">
           <div class="flex h-10 w-10 items-center justify-center rounded-md bg-white/[0.03] border border-border">
             <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
           </div>
-          <svg class="w-4 h-4 text-text-dim group-hover:text-accent group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+          <svg class="w-4 h-4 text-text-dim group-hover:text-accent group-hover:translate-x-1 transition-all rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
         </div>
-        <h3 class="text-xl font-semibold text-text tracking-tight mb-1.5">AI Engine</h3>
-        <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-4">Orchestration layer</p>
+        <h3 class="text-xl font-semibold text-text tracking-tight mb-1.5">{{ t "solutions:overview.pillars.aiEngineTitle" }}</h3>
+        <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-4">{{ t "solutions:overview.pillars.aiEngineKicker" }}</p>
         <p class="text-text-muted text-[14px] leading-relaxed mb-6">
-          A full agent runtime that connects LLMs to your product's domain. Define agents, give them tools, let them reason and act.
+          {{ t "solutions:overview.pillars.aiEngineBody" }}
         </p>
         <div class="flex flex-wrap gap-1.5">
           <span class="font-mono text-[10px] px-2 py-0.5 rounded border border-border text-text-dim">Multi-provider</span>
@@ -91,17 +91,17 @@
         </div>
       </a>
 
-      <a href="/solutions/chat-collaboration" class="scroll-fade group block rounded-2xl border border-border bg-surface/50 p-8 hover:border-border-strong hover:bg-surface transition-colors" style="transition-delay: 100ms">
+      <a href="{{ lp "/solutions/chat-collaboration" }}" class="scroll-fade group block rounded-2xl border border-border bg-surface/50 p-8 hover:border-border-strong hover:bg-surface transition-colors" style="transition-delay: 100ms">
         <div class="flex items-center justify-between mb-6">
           <div class="flex h-10 w-10 items-center justify-center rounded-md bg-white/[0.03] border border-border">
             <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
           </div>
-          <svg class="w-4 h-4 text-text-dim group-hover:text-accent group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+          <svg class="w-4 h-4 text-text-dim group-hover:text-accent group-hover:translate-x-1 transition-all rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
         </div>
-        <h3 class="text-xl font-semibold text-text tracking-tight mb-1.5">Multi Modal Chat</h3>
-        <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-4">Messaging backbone</p>
+        <h3 class="text-xl font-semibold text-text tracking-tight mb-1.5">{{ t "solutions:overview.pillars.chatTitle" }}</h3>
+        <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-4">{{ t "solutions:overview.pillars.chatKicker" }}</p>
         <p class="text-text-muted text-[14px] leading-relaxed mb-6">
-          A unified communication layer where humans and AI agents collaborate naturally. Rich media, interactive workflows, intelligent notifications.
+          {{ t "solutions:overview.pillars.chatBody" }}
         </p>
         <div class="flex flex-wrap gap-1.5">
           <span class="font-mono text-[10px] px-2 py-0.5 rounded border border-border text-text-dim">AI agents</span>
@@ -112,17 +112,17 @@
         </div>
       </a>
 
-      <a href="/solutions/collaborative-editing" class="scroll-fade group block rounded-2xl border border-border bg-surface/50 p-8 hover:border-border-strong hover:bg-surface transition-colors" style="transition-delay: 200ms">
+      <a href="{{ lp "/solutions/collaborative-editing" }}" class="scroll-fade group block rounded-2xl border border-border bg-surface/50 p-8 hover:border-border-strong hover:bg-surface transition-colors" style="transition-delay: 200ms">
         <div class="flex items-center justify-between mb-6">
           <div class="flex h-10 w-10 items-center justify-center rounded-md bg-white/[0.03] border border-border">
             <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
           </div>
-          <svg class="w-4 h-4 text-text-dim group-hover:text-accent group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+          <svg class="w-4 h-4 text-text-dim group-hover:text-accent group-hover:translate-x-1 transition-all rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
         </div>
-        <h3 class="text-xl font-semibold text-text tracking-tight mb-1.5">Collaborative Document Editing</h3>
-        <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-4">Real-time multi-user + AI</p>
+        <h3 class="text-xl font-semibold text-text tracking-tight mb-1.5">{{ t "solutions:overview.pillars.collabTitle" }}</h3>
+        <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-4">{{ t "solutions:overview.pillars.collabKicker" }}</p>
         <p class="text-text-muted text-[14px] leading-relaxed mb-6">
-          Multiple people and AI agents edit the same document simultaneously with automatic conflict resolution. The tech behind Google Docs, embeddable anywhere.
+          {{ t "solutions:overview.pillars.collabBody" }}
         </p>
         <div class="flex flex-wrap gap-1.5">
           <span class="font-mono text-[10px] px-2 py-0.5 rounded border border-border text-text-dim">CRDT sync</span>
@@ -133,17 +133,17 @@
         </div>
       </a>
 
-      <a href="/solutions/search-rag" class="scroll-fade group block rounded-2xl border border-border bg-surface/50 p-8 hover:border-border-strong hover:bg-surface transition-colors" style="transition-delay: 300ms">
+      <a href="{{ lp "/solutions/search-rag" }}" class="scroll-fade group block rounded-2xl border border-border bg-surface/50 p-8 hover:border-border-strong hover:bg-surface transition-colors" style="transition-delay: 300ms">
         <div class="flex items-center justify-between mb-6">
           <div class="flex h-10 w-10 items-center justify-center rounded-md bg-white/[0.03] border border-border">
             <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
           </div>
-          <svg class="w-4 h-4 text-text-dim group-hover:text-accent group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+          <svg class="w-4 h-4 text-text-dim group-hover:text-accent group-hover:translate-x-1 transition-all rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
         </div>
-        <h3 class="text-xl font-semibold text-text tracking-tight mb-1.5">Search &amp; RAG</h3>
-        <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-4">Semantic retrieval</p>
+        <h3 class="text-xl font-semibold text-text tracking-tight mb-1.5">{{ t "solutions:overview.pillars.ragTitle" }}</h3>
+        <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-4">{{ t "solutions:overview.pillars.ragKicker" }}</p>
         <p class="text-text-muted text-[14px] leading-relaxed mb-6">
-          Indexes content automatically, combines vector similarity with full-text search, and provides a retrieval API agents use to ground responses in real data.
+          {{ t "solutions:overview.pillars.ragBody" }}
         </p>
         <div class="flex flex-wrap gap-1.5">
           <span class="font-mono text-[10px] px-2 py-0.5 rounded border border-border text-text-dim">Hybrid search</span>
@@ -161,9 +161,9 @@
 <section class="border-b border-border">
   <div class="mx-auto max-w-7xl px-6 lg:px-8 py-20">
     <div class="mb-12 scroll-fade">
-      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">02 · Industries</div>
+      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">{{ t "solutions:overview.industries.eyebrow" }}</div>
       <h2 class="text-3xl lg:text-5xl tracking-tighter font-semibold text-text max-w-2xl">
-        Adapts to your domain.
+        {{ t "solutions:overview.industries.heading" }}
       </h2>
     </div>
 
@@ -172,64 +172,64 @@
         <div class="flex h-9 w-9 items-center justify-center rounded-md bg-white/[0.03] border border-border mb-4">
           <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
         </div>
-        <h3 class="font-semibold text-text tracking-tight mb-1.5">Software development</h3>
-        <p class="text-[13px] text-text-muted leading-relaxed">Code-review agents, team channels, codebase search.</p>
+        <h3 class="font-semibold text-text tracking-tight mb-1.5">{{ t "solutions:overview.industries.softwareTitle" }}</h3>
+        <p class="text-[13px] text-text-muted leading-relaxed">{{ t "solutions:overview.industries.softwareBody" }}</p>
       </div>
 
       <div class="scroll-fade rounded-xl border border-border bg-surface/50 p-6 hover:border-border-strong transition-colors" style="transition-delay: 50ms">
         <div class="flex h-9 w-9 items-center justify-center rounded-md bg-white/[0.03] border border-border mb-4">
           <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
         </div>
-        <h3 class="font-semibold text-text tracking-tight mb-1.5">Healthcare</h3>
-        <p class="text-[13px] text-text-muted leading-relaxed">Clinical decision support, provider messaging, medical knowledge retrieval.</p>
+        <h3 class="font-semibold text-text tracking-tight mb-1.5">{{ t "solutions:overview.industries.healthcareTitle" }}</h3>
+        <p class="text-[13px] text-text-muted leading-relaxed">{{ t "solutions:overview.industries.healthcareBody" }}</p>
       </div>
 
       <div class="scroll-fade rounded-xl border border-border bg-surface/50 p-6 hover:border-border-strong transition-colors" style="transition-delay: 100ms">
         <div class="flex h-9 w-9 items-center justify-center rounded-md bg-white/[0.03] border border-border mb-4">
           <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
         </div>
-        <h3 class="font-semibold text-text tracking-tight mb-1.5">Financial services</h3>
-        <p class="text-[13px] text-text-muted leading-relaxed">Risk analysis, compliance chat, regulatory document search.</p>
+        <h3 class="font-semibold text-text tracking-tight mb-1.5">{{ t "solutions:overview.industries.financeTitle" }}</h3>
+        <p class="text-[13px] text-text-muted leading-relaxed">{{ t "solutions:overview.industries.financeBody" }}</p>
       </div>
 
       <div class="scroll-fade rounded-xl border border-border bg-surface/50 p-6 hover:border-border-strong transition-colors" style="transition-delay: 150ms">
         <div class="flex h-9 w-9 items-center justify-center rounded-md bg-white/[0.03] border border-border mb-4">
           <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>
         </div>
-        <h3 class="font-semibold text-text tracking-tight mb-1.5">Legal</h3>
-        <p class="text-[13px] text-text-muted leading-relaxed">Contract analysis, case collaboration, precedent search.</p>
+        <h3 class="font-semibold text-text tracking-tight mb-1.5">{{ t "solutions:overview.industries.legalTitle" }}</h3>
+        <p class="text-[13px] text-text-muted leading-relaxed">{{ t "solutions:overview.industries.legalBody" }}</p>
       </div>
 
       <div class="scroll-fade rounded-xl border border-border bg-surface/50 p-6 hover:border-border-strong transition-colors" style="transition-delay: 200ms">
         <div class="flex h-9 w-9 items-center justify-center rounded-md bg-white/[0.03] border border-border mb-4">
           <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
         </div>
-        <h3 class="font-semibold text-text tracking-tight mb-1.5">Education</h3>
-        <p class="text-[13px] text-text-muted leading-relaxed">Adaptive tutoring, student messaging, curriculum search.</p>
+        <h3 class="font-semibold text-text tracking-tight mb-1.5">{{ t "solutions:overview.industries.educationTitle" }}</h3>
+        <p class="text-[13px] text-text-muted leading-relaxed">{{ t "solutions:overview.industries.educationBody" }}</p>
       </div>
 
       <div class="scroll-fade rounded-xl border border-border bg-surface/50 p-6 hover:border-border-strong transition-colors" style="transition-delay: 250ms">
         <div class="flex h-9 w-9 items-center justify-center rounded-md bg-white/[0.03] border border-border mb-4">
           <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
         </div>
-        <h3 class="font-semibold text-text tracking-tight mb-1.5">Customer support</h3>
-        <p class="text-[13px] text-text-muted leading-relaxed">Ticket resolution agents, multi-channel support, knowledge base retrieval.</p>
+        <h3 class="font-semibold text-text tracking-tight mb-1.5">{{ t "solutions:overview.industries.supportTitle" }}</h3>
+        <p class="text-[13px] text-text-muted leading-relaxed">{{ t "solutions:overview.industries.supportBody" }}</p>
       </div>
 
       <div class="scroll-fade rounded-xl border border-border bg-surface/50 p-6 hover:border-border-strong transition-colors" style="transition-delay: 300ms">
         <div class="flex h-9 w-9 items-center justify-center rounded-md bg-white/[0.03] border border-border mb-4">
           <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
         </div>
-        <h3 class="font-semibold text-text tracking-tight mb-1.5">Manufacturing</h3>
-        <p class="text-[13px] text-text-muted leading-relaxed">Quality analysis, field coordination, technical manual search.</p>
+        <h3 class="font-semibold text-text tracking-tight mb-1.5">{{ t "solutions:overview.industries.manufacturingTitle" }}</h3>
+        <p class="text-[13px] text-text-muted leading-relaxed">{{ t "solutions:overview.industries.manufacturingBody" }}</p>
       </div>
 
       <div class="scroll-fade rounded-xl border border-border bg-surface/50 p-6 hover:border-border-strong transition-colors" style="transition-delay: 350ms">
         <div class="flex h-9 w-9 items-center justify-center rounded-md bg-white/[0.03] border border-border mb-4">
           <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
         </div>
-        <h3 class="font-semibold text-text tracking-tight mb-1.5">Real estate</h3>
-        <p class="text-[13px] text-text-muted leading-relaxed">Market analysis, agent-client communication, property search.</p>
+        <h3 class="font-semibold text-text tracking-tight mb-1.5">{{ t "solutions:overview.industries.realestateTitle" }}</h3>
+        <p class="text-[13px] text-text-muted leading-relaxed">{{ t "solutions:overview.industries.realestateBody" }}</p>
       </div>
     </div>
   </div>
@@ -240,19 +240,19 @@
   <div class="absolute inset-0 accent-glow pointer-events-none"></div>
   <div class="relative mx-auto max-w-4xl px-6 lg:px-8 py-24 lg:py-32 text-center scroll-fade">
     <h2 class="text-4xl lg:text-6xl tracking-tighter font-semibold text-text leading-[1.02] mb-6">
-      Ready to build<br/><span class="text-text-muted">intelligent software?</span>
+      {{ t "solutions:overview.cta.headingLine1" }}<br/><span class="text-text-muted">{{ t "solutions:overview.cta.headingLine2" }}</span>
     </h2>
     <p class="text-text-muted text-lg leading-relaxed max-w-xl mx-auto mb-10">
-      These components are powerful individually, transformative together. Let's discuss how they fit your product.
+      {{ t "solutions:overview.cta.body" }}
     </p>
     <div class="flex flex-col sm:flex-row gap-3 justify-center">
       <a href="https://calendly.com/osminosm/30min" target="_blank" rel="noopener"
         class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-6 py-3 text-[14px] font-medium text-black hover:bg-accent/90 transition-colors">
-        Schedule a demo
+        {{ t "solutions:overview.cta.ctaDemo" }}
       </a>
       <a href="mailto:osmane@ioprodz.com"
         class="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-surface/40 px-6 py-3 text-[14px] font-medium text-text hover:border-border-strong hover:bg-surface transition-colors">
-        Contact us
+        {{ t "solutions:overview.cta.ctaContact" }}
       </a>
     </div>
   </div>

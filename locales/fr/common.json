@@ -1,0 +1,61 @@
+{
+  "nav": {
+    "consulting": "Conseil",
+    "consultingOverview": "Aperçu",
+    "consultingOverviewSub": "Nos services de conseil",
+    "itStrategy": "Stratégie IT",
+    "itStrategySub": "Feuille de route, architecture et leadership",
+    "coaching": "Coaching d'équipe et individuel",
+    "coachingSub": "Pratiques, culture et montée en compétence",
+    "solutions": "Solutions",
+    "solutionsOverview": "Aperçu de la plateforme",
+    "solutionsOverviewSub": "La plateforme Polysee complète",
+    "aiEngine": "Moteur IA",
+    "aiEngineSub": "Runtime d'agents et orchestration",
+    "chat": "Chat multi-modal",
+    "chatSub": "Messagerie nativement IA",
+    "collabEditing": "Édition collaborative",
+    "collabEditingSub": "Édition de documents en temps réel",
+    "searchRag": "Recherche & RAG",
+    "searchRagSub": "Recherche sémantique & retrieval",
+    "about": "À propos",
+    "blog": "Blog",
+    "feed": "Flux",
+    "admin": "Admin"
+  },
+  "cta": {
+    "bookScreening": "Réserver un pré-entretien"
+  },
+  "footer": {
+    "tagline": "Du vibe coding au vrai produit — sur de l'IA souveraine, livré tous les jours, sans le slop.",
+    "kicker": "Cabinet indépendant d'ingénierie · Europe / Afrique du Nord · Depuis 2025",
+    "siteCol": "Site",
+    "connectCol": "Contact",
+    "labCol": "Labo",
+    "home": "Accueil",
+    "about": "À propos",
+    "services": "Services",
+    "blog": "Blog",
+    "bookScreening": "Réserver un pré-entretien",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "polysee": "Polysee",
+    "specjest": "SpecJest (OSS)",
+    "rights": "© 2025–2026 ioprodz · Osmane Kalache",
+    "slogan": "La contre-voix au slop IA."
+  },
+  "lang": {
+    "switcherLabel": "Langue"
+  },
+  "notFound": {
+    "eyebrow": "Erreur · 404",
+    "headingLine1": "Il n'y a rien ici.",
+    "headingLine2": "Pas encore, en tout cas.",
+    "body": "La page que vous cherchez n'existe pas, a changé d'adresse, ou n'a jamais existé. Essayez la page d'accueil.",
+    "backHome": "Retour à l'accueil",
+    "readBlog": "Lire le blog"
+  },
+  "hamburger": {
+    "openMenu": "Ouvrir le menu"
+  }
+}

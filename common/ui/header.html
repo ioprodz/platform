@@ -7,7 +7,7 @@
     <div class="mx-auto px-4 sm:px-6 lg:px-8 xl:max-w-7xl">
       <div class="flex h-16 items-center justify-between gap-6">
         <!-- Logo -->
-        <a href="/" aria-label="ioprodz" class="flex items-center gap-2 group shrink-0">
+        <a href="{{ localizedPath $.langMeta.Code "/" }}" aria-label="ioprodz" class="flex items-center gap-2 group shrink-0">
           <img
             src="/static/favicon/apple-touch-icon.png"
             alt=""
@@ -19,8 +19,8 @@
         <!-- Desktop links -->
         <div class="hidden lg:flex items-center gap-1 text-[14px] text-text-muted">
           {{ if .isAuthenticated }}
-          <a href="/feed" class="px-3 py-2 rounded-md hover:text-text hover:bg-white/[0.03] transition-colors">Feed</a>
-          <a href="/admin/qna" class="px-3 py-2 rounded-md hover:text-text hover:bg-white/[0.03] transition-colors">Admin</a>
+          <a href="/feed" class="px-3 py-2 rounded-md hover:text-text hover:bg-white/[0.03] transition-colors">{{ t "common:nav.feed" }}</a>
+          <a href="/admin/qna" class="px-3 py-2 rounded-md hover:text-text hover:bg-white/[0.03] transition-colors">{{ t "common:nav.admin" }}</a>
           {{ end }}
 
           <!-- Consulting Dropdown -->
@@ -31,7 +31,7 @@
               aria-expanded="false"
               aria-haspopup="true"
             >
-              <span>Consulting</span>
+              <span>{{ t "common:nav.consulting" }}</span>
               <svg class="w-3.5 h-3.5 transition-transform duration-200" id="consulting-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
@@ -40,32 +40,32 @@
               id="consulting-dropdown"
               class="invisible absolute left-1/2 -translate-x-1/2 top-full z-30 mt-2 w-72 origin-top scale-95 rounded-xl border border-border bg-surface p-1.5 opacity-0 shadow-2xl shadow-black/60 transition-all duration-200"
             >
-              <a href="/consulting" class="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-white/[0.04] transition-colors">
+              <a href="{{ localizedPath $.langMeta.Code "/consulting" }}" class="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-white/[0.04] transition-colors">
                 <span class="flex h-8 w-8 items-center justify-center rounded-md bg-white/[0.03] border border-border text-text-muted">
                   <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                 </span>
                 <span>
-                  <span class="block text-[13px] font-medium text-text">Overview</span>
-                  <span class="block text-[12px] text-text-dim">Our consulting services</span>
+                  <span class="block text-[13px] font-medium text-text">{{ t "common:nav.consultingOverview" }}</span>
+                  <span class="block text-[12px] text-text-dim">{{ t "common:nav.consultingOverviewSub" }}</span>
                 </span>
               </a>
               <div class="my-1 border-t border-border"></div>
-              <a href="/consulting/it-strategy" class="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-white/[0.04] transition-colors">
+              <a href="{{ localizedPath $.langMeta.Code "/consulting/it-strategy" }}" class="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-white/[0.04] transition-colors">
                 <span class="flex h-8 w-8 items-center justify-center rounded-md bg-white/[0.03] border border-border text-text-muted">
                   <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                 </span>
                 <span>
-                  <span class="block text-[13px] font-medium text-text">IT Strategy</span>
-                  <span class="block text-[12px] text-text-dim">Roadmap, architecture &amp; leadership</span>
+                  <span class="block text-[13px] font-medium text-text">{{ t "common:nav.itStrategy" }}</span>
+                  <span class="block text-[12px] text-text-dim">{{ t "common:nav.itStrategySub" }}</span>
                 </span>
               </a>
-              <a href="/consulting/coaching" class="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-white/[0.04] transition-colors">
+              <a href="{{ localizedPath $.langMeta.Code "/consulting/coaching" }}" class="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-white/[0.04] transition-colors">
                 <span class="flex h-8 w-8 items-center justify-center rounded-md bg-white/[0.03] border border-border text-text-muted">
                   <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                 </span>
                 <span>
-                  <span class="block text-[13px] font-medium text-text">Team &amp; Individual Coaching</span>
-                  <span class="block text-[12px] text-text-dim">Practices, culture &amp; growth</span>
+                  <span class="block text-[13px] font-medium text-text">{{ t "common:nav.coaching" }}</span>
+                  <span class="block text-[12px] text-text-dim">{{ t "common:nav.coachingSub" }}</span>
                 </span>
               </a>
             </div>
@@ -79,7 +79,7 @@
               aria-expanded="false"
               aria-haspopup="true"
             >
-              <span>Solutions</span>
+              <span>{{ t "common:nav.solutions" }}</span>
               <svg class="w-3.5 h-3.5 transition-transform duration-200" id="solutions-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
@@ -88,68 +88,100 @@
               id="solutions-dropdown"
               class="invisible absolute left-1/2 -translate-x-1/2 top-full z-30 mt-2 w-72 origin-top scale-95 rounded-xl border border-border bg-surface p-1.5 opacity-0 shadow-2xl shadow-black/60 transition-all duration-200"
             >
-              <a href="/solutions" class="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-white/[0.04] transition-colors">
+              <a href="{{ localizedPath $.langMeta.Code "/solutions" }}" class="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-white/[0.04] transition-colors">
                 <span class="flex h-8 w-8 items-center justify-center rounded-md bg-white/[0.03] border border-border text-text-muted">
                   <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
                 </span>
                 <span>
-                  <span class="block text-[13px] font-medium text-text">Platform Overview</span>
-                  <span class="block text-[12px] text-text-dim">The complete Polysee platform</span>
+                  <span class="block text-[13px] font-medium text-text">{{ t "common:nav.solutionsOverview" }}</span>
+                  <span class="block text-[12px] text-text-dim">{{ t "common:nav.solutionsOverviewSub" }}</span>
                 </span>
               </a>
               <div class="my-1 border-t border-border"></div>
-              <a href="/solutions/ai-engine" class="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-white/[0.04] transition-colors">
+              <a href="{{ localizedPath $.langMeta.Code "/solutions/ai-engine" }}" class="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-white/[0.04] transition-colors">
                 <span class="flex h-8 w-8 items-center justify-center rounded-md bg-white/[0.03] border border-border text-text-muted">
                   <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
                 </span>
                 <span>
-                  <span class="block text-[13px] font-medium text-text">AI Engine</span>
-                  <span class="block text-[12px] text-text-dim">Agent runtime &amp; orchestration</span>
+                  <span class="block text-[13px] font-medium text-text">{{ t "common:nav.aiEngine" }}</span>
+                  <span class="block text-[12px] text-text-dim">{{ t "common:nav.aiEngineSub" }}</span>
                 </span>
               </a>
-              <a href="/solutions/chat-collaboration" class="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-white/[0.04] transition-colors">
+              <a href="{{ localizedPath $.langMeta.Code "/solutions/chat-collaboration" }}" class="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-white/[0.04] transition-colors">
                 <span class="flex h-8 w-8 items-center justify-center rounded-md bg-white/[0.03] border border-border text-text-muted">
                   <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
                 </span>
                 <span>
-                  <span class="block text-[13px] font-medium text-text">Multi Modal Chat</span>
-                  <span class="block text-[12px] text-text-dim">AI-native messaging</span>
+                  <span class="block text-[13px] font-medium text-text">{{ t "common:nav.chat" }}</span>
+                  <span class="block text-[12px] text-text-dim">{{ t "common:nav.chatSub" }}</span>
                 </span>
               </a>
-              <a href="/solutions/collaborative-editing" class="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-white/[0.04] transition-colors">
+              <a href="{{ localizedPath $.langMeta.Code "/solutions/collaborative-editing" }}" class="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-white/[0.04] transition-colors">
                 <span class="flex h-8 w-8 items-center justify-center rounded-md bg-white/[0.03] border border-border text-text-muted">
                   <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
                 </span>
                 <span>
-                  <span class="block text-[13px] font-medium text-text">Collaborative Editing</span>
-                  <span class="block text-[12px] text-text-dim">Real-time document editing</span>
+                  <span class="block text-[13px] font-medium text-text">{{ t "common:nav.collabEditing" }}</span>
+                  <span class="block text-[12px] text-text-dim">{{ t "common:nav.collabEditingSub" }}</span>
                 </span>
               </a>
-              <a href="/solutions/search-rag" class="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-white/[0.04] transition-colors">
+              <a href="{{ localizedPath $.langMeta.Code "/solutions/search-rag" }}" class="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-white/[0.04] transition-colors">
                 <span class="flex h-8 w-8 items-center justify-center rounded-md bg-white/[0.03] border border-border text-text-muted">
                   <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </span>
                 <span>
-                  <span class="block text-[13px] font-medium text-text">Search &amp; RAG</span>
-                  <span class="block text-[12px] text-text-dim">Semantic search &amp; retrieval</span>
+                  <span class="block text-[13px] font-medium text-text">{{ t "common:nav.searchRag" }}</span>
+                  <span class="block text-[12px] text-text-dim">{{ t "common:nav.searchRagSub" }}</span>
                 </span>
               </a>
             </div>
           </div>
 
-          <a href="/about" class="px-3 py-2 rounded-md hover:text-text hover:bg-white/[0.03] transition-colors">About</a>
-          <a href="/blog" class="px-3 py-2 rounded-md hover:text-text hover:bg-white/[0.03] transition-colors">Blog</a>
+          <a href="{{ localizedPath $.langMeta.Code "/about" }}" class="px-3 py-2 rounded-md hover:text-text hover:bg-white/[0.03] transition-colors">{{ t "common:nav.about" }}</a>
+          <a href="/blog" class="px-3 py-2 rounded-md hover:text-text hover:bg-white/[0.03] transition-colors">{{ t "common:nav.blog" }}</a>
         </div>
 
-        <!-- Right side: CTA + avatar + hamburger -->
+        <!-- Right side: language switcher + CTA + avatar + hamburger -->
         <div class="flex items-center gap-3">
+          <!-- Language switcher -->
+          <div class="relative" id="lang-menu">
+            <button
+              id="lang-trigger"
+              class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-[13px] text-text-muted hover:text-text hover:bg-white/[0.03] transition-colors"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-label="{{ t "common:lang.switcherLabel" }}"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
+              </svg>
+              <span class="hidden sm:inline">{{ .langMeta.Native }}</span>
+              <svg class="w-3 h-3 transition-transform duration-200" id="lang-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div
+              id="lang-dropdown"
+              class="invisible absolute end-0 top-full z-30 mt-2 w-44 origin-top scale-95 rounded-xl border border-border bg-surface p-1.5 opacity-0 shadow-2xl shadow-black/60 transition-all duration-200"
+            >
+              {{ range .allLangs }}
+              <a href="{{ localizedPath .Code $.canonicalPath }}"
+                 hreflang="{{ .HTMLLang }}"
+                 class="flex items-center justify-between gap-3 rounded-lg px-3 py-2 text-[13px] transition-colors {{ if eq (printf "%s" .Code) $.lang }}text-text bg-white/[0.03]{{ else }}text-text-muted hover:bg-white/[0.04]{{ end }}">
+                <span>{{ .Native }}</span>
+                {{ if eq (printf "%s" .Code) $.lang }}<span class="text-accent">•</span>{{ end }}
+              </a>
+              {{ end }}
+            </div>
+          </div>
+
           <a
             href="https://calendly.com/osminosm/30min"
             target="_blank"
             rel="noopener"
             class="hidden sm:inline-flex items-center gap-1.5 rounded-md bg-accent px-3.5 py-1.5 text-[13px] font-medium text-black hover:bg-accent/90 transition-colors"
           >
-            Book a screening
+            {{ t "common:cta.bookScreening" }}
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
           </a>
           {{ if .isAuthenticated }}
@@ -158,7 +190,7 @@
           </a>
           {{ end }}
           <button
-            aria-label="Open menu"
+            aria-label="{{ t "common:hamburger.openMenu" }}"
             id="hamburger"
             class="lg:hidden flex items-center justify-center h-9 w-9 rounded-md border border-border text-text-muted hover:text-text hover:border-border-strong transition-colors"
           >
@@ -172,14 +204,23 @@
     <div id="mobile-panel" class="hidden lg:hidden border-t border-border bg-bg">
       <div class="px-4 py-3 space-y-1 text-[14px]">
         {{ if .isAuthenticated }}
-        <a href="/feed" class="block px-3 py-2 rounded-md text-text-muted hover:text-text hover:bg-white/[0.03]">Feed</a>
-        <a href="/admin/qna" class="block px-3 py-2 rounded-md text-text-muted hover:text-text hover:bg-white/[0.03]">Admin</a>
+        <a href="/feed" class="block px-3 py-2 rounded-md text-text-muted hover:text-text hover:bg-white/[0.03]">{{ t "common:nav.feed" }}</a>
+        <a href="/admin/qna" class="block px-3 py-2 rounded-md text-text-muted hover:text-text hover:bg-white/[0.03]">{{ t "common:nav.admin" }}</a>
         {{ end }}
-        <a href="/consulting" class="block px-3 py-2 rounded-md text-text-muted hover:text-text hover:bg-white/[0.03]">Consulting</a>
-        <a href="/solutions" class="block px-3 py-2 rounded-md text-text-muted hover:text-text hover:bg-white/[0.03]">Solutions</a>
-        <a href="/about" class="block px-3 py-2 rounded-md text-text-muted hover:text-text hover:bg-white/[0.03]">About</a>
-        <a href="/blog" class="block px-3 py-2 rounded-md text-text-muted hover:text-text hover:bg-white/[0.03]">Blog</a>
-        <a href="https://calendly.com/osminosm/30min" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md bg-accent text-black text-center font-medium mt-2">Book a screening</a>
+        <a href="{{ localizedPath $.langMeta.Code "/consulting" }}" class="block px-3 py-2 rounded-md text-text-muted hover:text-text hover:bg-white/[0.03]">{{ t "common:nav.consulting" }}</a>
+        <a href="{{ localizedPath $.langMeta.Code "/solutions" }}" class="block px-3 py-2 rounded-md text-text-muted hover:text-text hover:bg-white/[0.03]">{{ t "common:nav.solutions" }}</a>
+        <a href="{{ localizedPath $.langMeta.Code "/about" }}" class="block px-3 py-2 rounded-md text-text-muted hover:text-text hover:bg-white/[0.03]">{{ t "common:nav.about" }}</a>
+        <a href="/blog" class="block px-3 py-2 rounded-md text-text-muted hover:text-text hover:bg-white/[0.03]">{{ t "common:nav.blog" }}</a>
+        <div class="pt-2 mt-2 border-t border-border flex flex-wrap gap-2">
+          {{ range .allLangs }}
+          <a href="{{ localizedPath .Code $.canonicalPath }}"
+             hreflang="{{ .HTMLLang }}"
+             class="inline-flex items-center gap-1.5 rounded-md border border-border px-2.5 py-1 text-[12px] {{ if eq (printf "%s" .Code) $.lang }}text-text bg-white/[0.03]{{ else }}text-text-muted{{ end }}">
+            {{ .Native }}
+          </a>
+          {{ end }}
+        </div>
+        <a href="https://calendly.com/osminosm/30min" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md bg-accent text-black text-center font-medium mt-2">{{ t "common:cta.bookScreening" }}</a>
       </div>
     </div>
   </nav>
@@ -203,7 +244,7 @@
       isOpen = true;
       dropdown.classList.remove('invisible', 'opacity-0', 'scale-95');
       dropdown.classList.add('visible', 'opacity-100', 'scale-100');
-      chevron.style.transform = 'rotate(180deg)';
+      if (chevron) chevron.style.transform = 'rotate(180deg)';
       trigger.setAttribute('aria-expanded', 'true');
     }
     function close() {
@@ -211,7 +252,7 @@
       isOpen = false;
       dropdown.classList.add('invisible', 'opacity-0', 'scale-95');
       dropdown.classList.remove('visible', 'opacity-100', 'scale-100');
-      chevron.style.transform = 'rotate(0deg)';
+      if (chevron) chevron.style.transform = 'rotate(0deg)';
       trigger.setAttribute('aria-expanded', 'false');
     }
     function scheduleClose() { closeTimeout = setTimeout(close, 150); }
@@ -225,7 +266,7 @@
     return { menu: menu, close: close };
   }
 
-  var dropdowns = [initDropdown('consulting'), initDropdown('solutions')].filter(Boolean);
+  var dropdowns = [initDropdown('consulting'), initDropdown('solutions'), initDropdown('lang')].filter(Boolean);
   document.addEventListener('click', function(e) {
     dropdowns.forEach(function(d) { if (!d.menu.contains(e.target)) { d.close(); } });
   });
