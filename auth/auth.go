@@ -21,10 +21,13 @@ func NewOAuthCookieStore() *sessions.CookieStore {
 	var conf = config.Load()
 	store := sessions.NewCookieStore([]byte(conf.AUTH_OAUTH_COOKIE_SECRET))
 	store.Options.Path = "/"
-	store.Options.Domain = conf.APP_DOMAIN
+	// Intentionally no Domain: host-only cookie, bulletproof round-trip on the
+	// exact host that served the /auth/{provider} response. Avoids cookie loss
+	// when APP_DOMAIN is misconfigured or doesn't exactly match the request host.
 	store.Options.HttpOnly = true
 	store.Options.Secure = conf.IS_PRODUCTION
-	store.Options.MaxAge = 86400 * 7
+	// OAuth state round-trip takes seconds. 15 min buffer, not 7 days.
+	store.Options.MaxAge = 60 * 15
 
 	return store
 }
