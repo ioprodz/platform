@@ -24,6 +24,8 @@ func ConfigureModule(router *mux.Router) blog_models.BlogRepository {
 
 	// api
 	router.HandleFunc("/api/admin/blog", blog_admin.CreateCreateBlogHandler(blogRepo)).Methods("POST")
+	router.HandleFunc("/api/admin/blog/from-notes", blog_admin.CreateFromNotesHandler(blogRepo)).Methods("POST")
+	router.HandleFunc("/api/admin/blog/{id}", blog_admin.CreateUpdateBlogHandler(blogRepo)).Methods("PUT")
 	router.HandleFunc("/api/admin/blog/{id}/review", blog_admin.CreateReviewHandler(blogRepo)).Methods("PUT")
 	router.HandleFunc("/api/admin/blog/{id}/publish", blog_admin.CreatePublishHandler(blogRepo)).Methods("PUT")
 

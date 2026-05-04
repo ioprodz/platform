@@ -1,10 +1,68 @@
 {{ define "content" }}
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<style>
+  #previewPane {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text);
+  }
+  #previewPane > *:first-child { margin-top: 0; }
+  #previewPane h1 { font-size: 1.875rem; margin: 1.75rem 0 0.75rem; letter-spacing: -0.02em; font-weight: 600; }
+  #previewPane h2 { font-size: 1.375rem; margin: 1.5rem 0 0.5rem; font-weight: 600; }
+  #previewPane h3 { font-size: 1.125rem; margin: 1.25rem 0 0.5rem; font-weight: 600; }
+  #previewPane p { margin: 0.85rem 0; }
+  #previewPane ul, #previewPane ol { margin: 0.75rem 0; padding-left: 1.25rem; }
+  #previewPane li { margin: 0.3rem 0; }
+  #previewPane li::marker { color: var(--text-muted); }
+  #previewPane blockquote {
+    border-left: 2px solid var(--accent);
+    padding: 0.1rem 0 0.1rem 1rem;
+    margin: 1.25rem 0;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+  #previewPane pre {
+    background: #0d0d10;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    padding: 0.875rem 1rem;
+    margin: 1.25rem 0;
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  #previewPane code {
+    background: rgba(255,255,255,0.06);
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-size: 0.88em;
+    color: var(--accent);
+  }
+  #previewPane pre code { background: transparent; padding: 0; color: #e5e7eb; }
+  #previewPane a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  #previewPane hr { border: 0; border-top: 1px solid var(--border); margin: 1.75rem 0; }
+  #previewPane table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; border: 1px solid var(--border); border-radius: 0.5rem; overflow: hidden; font-size: 13px; }
+  #previewPane th, #previewPane td { padding: 0.5rem 0.75rem; text-align: left; border-bottom: 1px solid var(--border); }
+  #previewPane th { background: rgba(255,255,255,0.03); font-weight: 600; }
+</style>
+
 <section>
   <div class="space-y-6">
-    <div class="flex items-center justify-between gap-3">
-      <h2 class="text-xl font-semibold text-text tracking-tight">Blog Post Editor</h2>
+    <div class="flex items-center justify-between gap-3 flex-wrap">
+      <div class="flex items-center gap-3">
+        <h2 class="text-xl font-semibold text-text tracking-tight">Editor</h2>
+        <span id="saveIndicator" class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim">Idle</span>
+      </div>
       <div class="flex items-center gap-2">
-        <a href="/blog/{{ .Id }}"
+        <a href="/blog/{{ .Id }}" target="_blank"
           class="inline-flex items-center gap-1.5 rounded-md border border-border bg-surface/40 px-3.5 py-1.5 text-[13px] text-text-muted hover:text-text hover:border-border-strong transition-colors">
           View in reader
         </a>
@@ -26,52 +84,138 @@
       </div>
     </div>
 
-    {{ if eq .Body "" }}
-    <div id="noContentDialog" class="rounded-xl border border-border bg-surface/40 p-8 text-center">
-      <p class="text-text-muted text-[14px] max-w-md mx-auto mb-4">
-        <span class="text-text font-medium">{{ .Title }}</span> doesn't have any content yet. Generate starter content from the title?
-      </p>
-      <div class="flex flex-col sm:flex-row gap-2 justify-center">
-        <button onclick="(function(){document.getElementById('noContentDialog').style.display='none';document.getElementById('editionSection').style.display='block';})()"
-          class="inline-flex items-center justify-center gap-1.5 rounded-md border border-border bg-surface/40 px-3.5 py-1.5 text-[13px] text-text-muted hover:text-text hover:border-border-strong transition-colors">
-          No thanks
-        </button>
-        <a href="/admin/blog/create?postId={{ .Id }}"
-          class="inline-flex items-center justify-center gap-1.5 rounded-md bg-accent px-3.5 py-1.5 text-[13px] font-medium text-black hover:bg-accent/90 transition-colors">
-          Yes, generate
-        </a>
-      </div>
-    </div>
-    {{ end }}
-
-    <div id="editionSection" {{ if eq .Body "" }} style="display:none;" {{ end }}>
-      <form class="space-y-4" action="">
+    <div class="grid lg:grid-cols-12 gap-6">
+      <div class="lg:col-span-7 space-y-4">
         <div class="space-y-1.5">
           <label for="bt" class="block text-[13px] font-medium text-text">Title</label>
           <input id="bt" type="text" value="{{ .Title }}"
             class="w-full h-11 rounded-md border border-border bg-surface/60 px-3 py-2 text-lg text-text placeholder:text-text-dim focus:outline-none focus:border-accent/50 transition-colors" />
         </div>
         <div class="space-y-1.5">
-          <label for="bb" class="block text-[13px] font-medium text-text">Article content</label>
-          <textarea id="bb"
-            class="w-full h-96 rounded-md border border-border bg-surface/60 px-3 py-3 text-[14px] text-text placeholder:text-text-dim focus:outline-none focus:border-accent/50 transition-colors font-mono whitespace-pre-line">
-{{ .Body }}</textarea>
-        </div>
-      </form>
-
-      {{ if .RelatedPosts }}
-      <div class="mt-8 pt-6 border-t border-border">
-        <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-3">Related posts</div>
-        <ul class="space-y-1.5">
-          {{ range .RelatedPosts }}
-          <li>
-            <a href="/admin/blog/{{ .Id }}" class="text-[13px] text-text-muted hover:text-accent transition-colors">→ {{ .Title }}</a>
-          </li>
+          <label for="bb" class="block text-[13px] font-medium text-text">Article body (markdown)</label>
+          <textarea id="bb" rows="28"
+            placeholder="Empty draft. Type to start, or generate from notes via the link below."
+            class="w-full rounded-md border border-border bg-surface/60 px-3 py-3 text-[14px] text-text placeholder:text-text-dim focus:outline-none focus:border-accent/50 transition-colors font-mono whitespace-pre-line">{{ .Body }}</textarea>
+          {{ if eq .Body "" }}
+          <p class="text-[12px] text-text-dim">
+            Or <a href="/admin/blog/create" class="text-accent hover:underline">start fresh from notes</a>.
+          </p>
           {{ end }}
-        </ul>
+        </div>
+
+        {{ if .RelatedPosts }}
+        <div class="pt-4 border-t border-border">
+          <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-2">Related posts</div>
+          <ul class="space-y-1.5">
+            {{ range .RelatedPosts }}
+            <li>
+              <a href="/admin/blog/{{ .Id }}" class="text-[13px] text-text-muted hover:text-accent transition-colors">→ {{ .Title }}</a>
+            </li>
+            {{ end }}
+          </ul>
+        </div>
+        {{ end }}
       </div>
-      {{ end }}
+
+      <div class="lg:col-span-5">
+        <div class="lg:sticky lg:top-24">
+          <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim mb-3">Live preview</div>
+          <div class="rounded-md border border-border bg-surface/40 p-5 max-h-[80vh] overflow-y-auto">
+            <h1 id="previewTitle" class="text-2xl font-semibold tracking-tight text-text mb-4">{{ .Title }}</h1>
+            <div id="previewPane"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  (function () {
+    const blogId = "{{ .Id }}";
+    const titleEl = document.getElementById("bt");
+    const bodyEl = document.getElementById("bb");
+    const previewTitleEl = document.getElementById("previewTitle");
+    const previewEl = document.getElementById("previewPane");
+    const indicator = document.getElementById("saveIndicator");
+
+    function renderPreview() {
+      previewTitleEl.textContent = titleEl.value || "Untitled";
+      const md = bodyEl.value || "";
+      previewEl.innerHTML = marked.parse(md);
+      try { hljs.highlightAll(); } catch (e) {}
+      const mermaidCode = previewEl.querySelector("code.language-mermaid");
+      if (mermaidCode && window.mermaid) {
+        try {
+          mermaidCode.innerHTML = mermaidCode.innerHTML.toString().replaceAll("&amp;gt;", ">");
+          mermaid.initialize({ startOnLoad: false, theme: "dark" });
+          mermaid.run({ querySelector: "code.language-mermaid" });
+        } catch (e) {}
+      }
+    }
+
+    function setIndicator(state, text) {
+      indicator.textContent = text;
+      indicator.classList.remove("text-text-dim", "text-accent", "text-red-400");
+      if (state === "saved") indicator.classList.add("text-accent");
+      else if (state === "error") indicator.classList.add("text-red-400");
+      else indicator.classList.add("text-text-dim");
+    }
+
+    let saveTimer = null;
+    let inFlight = false;
+    let pendingWhileInFlight = false;
+
+    async function doSave() {
+      if (inFlight) {
+        pendingWhileInFlight = true;
+        return;
+      }
+      const body = bodyEl.value;
+      if (body.length <= 20) {
+        setIndicator("idle", "Type more to save");
+        return;
+      }
+      inFlight = true;
+      setIndicator("idle", "Saving…");
+      try {
+        const res = await fetch("/api/admin/blog/" + blogId, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ title: titleEl.value, body: body }),
+        });
+        if (!res.ok) throw new Error("status " + res.status);
+        const data = await res.json();
+        const t = new Date(data.savedAt);
+        const hh = String(t.getHours()).padStart(2, "0");
+        const mm = String(t.getMinutes()).padStart(2, "0");
+        setIndicator("saved", "Saved · " + hh + ":" + mm);
+      } catch (err) {
+        setIndicator("error", "Save failed — retrying");
+        setTimeout(doSave, 3000);
+      } finally {
+        inFlight = false;
+        if (pendingWhileInFlight) {
+          pendingWhileInFlight = false;
+          scheduleSave();
+        }
+      }
+    }
+
+    function scheduleSave() {
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(doSave, 1500);
+    }
+
+    function onInput() {
+      renderPreview();
+      scheduleSave();
+    }
+
+    titleEl.addEventListener("input", onInput);
+    bodyEl.addEventListener("input", onInput);
+
+    renderPreview();
+  })();
+</script>
 {{ end }}

@@ -1,48 +1,50 @@
 {{ define "content" }}
 <section>
-  <div class="space-y-6 max-w-2xl">
+  <div class="space-y-6 max-w-3xl">
     <div>
-      <h2 class="text-xl font-semibold text-text tracking-tight">Create Blog Post</h2>
-      <p class="text-[13px] text-text-muted mt-1">Generate a starter post with AI.</p>
+      <h2 class="text-xl font-semibold text-text tracking-tight">New blog post</h2>
+      <p class="text-[13px] text-text-muted mt-1">Dump your thoughts. The AI shapes a draft you'll edit.</p>
     </div>
 
-    <form id="myForm" hx-post="/api/admin/blog" hx-target="#result" hx-trigger="submit" class="space-y-5">
-      {{ if . }}
-      <input type="hidden" name="postId" value="{{ .Id }}" required />
-      {{ end }}
+    <form id="myForm" hx-post="/api/admin/blog/from-notes" hx-target="#result" hx-trigger="submit" class="space-y-5">
+      <div class="space-y-1.5">
+        <label for="title" class="block text-[13px] font-medium text-text">Title <span class="text-text-dim font-normal">(optional)</span></label>
+        <input type="text" name="title" id="title"
+          placeholder="Leave blank to let AI suggest one"
+          class="w-full h-10 rounded-md border border-border bg-surface/60 px-3 py-2 text-[14px] text-text placeholder:text-text-dim focus:outline-none focus:border-accent/50 transition-colors" />
+      </div>
 
       <div class="space-y-1.5">
-        <label for="title" class="block text-[13px] font-medium text-text">Title</label>
-        <input type="text" name="title" id="title"
-          value="{{ if . }}{{ .Title }}{{ end }}"
-          class="w-full h-10 rounded-md border border-border bg-surface/60 px-3 py-2 text-[14px] text-text placeholder:text-text-dim focus:outline-none focus:border-accent/50 transition-colors"
-          required />
-        <p class="text-[12px] text-text-dim">The blog title.</p>
+        <label for="notes" class="block text-[13px] font-medium text-text">Your notes</label>
+        <textarea name="notes" id="notes" rows="14" required
+          placeholder="Dump your thoughts here. Bullets, half-sentences, links, whatever. The AI will turn it into a draft."
+          class="w-full rounded-md border border-border bg-surface/60 px-3 py-3 text-[14px] text-text placeholder:text-text-dim focus:outline-none focus:border-accent/50 transition-colors font-mono whitespace-pre-line"></textarea>
+        <p class="text-[12px] text-text-dim">Treated as data, not as instructions to the AI. Fenced code blocks are preserved.</p>
       </div>
 
       <div class="space-y-1.5">
         <label for="paragraphCount" class="block text-[13px] font-medium text-text">Paragraph count</label>
-        <input type="number" min="1" max="10" value="3" name="paragraphCount" id="paragraphCount"
+        <input type="number" min="1" max="10" value="5" name="paragraphCount" id="paragraphCount"
           class="w-full h-10 rounded-md border border-border bg-surface/60 px-3 py-2 text-[14px] text-text focus:outline-none focus:border-accent/50 transition-colors"
           required />
-        <p class="text-[12px] text-text-dim">How many paragraphs to generate (1–10).</p>
+        <p class="text-[12px] text-text-dim">Target length for the draft (1–10).</p>
       </div>
 
       <div class="grid grid-cols-3 gap-3">
         <label class="flex items-start gap-2 rounded-md border border-border bg-surface/40 p-3 cursor-pointer hover:border-border-strong transition-colors">
-          <input type="checkbox" value="active" name="useEmojis" id="useEmojis" checked
+          <input type="checkbox" value="active" name="useEmojis" id="useEmojis"
             class="mt-0.5 h-4 w-4 rounded border-border bg-surface accent-accent" />
           <span>
             <span class="block text-[13px] font-medium text-text">Emojis</span>
-            <span class="block text-[11px] text-text-dim">insert emojis where applicable</span>
+            <span class="block text-[11px] text-text-dim">where they add meaning</span>
           </span>
         </label>
         <label class="flex items-start gap-2 rounded-md border border-border bg-surface/40 p-3 cursor-pointer hover:border-border-strong transition-colors">
-          <input type="checkbox" value="active" name="useMarkdown" id="useMarkdown"
+          <input type="checkbox" value="active" name="useMarkdown" id="useMarkdown" checked
             class="mt-0.5 h-4 w-4 rounded border-border bg-surface accent-accent" />
           <span>
             <span class="block text-[13px] font-medium text-text">Markdown</span>
-            <span class="block text-[11px] text-text-dim">style the article</span>
+            <span class="block text-[11px] text-text-dim">headings, lists, emphasis</span>
           </span>
         </label>
         <label class="flex items-start gap-2 rounded-md border border-border bg-surface/40 p-3 cursor-pointer hover:border-border-strong transition-colors">
@@ -50,7 +52,7 @@
             class="mt-0.5 h-4 w-4 rounded border-border bg-surface accent-accent" />
           <span>
             <span class="block text-[13px] font-medium text-text">Mermaid</span>
-            <span class="block text-[11px] text-text-dim">illustrations when applicable</span>
+            <span class="block text-[11px] text-text-dim">diagrams when applicable</span>
           </span>
         </label>
       </div>
@@ -62,7 +64,7 @@
         </a>
         <button id="submit_button" type="submit"
           class="inline-flex items-center gap-1.5 rounded-md bg-accent px-3.5 py-1.5 text-[13px] font-medium text-black hover:bg-accent/90 transition-colors">
-          Create blog post
+          Draft from notes
         </button>
       </div>
     </form>
@@ -71,12 +73,18 @@
     <script>
       const form = document.getElementById("myForm");
       form.addEventListener("htmx:afterRequest", function (event) {
-        var id = event.detail.xhr.response;
-        window.location.href = "/admin/blog/" + id;
+        if (event.detail.successful) {
+          var id = event.detail.xhr.response;
+          window.location.href = "/admin/blog/" + id;
+        } else {
+          let button = document.getElementById("submit_button");
+          button.innerHTML = "Draft from notes";
+          button.removeAttribute("disabled");
+        }
       });
       form.addEventListener("htmx:beforeRequest", function (event) {
         let button = document.getElementById("submit_button");
-        button.innerHTML = "Generating…";
+        button.innerHTML = "Drafting…";
         button.setAttribute("disabled", "disabled");
       });
     </script>
