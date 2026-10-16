@@ -14,6 +14,7 @@ import (
 	"ioprodz/cv"
 	"ioprodz/home"
 	"ioprodz/members"
+	"ioprodz/portal"
 	"ioprodz/qna"
 	"ioprodz/solutions"
 
@@ -42,6 +43,7 @@ func main() {
 	// Configure module routers (specific routes first)
 	auth.ConfigureModule(router)
 	members.ConfigureModule(router)
+	portal.ConfigureModule(router)
 	qna.ConfigureModule(router)
 	blogRepo := blog.ConfigureModule(router)
 	cv.ConfigureModule(router)

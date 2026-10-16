@@ -1,0 +1,42 @@
+{{ define "content" }}
+<div class="mx-auto max-w-4xl px-6 lg:px-8 py-16 lg:py-24">
+  <div class="mb-10">
+    <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-2">Portal</div>
+    <h1 class="text-3xl lg:text-4xl tracking-tighter font-semibold text-text">Your ioprodz services</h1>
+    {{ if .HasIoprodzAccount }}
+    <p class="mt-3 text-text-muted text-[14px]">
+      Signed in as <span class="text-text">{{ .User.Email }}</span>. Each service signs you in with the same ioprodz account.
+    </p>
+    {{ end }}
+  </div>
+
+  {{ if not .HasIoprodzAccount }}
+  <div class="rounded-2xl border border-border bg-surface/50 p-8 text-center">
+    <p class="text-text-muted text-[15px] mb-6">The portal lists the services of your ioprodz account. Sign in with it to see them.</p>
+    <a href="/auth/ioprodz"
+      class="inline-flex items-center gap-1.5 rounded-md bg-accent px-5 py-2.5 text-[14px] font-medium text-black hover:bg-accent/90 transition-colors">
+      Sign in with ioprodz
+    </a>
+  </div>
+  {{ else if not .Services }}
+  <div class="rounded-2xl border border-border bg-surface/50 p-8 text-center">
+    <p class="text-text-muted text-[15px]">No services are linked to your account yet. Ask an administrator for access, then sign in again.</p>
+  </div>
+  {{ else }}
+  <div class="grid gap-4 sm:grid-cols-2">
+    {{ range .Services }}
+    <a href="{{ .Url }}" target="_blank" rel="noopener"
+      class="group block rounded-xl border border-border bg-surface/50 p-5 hover:border-accent/50 hover:bg-surface transition-colors">
+      <div class="flex items-center justify-between gap-3">
+        <div class="text-[16px] font-semibold text-text">{{ .Name }}</div>
+        <svg class="w-4 h-4 text-text-dim group-hover:text-accent transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+      </div>
+      {{ if .Description }}<p class="mt-2 text-text-muted text-[14px] leading-relaxed">{{ .Description }}</p>{{ end }}
+      {{ if .Note }}<p class="mt-3 font-mono text-[11px] uppercase tracking-[0.14em] text-text-dim">{{ .Note }}</p>{{ end }}
+    </a>
+    {{ end }}
+  </div>
+  <p class="mt-8 text-text-dim text-[13px]">Access changed? Sign out and in again to refresh this list.</p>
+  {{ end }}
+</div>
+{{ end }}

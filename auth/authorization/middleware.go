@@ -17,6 +17,7 @@ var public Paths = Paths{
 	"/login",
 	"/auth/github",
 	"/auth/google",
+	"/auth/ioprodz",
 	"/blog",
 	"/consulting",
 	"/solutions",
@@ -30,6 +31,7 @@ var public Paths = Paths{
 var authCallback Paths = Paths{
 	"/auth/github/callback",
 	"/auth/google/callback",
+	"/auth/ioprodz/callback",
 }
 
 func (paths *Paths) matchPath(path string) bool {
@@ -60,11 +62,13 @@ func CreateRequestAuthorization(sessionRepo auth_models.SessionRepository) func(
 			cookie, _ := auth_infra.GetAuthCookie(w, r)
 			session, sessionError := sessionRepo.Get(cookie.Id)
 			ctx := context.WithValue(r.Context(), policies.CurrentUserCtxKey, policies.CurrentUser{
-				Id:        session.AccountId,
-				SessionId: session.Id,
-				Name:      session.Name,
-				Email:     session.Email,
-				AvatarUrl: session.AvatarUrl,
+				Id:         session.AccountId,
+				SessionId:  session.Id,
+				Name:       session.Name,
+				Email:      session.Email,
+				AvatarUrl:  session.AvatarUrl,
+				Provider:   session.Provider,
+				ProjectIds: session.ProjectIds,
 			})
 			autnenticated := sessionError == nil
 			isPublic := public.matchPath(r.URL.Path)

@@ -17,6 +17,9 @@ type Session struct {
 	Hash           string
 	FirstCreatedAt string
 	LastUsedAt     string
+	Provider       string
+	// Zitadel project ids the user holds a role in, read at login
+	ProjectIds []string
 }
 
 func (s Session) GetId() string {
@@ -35,8 +38,9 @@ func SessionFromJSON(jsonData []byte) Session {
 	return session
 }
 
-func NewSession(accountId string, uaString string, hash string, avatarUrl string, name string, email string) Session {
+func NewSession(accountId string, uaString string, hash string, avatarUrl string, name string, email string, provider string) Session {
 	return Session{
+		Provider:       provider,
 		Id:             uuid.NewString(),
 		AccountId:      accountId,
 		UaString:       uaString,

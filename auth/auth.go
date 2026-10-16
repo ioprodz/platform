@@ -6,6 +6,7 @@ import (
 	auth_authorization "ioprodz/auth/authorization"
 	auth_security "ioprodz/auth/security"
 	"ioprodz/common/config"
+	"log"
 	"os"
 
 	"github.com/gorilla/mux"
@@ -15,6 +16,7 @@ import (
 	"github.com/markbates/goth/gothic"
 	"github.com/markbates/goth/providers/github"
 	"github.com/markbates/goth/providers/google"
+	"github.com/markbates/goth/providers/openidConnect"
 )
 
 func NewOAuthCookieStore() *sessions.CookieStore {
@@ -35,12 +37,14 @@ func NewOAuthCookieStore() *sessions.CookieStore {
 func ConfigureModule(router *mux.Router) {
 
 	// Configure Goth/Gothic lib
-	baseUrl := config.Load().BASE_URL
+	conf := config.Load()
+	baseUrl := conf.BASE_URL
 
 	goth.UseProviders(
 		google.New(os.Getenv("GOOGLE_KEY"), os.Getenv("GOOGLE_SECRET"), baseUrl+"/auth/google/callback"),
 		github.New(os.Getenv("GITHUB_KEY"), os.Getenv("GITHUB_SECRET"), baseUrl+"/auth/github/callback"),
 	)
+	configureIoprodzAuth(conf.IOPRODZ_AUTH_ISSUER, conf.IOPRODZ_AUTH_CLIENT_ID, conf.IOPRODZ_AUTH_CLIENT_SECRET, baseUrl)
 	gothic.Store = NewOAuthCookieStore()
 
 	// Configure routes
@@ -57,4 +61,24 @@ func ConfigureModule(router *mux.Router) {
 
 	router.Use(auth_authorization.CreateRequestAuthorization(sessionRepo))
 
+}
+
+// configureIoprodzAuth registers the ioprodz account (Zitadel OIDC) as goth provider "ioprodz".
+// Skipped when no client id is configured.
+func configureIoprodzAuth(issuer string, clientId string, clientSecret string, baseUrl string) {
+	if clientId == "" {
+		return
+	}
+	provider, err := openidConnect.NewNamed("ioprodz", clientId, clientSecret,
+		baseUrl+"/auth/ioprodz/callback",
+		issuer+"/.well-known/openid-configuration",
+		"openid", "profile", "email",
+		// lets the user's token read their own grants (portal)
+		"urn:zitadel:iam:org:project:id:zitadel:aud",
+	)
+	if err != nil {
+		log.Printf("ioprodz login disabled: %v", err)
+		return
+	}
+	goth.UseProviders(provider)
 }

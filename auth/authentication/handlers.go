@@ -5,6 +5,7 @@ import (
 	"hash/fnv"
 	auth_infra "ioprodz/auth/_infra"
 	auth_models "ioprodz/auth/_models"
+	"ioprodz/common/config"
 	"log"
 	"net/http"
 
@@ -30,10 +31,32 @@ func CreateOAuthCallbackHandler(accountRepo auth_models.AccountRepository, sessi
 
 		auth_infra.SetAuthCookie(w, r, auth_infra.CookieData{Id: session.Id})
 
-		w.Header().Set("Location", "/feed")
+		w.Header().Set("Location", landingPage(user))
 		w.WriteHeader(http.StatusTemporaryRedirect)
 
 	}
+}
+
+func landingPage(user goth.User) string {
+	if user.Provider == "ioprodz" {
+		return "/portal"
+	}
+	return "/feed"
+}
+
+// projectIds lists the Zitadel projects an ioprodz account holds a role in.
+// Other providers have none. On error the portal shows no services rather
+// than failing the login.
+func projectIds(user goth.User) []string {
+	if user.Provider != "ioprodz" {
+		return nil
+	}
+	ids, err := auth_infra.FetchIoprodzProjectIds(config.Load().IOPRODZ_AUTH_ISSUER, user.AccessToken)
+	if err != nil {
+		log.Printf("ioprodz account grants for %s: %v", user.UserID, err)
+		return nil
+	}
+	return ids
 }
 
 func getSession(account auth_models.Account, user goth.User, ua useragent.UserAgent, sessionRepo auth_models.SessionRepository) auth_models.Session {
@@ -41,10 +64,13 @@ func getSession(account auth_models.Account, user goth.User, ua useragent.UserAg
 	session, sessionNotFound := sessionRepo.GetByHash(sessionHash)
 
 	if sessionNotFound != nil {
-		session = auth_models.NewSession(account.Id, ua.String, sessionHash, user.AvatarURL, user.Name, user.Email)
+		session = auth_models.NewSession(account.Id, ua.String, sessionHash, user.AvatarURL, user.Name, user.Email, user.Provider)
+		session.ProjectIds = projectIds(user)
 		sessionRepo.Create(session)
 	} else {
 		session.SetLastUsedNow()
+		session.Provider = user.Provider
+		session.ProjectIds = projectIds(user)
 		sessionRepo.Update(session)
 	}
 	return session
@@ -75,7 +101,7 @@ func CreateOAuthLoginHandler(accountRepo auth_models.AccountRepository, sessionR
 			account := getAccount(accountRepo, user)
 			session := getSession(account, user, ua, sessionRepo)
 			auth_infra.SetAuthCookie(w, r, auth_infra.CookieData{Id: session.Id})
-			w.Header().Set("Location", "/feed")
+			w.Header().Set("Location", landingPage(user))
 			w.WriteHeader(http.StatusTemporaryRedirect)
 		} else {
 			gothic.BeginAuthHandler(w, r)

@@ -21,7 +21,8 @@
     "about": "À propos",
     "blog": "Blog",
     "feed": "Flux",
-    "admin": "Admin"
+    "admin": "Admin",
+    "portal": "Portail"
   },
   "cta": {
     "bookScreening": "Réserver un pré-entretien"
