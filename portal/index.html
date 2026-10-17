@@ -1,16 +1,10 @@
 {{ define "content" }}
+{{ if not .HasIoprodzAccount }}
 <div class="mx-auto max-w-4xl px-6 lg:px-8 py-16 lg:py-24">
   <div class="mb-10">
     <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-2">Portal</div>
     <h1 class="text-3xl lg:text-4xl tracking-tighter font-semibold text-text">Your ioprodz services</h1>
-    {{ if .HasIoprodzAccount }}
-    <p class="mt-3 text-text-muted text-[14px]">
-      Signed in as <span class="text-text">{{ .User.Email }}</span>. Each service signs you in with the same ioprodz account.
-    </p>
-    {{ end }}
   </div>
-
-  {{ if not .HasIoprodzAccount }}
   <div class="rounded-2xl border border-border bg-surface/50 p-8 text-center">
     <p class="text-text-muted text-[15px] mb-6">The portal lists the services of your ioprodz account. Sign in with it to see them.</p>
     <a href="/auth/ioprodz"
@@ -18,25 +12,279 @@
       Sign in with ioprodz
     </a>
   </div>
-  {{ else if not .Services }}
-  <div class="rounded-2xl border border-border bg-surface/50 p-8 text-center">
-    <p class="text-text-muted text-[15px]">No services are linked to your account yet. Ask an administrator for access, then sign in again.</p>
-  </div>
-  {{ else }}
-  <div class="grid gap-4 sm:grid-cols-2">
-    {{ range .Services }}
-    <a href="{{ .Url }}" target="_blank" rel="noopener"
-      class="group block rounded-xl border border-border bg-surface/50 p-5 hover:border-accent/50 hover:bg-surface transition-colors">
-      <div class="flex items-center justify-between gap-3">
-        <div class="text-[16px] font-semibold text-text">{{ .Name }}</div>
-        <svg class="w-4 h-4 text-text-dim group-hover:text-accent transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-      </div>
-      {{ if .Description }}<p class="mt-2 text-text-muted text-[14px] leading-relaxed">{{ .Description }}</p>{{ end }}
-      {{ if .Note }}<p class="mt-3 font-mono text-[11px] uppercase tracking-[0.14em] text-text-dim">{{ .Note }}</p>{{ end }}
-    </a>
-    {{ end }}
-  </div>
-  <p class="mt-8 text-text-dim text-[13px]">Access changed? Sign out and in again to refresh this list.</p>
-  {{ end }}
 </div>
+{{ else }}
+<style>
+  .portal-in { animation: portal-in .5s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i, 0) * 45ms); }
+  @keyframes portal-in { from { opacity: 0; transform: translateY(14px) scale(.98); } }
+
+  .app-icon {
+    position: relative; display: grid; place-items: center; flex: none;
+    width: 56px; height: 56px; border-radius: 16px; overflow: hidden;
+    background: linear-gradient(150deg, color-mix(in srgb, var(--c, #E85A28), white 22%), var(--c, #E85A28) 50%, color-mix(in srgb, var(--c, #E85A28), black 28%));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.28), inset 0 -1px 0 rgba(0,0,0,.25), 0 6px 18px -6px color-mix(in srgb, var(--c, #E85A28) 70%, transparent);
+    transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, filter .35s;
+  }
+  .app-icon::after { content: ""; position: absolute; inset: 0; background: radial-gradient(120% 70% at 30% 0%, rgba(255,255,255,.22), transparent 60%); }
+  .app-glyph { width: 58%; height: 58%; background: #fff; -webkit-mask: var(--g) center / contain no-repeat; mask: var(--g) center / contain no-repeat; }
+  .app-initial { color: #fff; font-weight: 600; font-size: 24px; letter-spacing: -0.02em; }
+
+  .app-tile { transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .25s, background-color .25s; }
+  a.app-tile:hover, a.app-tile:focus-visible { transform: translateY(-3px); }
+  a.app-tile:hover .app-icon, a.app-tile:focus-visible .app-icon { transform: scale(1.06) rotate(-2deg); }
+  .app-tile[data-granted="false"] .app-icon { filter: grayscale(.85) brightness(.7); box-shadow: inset 0 1px 0 rgba(255,255,255,.12); }
+  .app-tile[data-granted="false"] .app-text { opacity: .6; }
+
+  .cat-indicator { transition: transform .35s cubic-bezier(.2,.7,.2,1), height .35s cubic-bezier(.2,.7,.2,1), opacity .2s; }
+  .cat-chips { scrollbar-width: none; }
+  .cat-chips::-webkit-scrollbar { display: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .portal-in { animation: none; }
+    .app-tile, .app-icon, .cat-indicator { transition: none; }
+    a.app-tile:hover, a.app-tile:focus-visible, a.app-tile:hover .app-icon, a.app-tile:focus-visible .app-icon { transform: none; }
+  }
+</style>
+
+<div class="px-4 sm:px-6 lg:px-10 py-8 lg:py-12" data-portal>
+  <div class="lg:flex lg:gap-10">
+
+    <aside class="hidden lg:block w-60 flex-none">
+      <div class="sticky top-[96px]">
+        <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-1">Portal</div>
+        <div class="text-[13px] text-text-dim mb-6 truncate">{{ .User.Email }}</div>
+        <nav class="relative" aria-label="Categories" data-cat-list>
+          <div class="cat-indicator absolute inset-x-0 top-0 rounded-lg bg-white/[0.06] border border-border pointer-events-none" data-cat-indicator></div>
+          {{ template "portal-category" .AllFilter }}
+          {{ template "portal-category" .MineFilter }}
+          <div class="my-3 border-t border-border"></div>
+          {{ range .Categories }}{{ template "portal-category" . }}{{ end }}
+        </nav>
+        <p class="mt-8 text-text-dim text-[12px] leading-relaxed">Access changed? Sign out and in again to refresh it.</p>
+      </div>
+    </aside>
+
+    <div class="flex-1 min-w-0">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+        <div>
+          <h1 class="text-3xl lg:text-4xl tracking-tighter font-semibold text-text" data-heading>All apps</h1>
+          <p class="mt-1.5 text-text-muted text-[14px]">{{ .GrantedCount }} of {{ .Total }} services open with your ioprodz account.</p>
+        </div>
+        <label class="relative block w-full sm:w-80">
+          <span class="sr-only">Search apps</span>
+          <svg class="absolute start-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-dim pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="search" placeholder="Search apps" autocomplete="off" spellcheck="false" data-search
+            class="w-full rounded-xl border border-border bg-surface ps-9 pe-10 py-2.5 text-[14px] text-text placeholder:text-text-dim outline-none focus:border-accent/60 focus:ring-2 focus:ring-accent/20 transition-colors [&::-webkit-search-cancel-button]:hidden" />
+          <kbd class="absolute end-2.5 top-1/2 -translate-y-1/2 rounded border border-border-strong px-1.5 font-mono text-[11px] text-text-dim pointer-events-none" data-search-hint>/</kbd>
+        </label>
+      </div>
+
+      <div class="cat-chips lg:hidden -mx-4 px-4 sm:-mx-6 sm:px-6 mb-6 flex gap-2 overflow-x-auto" data-cat-chips>
+        {{ template "portal-chip" .AllFilter }}
+        {{ template "portal-chip" .MineFilter }}
+        {{ range .Categories }}{{ template "portal-chip" . }}{{ end }}
+      </div>
+
+      {{ if eq .GrantedCount 0 }}
+      <div class="mb-6 rounded-xl border border-border bg-surface/50 px-5 py-4 text-[14px] text-text-muted">
+        No services are linked to your account yet. Ask an administrator for access, then sign in again.
+      </div>
+      {{ end }}
+
+      <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4" data-grid>
+        {{ range $i, $t := .Tiles }}
+        {{ if $t.Granted }}
+        <a href="{{ $t.Url }}" target="_blank" rel="noopener"
+          class="app-tile portal-in group relative flex gap-4 rounded-2xl border border-border bg-surface/50 p-4 hover:border-accent/40 hover:bg-surface focus-visible:outline-none focus-visible:border-accent/60"
+          style="--i: {{ $i }}" data-tile data-granted="true" data-category="{{ $t.Category }}"
+          data-search="{{ $t.Name }} {{ $t.Description }} {{ $t.CategoryName }} {{ $t.Url }}">
+          {{ template "portal-icon" $t }}
+          <div class="app-text min-w-0 flex-1">
+            <div class="flex items-center justify-between gap-2">
+              <div class="text-[15px] font-semibold text-text truncate">{{ $t.Name }}</div>
+              <svg class="w-4 h-4 flex-none text-text-dim group-hover:text-accent transition-colors rtl:-scale-x-100" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17 17 7M9 7h8v8"/></svg>
+            </div>
+            <div class="text-[12px] text-text-dim">{{ $t.CategoryName }}</div>
+            <p class="mt-1.5 text-text-muted text-[13px] leading-snug line-clamp-2">{{ $t.Description }}</p>
+            {{ if $t.Note }}<div class="mt-2 inline-block rounded-full border border-border px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-text-dim">{{ $t.Note }}</div>{{ end }}
+          </div>
+        </a>
+        {{ else }}
+        <div class="app-tile portal-in relative flex gap-4 rounded-2xl border border-dashed border-border bg-transparent p-4"
+          style="--i: {{ $i }}" data-tile data-granted="false" data-category="{{ $t.Category }}" aria-disabled="true"
+          title="Ask an administrator for access"
+          data-search="{{ $t.Name }} {{ $t.Description }} {{ $t.CategoryName }} {{ $t.Url }}">
+          {{ template "portal-icon" $t }}
+          <div class="min-w-0 flex-1">
+            <div class="flex items-center justify-between gap-2">
+              <div class="app-text text-[15px] font-semibold text-text truncate">{{ $t.Name }}</div>
+              <svg class="w-4 h-4 flex-none text-text-dim" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke-width="2"/></svg>
+            </div>
+            <div class="app-text text-[12px] text-text-dim">{{ $t.CategoryName }}</div>
+            <p class="app-text mt-1.5 text-text-muted text-[13px] leading-snug line-clamp-2">{{ $t.Description }}</p>
+            <div class="mt-2 text-[12px] text-text-dim">Ask an administrator for access</div>
+          </div>
+        </div>
+        {{ end }}
+        {{ end }}
+      </div>
+
+      <div class="hidden py-20 text-center" data-empty>
+        <div class="text-[15px] text-text">No apps match <span class="text-accent" data-empty-query></span></div>
+        <button type="button" class="hidden mt-3 text-[14px] text-text-muted underline underline-offset-4 hover:text-text" data-search-all></button>
+      </div>
+
+      <p class="lg:hidden mt-8 text-text-dim text-[12px]">Access changed? Sign out and in again to refresh it.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var root = document.querySelector('[data-portal]');
+  var tiles = Array.prototype.slice.call(root.querySelectorAll('[data-tile]'));
+  var grid = root.querySelector('[data-grid]');
+  var search = root.querySelector('[data-search]');
+  var hint = root.querySelector('[data-search-hint]');
+  var heading = root.querySelector('[data-heading]');
+  var empty = root.querySelector('[data-empty]');
+  var emptyQuery = root.querySelector('[data-empty-query]');
+  var searchAll = root.querySelector('[data-search-all]');
+  var indicator = root.querySelector('[data-cat-indicator]');
+  var catButtons = Array.prototype.slice.call(root.querySelectorAll('[data-cat]'));
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var fold = function (s) { return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); };
+  tiles.forEach(function (t) { t._text = fold(t.getAttribute('data-search')); });
+
+  var names = {};
+  catButtons.forEach(function (b) { names[b.getAttribute('data-cat')] = b.getAttribute('data-cat-name'); });
+
+  var category = 'all';
+  var hash = decodeURIComponent(location.hash.slice(1));
+  if (names[hash]) category = hash;
+
+  function matches(t, cat, words) {
+    if (cat === 'mine' && t.getAttribute('data-granted') !== 'true') return false;
+    if (cat !== 'all' && cat !== 'mine' && t.getAttribute('data-category') !== cat) return false;
+    return words.every(function (w) { return t._text.indexOf(w) !== -1; });
+  }
+
+  // FLIP: tiles that stay glide to their new place, new ones fade in.
+  function apply(animate) {
+    var words = fold(search.value.trim()).split(/\s+/).filter(Boolean);
+    var before = new Map();
+    if (animate && !reduced) tiles.forEach(function (t) { if (!t.hidden) before.set(t, t.getBoundingClientRect()); });
+
+    var shown = 0;
+    tiles.forEach(function (t) {
+      var on = matches(t, category, words);
+      t.hidden = !on;
+      t.style.display = on ? '' : 'none';
+      if (on) shown++;
+    });
+
+    if (animate && !reduced) {
+      tiles.forEach(function (t) {
+        if (t.hidden) return;
+        t.classList.remove('portal-in');
+        var was = before.get(t);
+        var now = t.getBoundingClientRect();
+        if (was) {
+          var dx = was.left - now.left, dy = was.top - now.top;
+          if (dx || dy) t.animate([{ transform: 'translate(' + dx + 'px,' + dy + 'px)' }, { transform: 'none' }], { duration: 380, easing: 'cubic-bezier(.2,.7,.2,1)' });
+        } else {
+          t.animate([{ opacity: 0, transform: 'scale(.94)' }, { opacity: 1, transform: 'none' }], { duration: 300, easing: 'cubic-bezier(.2,.7,.2,1)' });
+        }
+      });
+    }
+
+    empty.classList.toggle('hidden', shown > 0);
+    grid.classList.toggle('hidden', shown === 0);
+    if (shown === 0) {
+      emptyQuery.textContent = '“' + search.value.trim() + '”';
+      var elsewhere = category !== 'all' && tiles.filter(function (t) { return matches(t, 'all', words); }).length;
+      searchAll.classList.toggle('hidden', !elsewhere);
+      if (elsewhere) searchAll.textContent = elsewhere + (elsewhere === 1 ? ' match' : ' matches') + ' in all apps';
+    }
+  }
+
+  function moveIndicator() {
+    var active = root.querySelector('[data-cat-list] [data-cat="' + category + '"]');
+    if (!active || !indicator) return;
+    indicator.style.height = active.offsetHeight + 'px';
+    indicator.style.transform = 'translateY(' + active.offsetTop + 'px)';
+  }
+
+  function select(cat, animate) {
+    category = cat;
+    catButtons.forEach(function (b) {
+      var on = b.getAttribute('data-cat') === cat;
+      b.setAttribute('aria-current', on ? 'true' : 'false');
+      b.classList.toggle('text-text', on);
+      b.classList.toggle('text-text-muted', !on);
+      if (b.hasAttribute('data-chip')) {
+        b.classList.toggle('bg-accent', on);
+        b.classList.toggle('text-black', on);
+        b.classList.toggle('border-accent', on);
+        if (on && animate) b.scrollIntoView({ block: 'nearest', inline: 'center', behavior: reduced ? 'auto' : 'smooth' });
+      }
+    });
+    heading.textContent = names[cat];
+    moveIndicator();
+    history.replaceState(null, '', cat === 'all' ? location.pathname + location.search : '#' + cat);
+    apply(animate);
+  }
+
+  catButtons.forEach(function (b) {
+    b.addEventListener('click', function () { select(b.getAttribute('data-cat'), true); });
+  });
+
+  search.addEventListener('input', function () {
+    hint.style.opacity = search.value ? '0' : '';
+    apply(true);
+  });
+  search.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { search.value = ''; hint.style.opacity = ''; apply(true); search.blur(); }
+    if (e.key === 'Enter') {
+      var first = tiles.filter(function (t) { return !t.hidden && t.getAttribute('data-granted') === 'true'; })[0];
+      if (first) window.open(first.href, '_blank', 'noopener');
+    }
+  });
+  searchAll.addEventListener('click', function () { select('all', true); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== '/' || e.metaKey || e.ctrlKey || e.altKey) return;
+    var el = document.activeElement;
+    if (el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable)) return;
+    e.preventDefault();
+    search.focus();
+  });
+
+  window.addEventListener('resize', moveIndicator);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(moveIndicator);
+  select(category, false);
+})();
+</script>
+{{ end }}
+{{ end }}
+
+{{ define "portal-icon" }}
+<div class="app-icon" style="--c: {{ .Color }}">
+  {{ if .Icon }}<span class="app-glyph" style="--g: url({{ .Icon }})"></span>
+  {{ else }}<span class="app-initial">{{ .Initial }}</span>{{ end }}
+</div>
+{{ end }}
+
+{{ define "portal-category" }}
+<button type="button" data-cat="{{ .Key }}" data-cat-name="{{ .Name }}"
+  class="relative w-full flex items-center justify-between rounded-lg px-3 py-2 text-[14px] text-text-muted hover:text-text transition-colors">
+  <span>{{ .Name }}</span>
+  <span class="font-mono text-[11px] text-text-dim">{{ .Count }}</span>
+</button>
+{{ end }}
+
+{{ define "portal-chip" }}
+<button type="button" data-cat="{{ .Key }}" data-cat-name="{{ .Name }}" data-chip
+  class="flex-none rounded-full border border-border px-3.5 py-1.5 text-[13px] text-text-muted transition-colors">{{ .Name }}</button>
 {{ end }}

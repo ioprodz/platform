@@ -2,22 +2,46 @@ package portal
 
 import "testing"
 
-func TestServicesForShowsOnlyGrantedProjects(t *testing.T) {
-	catalog := loadCatalog(`[
-		{"projectId":"1","name":"Mail","url":"https://mail.example"},
-		{"projectId":"1","name":"Webmail","url":"https://webmail.example"},
-		{"projectId":"2","name":"Git","url":"https://git.example"}
-	]`)
+func TestTilesForListsGrantedServicesFirstAndLocksTheRest(t *testing.T) {
+	services := []Service{
+		{ProjectId: "2", Name: "Git"},
+		{ProjectId: "1", Name: "Mail"},
+		{ProjectId: "", Name: "Registry"},
+		{ProjectId: "1", Name: "Webmail"},
+	}
 
-	visible := servicesFor(catalog, []string{"1", "3"})
+	tiles := tilesFor(services, []string{"1", "3"})
 
-	if len(visible) != 2 || visible[0].Name != "Mail" || visible[1].Name != "Webmail" {
-		t.Fatalf("expected Mail and Webmail, got %+v", visible)
+	got := []string{}
+	for _, tile := range tiles {
+		got = append(got, tile.Name)
+	}
+	want := []string{"Mail", "Webmail", "Git", "Registry"}
+	for i := range want {
+		if got[i] != want[i] {
+			t.Fatalf("expected order %v, got %v", want, got)
+		}
+	}
+	if !tiles[0].Granted || !tiles[1].Granted || tiles[2].Granted || tiles[3].Granted {
+		t.Fatalf("expected only Mail and Webmail granted, got %+v", tiles)
 	}
 }
 
-func TestLoadCatalogToleratesMissingOrInvalidConfig(t *testing.T) {
-	if len(loadCatalog("")) != 0 || len(loadCatalog("not json")) != 0 {
-		t.Fatal("expected an empty catalog")
+func TestServiceWithoutProjectIsLockedEvenForEmptyGrant(t *testing.T) {
+	tiles := tilesFor([]Service{{Name: "Registry"}}, []string{""})
+	if tiles[0].Granted {
+		t.Fatal("a service without a project id must not open")
+	}
+}
+
+func TestCatalogEntriesAreComplete(t *testing.T) {
+	known := map[string]bool{}
+	for _, c := range categories {
+		known[c.Key] = true
+	}
+	for _, service := range catalog {
+		if service.Name == "" || service.Url == "" || !known[service.Category] {
+			t.Errorf("incomplete catalog entry %+v", service)
+		}
 	}
 }
