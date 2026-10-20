@@ -8,6 +8,7 @@ import (
 	"ioprodz/common/config"
 	"log"
 	"net/http"
+	"slices"
 
 	"github.com/markbates/goth"
 	"github.com/markbates/goth/gothic"
@@ -30,18 +31,60 @@ func CreateOAuthCallbackHandler(accountRepo auth_models.AccountRepository, sessi
 		session := getSession(account, user, ua, sessionRepo)
 
 		auth_infra.SetAuthCookie(w, r, auth_infra.CookieData{Id: session.Id})
+		keepIoprodzToken(w, r, user)
 
-		w.Header().Set("Location", landingPage(user))
+		w.Header().Set("Location", landingPage(w, r, user))
 		w.WriteHeader(http.StatusTemporaryRedirect)
 
 	}
 }
 
-func landingPage(user goth.User) string {
-	if user.Provider == "ioprodz" {
-		return "/portal"
+// nextCookie remembers where an ioprodz sign-in should land (/security after
+// "sign in again"); only the pages listed in landingPages are honoured.
+var nextCookie = "ioprodz-next"
+
+var landingPages = []string{"/security"}
+
+func rememberNext(w http.ResponseWriter, r *http.Request) {
+	next := r.URL.Query().Get("next")
+	if !slices.Contains(landingPages, next) {
+		return
 	}
-	return "/feed"
+	http.SetCookie(w, &http.Cookie{Name: nextCookie, Value: next, Path: "/auth", MaxAge: 60 * 15, HttpOnly: true, SameSite: http.SameSiteLaxMode})
+}
+
+func landingPage(w http.ResponseWriter, r *http.Request, user goth.User) string {
+	if user.Provider != "ioprodz" {
+		return "/feed"
+	}
+	if next := r.URL.Query().Get("next"); slices.Contains(landingPages, next) {
+		return next
+	}
+	if next, err := r.Cookie(nextCookie); err == nil {
+		http.SetCookie(w, &http.Cookie{Name: nextCookie, Path: "/auth", MaxAge: -1})
+		if slices.Contains(landingPages, next.Value) {
+			return next.Value
+		}
+	}
+	return "/portal"
+}
+
+// keepIoprodzToken keeps the user's access token for the account's sign-in
+// methods on /security.
+func keepIoprodzToken(w http.ResponseWriter, r *http.Request, user goth.User) {
+	if user.Provider != "ioprodz" {
+		return
+	}
+	loginName, _ := user.RawData["preferred_username"].(string)
+	if loginName == "" {
+		loginName = user.Email
+	}
+	auth_infra.SetIoprodzToken(w, r, auth_infra.IoprodzToken{
+		AccessToken: user.AccessToken,
+		UserId:      user.UserID,
+		LoginName:   loginName,
+		ExpiresAt:   user.ExpiresAt,
+	})
 }
 
 // projectIds lists the Zitadel projects an ioprodz account holds a role in.
@@ -101,9 +144,11 @@ func CreateOAuthLoginHandler(accountRepo auth_models.AccountRepository, sessionR
 			account := getAccount(accountRepo, user)
 			session := getSession(account, user, ua, sessionRepo)
 			auth_infra.SetAuthCookie(w, r, auth_infra.CookieData{Id: session.Id})
-			w.Header().Set("Location", landingPage(user))
+			keepIoprodzToken(w, r, user)
+			w.Header().Set("Location", landingPage(w, r, user))
 			w.WriteHeader(http.StatusTemporaryRedirect)
 		} else {
+			rememberNext(w, r)
 			gothic.BeginAuthHandler(w, r)
 		}
 
@@ -114,6 +159,7 @@ func CreateLogoutHandler() func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		gothic.Logout(w, r)
 		auth_infra.ClearAuthCookie(w, r)
+		auth_infra.ClearIoprodzToken(w, r)
 		w.Header().Set("Location", "/")
 		w.WriteHeader(http.StatusTemporaryRedirect)
 	}

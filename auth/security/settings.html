@@ -23,7 +23,57 @@
       </nav>
     </aside>
 
-    <div class="lg:col-span-9 max-w-2xl">
+    <div class="lg:col-span-9 max-w-2xl space-y-8">
+      {{ with .Ioprodz }}
+      <div class="rounded-2xl border border-border bg-surface/50 p-6 lg:p-8">
+        <div class="mb-6">
+          <h2 class="text-xl font-semibold text-text tracking-tight">Sign-in methods</h2>
+          <p class="text-[13px] text-text-muted mt-1">How you sign in to your ioprodz account. Adding one opens the ioprodz sign-in pages.</p>
+        </div>
+
+        {{ if .SignInAgain }}
+        <div class="rounded-xl border border-border bg-surface/40 p-4 flex items-center gap-3">
+          <p class="flex-1 text-[13px] text-text-muted">To see and change your sign-in methods, sign in again.</p>
+          <a href="/auth/ioprodz?next=/security" class="inline-flex items-center gap-1.5 rounded-md bg-accent px-3.5 py-1.5 text-[13px] font-medium text-black hover:bg-accent/90 transition-colors">Sign in again</a>
+        </div>
+        {{ else if .Error }}
+        <p class="rounded-xl border border-border bg-surface/40 p-4 text-[13px] text-text-muted">{{ .Error }}</p>
+        {{ else }}
+        <div class="space-y-6">
+          {{ template "security-method-group" .PasskeyGroup }}
+
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-[14px] font-medium text-text">Authenticator app</h3>
+              {{ if not .Methods.Authenticator }}<a href="{{ .Links.Authenticator }}" class="text-[13px] text-accent hover:underline">Set up</a>{{ end }}
+            </div>
+            <div class="flex items-center gap-3 rounded-xl border border-border bg-surface/40 p-4">
+              <span class="flex-1 text-[13px] {{ if .Methods.Authenticator }}text-text{{ else }}text-text-dim{{ end }}">{{ if .Methods.Authenticator }}On: codes from your authenticator app{{ else }}Not set up{{ end }}</span>
+              {{ if .Methods.Authenticator }}
+              <button hx-delete="/security/methods/authenticator/otp" hx-swap="outerHTML" hx-confirm="Remove the authenticator app from your account?"
+                class="inline-flex items-center gap-1.5 rounded-md border border-border bg-surface/60 px-3.5 py-1.5 text-[13px] text-text-muted hover:text-text hover:border-border-strong transition-colors">
+                Remove
+              </button>
+              {{ end }}
+            </div>
+          </div>
+
+          {{ template "security-method-group" .SecurityKeyGroup }}
+
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-[14px] font-medium text-text">Password</h3>
+              {{ if .Methods.Password }}<a href="{{ .Links.Password }}" class="text-[13px] text-accent hover:underline">Change</a>{{ end }}
+            </div>
+            <div class="rounded-xl border border-border bg-surface/40 p-4 text-[13px] {{ if .Methods.Password }}text-text{{ else }}text-text-dim{{ end }}">
+              {{ if .Methods.Password }}Set{{ else }}No password{{ end }}
+            </div>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+      {{ end }}
+
       <div class="rounded-2xl border border-border bg-surface/50 p-6 lg:p-8">
         <div class="mb-6">
           <h2 class="text-xl font-semibold text-text tracking-tight">Sessions</h2>
@@ -31,7 +81,7 @@
         </div>
 
         <div class="space-y-2">
-          {{ range . }}
+          {{ range .Sessions }}
           <div class="flex items-center gap-3 rounded-xl border border-border bg-surface/40 p-4">
             <div class="flex-1 min-w-0">
               <div class="flex items-center gap-2">
@@ -58,6 +108,31 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+{{ end }}
+
+{{ define "security-method-group" }}
+<div>
+  <div class="flex items-center justify-between mb-2">
+    <div>
+      <h3 class="text-[14px] font-medium text-text">{{ .Title }}</h3>
+      <p class="text-[12px] text-text-dim">{{ .Hint }}</p>
+    </div>
+    <a href="{{ .Add }}" class="text-[13px] text-accent hover:underline">{{ .AddLabel }}</a>
+  </div>
+  <div class="space-y-2">
+    {{ range .Keys }}
+    <div class="flex items-center gap-3 rounded-xl border border-border bg-surface/40 p-4">
+      <span class="flex-1 min-w-0 truncate text-[14px] text-text">{{ if .Name }}{{ .Name }}{{ else }}Unnamed{{ end }}</span>
+      <button hx-delete="/security/methods/{{ $.Kind }}/{{ .Id }}" hx-swap="outerHTML" hx-confirm="Remove {{ if .Name }}{{ .Name }}{{ else }}this one{{ end }} from your account?"
+        class="inline-flex items-center gap-1.5 rounded-md border border-border bg-surface/60 px-3.5 py-1.5 text-[13px] text-text-muted hover:text-text hover:border-border-strong transition-colors">
+        Remove
+      </button>
+    </div>
+    {{ else }}
+    <div class="rounded-xl border border-border bg-surface/40 p-4 text-[13px] text-text-dim">None yet</div>
+    {{ end }}
   </div>
 </div>
 {{ end }}

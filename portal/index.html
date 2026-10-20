@@ -52,7 +52,8 @@
     <aside class="hidden lg:block w-60 flex-none">
       <div class="sticky top-[96px]">
         <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-1">Portal</div>
-        <div class="text-[13px] text-text-dim mb-6 truncate">{{ .User.Email }}</div>
+        <div class="text-[13px] text-text-dim truncate">{{ .User.Email }}</div>
+        <a href="/security" class="inline-block text-[13px] text-accent hover:underline mb-6">Account and sign-in</a>
         <nav class="relative" aria-label="Categories" data-cat-list>
           <div class="cat-indicator absolute inset-x-0 top-0 rounded-lg bg-white/[0.06] border border-border pointer-events-none" data-cat-indicator></div>
           {{ template "portal-category" .AllFilter }}
@@ -68,7 +69,7 @@
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
         <div>
           <h1 class="text-3xl lg:text-4xl tracking-tighter font-semibold text-text" data-heading>All apps</h1>
-          <p class="mt-1.5 text-text-muted text-[14px]">{{ .GrantedCount }} of {{ .Total }} services open with your ioprodz account.</p>
+          <p class="mt-1.5 text-text-muted text-[14px]">{{ .GrantedCount }} of {{ .Total }} services open with your ioprodz account.<a href="/security" class="lg:hidden ml-1 text-accent hover:underline">Account and sign-in</a></p>
         </div>
         <label class="relative block w-full sm:w-80">
           <span class="sr-only">Search apps</span>

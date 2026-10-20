@@ -3,6 +3,7 @@ package auth_infra
 import (
 	"ioprodz/common/config"
 	"net/http"
+	"sync"
 
 	"github.com/gorilla/sessions"
 )
@@ -19,7 +20,8 @@ func NewAuthCookieStore() *sessions.CookieStore {
 	return store
 }
 
-var cookieStore = NewAuthCookieStore()
+// built on first use, so importing the package doesn't load the config
+var cookieStore = sync.OnceValue(NewAuthCookieStore)
 
 var cookieName = "ioprodz-session"
 
@@ -33,14 +35,14 @@ type CookieData struct {
 func (e *AuthCookieError) Error() string { return e.msg }
 
 func SetAuthCookie(w http.ResponseWriter, r *http.Request, data CookieData) error {
-	cookie, err := cookieStore.Get(r, cookieName)
+	cookie, err := cookieStore().Get(r, cookieName)
 	cookie.Values["id"] = data.Id
 	cookie.Save(r, w)
 	return err
 }
 
 func GetAuthCookie(w http.ResponseWriter, r *http.Request) (CookieData, error) {
-	cookie, err := cookieStore.Get(r, cookieName)
+	cookie, err := cookieStore().Get(r, cookieName)
 	if err != nil {
 		return CookieData{}, &AuthCookieError{msg: "could not load session"}
 	}
@@ -54,7 +56,7 @@ func GetAuthCookie(w http.ResponseWriter, r *http.Request) (CookieData, error) {
 }
 
 func ClearAuthCookie(w http.ResponseWriter, r *http.Request) {
-	cookie, _ := cookieStore.Get(r, cookieName)
+	cookie, _ := cookieStore().Get(r, cookieName)
 	for key := range cookie.Values {
 		delete(cookie.Values, key)
 	}

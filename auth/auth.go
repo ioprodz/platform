@@ -57,6 +57,7 @@ func ConfigureModule(router *mux.Router) {
 
 	router.HandleFunc("/security", auth_security.CreateSecurityPageHandler(sessionRepo)).Methods("GET")
 	router.HandleFunc("/security/sessions/{id}", auth_security.CreateRevokeSessionHandler(sessionRepo)).Methods("DELETE")
+	router.HandleFunc("/security/methods/{kind}/{id}", auth_security.CreateRemoveSignInMethodHandler()).Methods("DELETE")
 
 	router.Use(auth_authorization.CreateRequestAuthorization(sessionRepo))
 
