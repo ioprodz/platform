@@ -1,6 +1,7 @@
 package auth_security
 
 import (
+	"errors"
 	"html"
 	auth_infra "ioprodz/auth/_infra"
 	auth_models "ioprodz/auth/_models"
@@ -62,7 +63,8 @@ type SecurityPage struct {
 }
 
 type IoprodzView struct {
-	// no valid token (signed in before it was kept, or expired)
+	// no usable token (signed in before it was kept, expired, or weaker than
+	// the account now requires)
 	SignInAgain bool
 	Error       string
 	Methods     auth_infra.IoprodzSignInMethods
@@ -116,6 +118,9 @@ func ioprodzView(token auth_infra.IoprodzToken) *IoprodzView {
 	issuer := config.Load().IOPRODZ_AUTH_ISSUER
 	view := &IoprodzView{Links: addLinks(issuer, token.LoginName)}
 	methods, err := auth_infra.FetchIoprodzSignInMethods(issuer, token)
+	if errors.Is(err, auth_infra.ErrIoprodzSignInAgain) {
+		return &IoprodzView{SignInAgain: true}
+	}
 	if err != nil {
 		log.Printf("ioprodz sign-in methods for %s: %v", token.UserId, err)
 		view.Error = "Could not read your sign-in methods: " + err.Error()
@@ -137,6 +142,10 @@ func CreateRemoveSignInMethodHandler() func(w http.ResponseWriter, r *http.Reque
 		}
 		vars := mux.Vars(r)
 		err := auth_infra.RemoveIoprodzSignInMethod(config.Load().IOPRODZ_AUTH_ISSUER, token.AccessToken, vars["kind"], vars["id"])
+		if errors.Is(err, auth_infra.ErrIoprodzSignInAgain) {
+			w.Write([]byte("Sign in again first"))
+			return
+		}
 		if err != nil {
 			log.Printf("remove ioprodz %s for %s: %v", vars["kind"], token.UserId, err)
 			w.Write([]byte("Not removed: " + html.EscapeString(err.Error())))

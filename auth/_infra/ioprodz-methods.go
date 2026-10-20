@@ -3,11 +3,13 @@ package auth_infra
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
 	"net/url"
 	"slices"
+	"strings"
 )
 
 type IoprodzKey struct {
@@ -24,6 +26,11 @@ type IoprodzSignInMethods struct {
 }
 
 const factorReady = "AUTH_FACTOR_STATE_READY"
+
+// ErrIoprodzSignInAgain: Zitadel refuses the token because the sign-in behind
+// it is weaker than the account now requires (AUTHZ-Kl3p0, "mfa required"),
+// e.g. a password-only sign-in after a passkey or second factor was added.
+var ErrIoprodzSignInAgain = errors.New("sign in again")
 
 // FetchIoprodzSignInMethods reads the user's own sign-in methods from Zitadel
 // with the user's own access token.
@@ -126,6 +133,9 @@ func ioprodzCall(method string, endpoint string, accessToken string, body interf
 			Message string `json:"message"`
 		}
 		json.NewDecoder(res.Body).Decode(&failure)
+		if strings.Contains(failure.Message, "AUTHZ-Kl3p0") {
+			return ErrIoprodzSignInAgain
+		}
 		if failure.Message == "" {
 			failure.Message = fmt.Sprintf("status %d", res.StatusCode)
 		}

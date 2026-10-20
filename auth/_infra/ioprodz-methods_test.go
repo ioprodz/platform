@@ -1,6 +1,7 @@
 package auth_infra
 
 import (
+	"errors"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -68,5 +69,18 @@ func TestRemoveIoprodzSignInMethodCallsTheRightEndpoint(t *testing.T) {
 	}
 	if err := RemoveIoprodzSignInMethod(zitadel.URL, "user-token", "password", ""); err == nil {
 		t.Error("an unknown kind must be refused")
+	}
+}
+
+func TestTokenWeakerThanTheAccountMeansSignInAgain(t *testing.T) {
+	zitadel := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusForbidden)
+		w.Write([]byte(`{"code":7,"message":"mfa required (AUTHZ-Kl3p0)"}`))
+	}))
+	defer zitadel.Close()
+
+	_, err := FetchIoprodzSignInMethods(zitadel.URL, IoprodzToken{AccessToken: "user-token", UserId: "u1"})
+	if !errors.Is(err, ErrIoprodzSignInAgain) {
+		t.Fatalf("expected sign in again, got %v", err)
 	}
 }

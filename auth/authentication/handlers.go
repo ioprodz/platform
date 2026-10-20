@@ -57,9 +57,6 @@ func landingPage(w http.ResponseWriter, r *http.Request, user goth.User) string 
 	if user.Provider != "ioprodz" {
 		return "/feed"
 	}
-	if next := r.URL.Query().Get("next"); slices.Contains(landingPages, next) {
-		return next
-	}
 	if next, err := r.Cookie(nextCookie); err == nil {
 		http.SetCookie(w, &http.Cookie{Name: nextCookie, Path: "/auth", MaxAge: -1})
 		if slices.Contains(landingPages, next.Value) {
@@ -138,8 +135,10 @@ func getAccount(accountRepo auth_models.AccountRepository, user goth.User) auth_
 
 func CreateOAuthLoginHandler(accountRepo auth_models.AccountRepository, sessionRepo auth_models.SessionRepository) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		// try to get the user without re-authenticating
-		if user, err := gothic.CompleteUserAuth(w, r); err == nil {
+		// try to get the user without re-authenticating, except when the
+		// sign-in is asked for again (?next=): the last token was refused
+		again := r.URL.Query().Get("next") != ""
+		if user, err := gothic.CompleteUserAuth(w, r); err == nil && !again {
 			ua := useragent.Parse(r.UserAgent())
 			account := getAccount(accountRepo, user)
 			session := getSession(account, user, ua, sessionRepo)
