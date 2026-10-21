@@ -26,6 +26,7 @@ var categories = []Category{
 	{Key: "data", Name: "Data & Analytics"},
 	{Key: "productivity", Name: "Productivity"},
 	{Key: "ai", Name: "AI"},
+	{Key: "apps", Name: "Apps"},
 }
 
 var catalog = []Service{
@@ -84,6 +85,15 @@ var catalog = []Service{
 		Color:       "#4A9A28",
 	},
 	{
+		ProjectId:   "395422360401870851",
+		Name:        "Deploy",
+		Url:         "https://deploy.ioprodz.com",
+		Description: "Apps, previews, CI and dev machines.",
+		Category:    "devops",
+		Icon:        "/static/img/portal/deploy.svg",
+		Color:       "#0F766E",
+	},
+	{
 		ProjectId:   "395381905081499651",
 		Name:        "pgAdmin",
 		Url:         "https://pga.ioprodz.com",
@@ -110,5 +120,14 @@ var catalog = []Service{
 		Category:    "ai",
 		Icon:        "/static/img/portal/langfuse.svg",
 		Color:       "#1F2937",
+	},
+	{
+		ProjectId:   "396083245675970563",
+		Name:        "Muzio",
+		Url:         "https://muzio.ioprodz.com",
+		Description: "Music streaming.",
+		Category:    "apps",
+		Icon:        "/static/img/portal/muzio.svg",
+		Color:       "#DB2777",
 	},
 }
