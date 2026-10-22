@@ -130,4 +130,13 @@ var catalog = []Service{
 		Icon:        "/static/img/portal/muzio.svg",
 		Color:       "#DB2777",
 	},
+	{
+		ProjectId:   "396278155368726531",
+		Name:        "Jellyfin",
+		Url:         "https://jellyfin.ioprodz.com",
+		Description: "Films and series.",
+		Category:    "apps",
+		Icon:        "/static/img/portal/jellyfin.svg",
+		Color:       "#AA5CC3",
+	},
 }
