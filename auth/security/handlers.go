@@ -157,9 +157,16 @@ func CreateRemoveSignInMethodHandler() func(w http.ResponseWriter, r *http.Reque
 
 func CreateRevokeSessionHandler(sessionRepo auth_models.SessionRepository) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
+		user := r.Context().Value(policies.CurrentUserCtxKey).(policies.CurrentUser)
 		vars := mux.Vars(r)
 		sessionId := vars["id"]
 
+		// only the user's own sessions; someone else's answers like a missing one
+		session, err := sessionRepo.Get(sessionId)
+		if err != nil || session.AccountId != user.Id {
+			http.Error(w, "Session not found", http.StatusNotFound)
+			return
+		}
 		sessionRepo.Delete(sessionId)
 		w.Write([]byte("Disconnected Successfully"))
 	}
