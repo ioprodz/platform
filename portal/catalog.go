@@ -87,7 +87,7 @@ var catalog = []Service{
 	{
 		ProjectId:   "395422360401870851",
 		Name:        "Deploy",
-		Url:         "https://deploy.ioprodz.com",
+		Url:         "https://xdriven.dev",
 		Description: "Apps, previews, CI and dev machines.",
 		Category:    "devops",
 		Icon:        "/static/img/portal/deploy.svg",
