@@ -85,14 +85,19 @@ func CreateSitemapHandler(blogRepo blog_models.BlogRepository) http.HandlerFunc 
 	return func(w http.ResponseWriter, r *http.Request) {
 		baseURL := config.Load().BASE_URL
 		now := time.Now().Format("2006-01-02")
+		posts, err := blogRepo.ListPublished()
 
+		// Static pages carry no lastmod: they have no real change date, and Google
+		// ignores a lastmod that is always "today".
 		urls := make([]siteURL, 0, len(pages)*len(i18n.AllLangs)+10)
 		for _, p := range pages {
+			if p.path == "/blog" && len(posts) == 0 {
+				continue // an empty blog is not worth crawling
+			}
 			if p.translatable {
 				for _, lang := range i18n.AllLangs {
 					urls = append(urls, siteURL{
 						Loc:        baseURL + i18n.MetaFor(lang).URLPrefix + p.path,
-						LastMod:    now,
 						ChangeFreq: p.changefreq,
 						Priority:   p.priority,
 					})
@@ -100,14 +105,12 @@ func CreateSitemapHandler(blogRepo blog_models.BlogRepository) http.HandlerFunc 
 			} else {
 				urls = append(urls, siteURL{
 					Loc:        baseURL + p.path,
-					LastMod:    now,
 					ChangeFreq: p.changefreq,
 					Priority:   p.priority,
 				})
 			}
 		}
 
-		posts, err := blogRepo.ListPublished()
 		if err == nil {
 			for _, post := range posts {
 				lastMod := now

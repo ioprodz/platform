@@ -13,8 +13,8 @@
       "description": "A unified communication layer where humans and AI agents collaborate naturally with rich media, voice messages, and interactive workflows."
     },
     "collabEditing": {
-      "title": "Collaborative Document Editing",
-      "description": "Multi-user real-time editing with AI assistance, CRDT sync, live cursors, and version history — embeddable into any product."
+      "title": "Real-Time Collaborative Editing with AI Agents",
+      "description": "Collaborative document editing for many users and AI agents at once: real-time sync, live cursors, version history. Embed it in your product."
     },
     "searchRag": {
       "title": "Search & RAG",

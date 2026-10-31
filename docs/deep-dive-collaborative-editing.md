@@ -304,6 +304,34 @@ The editor is fully accessible via API for programmatic workflows:
 
 ---
 
+## Frequently Asked Questions
+
+### What is collaborative editing?
+
+Collaborative editing means several people work on the same document at the same time and see each other's changes instantly. Each keystroke is synced to every open copy, and edits made at the same moment are merged automatically, so there is never a "your version vs. my version."
+
+### Can multiple users and AI agents edit the same document at once?
+
+Yes. An AI agent joins the document as a regular participant: it has its own named cursor, appears in the presence list, and its edits sync like a person's. People can keep typing in other parts of the document while the agent writes, and every change is attributed to whoever made it, human or agent.
+
+### How are conflicts handled when two people edit the same line?
+
+The document is a CRDT (Yjs). Concurrent edits are merged deterministically on every client, so all copies end up identical without locks, "save" buttons or manual merges. Edits made offline are merged the same way when the connection comes back.
+
+### How do I add live cursors and presence to a collaborative editor?
+
+They come with the editor: each participant broadcasts their cursor, selection, name and color over the same sync connection, and the editor draws them for everyone else. Cursors of people who leave are cleaned up automatically, and AI cursors are drawn differently so bot edits stand out.
+
+### Can it be used for collaborative Markdown documentation?
+
+Yes. Markdown can be pasted, imported, exported and written through the REST API, and the editor keeps full version history with one-click restore. That makes it a fit for product documentation and specs that a team and its AI agents maintain together.
+
+### Can I embed the editor in my own product?
+
+Yes. It is built as an embeddable component with its own sync server, storage, access control and REST API, so a product can offer Google Docs-style editing without building the real-time layer itself.
+
+---
+
 ## Summary
 
 The Collaborative Editor is not just a text area. It is a **real-time document platform** that:

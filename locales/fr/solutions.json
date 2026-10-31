@@ -13,8 +13,8 @@
       "description": "Une couche de communication unifiée où humains et agents IA collaborent naturellement avec média riche, messages vocaux et workflows interactifs."
     },
     "collabEditing": {
-      "title": "Édition collaborative de documents",
-      "description": "Édition temps réel multi-utilisateur avec assistance IA, synchronisation CRDT, curseurs en direct et historique des versions — intégrable dans tout produit."
+      "title": "Édition collaborative en temps réel avec agents IA",
+      "description": "Édition collaborative de documents à plusieurs, avec des agents IA : synchro temps réel, curseurs en direct, historique. À intégrer dans votre produit."
     },
     "searchRag": {
       "title": "Recherche & RAG",
