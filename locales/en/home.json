@@ -2,7 +2,7 @@
   "meta": {
     "home": {
       "title": "",
-      "description": "I turn vibe-coded software into real products in 90 days — on sovereign AI infrastructure (OpenAI, Claude, Gemini, Grok, or local), shipped daily, with the boring engineering every AI tutorial skips: evals, rollback, observability, domain modeling. Independent engineering consultancy serving Europe and North Africa."
+      "description": "Go AI, stay in charge. ioprodz is a product studio that builds, rescues and runs your app on our own software factory, xdriven. Unlike AI app builders that stop at the demo, or agencies that hand over code and leave, every change ships with tests, a preview, a review and a guarded deploy, and you keep plain Git and Docker you own. Europe and North Africa."
     },
     "about": {
       "title": "Manifesto — The counter-voice to AI slop",
@@ -15,38 +15,38 @@
   },
   "home": {
     "hero": {
-      "badge": "Independent engineering consultancy · Europe / North Africa · Since 2025",
-      "headingLine1": "From vibe coding",
-      "headingLine2": "to real product.",
-      "headingLine3": "In 90 days.",
-      "lede": "Engineering maturity for AI products. Daily releases, sovereign AI, zero slop.",
+      "badge": "Product studio · Europe / North Africa · Since 2025",
+      "headingLine1": "Go AI,",
+      "headingLine2": "stay in charge.",
+      "headingLine3": "",
+      "lede": "We build, rescue and run your app on our own software factory, xdriven.",
       "ctaBook": "Book a tailored screening",
-      "ctaHowIWork": "How I work",
+      "ctaHowIWork": "How we work",
       "tagEvals": "Evals",
       "tagRollback": "Rollback",
       "tagObservability": "Observability",
       "tagDomain": "Domain model",
-      "tagAnyModel": "Any model per feature"
+      "tagAnyModel": "The right model for every job"
     },
     "whatIDo": {
-      "eyebrow": "01 · What I do",
+      "eyebrow": "01 · What we do",
       "heading": "Three things. Every engagement.",
       "c1Kicker": "01 / Engineering",
       "c1Title": "Engineering uplift",
-      "c1Body": "I bring your AI product up to the engineering bar your customers actually pay for: evals, rollback, observability, a clean domain model, and a CI/CD pipeline that ships multiple releases a day. TDD, DDD, XP — applied to AI features, not abandoned because of them.",
+      "c1Body": "We bring your AI product up to the engineering bar your customers actually pay for: evals, rollback, observability, a clean domain model, and a CI/CD pipeline that ships multiple releases a day. TDD, DDD, XP — applied to AI features, not abandoned because of them.",
       "c2Kicker": "02 / Infrastructure",
-      "c2Title": "Sovereign AI stack",
-      "c2Body": "I install model-agnostic AI infrastructure you actually own. Run OpenAI, Claude, Gemini, Grok, or local open-weight models — scoped per feature, swap anytime. No vendor lock-in, no data leakage, no surprise pricing.",
+      "c2Title": "Privacy and sovereignty first",
+      "c2Body": "We use the right model for every job: local open-weight models where your data must stay with you, frontier models where they earn their place. No vendor lock-in, no data leakage, no surprise pricing.",
       "c3Kicker": "03 / Leverage",
       "c3Title": "AI as internal factory",
-      "c3Body": "I wire AI into your engine room before your product. Docs, demo videos, refactors, test generation, metrics analysis, code review. Your team stops drowning in busywork and reclaims the time that AI can't give them back — time with your customers."
+      "c3Body": "We wire AI into your engine room before your product. Docs, demo videos, refactors, test generation, metrics analysis, code review. Your team stops drowning in busywork and reclaims the time that AI can't give them back — time with your customers."
     },
     "slop": {
       "eyebrow": "02 · The bet",
       "headingLine1": "Stop flooding users",
       "headingLine2": "with AI slop.",
       "p1": "The market narrative says: <em class=\"text-text not-italic\">\"ship more AI features, because AI.\"</em> Your users can't keep up. Your product gets unstable. Your trust metrics crater. Meanwhile the frontier model providers profit handsomely from the token-grinding that funds it.",
-      "p2": "I bet the opposite. AI belongs inside your <span class=\"text-text\">engine room</span> first: documentation, demo videos, refactors, test generation, metrics analysis, code review — the boring internal work where AI is genuinely good today. That buys your team the one thing AI can't give them: time to talk to the people who actually pay you.",
+      "p2": "We bet the opposite. AI belongs inside your <span class=\"text-text\">engine room</span> first: documentation, demo videos, refactors, test generation, metrics analysis, code review — the boring internal work where AI is genuinely good today. That buys your team the one thing AI can't give them: time to talk to the people who actually pay you.",
       "p3": "Users feel the difference. Fewer features, better shipped, responsive to feedback. Less slop, more product."
     },
     "stats": {
@@ -56,25 +56,25 @@
       "s1Body": "What your team ships once the engineering is right. No freeze windows, no big-bang merges.",
       "s2Value": "Any",
       "s2Unit": " model",
-      "s2Label": "Per feature",
-      "s2Body": "OpenAI · Claude · Gemini · Grok · local open-weight. Scoped per feature, swappable anytime.",
+      "s2Label": "The right one for every job",
+      "s2Body": "Local open-weight where your data must stay with you, frontier models where they earn their place. Privacy and sovereignty first.",
       "s3Value": "~90",
       "s3Unit": " days",
-      "s3Label": "Vibe coding → real product",
-      "s3Body": "End-to-end engagement window: audit, install, teach, hand back. One part-time engineer left on the other side."
+      "s3Label": "A typical build, scoped up front",
+      "s3Body": "Audit, build or rescue, hand-over: about 90 days, agreed before we start. Then we stay to run it, or you take it with you."
     },
     "thesis": {
       "eyebrow": "03 · The thesis",
-      "headingLine1": "By 2028, most B2B SaaS",
-      "headingLine2": "will be 90% autonomous.",
-      "p1": "Machines ingesting user feedback, shipping aligned changes. The humans left on the team won't write code — they'll validate results, review designs, approve major ADRs, own SLAs. In one word: they'll be <span class=\"text-text\">accountable</span>.",
-      "p2": "The teams that reach that future aren't the ones stacking more tokens today. They're the ones installing the boring engineering that lets software evolve safely on its own. That's the playbook I'm building with every engagement.",
+      "headingLine1": "Autonomous software isn't coming.",
+      "headingLine2": "It's how we ship today.",
+      "p1": "Agents take the ticket, write the code, open the pull request and deploy behind guardrails, every day, on our own factory. People stay in charge: they decide what gets built, review what ships and own the result. In one word: they're <span class=\"text-text\">accountable</span>.",
+      "p2": "The teams that win aren't the ones burning tokens; they're the ones with the engineering to let agents run. That's what we install with every engagement.",
       "readManifesto": "Read the manifesto"
     },
     "founder": {
-      "eyebrow": "04 · Who you're hiring",
+      "eyebrow": "04 · Founder",
       "name": "Osmane Kalache.",
-      "bio": "15+ years shipping real software across IoT, telecom, real estate, and fintech. I started ioprodz in late 2025 to be the counter-voice to AI slop — the one that says the boring engineering is the competitive advantage, and that a small team with the right practices outlasts a big team stacking tokens.",
+      "bio": "15+ years shipping real software across IoT, telecom, real estate, and fintech. Osmane founded ioprodz in late 2025 to be the counter-voice to AI slop — the one that says the boring engineering is the competitive advantage, and that a small team with the right practices outlasts a big team stacking tokens.",
       "quote": "\"AI handles the code. You get your time back — for the thing AI can't do: building the relationships with the people who pay you.\"",
       "readManifesto": "Read the manifesto",
       "linkLinkedin": "LinkedIn",
@@ -87,7 +87,7 @@
       "eyebrow": "05 · Let's talk",
       "headingLine1": "One conversation",
       "headingLine2": "changes the trajectory.",
-      "body": "A tailored 30-minute screening. I'll tell you honestly whether your AI product has a vibe-coding problem or an engineering problem — and what the 90-day path looks like if you want to fix it.",
+      "body": "A tailored 30-minute screening. We'll tell you honestly where you stand, what it takes to catch up, and what it would cost: every offer is on quote.",
       "ctaBook": "Book a tailored screening"
     }
   },
@@ -114,8 +114,8 @@
       "c2Body": "AI didn't make those practices obsolete. It made them a superpower. Mature engineering culture is the invisible moat that compounds exactly when everyone else is scrambling.",
       "c3Title": "AI doesn't belong in your feature factory. It belongs in your <em class=\"not-italic text-accent\">factory</em> factory.",
       "c3Body": "Automate the internal work first — docs, demos, refactors, metrics, code review. That buys your team time to do the one thing AI can't: talk to the people who actually pay them.",
-      "c4Title": "By 2028, most B2B SaaS will be 90% autonomous.",
-      "c4Body": "Machines ingest feedback, ship aligned changes. The humans on those teams don't write features — they validate, govern, own outcomes, and spend their time with customers. Shortcuts taken now = locked out of that future."
+      "c4Title": "Autonomous software isn't coming. It's how we ship today.",
+      "c4Body": "Agents take the ticket, write the code and deploy behind guardrails. The humans stay in charge: they decide, review, own outcomes, and spend their time with customers. Shortcuts taken now lock you out of that way of working."
     },
     "who": {
       "eyebrow": "Who I am",

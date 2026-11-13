@@ -65,7 +65,7 @@ func (m PageMeta) FullTitle(lang i18n.Lang) string {
 		if v := i18n.T(lang, "common:meta.siteTitleHome"); v != "" && v != "common:meta.siteTitleHome" {
 			return v
 		}
-		return "ioprodz — From vibe coding to real product, in 90 days"
+		return "ioprodz — Go AI, stay in charge"
 	}
 	return t + " | ioprodz"
 }

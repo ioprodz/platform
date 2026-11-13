@@ -2,7 +2,7 @@
   "meta": {
     "home": {
       "title": "",
-      "description": "Je transforme le logiciel vibe-codé en vrai produit en 90 jours — sur une infrastructure IA souveraine (OpenAI, Claude, Gemini, Grok, ou local), livré tous les jours, avec l'ingénierie rigoureuse que tous les tutos IA zappent : évaluations, rollback, observabilité, modélisation du domaine. Cabinet indépendant d'ingénierie au service de l'Europe et de l'Afrique du Nord."
+      "description": "Passez à l'IA, gardez la main. ioprodz est un studio produit qui construit, sauve et fait tourner votre application sur notre propre usine logicielle, xdriven. Là où les générateurs d'apps IA s'arrêtent à la démo et où les agences livrent le code puis s'en vont, chaque changement part avec des tests, une préview, une revue et un déploiement sous garde-fous, et vous gardez du Git et du Docker qui vous appartiennent. Europe et Afrique du Nord."
     },
     "about": {
       "title": "Manifeste — La contre-voix au slop IA",
@@ -15,38 +15,38 @@
   },
   "home": {
     "hero": {
-      "badge": "Cabinet indépendant d'ingénierie · Europe / Afrique du Nord · Depuis 2025",
-      "headingLine1": "Du vibe coding",
-      "headingLine2": "au vrai produit.",
-      "headingLine3": "En 90 jours.",
-      "lede": "Maturité d'ingénierie pour vos produits IA. Livraisons quotidiennes, IA souveraine, zéro slop.",
+      "badge": "Studio produit · Europe / Afrique du Nord · Depuis 2025",
+      "headingLine1": "Passez à l'IA,",
+      "headingLine2": "gardez la main.",
+      "headingLine3": "",
+      "lede": "Nous construisons, sauvons et faisons tourner votre application sur notre propre usine logicielle, xdriven.",
       "ctaBook": "Réserver un pré-entretien sur mesure",
-      "ctaHowIWork": "Ma méthode",
+      "ctaHowIWork": "Notre méthode",
       "tagEvals": "Évaluations",
       "tagRollback": "Rollback",
       "tagObservability": "Observabilité",
       "tagDomain": "Modèle de domaine",
-      "tagAnyModel": "Modèle au choix par fonctionnalité"
+      "tagAnyModel": "Le bon modèle pour chaque tâche"
     },
     "whatIDo": {
-      "eyebrow": "01 · Ce que je fais",
+      "eyebrow": "01 · Ce que nous faisons",
       "heading": "Trois choses. À chaque mission.",
       "c1Kicker": "01 / Ingénierie",
       "c1Title": "Montée en ingénierie",
-      "c1Body": "J'amène votre produit IA au niveau d'ingénierie que vos clients paient réellement : évaluations, rollback, observabilité, modèle de domaine propre, pipeline CI/CD qui livre plusieurs fois par jour. TDD, DDD, XP — appliqués aux fonctionnalités IA, pas abandonnés à cause d'elles.",
+      "c1Body": "Nous amenons votre produit IA au niveau d'ingénierie que vos clients paient réellement : évaluations, rollback, observabilité, modèle de domaine propre, pipeline CI/CD qui livre plusieurs fois par jour. TDD, DDD, XP — appliqués aux fonctionnalités IA, pas abandonnés à cause d'elles.",
       "c2Kicker": "02 / Infrastructure",
-      "c2Title": "Stack IA souveraine",
-      "c2Body": "J'installe une infrastructure IA agnostique vis-à-vis du modèle, que vous possédez réellement. Utilisez OpenAI, Claude, Gemini, Grok, ou des modèles open-weight locaux — au choix par fonctionnalité, interchangeables à tout moment. Pas de verrouillage fournisseur, pas de fuite de données, pas de surprise tarifaire.",
+      "c2Title": "Confidentialité et souveraineté d'abord",
+      "c2Body": "Nous utilisons le bon modèle pour chaque tâche : des modèles open-weight locaux quand vos données doivent rester chez vous, des modèles frontière quand ils le méritent. Pas de verrouillage fournisseur, pas de fuite de données, pas de surprise tarifaire.",
       "c3Kicker": "03 / Effet de levier",
       "c3Title": "L'IA comme usine interne",
-      "c3Body": "Je branche l'IA dans votre salle des machines avant votre produit. Documentation, vidéos de démo, refactors, génération de tests, analyse de métriques, revue de code. Votre équipe cesse de se noyer dans les tâches ingrates et récupère le temps que l'IA ne peut pas lui rendre — le temps avec vos clients."
+      "c3Body": "Nous branchons l'IA dans votre salle des machines avant votre produit. Documentation, vidéos de démo, refactors, génération de tests, analyse de métriques, revue de code. Votre équipe cesse de se noyer dans les tâches ingrates et récupère le temps que l'IA ne peut pas lui rendre — le temps avec vos clients."
     },
     "slop": {
       "eyebrow": "02 · Le pari",
       "headingLine1": "Arrêter de noyer les utilisateurs",
       "headingLine2": "dans du slop IA.",
       "p1": "Le discours du marché dit : <em class=\"text-text not-italic\">\"livrez plus de fonctionnalités IA, parce que l'IA.\"</em> Vos utilisateurs ne suivent plus. Votre produit devient instable. Vos métriques de confiance s'effondrent. Pendant ce temps, les fournisseurs de modèles frontière engrangent confortablement les revenus générés par ce mouliné de tokens.",
-      "p2": "Je parie l'inverse. L'IA a sa place d'abord dans votre <span class=\"text-text\">salle des machines</span> : documentation, vidéos de démo, refactors, génération de tests, analyse de métriques, revue de code — le travail interne ingrat où l'IA est réellement bonne aujourd'hui. Ça rend à votre équipe la seule chose que l'IA ne peut pas lui donner : du temps pour parler aux gens qui vous paient.",
+      "p2": "Nous parions l'inverse. L'IA a sa place d'abord dans votre <span class=\"text-text\">salle des machines</span> : documentation, vidéos de démo, refactors, génération de tests, analyse de métriques, revue de code — le travail interne ingrat où l'IA est réellement bonne aujourd'hui. Ça rend à votre équipe la seule chose que l'IA ne peut pas lui donner : du temps pour parler aux gens qui vous paient.",
       "p3": "Les utilisateurs ressentent la différence. Moins de fonctionnalités, mieux livrées, réactives aux retours. Moins de slop, plus de produit."
     },
     "stats": {
@@ -56,25 +56,25 @@
       "s1Body": "Ce que votre équipe livre une fois l'ingénierie en place. Pas de gel de code, pas de merges big-bang.",
       "s2Value": "Tout",
       "s2Unit": " modèle",
-      "s2Label": "Par fonctionnalité",
-      "s2Body": "OpenAI · Claude · Gemini · Grok · open-weight local. Au choix par fonctionnalité, interchangeables à tout moment.",
+      "s2Label": "Le bon pour chaque tâche",
+      "s2Body": "Open-weight local quand vos données doivent rester chez vous, modèles frontière quand ils le méritent. Confidentialité et souveraineté d'abord.",
       "s3Value": "~90",
       "s3Unit": " jours",
-      "s3Label": "Vibe coding → vrai produit",
-      "s3Body": "Fenêtre d'engagement de bout en bout : audit, installation, formation, transmission. Un ingénieur à temps partiel suffit ensuite."
+      "s3Label": "Une construction type, cadrée d'avance",
+      "s3Body": "Audit, construction ou sauvetage, passation : environ 90 jours, convenus avant de commencer. Ensuite, nous restons pour le faire tourner, ou vous l'emportez."
     },
     "thesis": {
       "eyebrow": "03 · La thèse",
-      "headingLine1": "D'ici 2028, la plupart des SaaS B2B",
-      "headingLine2": "seront à 90 % autonomes.",
-      "p1": "Des machines qui digèrent les retours utilisateurs et livrent des changements alignés. Les humains restants dans l'équipe n'écriront plus de code — ils valideront des résultats, réviseront des designs, approuveront des ADR majeurs, porteront les SLA. En un mot : ils seront <span class=\"text-text\">responsables</span>.",
-      "p2": "Les équipes qui atteignent ce futur ne sont pas celles qui empilent plus de tokens aujourd'hui. Ce sont celles qui installent l'ingénierie rigoureuse qui permet au logiciel d'évoluer en sécurité tout seul. C'est le playbook que je construis à chaque mission.",
+      "headingLine1": "Le logiciel autonome n'est pas l'avenir.",
+      "headingLine2": "C'est notre façon de livrer aujourd'hui.",
+      "p1": "Des agents prennent le ticket, écrivent le code, ouvrent la pull request et déploient sous garde-fous, chaque jour, sur notre propre usine. Les humains gardent la main : ils décident de ce qui se construit, revoient ce qui part en production et en répondent. En un mot : ils sont <span class=\"text-text\">responsables</span>.",
+      "p2": "Les équipes qui gagnent ne sont pas celles qui brûlent des tokens ; ce sont celles qui ont l'ingénierie pour laisser travailler les agents. C'est ce que nous installons à chaque mission.",
       "readManifesto": "Lire le manifeste"
     },
     "founder": {
-      "eyebrow": "04 · Qui vous embauchez",
+      "eyebrow": "04 · Fondateur",
       "name": "Osmane Kalache.",
-      "bio": "15+ ans à livrer du vrai logiciel dans l'IoT, les télécoms, l'immobilier et la fintech. J'ai lancé ioprodz fin 2025 pour être la contre-voix au slop IA — celle qui dit que l'ingénierie rigoureuse est l'avantage compétitif, et qu'une petite équipe avec les bonnes pratiques tient plus longtemps qu'une grosse équipe qui empile des tokens.",
+      "bio": "15+ ans à livrer du vrai logiciel dans l'IoT, les télécoms, l'immobilier et la fintech. Osmane a fondé ioprodz fin 2025 pour être la contre-voix au slop IA — celle qui dit que l'ingénierie rigoureuse est l'avantage compétitif, et qu'une petite équipe avec les bonnes pratiques tient plus longtemps qu'une grosse équipe qui empile des tokens.",
       "quote": "« L'IA s'occupe du code. Vous récupérez votre temps — pour ce que l'IA ne peut pas faire : construire les relations avec les gens qui vous paient. »",
       "readManifesto": "Lire le manifeste",
       "linkLinkedin": "LinkedIn",
@@ -87,7 +87,7 @@
       "eyebrow": "05 · Parlons-en",
       "headingLine1": "Une conversation",
       "headingLine2": "change la trajectoire.",
-      "body": "Un pré-entretien de 30 minutes sur mesure. Je vous dirai honnêtement si votre produit IA a un problème de vibe coding ou un problème d'ingénierie — et à quoi ressemble le parcours de 90 jours si vous voulez y remédier.",
+      "body": "Un pré-entretien de 30 minutes sur mesure. Nous vous dirons honnêtement où vous en êtes, ce qu'il faut pour rattraper le rythme, et ce que cela coûterait : chaque offre est sur devis.",
       "ctaBook": "Réserver un pré-entretien sur mesure"
     }
   },
@@ -114,8 +114,8 @@
       "c2Body": "L'IA n'a pas rendu ces pratiques obsolètes. Elle en a fait un superpouvoir. Une culture d'ingénierie mature est le fossé invisible qui compose des intérêts précisément quand les autres paniquent.",
       "c3Title": "L'IA n'a pas sa place dans votre usine à fonctionnalités. Elle a sa place dans votre <em class=\"not-italic text-accent\">usine</em> à usine.",
       "c3Body": "Automatisez d'abord le travail interne — docs, démos, refactors, métriques, revue de code. Ça rend à votre équipe le temps de faire la seule chose que l'IA ne peut pas faire : parler aux gens qui vous paient.",
-      "c4Title": "D'ici 2028, la plupart des SaaS B2B seront à 90 % autonomes.",
-      "c4Body": "Les machines digèrent les retours, livrent des changements alignés. Les humains dans ces équipes n'écrivent plus de fonctionnalités — ils valident, gouvernent, portent les résultats, et passent leur temps avec les clients. Les raccourcis pris aujourd'hui = sortie définitive de ce futur."
+      "c4Title": "Le logiciel autonome n'est pas l'avenir. C'est notre façon de livrer aujourd'hui.",
+      "c4Body": "Des agents prennent le ticket, écrivent le code et déploient sous garde-fous. Les humains gardent la main : ils décident, revoient, portent les résultats, et passent leur temps avec les clients. Les raccourcis pris aujourd'hui vous ferment cette façon de travailler."
     },
     "who": {
       "eyebrow": "Qui je suis",

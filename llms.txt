@@ -1,24 +1,26 @@
 # ioprodz
 
-> I turn vibe-coded software into real products — on sovereign AI, shipped daily, without the slop.
+> Go AI, stay in charge. We build, rescue and run your app on our own software factory, xdriven.
 
-Independent engineering consultancy serving Europe / North Africa, founded late 2025 by Osmane Kalache. ioprodz is the counter-voice to AI slop: a practice focused on turning vibe-coded software (Cursor, Copilot, Claude Code sprints, ChatGPT-wrapper MVPs) into real products through engineering maturity — daily releases, sovereign AI infrastructure, and the boring engineering work every AI tutorial skips.
+For founders and small businesses who want AI-speed software that holds up in production, ioprodz is a product studio that builds, rescues and runs your app on our own software factory, xdriven. Unlike AI app builders that stop at the demo, or agencies that hand over code and leave, every change ships with tests, a preview, a review and a guarded deploy, and you keep plain Git and Docker you own. Founded late 2025 by Osmane Kalache; serving Europe and North Africa, in English, French and Arabic.
 
-## What Osmane does
+## What we do
 
-- Turns vibe-coded prototypes, Cursor/Copilot outputs, ChatGPT-wrapper MVPs, and legacy codebases into production-grade AI products in ~90 days
-- Installs model-agnostic AI infrastructure: OpenAI, Claude, Gemini, Grok, or local open-weight models, scoped per feature, no vendor lock-in
-- Wires AI into the engine room (internal tooling, docs, refactors, metrics) before pointing it at end users
-- Coaches teams on TDD, DDD, XP, CI/CD, fast feedback loops, and the practices that make AI features survive production
+- Audit: a review of an AI-built app (security, data, deploy) with a written plan, on quote
+- Build or rescue: a programme delivered on xdriven, typically about 90 days, scoped up front, on quote; you see the board, the previews and the release notes
+- Run: we stay after launch, xdriven plus a few CTO days a month, on quote
+- The right model for every job, privacy and sovereignty first: local open-weight models where data must stay with you, frontier models where they earn their place, no vendor lock-in
+- Coaching on TDD, DDD, XP, CI/CD, fast feedback loops, and the practices that make AI features survive production
 
 ## The thesis
 
-By 2028, most B2B SaaS will be 90% autonomous. The teams reaching that future are the ones installing engineering maturity today — not the ones stacking tokens. The humans on those teams won't write features; they'll validate results, govern designs, own SLAs, and spend their time with customers.
+Autonomous software isn't coming. It's how we ship today. Agents take the ticket, write the code, open the pull request and deploy behind guardrails, every day, on our own factory. People stay in charge: they decide what gets built, review what ships and own the result. The teams that win aren't the ones burning tokens; they're the ones with the engineering to let agents run.
 
 ## Who ioprodz is for
 
-- Non-technical founders or small technical teams who need an interim-CTO to translate AI strategy into a real roadmap
-- Senior engineers leveling up into architecture or leadership who want to ship AI features without losing engineering craft
+- Business owners and non-technical founders with no developer, who don't want to be left behind: the studio builds and runs the software with them
+- Technical founders who build with coding agents: [xdriven](https://www.xdriven.dev), our software factory, on its own ("Go full AI. Keep the engineering.")
+- Engineers leveling up into architecture or leadership who want to ship AI features without losing engineering craft (coaching)
 
 ## What ioprodz is against
 
@@ -37,7 +39,7 @@ By 2028, most B2B SaaS will be 90% autonomous. The teams reaching that future ar
 ## Lab (not for sale — internal experiments)
 
 - [Polysee](https://polysee.dev): The lab where Osmane stress-tests the methodology. Delivery intelligence platform.
-- [SpecJest](https://github.com/osmanekalache/specjest): Open-source CLI bridging Gherkin feature files and Jest test skeletons.
+- [SpecJest](https://github.com/ioprodz/specjest): Open-source CLI bridging Gherkin feature files and Jest test skeletons.
 
 ## Contact
 
