@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "products": {
+      "title": "Produits",
+      "description": "Des logiciels que nous construisons et faisons tourner nous-mêmes, en production, sur notre propre usine logicielle. Le produit phare : xdriven, pour les fondateurs techniques qui développent avec des agents."
+    },
+    "lab": {
+      "title": "Démos et labo",
+      "description": "Des outils open source et des expériences du studio. Pas des produits : ce que nous essayons avant que ça n'entre dans l'usine."
+    }
+  },
+  "products": {
+    "heading": "Produits",
+    "lede": "Des logiciels que nous construisons et faisons tourner nous-mêmes, en production, sur notre propre usine logicielle."
+  },
+  "lab": {
+    "heading": "Démos et labo",
+    "lede": "Des outils open source et des expériences du studio. Pas des produits : ce que nous essayons avant que ça n'entre dans l'usine."
+  },
+  "tags": {
+    "flagship": "Produit phare",
+    "openSource": "Open source",
+    "lab": "Labo"
+  },
+  "items": {
+    "xdriven": {
+      "body": "Notre usine logicielle. Des agents de code mènent chaque ticket jusqu'en production, avec tests, préversion, relecture et déploiement sous contrôle. Elle se construit et se déploie elle-même chaque jour, et nos propres produits tournent dessus. Pensée pour les fondateurs techniques qui travaillent avec des agents ; le studio s'en sert pour construire, reprendre et faire tourner les applications de ceux qui ne le peuvent pas.",
+      "link": "xdriven.dev"
+    },
+    "specjest": {
+      "body": "Un outil en ligne de commande qui transforme les fichiers Gherkin .feature en squelettes de tests Jest, et inversement, pour que spécifications et tests restent alignés.",
+      "link": "github.com/ioprodz/specjest"
+    },
+    "cloviz": {
+      "body": "Un tableau de bord local pour vos sessions Claude Code : coûts, activité dans le temps et relecture complète des sessions. Vos données restent sur votre machine.",
+      "link": "github.com/ioprodz/cloviz"
+    },
+    "localvoice": {
+      "body": "Une conversation vocale avec un modèle de langage qui tourne entièrement sur un ordinateur portable : rien ne quitte la machine. Il peut aussi rejoindre un appel vidéo comme assistant vocal."
+    }
+  }
+}

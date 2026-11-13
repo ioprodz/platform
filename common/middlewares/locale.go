@@ -36,6 +36,8 @@ var translatablePrefixes = []string{
 	"/login",
 	"/consulting",
 	"/solutions",
+	"/products",
+	"/lab",
 }
 
 func shouldSkip(path string) bool {

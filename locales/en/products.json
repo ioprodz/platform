@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "products": {
+      "title": "Products",
+      "description": "Software we build and run ourselves, live in production, on our own software factory. The flagship: xdriven, for technical founders who build with coding agents."
+    },
+    "lab": {
+      "title": "Demos and lab",
+      "description": "Open-source tools and experiments from the studio. Not products: what we try out before it goes into the factory."
+    }
+  },
+  "products": {
+    "heading": "Products",
+    "lede": "Software we build and run ourselves, live in production, on our own software factory."
+  },
+  "lab": {
+    "heading": "Demos and lab",
+    "lede": "Open-source tools and experiments from the studio. Not products: what we try out before it goes into the factory."
+  },
+  "tags": {
+    "flagship": "Flagship",
+    "openSource": "Open source",
+    "lab": "Lab"
+  },
+  "items": {
+    "xdriven": {
+      "body": "Our software factory. Coding agents take each ticket to production with tests, a preview, a review and a guarded deploy. It builds and deploys itself every day, and our own products run on it. Built for technical founders who work with agents; the studio uses it to build, rescue and run apps for those who can't.",
+      "link": "xdriven.dev"
+    },
+    "specjest": {
+      "body": "A command-line tool that turns Gherkin .feature files into Jest test skeletons, and back, so specs and tests stay in step.",
+      "link": "github.com/ioprodz/specjest"
+    },
+    "cloviz": {
+      "body": "A local dashboard for your Claude Code sessions: costs, activity over time, and full session replay. Your data stays on your machine.",
+      "link": "github.com/ioprodz/cloviz"
+    },
+    "localvoice": {
+      "body": "Voice chat with a language model that runs entirely on a laptop: nothing leaves the machine. It can also join a video call as a voice assistant."
+    }
+  }
+}

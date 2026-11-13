@@ -79,6 +79,8 @@ func CreateSitemapHandler(blogRepo blog_models.BlogRepository) http.HandlerFunc 
 		{"/solutions/chat-collaboration", "monthly", "0.7", true},
 		{"/solutions/collaborative-editing", "monthly", "0.7", true},
 		{"/solutions/search-rag", "monthly", "0.7", true},
+		{"/products", "monthly", "0.8", true},
+		{"/lab", "monthly", "0.6", true},
 		{"/blog", "weekly", "0.8", false},
 	}
 

@@ -15,6 +15,7 @@ import (
 	"ioprodz/home"
 	"ioprodz/members"
 	"ioprodz/portal"
+	"ioprodz/products"
 	"ioprodz/qna"
 	"ioprodz/solutions"
 
@@ -53,6 +54,9 @@ func main() {
 
 	// Configure solutions module
 	solutions.ConfigureModule(router)
+
+	// Products and Lab pages
+	products.ConfigureModule(router)
 
 	// SEO routes
 	seo.ConfigureRoutes(router, blogRepo)

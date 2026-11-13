@@ -1,0 +1,40 @@
+{{ define "content" }}
+{{ $page := .Page }}
+
+<section class="relative overflow-hidden border-b border-border">
+  <div class="absolute inset-0 grid-bg opacity-60 pointer-events-none"></div>
+  <div class="relative mx-auto max-w-7xl px-6 lg:px-8 pt-20 pb-16 lg:pt-24 lg:pb-20">
+    <div class="max-w-3xl">
+      <h1 class="text-5xl lg:text-6xl leading-[0.98] tracking-tighter font-semibold text-text">
+        {{ t (printf "products:%s.heading" $page) }}
+      </h1>
+      <p class="mt-6 text-lg text-text-muted leading-relaxed max-w-2xl">
+        {{ t (printf "products:%s.lede" $page) }}
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="border-b border-border">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 py-16">
+    <div class="grid md:grid-cols-2 gap-4">
+      {{ range $i, $e := .Entries }}
+      <article class="rounded-2xl border {{ if and (eq $page "products") (eq $i 0) }}border-accent/60 md:col-span-2{{ else }}border-border{{ end }} bg-surface/50 p-8" data-entry="{{ $e.Key }}">
+        <div class="flex items-center gap-3 mb-4">
+          <h2 class="text-2xl font-semibold text-text tracking-tight">{{ $e.Name }}</h2>
+          <span class="rounded-full border border-border px-2.5 py-0.5 font-mono text-[11px] uppercase tracking-[0.14em] text-accent">{{ t $e.Tag }}</span>
+        </div>
+        <p class="text-text-muted leading-relaxed max-w-3xl">{{ t (printf "products:items.%s.body" $e.Key) }}</p>
+        {{ if $e.URL }}
+        <a href="{{ $e.URL }}" target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-2 text-[14px] font-medium text-accent hover:underline underline-offset-4">
+          {{ t (printf "products:items.%s.link" $e.Key) }}
+          <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+        </a>
+        {{ end }}
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{ end }}
