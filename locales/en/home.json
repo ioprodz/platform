@@ -2,7 +2,7 @@
   "meta": {
     "home": {
       "title": "",
-      "description": "Go AI, stay in charge. ioprodz is a product studio that builds, rescues and runs your app on our own software factory, xdriven. Unlike AI app builders that stop at the demo, or agencies that hand over code and leave, every change ships with tests, a preview, a review and a guarded deploy, and you keep plain Git and Docker you own. Europe and North Africa."
+      "description": "Go AI, stay in charge. ioprodz is a product studio that builds, rescues and runs your app on our own software factory. Unlike AI app builders that stop at the demo, or agencies that hand over code and leave, every change ships with tests, a preview, a review and a guarded deploy, and you keep plain Git and Docker you own. Europe and North Africa."
     },
     "about": {
       "title": "Manifesto — The counter-voice to AI slop",
@@ -18,7 +18,7 @@
       "badge": "Product studio · Europe / North Africa · Since 2025",
       "headingLine1": "Go AI,",
       "headingLine2": "stay in charge.",
-      "lede": "We build, rescue and run your app on our own software factory, xdriven.",
+      "lede": "We build, rescue and run your app on our own software factory.",
       "ctaBook": "Book a tailored screening",
       "ctaHowIWork": "How we work",
       "tagEvals": "Evals",

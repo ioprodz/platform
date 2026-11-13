@@ -1,6 +1,6 @@
 # ioprodz
 
-> Go AI, stay in charge. We build, rescue and run your app on our own software factory, xdriven.
+> Go AI, stay in charge.
 
 For founders and small businesses who want AI-speed software that holds up in production, ioprodz is a product studio that builds, rescues and runs your app on our own software factory, xdriven. Unlike AI app builders that stop at the demo, or agencies that hand over code and leave, every change ships with tests, a preview, a review and a guarded deploy, and you keep plain Git and Docker you own. Founded late 2025 by Osmane Kalache; serving Europe and North Africa, in English, French and Arabic.
 
