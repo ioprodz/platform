@@ -21,6 +21,8 @@ var public Paths = Paths{
 	"/blog",
 	"/consulting",
 	"/solutions",
+	"/products",
+	"/lab",
 	"/cv",
 	"/robots.txt",
 	"/sitemap.xml",
