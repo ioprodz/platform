@@ -29,6 +29,7 @@ var Products = []Entry{
 	{Key: "polysee", Name: "Polysee", URL: "https://polysee.dev"},
 	{Key: "bledimmo", Name: "Bledimmo", URL: "https://bled.immo"},
 	{Key: "doctocab", Name: "DoctoCab", URL: "https://doctocab.ioprodz.com"},
+	{Key: "monara", Name: "Monara", URL: "https://monara.ioprodz.com"},
 }
 
 // Lab: open source and experiments, never live products.

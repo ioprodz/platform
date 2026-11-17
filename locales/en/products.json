@@ -51,6 +51,10 @@
       "body": "Patient management for medical practices: patient records, appointments and visits, prescriptions and reports, invoices and statistics, in French, English or Arabic. It is built and runs on xdriven, our software factory.",
       "link": "doctocab.ioprodz.com"
     },
+    "monara": {
+      "body": "An AI cofounder for founders: work through your customers, offer, pricing and go-to-market with an assistant that knows your business, and keep your decisions in one place. Invite-only for now. It is built and runs on xdriven, our software factory.",
+      "link": "monara.ioprodz.com"
+    },
     "specjest": {
       "body": "A command-line tool that turns Gherkin .feature files into Jest test skeletons, and back, so specs and tests stay in step.",
       "link": "github.com/ioprodz/specjest"

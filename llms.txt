@@ -47,6 +47,7 @@ Software we build and run ourselves, live in production ([Products](/products)).
 - [Polysee](https://polysee.dev): One workspace for software delivery: connect GitHub or GitLab to see your delivery metrics, write docs together and coordinate your team and its AI agents, without switching tools. It is built and runs on xdriven, our software factory.
 - [Bledimmo](https://bled.immo): The Algerian real-estate network: real market prices by wilaya and commune, a practical guide, and tools to take a purchase, sale or rental from start to finish with verified professionals. It is built and runs on xdriven, our software factory.
 - [DoctoCab](https://doctocab.ioprodz.com): Patient management for medical practices: patient records, appointments and visits, prescriptions and reports, invoices and statistics, in French, English or Arabic. It is built and runs on xdriven, our software factory.
+- [Monara](https://monara.ioprodz.com): An AI cofounder for founders: work through your customers, offer, pricing and go-to-market with an assistant that knows your business, and keep your decisions in one place. Invite-only for now. It is built and runs on xdriven, our software factory.
 
 ## Demos and lab
 

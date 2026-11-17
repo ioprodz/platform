@@ -51,6 +51,10 @@
       "body": "La gestion des patients pour les cabinets médicaux : dossiers patients, rendez-vous et consultations, ordonnances et comptes rendus, factures et statistiques, en français, en anglais ou en arabe. DoctoCab est construit et tourne sur xdriven, notre usine logicielle.",
       "link": "doctocab.ioprodz.com"
     },
+    "monara": {
+      "body": "Un cofondateur IA pour les fondateurs : travaillez vos clients, votre offre, vos prix et votre mise sur le marché avec un assistant qui connaît votre activité, et gardez vos décisions au même endroit. Sur invitation pour l'instant. Il est construit et tourne sur xdriven, notre usine logicielle.",
+      "link": "monara.ioprodz.com"
+    },
     "specjest": {
       "body": "Un outil en ligne de commande qui transforme les fichiers Gherkin .feature en squelettes de tests Jest, et inversement, pour que spécifications et tests restent alignés.",
       "link": "github.com/ioprodz/specjest"

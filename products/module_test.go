@@ -168,6 +168,22 @@ func TestProductsListDoctoCabInEachLanguage(t *testing.T) {
 	}
 }
 
+func TestProductsListMonaraInEachLanguage(t *testing.T) {
+	router := setup(t)
+	for path, want := range map[string]string{
+		"/products":    "An AI cofounder for founders:",
+		"/fr/products": "Un cofondateur IA pour les fondateurs :",
+		"/ar/products": "شريك مؤسس بالذكاء الاصطناعي لروّاد الأعمال:",
+	} {
+		body := get(t, router, path)
+		for _, s := range []string{want, "Monara", `href="https://monara.ioprodz.com"`} {
+			if !strings.Contains(body, s) {
+				t.Errorf("%s: expected %q", path, s)
+			}
+		}
+	}
+}
+
 func TestLabListsOnlyDemosAndLabInEachLanguage(t *testing.T) {
 	router := setup(t)
 	for _, path := range []string{"/lab", "/fr/lab", "/ar/lab"} {
