@@ -28,6 +28,7 @@ var Products = []Entry{
 	{Key: "missionfit", Name: "MissionFit", URL: "https://missionfit.app"},
 	{Key: "polysee", Name: "Polysee", URL: "https://polysee.dev"},
 	{Key: "bledimmo", Name: "Bledimmo", URL: "https://bled.immo"},
+	{Key: "doctocab", Name: "DoctoCab", URL: "https://doctocab.ioprodz.com"},
 }
 
 // Lab: open source and experiments, never live products.

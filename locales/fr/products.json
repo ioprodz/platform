@@ -47,6 +47,10 @@
       "body": "Le réseau de l'immobilier algérien : les prix réels du marché par wilaya et par commune, un guide pratique et des outils pour mener un achat, une vente ou une location de bout en bout, avec des pros vérifiés. Bledimmo est construit et tourne sur xdriven, notre usine logicielle.",
       "link": "bled.immo"
     },
+    "doctocab": {
+      "body": "La gestion des patients pour les cabinets médicaux : dossiers patients, rendez-vous et consultations, ordonnances et comptes rendus, factures et statistiques, en français, en anglais ou en arabe. DoctoCab est construit et tourne sur xdriven, notre usine logicielle.",
+      "link": "doctocab.ioprodz.com"
+    },
     "specjest": {
       "body": "Un outil en ligne de commande qui transforme les fichiers Gherkin .feature en squelettes de tests Jest, et inversement, pour que spécifications et tests restent alignés.",
       "link": "github.com/ioprodz/specjest"

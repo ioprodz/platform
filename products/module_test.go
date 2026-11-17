@@ -152,6 +152,22 @@ func TestProductsListBledimmoInEachLanguage(t *testing.T) {
 	}
 }
 
+func TestProductsListDoctoCabInEachLanguage(t *testing.T) {
+	router := setup(t)
+	for path, want := range map[string]string{
+		"/products":    "Patient management for medical practices:",
+		"/fr/products": "La gestion des patients pour les cabinets médicaux :",
+		"/ar/products": "إدارة المرضى في العيادات الطبية:",
+	} {
+		body := get(t, router, path)
+		for _, s := range []string{want, "DoctoCab", `href="https://doctocab.ioprodz.com"`} {
+			if !strings.Contains(body, s) {
+				t.Errorf("%s: expected %q", path, s)
+			}
+		}
+	}
+}
+
 func TestLabListsOnlyDemosAndLabInEachLanguage(t *testing.T) {
 	router := setup(t)
 	for _, path := range []string{"/lab", "/fr/lab", "/ar/lab"} {
