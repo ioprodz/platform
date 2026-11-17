@@ -35,6 +35,10 @@
       "body": "A social music app: upload your tracks, share playlists with friends and mix live with a built-in two-deck DJ mode, on the web or Android. It is built and runs on xdriven, our software factory.",
       "link": "muzio.ioprodz.com"
     },
+    "missionfit": {
+      "body": "IT freelance missions, driven from your AI: track each mission, tailor your CV with an AI that makes nothing up and follow every application, in the app or from Claude, ChatGPT and Le Chat. Recruiters run their missions and candidates in it too. It is built and runs on xdriven, our software factory.",
+      "link": "missionfit.app"
+    },
     "specjest": {
       "body": "A command-line tool that turns Gherkin .feature files into Jest test skeletons, and back, so specs and tests stay in step.",
       "link": "github.com/ioprodz/specjest"

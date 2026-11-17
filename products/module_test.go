@@ -104,6 +104,22 @@ func TestProductsListMuzioInEachLanguage(t *testing.T) {
 	}
 }
 
+func TestProductsListMissionFitInEachLanguage(t *testing.T) {
+	router := setup(t)
+	for path, want := range map[string]string{
+		"/products":    "IT freelance missions, driven from your AI:",
+		"/fr/products": "Les missions freelance IT, pilotées depuis votre IA :",
+		"/ar/products": "مهام العمل الحر في تقنية المعلومات، من مساعدك الذكي:",
+	} {
+		body := get(t, router, path)
+		for _, s := range []string{want, "MissionFit", `href="https://missionfit.app"`} {
+			if !strings.Contains(body, s) {
+				t.Errorf("%s: expected %q", path, s)
+			}
+		}
+	}
+}
+
 func TestLabListsOnlyDemosAndLabInEachLanguage(t *testing.T) {
 	router := setup(t)
 	for _, path := range []string{"/lab", "/fr/lab", "/ar/lab"} {

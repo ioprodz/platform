@@ -35,6 +35,10 @@
       "body": "Une application musicale sociale : importez vos morceaux, partagez des playlists entre amis et mixez en direct avec le mode DJ à deux platines intégré, sur le web ou Android. Elle est construite et tourne sur xdriven, notre usine logicielle.",
       "link": "muzio.ioprodz.com"
     },
+    "missionfit": {
+      "body": "Les missions freelance IT, pilotées depuis votre IA : suivez chaque mission, adaptez votre CV avec une IA qui n'invente rien et suivez chaque candidature, dans l'app ou depuis Claude, ChatGPT et Le Chat. Les recruteurs y gèrent aussi leurs missions et leurs candidats. MissionFit est construit et tourne sur xdriven, notre usine logicielle.",
+      "link": "missionfit.app"
+    },
     "specjest": {
       "body": "Un outil en ligne de commande qui transforme les fichiers Gherkin .feature en squelettes de tests Jest, et inversement, pour que spécifications et tests restent alignés.",
       "link": "github.com/ioprodz/specjest"

@@ -25,6 +25,7 @@ var Products = []Entry{
 	{Key: "xdriven", Name: "xdriven", URL: "https://www.xdriven.dev", Tag: "products:tags.flagship"},
 	{Key: "chat", Name: "xDriven chat", URL: "https://chat.ioprodz.com"},
 	{Key: "muzio", Name: "Muzio", URL: "https://muzio.ioprodz.com"},
+	{Key: "missionfit", Name: "MissionFit", URL: "https://missionfit.app"},
 }
 
 // Lab: open source and experiments, never live products.
