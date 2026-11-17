@@ -27,6 +27,10 @@
       "body": "Notre usine logicielle. Des agents de code mènent chaque ticket jusqu'en production, avec tests, préversion, relecture et déploiement sous contrôle. Elle se construit et se déploie elle-même chaque jour, et nos propres produits tournent dessus. Pensée pour les fondateurs techniques qui travaillent avec des agents ; le studio s'en sert pour construire, reprendre et faire tourner les applications de ceux qui ne le peuvent pas.",
       "link": "xdriven.dev"
     },
+    "chat": {
+      "body": "Vos e-mails en conversations : chaque personne avec qui vous échangez devient une seule conversation sur tout l'historique, les newsletters et notifications à part. Nous l'utilisons chaque jour en interne ; il est construit et tourne sur xdriven, notre usine logicielle.",
+      "link": "chat.ioprodz.com"
+    },
     "specjest": {
       "body": "Un outil en ligne de commande qui transforme les fichiers Gherkin .feature en squelettes de tests Jest, et inversement, pour que spécifications et tests restent alignés.",
       "link": "github.com/ioprodz/specjest"

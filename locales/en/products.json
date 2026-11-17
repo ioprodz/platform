@@ -27,6 +27,10 @@
       "body": "Our software factory. Coding agents take each ticket to production with tests, a preview, a review and a guarded deploy. It builds and deploys itself every day, and our own products run on it. Built for technical founders who work with agents; the studio uses it to build, rescue and run apps for those who can't.",
       "link": "xdriven.dev"
     },
+    "chat": {
+      "body": "Your mail as chats: everyone you write to is one conversation over your whole history, with newsletters and notifications kept apart. We use it in-house every day; it is built and runs on xdriven, our software factory.",
+      "link": "chat.ioprodz.com"
+    },
     "specjest": {
       "body": "A command-line tool that turns Gherkin .feature files into Jest test skeletons, and back, so specs and tests stay in step.",
       "link": "github.com/ioprodz/specjest"

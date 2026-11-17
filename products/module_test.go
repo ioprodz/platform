@@ -72,6 +72,22 @@ func TestProductsShowXdrivenFirstAsTheFlagshipInEachLanguage(t *testing.T) {
 	}
 }
 
+func TestProductsListXdrivenChatInEachLanguage(t *testing.T) {
+	router := setup(t)
+	for path, want := range map[string]string{
+		"/products":    "Your mail as chats:",
+		"/fr/products": "Vos e-mails en conversations :",
+		"/ar/products": "بريدك الإلكتروني على شكل محادثات:",
+	} {
+		body := get(t, router, path)
+		for _, s := range []string{want, "xDriven chat", `href="https://chat.ioprodz.com"`} {
+			if !strings.Contains(body, s) {
+				t.Errorf("%s: expected %q", path, s)
+			}
+		}
+	}
+}
+
 func TestLabListsOnlyDemosAndLabInEachLanguage(t *testing.T) {
 	router := setup(t)
 	for _, path := range []string{"/lab", "/fr/lab", "/ar/lab"} {
