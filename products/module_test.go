@@ -136,6 +136,22 @@ func TestProductsListPolyseeInEachLanguage(t *testing.T) {
 	}
 }
 
+func TestProductsListBledimmoInEachLanguage(t *testing.T) {
+	router := setup(t)
+	for path, want := range map[string]string{
+		"/products":    "The Algerian real-estate network:",
+		"/fr/products": "immobilier algérien : les prix réels du marché",
+		"/ar/products": "شبكة العقار الجزائري:",
+	} {
+		body := get(t, router, path)
+		for _, s := range []string{want, "Bledimmo", `href="https://bled.immo"`} {
+			if !strings.Contains(body, s) {
+				t.Errorf("%s: expected %q", path, s)
+			}
+		}
+	}
+}
+
 func TestLabListsOnlyDemosAndLabInEachLanguage(t *testing.T) {
 	router := setup(t)
 	for _, path := range []string{"/lab", "/fr/lab", "/ar/lab"} {

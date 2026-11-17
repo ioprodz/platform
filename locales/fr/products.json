@@ -43,6 +43,10 @@
       "body": "Un espace de travail unique pour la livraison logicielle : connectez GitHub ou GitLab pour suivre vos indicateurs de livraison, rédiger vos docs à plusieurs et coordonner votre équipe et ses agents IA, sans changer d'outil. Il est construit et tourne sur xdriven, notre usine logicielle.",
       "link": "polysee.dev"
     },
+    "bledimmo": {
+      "body": "Le réseau de l'immobilier algérien : les prix réels du marché par wilaya et par commune, un guide pratique et des outils pour mener un achat, une vente ou une location de bout en bout, avec des pros vérifiés. Bledimmo est construit et tourne sur xdriven, notre usine logicielle.",
+      "link": "bled.immo"
+    },
     "specjest": {
       "body": "Un outil en ligne de commande qui transforme les fichiers Gherkin .feature en squelettes de tests Jest, et inversement, pour que spécifications et tests restent alignés.",
       "link": "github.com/ioprodz/specjest"

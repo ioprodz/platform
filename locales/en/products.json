@@ -43,6 +43,10 @@
       "body": "One workspace for software delivery: connect GitHub or GitLab to see your delivery metrics, write docs together and coordinate your team and its AI agents, without switching tools. It is built and runs on xdriven, our software factory.",
       "link": "polysee.dev"
     },
+    "bledimmo": {
+      "body": "The Algerian real-estate network: real market prices by wilaya and commune, a practical guide, and tools to take a purchase, sale or rental from start to finish with verified professionals. It is built and runs on xdriven, our software factory.",
+      "link": "bled.immo"
+    },
     "specjest": {
       "body": "A command-line tool that turns Gherkin .feature files into Jest test skeletons, and back, so specs and tests stay in step.",
       "link": "github.com/ioprodz/specjest"

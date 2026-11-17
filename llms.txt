@@ -45,6 +45,7 @@ Software we build and run ourselves, live in production ([Products](/products)).
 - [Muzio](https://muzio.ioprodz.com): A social music app: upload your tracks, share playlists with friends and mix live with a built-in two-deck DJ mode, on the web or Android. It is built and runs on xdriven, our software factory.
 - [MissionFit](https://missionfit.app): IT freelance missions, driven from your AI: track each mission, tailor your CV with an AI that makes nothing up and follow every application, in the app or from Claude, ChatGPT and Le Chat. Recruiters run their missions and candidates in it too. It is built and runs on xdriven, our software factory.
 - [Polysee](https://polysee.dev): One workspace for software delivery: connect GitHub or GitLab to see your delivery metrics, write docs together and coordinate your team and its AI agents, without switching tools. It is built and runs on xdriven, our software factory.
+- [Bledimmo](https://bled.immo): The Algerian real-estate network: real market prices by wilaya and commune, a practical guide, and tools to take a purchase, sale or rental from start to finish with verified professionals. It is built and runs on xdriven, our software factory.
 
 ## Demos and lab
 
