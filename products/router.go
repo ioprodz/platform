@@ -26,6 +26,7 @@ var Products = []Entry{
 	{Key: "chat", Name: "xDriven chat", URL: "https://chat.ioprodz.com"},
 	{Key: "muzio", Name: "Muzio", URL: "https://muzio.ioprodz.com"},
 	{Key: "missionfit", Name: "MissionFit", URL: "https://missionfit.app"},
+	{Key: "polysee", Name: "Polysee", URL: "https://polysee.dev"},
 }
 
 // Lab: open source and experiments, never live products.

@@ -120,6 +120,22 @@ func TestProductsListMissionFitInEachLanguage(t *testing.T) {
 	}
 }
 
+func TestProductsListPolyseeInEachLanguage(t *testing.T) {
+	router := setup(t)
+	for path, want := range map[string]string{
+		"/products":    "One workspace for software delivery:",
+		"/fr/products": "Un espace de travail unique pour la livraison logicielle :",
+		"/ar/products": "مساحة عمل واحدة لتسليم البرمجيات:",
+	} {
+		body := get(t, router, path)
+		for _, s := range []string{want, "Polysee", `href="https://polysee.dev"`} {
+			if !strings.Contains(body, s) {
+				t.Errorf("%s: expected %q", path, s)
+			}
+		}
+	}
+}
+
 func TestLabListsOnlyDemosAndLabInEachLanguage(t *testing.T) {
 	router := setup(t)
 	for _, path := range []string{"/lab", "/fr/lab", "/ar/lab"} {
