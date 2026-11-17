@@ -31,6 +31,10 @@
       "body": "Vos e-mails en conversations : chaque personne avec qui vous échangez devient une seule conversation sur tout l'historique, les newsletters et notifications à part. Nous l'utilisons chaque jour en interne ; il est construit et tourne sur xdriven, notre usine logicielle.",
       "link": "chat.ioprodz.com"
     },
+    "muzio": {
+      "body": "Une application musicale sociale : importez vos morceaux, partagez des playlists entre amis et mixez en direct avec le mode DJ à deux platines intégré, sur le web ou Android. Elle est construite et tourne sur xdriven, notre usine logicielle.",
+      "link": "muzio.ioprodz.com"
+    },
     "specjest": {
       "body": "Un outil en ligne de commande qui transforme les fichiers Gherkin .feature en squelettes de tests Jest, et inversement, pour que spécifications et tests restent alignés.",
       "link": "github.com/ioprodz/specjest"

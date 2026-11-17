@@ -31,6 +31,10 @@
       "body": "Your mail as chats: everyone you write to is one conversation over your whole history, with newsletters and notifications kept apart. We use it in-house every day; it is built and runs on xdriven, our software factory.",
       "link": "chat.ioprodz.com"
     },
+    "muzio": {
+      "body": "A social music app: upload your tracks, share playlists with friends and mix live with a built-in two-deck DJ mode, on the web or Android. It is built and runs on xdriven, our software factory.",
+      "link": "muzio.ioprodz.com"
+    },
     "specjest": {
       "body": "A command-line tool that turns Gherkin .feature files into Jest test skeletons, and back, so specs and tests stay in step.",
       "link": "github.com/ioprodz/specjest"

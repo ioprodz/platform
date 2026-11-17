@@ -42,6 +42,7 @@ Software we build and run ourselves, live in production ([Products](/products)).
 
 - [xdriven](https://www.xdriven.dev) (flagship): Our software factory. Coding agents take each ticket to production with tests, a preview, a review and a guarded deploy. It builds and deploys itself every day, and our own products run on it. Built for technical founders who work with agents; the studio uses it to build, rescue and run apps for those who can't.
 - [xDriven chat](https://chat.ioprodz.com): Your mail as chats: everyone you write to is one conversation over your whole history, with newsletters and notifications kept apart. We use it in-house every day; it is built and runs on xdriven, our software factory.
+- [Muzio](https://muzio.ioprodz.com): A social music app: upload your tracks, share playlists with friends and mix live with a built-in two-deck DJ mode, on the web or Android. It is built and runs on xdriven, our software factory.
 - [Polysee](https://polysee.dev): AI-powered software delivery platform.
 
 ## Demos and lab

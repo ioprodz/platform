@@ -88,6 +88,22 @@ func TestProductsListXdrivenChatInEachLanguage(t *testing.T) {
 	}
 }
 
+func TestProductsListMuzioInEachLanguage(t *testing.T) {
+	router := setup(t)
+	for path, want := range map[string]string{
+		"/products":    "A social music app:",
+		"/fr/products": "Une application musicale sociale :",
+		"/ar/products": "تطبيق موسيقى اجتماعي:",
+	} {
+		body := get(t, router, path)
+		for _, s := range []string{want, "Muzio", `href="https://muzio.ioprodz.com"`} {
+			if !strings.Contains(body, s) {
+				t.Errorf("%s: expected %q", path, s)
+			}
+		}
+	}
+}
+
 func TestLabListsOnlyDemosAndLabInEachLanguage(t *testing.T) {
 	router := setup(t)
 	for _, path := range []string{"/lab", "/fr/lab", "/ar/lab"} {
